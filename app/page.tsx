@@ -23,7 +23,7 @@ export default function Home() {
           <div className="flex items-center space-x-2">
             <Globe className="w-8 h-8 text-blue-600" />
             <span className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent">
-              Migratsiya
+              Migration
             </span>
           </div>
 
