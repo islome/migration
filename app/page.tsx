@@ -23,13 +23,13 @@ export default function Home() {
           <div className="flex items-center space-x-2">
             <Globe className="w-8 h-8 text-blue-600" />
             <span className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent">
-              Migration
+              Migratsiya
             </span>
           </div>
 
           <div className="hidden md:flex space-x-8">
             <Link
-              href="#countries"
+              href="/countries"
               className="text-gray-700 hover:text-blue-600 transition"
             >
               Davlatlar
@@ -47,7 +47,7 @@ export default function Home() {
               Qo'llanma
             </Link>
             <Link
-              href="#contact"
+              href="/contact"
               className="text-gray-700 hover:text-blue-600 transition"
             >
               Bog'lanish
@@ -82,14 +82,14 @@ export default function Home() {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <button className="bg-gradient-to-r from-blue-600 to-blue-700 text-white px-8 py-4 rounded-xl hover:shadow-xl transition-all duration-300 hover:scale-105 flex items-center gap-2 text-lg font-semibold">
+            <a href="/countries" className="bg-gradient-to-r from-blue-600 to-blue-700 text-white px-8 py-4 rounded-xl hover:shadow-xl transition-all duration-300 hover:scale-105 flex items-center gap-2 text-lg font-semibold">
               Davlatlarni ko'rish
               <ArrowRight className="w-5 h-5" />
-            </button>
-            <button className="border-2 border-blue-600 text-blue-600 px-8 py-4 rounded-xl hover:bg-blue-50 transition-all duration-300 flex items-center gap-2 text-lg font-semibold">
+            </a>
+            <a href={telegramLink} target="_blank" className="border-2 border-blue-600 text-blue-600 px-8 py-4 rounded-xl hover:bg-blue-50 transition-all duration-300 flex items-center gap-2 text-lg font-semibold">
               <MessageCircle className="w-5 h-5" />
               Maslahat olish
-            </button>
+            </a>
           </div>
         </div>
       </section>
@@ -251,22 +251,22 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             {[
               {
-                step: "01",
+                step: "1",
                 title: "Konsultatsiya",
                 desc: "Bepul maslahat va to'liq ma'lumot olish",
               },
               {
-                step: "02",
+                step: "2",
                 title: "Hujjatlar",
                 desc: "Barcha kerakli hujjatlarni tayyorlash",
               },
               {
-                step: "03",
+                step: "3",
                 title: "Viza jarayoni",
                 desc: "Viza uchun ariza topshirish va kuzatish",
               },
               {
-                step: "04",
+                step: "4",
                 title: "Jo'nash",
                 desc: "Yo'lga tayyorlik va qo'llab-quvvatlash",
               },
