@@ -12,7 +12,7 @@ import {
 import Link from "next/link";
 
 export default function Home() {
-  const telegramLink = "https://t.me/justislombek";
+  const telegramLink = "https://t.me/BestGlobalizeNamangan";
   const phoneLink = "tel:+998777670017";
   const phoneNumber = "+998 77 767 00 17";
   return (
@@ -82,11 +82,18 @@ export default function Home() {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <a href="/countries" className="bg-gradient-to-r from-blue-600 to-blue-700 text-white px-8 py-4 rounded-xl hover:shadow-xl transition-all duration-300 hover:scale-105 flex items-center gap-2 text-lg font-semibold">
+            <a
+              href="/countries"
+              className="bg-gradient-to-r from-blue-600 to-blue-700 text-white px-8 py-4 rounded-xl hover:shadow-xl transition-all duration-300 hover:scale-105 flex items-center gap-2 text-lg font-semibold"
+            >
               Davlatlarni ko'rish
               <ArrowRight className="w-5 h-5" />
             </a>
-            <a href={telegramLink} target="_blank" className="border-2 border-blue-600 text-blue-600 px-8 py-4 rounded-xl hover:bg-blue-50 transition-all duration-300 flex items-center gap-2 text-lg font-semibold">
+            <a
+              href={telegramLink}
+              target="_blank"
+              className="border-2 border-blue-600 text-blue-600 px-8 py-4 rounded-xl hover:bg-blue-50 transition-all duration-300 flex items-center gap-2 text-lg font-semibold"
+            >
               <MessageCircle className="w-5 h-5" />
               Maslahat olish
             </a>
@@ -339,6 +346,19 @@ export default function Home() {
 
       {/* CTA Section */}
       <section className="bg-gradient-to-r from-blue-600 to-purple-600 py-20">
+        <div className="bg-white rounded-2xl overflow-hidden shadow-lg h-full min-h-[500px]">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3069.557177789989!2d64.42169!3d39.77477!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3f5007707b5f9b21%3A0xd8c4a0f65f8c76a3!2sBukhara%2C%20Uzbekistan!5e0!3m2!1sen!2s!4v1234567890"
+            width="100%"
+            height="100%"
+            style={{ border: 0, minHeight: "500px" }}
+            allowFullScreen
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+            title="Best Globalize Office Location"
+          ></iframe>
+        </div>
+
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-4xl font-bold text-white mb-6">
             Bugun o'z kelajagingizni boshlang!
@@ -422,8 +442,11 @@ export default function Home() {
                   </Link>
                 </li>
                 <li>
-                  <Link href="#" className="hover:text-blue-400 transition">
-                    Maxfiylik
+                  <Link
+                    href="https://gov.uz/oz/migration/activity_page/xususiy-bandlik-agentliklari_"
+                    className="hover:text-blue-400 transition"
+                  >
+                    Litsenziya
                   </Link>
                 </li>
                 <li>
@@ -443,7 +466,7 @@ export default function Home() {
                     className="hover:text-blue-400 transition flex items-center gap-2"
                   ></a>
                   <Phone className="w-4 h-4" />
-                  +998 97 520 57 77
+                  +998 77 767 00 17
                 </li>
                 <li className="flex items-center gap-2">
                   <a

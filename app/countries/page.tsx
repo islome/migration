@@ -12,7 +12,7 @@ import {
 } from "lucide-react";
 
 export default function CountriesPage() {
-  const telegramLink = "https://t.me/justislombek";
+  const telegramLink = "https://t.me/BestGlobalizeNamangan";
   const phoneLink = "tel:+998777670017";
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
@@ -267,8 +267,8 @@ export default function CountriesPage() {
             <div>
               <h4 className="text-white font-semibold mb-4">Bog'lanish</h4>
               <ul className="space-y-2">
-                <li>+998 97 520 57 77</li>
-                <li>t.me/migration-namangan</li>
+                <li>{phoneLink}</li>
+                <li>t.me/BestGlobalizeNamangan</li>
               </ul>
             </div>
           </div>
