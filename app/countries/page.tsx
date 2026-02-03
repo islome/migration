@@ -64,8 +64,8 @@ export default function CountriesPage() {
         </nav>
       </header>
 
-      {/* Hero Section */}
-      <section className="bg-gradient-to-r from-blue-600 to-purple-600 text-white py-20">
+
+      <section className="bg-gradient-to-br from-[#89aac3] to-[#6f93b0] text-white py-20">
         <div className="container mx-auto px-4 text-center">
           <h1 className="text-5xl font-bold mb-6">
             Ish Topish Uchun Eng Yaxshi Davlatlar
@@ -182,7 +182,7 @@ export default function CountriesPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="bg-gradient-to-r from-blue-600 to-purple-600 py-16">
+      <section className="bg-gradient-to-br from-[#89aac3] to-[#6f93b0] py-16">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-4xl font-bold text-white mb-6">
             Qaysi davlat sizga mos kelishini bilmayapsizmi?

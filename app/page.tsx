@@ -18,7 +18,6 @@ export default function Home() {
   const phoneNumber = "+998 77 767 00 17";
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
-      {/* Header */}
       <header className="bg-white/80 backdrop-blur-md shadow-sm sticky top-0 z-50">
         <nav className="container mx-auto px-4 py-4 flex justify-between items-center">
           <div className="flex items-center space-x-2">
@@ -66,7 +65,6 @@ export default function Home() {
         </nav>
       </header>
 
-      {/* Hero Section */}
       <section className="container mx-auto px-4 py-20 md:py-28">
         <div className="max-w-4xl mx-auto text-center">
           <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
@@ -102,7 +100,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Stats Section */}
       <section className="bg-white py-16">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
@@ -141,7 +138,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Popular Countries */}
       <section id="countries" className="container mx-auto px-4 py-20">
         <div className="text-center mb-12">
           <h2 className="text-4xl font-bold text-gray-900 mb-4">
@@ -244,8 +240,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* How It Works */}
-      <section className="bg-gradient-to-br from-blue-600 to-blue-800 text-white py-20">
+      <section className="bg-gradient-to-br from-[#89aac3] to-[#6f93b0] text-white py-20">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold mb-4">
@@ -291,7 +286,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Services */}
       <section id="services" className="container mx-auto px-4 py-20">
         <div className="text-center mb-12">
           <h2 className="text-4xl font-bold text-gray-900 mb-4">
@@ -345,7 +339,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* CTA Section */}
       <section id="contact" className="container mx-auto px-4 py-20">
         <div className="text-center mb-12">
           <h2 className="text-4xl font-bold text-gray-900 mb-4">
@@ -460,7 +453,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Footer */}
       <footer className="bg-gray-900 text-gray-300 py-12">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
