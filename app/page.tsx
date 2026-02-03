@@ -8,6 +8,7 @@ import {
   MessageCircle,
   Phone,
   Mail,
+  MapPin,
 } from "lucide-react";
 import Link from "next/link";
 
@@ -345,45 +346,93 @@ export default function Home() {
       </section>
 
       {/* CTA Section */}
-      <section className="bg-gradient-to-r from-blue-600 to-purple-600 py-20">
-        <div className="bg-white rounded-2xl overflow-hidden shadow-lg h-full min-h-[500px]">
-          <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3069.557177789989!2d64.42169!3d39.77477!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3f5007707b5f9b21%3A0xd8c4a0f65f8c76a3!2sBukhara%2C%20Uzbekistan!5e0!3m2!1sen!2s!4v1234567890"
-            width="100%"
-            height="100%"
-            style={{ border: 0, minHeight: "500px" }}
-            allowFullScreen
-            loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
-            title="Best Globalize Office Location"
-          ></iframe>
+      <section id="contact" className="container mx-auto px-4 py-20">
+        <div className="text-center mb-12">
+          <h2 className="text-4xl font-bold text-gray-900 mb-4">Bizning manzil</h2>
+          <p className="text-xl text-gray-600">Ofisimizga tashrif buyuring yoki biz bilan bog'laning</p>
         </div>
 
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-4xl font-bold text-white mb-6">
-            Bugun o'z kelajagingizni boshlang!
-          </h2>
-          <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
-            Professional jamoamiz sizga har qadamda yordam beradi. Bepul
-            konsultatsiya uchun hoziroq bog'laning.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a
-              href={phoneLink}
-              className="bg-white text-blue-600 px-8 py-4 rounded-xl hover:shadow-xl transition-all duration-300 hover:scale-105 flex items-center gap-2 text-lg font-semibold justify-center"
-            >
-              <Phone className="w-5 h-5" />
-              {phoneNumber}
-            </a>
-            <a
-              href={telegramLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="border-2 border-white text-white px-8 py-4 rounded-xl hover:bg-white/10 transition-all duration-300 flex items-center gap-2 text-lg font-semibold justify-center"
-            >
-              <MessageCircle className="w-5 h-5" />
-              Telegramda yozish
-            </a>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          {/* Contact Info */}
+          <div className="space-y-6">
+            <div className="bg-white rounded-2xl p-8 shadow-lg">
+              <h3 className="text-2xl font-bold text-gray-900 mb-6">Bog'lanish ma'lumotlari</h3>
+              
+              <div className="space-y-4">
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <Phone className="w-6 h-6 text-blue-600" />
+                  </div>
+                  <div>
+                    <p className="text-sm text-gray-500 mb-1">Telefon raqam</p>
+                    <p className="text-lg font-semibold text-gray-900">+998 90 123 45 67</p>
+                    <p className="text-lg font-semibold text-gray-900">+998 91 234 56 78</p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <Mail className="w-6 h-6 text-green-600" />
+                  </div>
+                  <div>
+                    <p className="text-sm text-gray-500 mb-1">Email</p>
+                    <p className="text-lg font-semibold text-gray-900">info@chetelish.uz</p>
+                    <p className="text-lg font-semibold text-gray-900">support@chetelish.uz</p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <MapPin className="w-6 h-6 text-purple-600" />
+                  </div>
+                  <div>
+                    <p className="text-sm text-gray-500 mb-1">Manzil</p>
+                    <p className="text-lg font-semibold text-gray-900">Buxoro, O'zbekiston</p>
+                    <p className="text-gray-600">Istiqlol ko'chasi, 1-uy</p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <MessageCircle className="w-6 h-6 text-orange-600" />
+                  </div>
+                  <div>
+                    <p className="text-sm text-gray-500 mb-1">Ish vaqti</p>
+                    <p className="text-lg font-semibold text-gray-900">Dushanba - Shanba</p>
+                    <p className="text-gray-600">09:00 - 18:00</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="mt-8 pt-8 border-t border-gray-200">
+                <h4 className="text-lg font-bold text-gray-900 mb-4">Ijtimoiy tarmoqlar</h4>
+                <div className="flex gap-4">
+                  <a href="#" className="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center text-white hover:bg-blue-700 transition">
+                    <MessageCircle className="w-6 h-6" />
+                  </a>
+                  <a href="#" className="w-12 h-12 bg-blue-500 rounded-lg flex items-center justify-center text-white hover:bg-blue-600 transition">
+                    <Phone className="w-6 h-6" />
+                  </a>
+                  <a href="#" className="w-12 h-12 bg-red-600 rounded-lg flex items-center justify-center text-white hover:bg-red-700 transition">
+                    <Mail className="w-6 h-6" />
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Google Maps */}
+          <div className="bg-white rounded-2xl overflow-hidden shadow-lg h-full min-h-[500px]">
+            <iframe
+              src="https://maps.app.goo.gl/xj8DSD1HqJFgBxa17"
+              width="100%"
+              height="100%"
+              style={{ border: 0, minHeight: '500px' }}
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              title="Best Globalize Office Location"
+            ></iframe>
           </div>
         </div>
       </section>
