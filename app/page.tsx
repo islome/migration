@@ -13,8 +13,8 @@ import Link from "next/link";
 
 export default function Home() {
   const telegramLink = "https://t.me/justislombek";
-  const phoneLink = "tel:+998975205777";
-  const phoneNumber = "+998 97 520 57 77";
+  const phoneLink = "tel:+998777670017";
+  const phoneNumber = "+998 77 767 00 17";
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
       {/* Header */}
@@ -23,7 +23,7 @@ export default function Home() {
           <div className="flex items-center space-x-2">
             <Globe className="w-8 h-8 text-blue-600" />
             <span className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent">
-              Migratsiya
+              Best Globalize
             </span>
           </div>
 

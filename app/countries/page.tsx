@@ -13,7 +13,7 @@ import {
 
 export default function CountriesPage() {
   const telegramLink = "https://t.me/justislombek";
-  const phoneLink = "tel:+998975205777";
+  const phoneLink = "tel:+998777670017";
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
       {/* Header */}
@@ -22,7 +22,7 @@ export default function CountriesPage() {
           <Link href="/" className="flex items-center space-x-2">
             <Globe className="w-8 h-8 text-blue-600" />
             <span className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent">
-              Migration
+              Best Globalize
             </span>
           </Link>
 
