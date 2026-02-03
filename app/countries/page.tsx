@@ -24,7 +24,7 @@ export default function CountriesPage() {
         <nav className="container mx-auto px-4 py-4 flex justify-between items-center">
           <Link href="/" className="flex items-center space-x-2">
             <Globe className="w-8 h-8 text-blue-600" />
-            <span className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent">
+            <span className="text-2xl font-bold bg-black bg-clip-text text-transparent">
               Best Globalize
             </span>
           </Link>
@@ -102,7 +102,7 @@ export default function CountriesPage() {
               className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border border-gray-100 group"
             >
               {/* Country Header */}
-              <div className="bg-gradient-to-r from-blue-600 to-blue-700 p-6">
+              <div className="bg-gradient-to-r from-[#14202e] to-[#2d4356] p-6">
                 <div className="flex items-center justify-between mb-4">
                   <div className="flex items-center gap-3">
                     <span className="text-6xl">{country.flag}</span>
