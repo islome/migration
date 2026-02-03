@@ -398,7 +398,9 @@ export default function Home() {
                     <p className="text-lg font-semibold text-gray-900">
                       Namangan Viloyati, To'raqo'rg'on tumani, Yangiobod MFY
                     </p>
-                    <p className="text-gray-600">Istiqlol ko'chasi, 1-uy</p>
+                    <p className="text-gray-600">
+                      Mo'njal: To'raqo'rg'on Bandlik binosi
+                    </p>
                   </div>
                 </div>
 
@@ -446,15 +448,14 @@ export default function Home() {
 
           <div className="bg-white rounded-2xl overflow-hidden shadow-lg h-full min-h-[500px]">
             <iframe
-              src="https://www.google.com/maps/place/41°00'14.7%22N+71°30'36.3%22E/@41.004075,71.510085,17z/data=!3m1!4b1!4m4!3m3!8m2!3d41.004075!4d71.510085?entry=ttu&g_ep=EgoyMDI2MDIwMS4wIKXMDSoASAFQAw%3D%3D"
+              src="https://www.google.com/maps?q=41.004075,71.510085&z=17&output=embed"
               width="100%"
               height="100%"
               style={{ border: 0, minHeight: "500px" }}
-              allowFullScreen
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
               title="Best Globalize Office Location"
-            ></iframe>
+            />
           </div>
         </div>
       </section>
