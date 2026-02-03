@@ -171,7 +171,7 @@ export default function CountriesPage() {
                 {/* CTA Button */}
                 <Link
                   href={`/countries/${country.id}`}
-                  className="w-full bg-gradient-to-r from-blue-600 to-blue-700 text-white py-3 rounded-lg hover:shadow-lg transition-all duration-300 font-semibold flex items-center justify-center gap-2 group-hover:gap-3"
+                  className="w-full bg-[#2d4356] text-white py-3 rounded-lg hover:shadow-lg transition-all duration-300 font-semibold flex items-center justify-center gap-2 group-hover:gap-3"
                 >
                   Batafsil ma'lumot
                   <ChevronRight className="w-5 h-5" />
