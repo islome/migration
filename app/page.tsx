@@ -9,6 +9,7 @@ import {
   Phone,
   Mail,
   MapPin,
+  Factory,
 } from "lucide-react";
 import Link from "next/link";
 
@@ -21,7 +22,7 @@ export default function Home() {
       <header className="bg-white/80 backdrop-blur-md shadow-sm sticky top-0 z-50">
         <nav className="container mx-auto px-4 py-4 flex justify-between items-center">
           <div className="flex items-center space-x-2">
-            <Globe className="w-8 h-8 text-blue-600" />
+            <Factory className="w-8 h-8 text-black" />
             <span className="text-2xl font-bold bg-black bg-clip-text text-transparent">
               Best Globalize
             </span>
