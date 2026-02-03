@@ -9,11 +9,14 @@ import {
   Globe,
   ChevronRight,
   MessageCircle,
+  Phone,
+  Mail,
 } from "lucide-react";
 
 export default function CountriesPage() {
   const telegramLink = "https://t.me/BestGlobalizeNamangan";
   const phoneLink = "tel:+998777670017";
+  const phoneNumber = "+998 77 767 00 17";
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
       {/* Header */}
@@ -207,7 +210,7 @@ export default function CountriesPage() {
             <div>
               <div className="flex items-center space-x-2 mb-4">
                 <Globe className="w-6 h-6 text-blue-400" />
-                <span className="text-xl font-bold text-white">ChetElIsh</span>
+                <span className="text-xl font-bold text-white">Best Globalize</span>
               </div>
               <p className="text-gray-400">
                 Xalqaro mehnat bozorida ishonchli hamkoringiz
@@ -267,14 +270,30 @@ export default function CountriesPage() {
             <div>
               <h4 className="text-white font-semibold mb-4">Bog'lanish</h4>
               <ul className="space-y-2">
-                <li>{phoneLink}</li>
-                <li>t.me/BestGlobalizeNamangan</li>
+                <li className="flex items-center gap-2">
+                  <a
+                    href={phoneLink}
+                    className="hover:text-blue-400 transition flex items-center gap-2"
+                  ></a>
+                  <Phone className="w-4 h-4" />
+                  {phoneNumber}
+                </li>
+                <li className="flex items-center gap-2">
+                  <a
+                    href={telegramLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-blue-400 transition flex items-center gap-2"
+                  ></a>
+                  <Mail className="w-4 h-4" />
+                  migrationnamangan@mail.uz
+                </li>
               </ul>
             </div>
           </div>
 
           <div className="border-t border-gray-800 pt-8 text-center text-gray-400">
-            <p>&copy; 2026 ChetElIsh. Barcha huquqlar himoyalangan.</p>
+            <p>&copy; 2026 Best Globalize. Barcha huquqlar himoyalangan.</p>
           </div>
         </div>
       </footer>
