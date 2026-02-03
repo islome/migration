@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Migration",
+  title: "Best Globalize",
   description: "Namangan Viloyati, xususiy bandlik agentligi",
 };
 

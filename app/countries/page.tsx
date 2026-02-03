@@ -210,7 +210,9 @@ export default function CountriesPage() {
             <div>
               <div className="flex items-center space-x-2 mb-4">
                 <Globe className="w-6 h-6 text-blue-400" />
-                <span className="text-xl font-bold text-white">Best Globalize</span>
+                <span className="text-xl font-bold text-white">
+                  Best Globalize
+                </span>
               </div>
               <p className="text-gray-400">
                 Xalqaro mehnat bozorida ishonchli hamkoringiz
