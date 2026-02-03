@@ -348,16 +348,22 @@ export default function Home() {
       {/* CTA Section */}
       <section id="contact" className="container mx-auto px-4 py-20">
         <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">Bizning manzil</h2>
-          <p className="text-xl text-gray-600">Ofisimizga tashrif buyuring yoki biz bilan bog'laning</p>
+          <h2 className="text-4xl font-bold text-gray-900 mb-4">
+            Bizning manzil
+          </h2>
+          <p className="text-xl text-gray-600">
+            Ofisimizga tashrif buyuring yoki biz bilan bog'laning
+          </p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* Contact Info */}
           <div className="space-y-6">
             <div className="bg-white rounded-2xl p-8 shadow-lg">
-              <h3 className="text-2xl font-bold text-gray-900 mb-6">Bog'lanish ma'lumotlari</h3>
-              
+              <h3 className="text-2xl font-bold text-gray-900 mb-6">
+                Bog'lanish ma'lumotlari
+              </h3>
+
               <div className="space-y-4">
                 <div className="flex items-start gap-4">
                   <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
@@ -365,8 +371,9 @@ export default function Home() {
                   </div>
                   <div>
                     <p className="text-sm text-gray-500 mb-1">Telefon raqam</p>
-                    <p className="text-lg font-semibold text-gray-900">+998 90 123 45 67</p>
-                    <p className="text-lg font-semibold text-gray-900">+998 91 234 56 78</p>
+                    <p className="text-lg font-semibold text-gray-900">
+                      {phoneNumber}
+                    </p>
                   </div>
                 </div>
 
@@ -376,8 +383,9 @@ export default function Home() {
                   </div>
                   <div>
                     <p className="text-sm text-gray-500 mb-1">Email</p>
-                    <p className="text-lg font-semibold text-gray-900">info@chetelish.uz</p>
-                    <p className="text-lg font-semibold text-gray-900">support@chetelish.uz</p>
+                    <p className="text-lg font-semibold text-gray-900">
+                      bestglobalizenamangan@mail.uz
+                    </p>
                   </div>
                 </div>
 
@@ -387,7 +395,9 @@ export default function Home() {
                   </div>
                   <div>
                     <p className="text-sm text-gray-500 mb-1">Manzil</p>
-                    <p className="text-lg font-semibold text-gray-900">Buxoro, O'zbekiston</p>
+                    <p className="text-lg font-semibold text-gray-900">
+                      Namangan Viloyati, To'raqo'rg'on tumani, Yangiobod MFY
+                    </p>
                     <p className="text-gray-600">Istiqlol ko'chasi, 1-uy</p>
                   </div>
                 </div>
@@ -398,22 +408,35 @@ export default function Home() {
                   </div>
                   <div>
                     <p className="text-sm text-gray-500 mb-1">Ish vaqti</p>
-                    <p className="text-lg font-semibold text-gray-900">Dushanba - Shanba</p>
+                    <p className="text-lg font-semibold text-gray-900">
+                      Dushanba - Shanba
+                    </p>
                     <p className="text-gray-600">09:00 - 18:00</p>
                   </div>
                 </div>
               </div>
 
               <div className="mt-8 pt-8 border-t border-gray-200">
-                <h4 className="text-lg font-bold text-gray-900 mb-4">Ijtimoiy tarmoqlar</h4>
+                <h4 className="text-lg font-bold text-gray-900 mb-4">
+                  Ijtimoiy tarmoqlar
+                </h4>
                 <div className="flex gap-4">
-                  <a href="#" className="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center text-white hover:bg-blue-700 transition">
+                  <a
+                    href={telegramLink}
+                    className="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center text-white hover:bg-blue-700 transition"
+                  >
                     <MessageCircle className="w-6 h-6" />
                   </a>
-                  <a href="#" className="w-12 h-12 bg-blue-500 rounded-lg flex items-center justify-center text-white hover:bg-blue-600 transition">
+                  <a
+                    href={phoneLink}
+                    className="w-12 h-12 bg-blue-500 rounded-lg flex items-center justify-center text-white hover:bg-blue-600 transition"
+                  >
                     <Phone className="w-6 h-6" />
                   </a>
-                  <a href="#" className="w-12 h-12 bg-red-600 rounded-lg flex items-center justify-center text-white hover:bg-red-700 transition">
+                  <a
+                    href="bestglobalizenamangan@mail.uz"
+                    className="w-12 h-12 bg-red-600 rounded-lg flex items-center justify-center text-white hover:bg-red-700 transition"
+                  >
                     <Mail className="w-6 h-6" />
                   </a>
                 </div>
@@ -421,13 +444,12 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Google Maps */}
           <div className="bg-white rounded-2xl overflow-hidden shadow-lg h-full min-h-[500px]">
             <iframe
-              src="https://maps.app.goo.gl/xj8DSD1HqJFgBxa17"
+              src="https://www.google.com/maps/place/41°00'14.7%22N+71°30'36.3%22E/@41.004075,71.510085,17z/data=!3m1!4b1!4m4!3m3!8m2!3d41.004075!4d71.510085?entry=ttu&g_ep=EgoyMDI2MDIwMS4wIKXMDSoASAFQAw%3D%3D"
               width="100%"
               height="100%"
-              style={{ border: 0, minHeight: '500px' }}
+              style={{ border: 0, minHeight: "500px" }}
               allowFullScreen
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
