@@ -64,7 +64,7 @@ export default async function CountryDetailPage({
       </header>
 
       <section
-        className="relative h-full bg-cover bg-center"
+        className="relative h-98 bg-cover bg-center"
         style={{ backgroundImage: `url(${country.backgroundImage})` }}
       >
         <div className="absolute inset-0 bg-linear-to-r from-blue-900/90 to-gray-900/90"></div>
