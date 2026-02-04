@@ -77,7 +77,7 @@ export default async function CountryDetailPage({
                 <p className="text-2xl text-blue-100">{country.nameEn}</p>
               </div>
             </div>
-            <p className="text-xl text-blue-100 mt-6">
+            <p className="text-xl text-blue-100 my-6">
               {country.fullDescription}
             </p>
           </div>
