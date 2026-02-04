@@ -20,7 +20,9 @@ import {
   Briefcase,
   GraduationCap,
   Languages,
+  Factory,
 } from "lucide-react";
+import Footer from "@/components/ui/footer";
 
 export async function generateStaticParams() {
   return countries.map((country) => ({
@@ -42,12 +44,11 @@ export default async function CountryDetailPage({
 
   return (
     <div className="min-h-screen bg-linear-to-br from-slate-50 to-blue-50">
-      {/* Header */}
       <header className="bg-white/80 backdrop-blur-md shadow-sm sticky top-0 z-50">
         <nav className="container mx-auto px-4 py-4 flex justify-between items-center">
           <Link href="/" className="flex items-center space-x-2">
-            <Globe className="w-8 h-8 text-blue-600" />
-            <span className="text-2xl font-bold bg-linear-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent">
+            <Factory className="w-8 h-8 text-black hidden md:block"/>
+            <span className="text-2xl font-bold bg-black bg-clip-text text-transparent">
               Best Globalize
             </span>
           </Link>
@@ -62,13 +63,12 @@ export default async function CountryDetailPage({
         </nav>
       </header>
 
-      {/* Hero Section */}
       <section
         className="relative h-96 bg-cover bg-center"
         style={{ backgroundImage: `url(${country.backgroundImage})` }}
       >
-        <div className="absolute inset-0 bg-linear-to-r from-blue-900/90 to-purple-900/90"></div>
-        <div className="relative container mx-auto px-4 h-full flex items-center">
+        <div className="absolute inset-0 bg-linear-to-r from-blue-900/90 to-gray-900/90"></div>
+        <div className="relative container mx-6 px-4 h-full flex items-center">
           <div className="text-white max-w-3xl">
             <div className="flex items-center gap-4 mb-4">
               <span className="text-8xl">{country.flag}</span>
@@ -84,7 +84,6 @@ export default async function CountryDetailPage({
         </div>
       </section>
 
-      {/* Stats Cards */}
       <section className="bg-white shadow-lg -mt-16 relative z-10">
         <div className="container mx-auto px-4 py-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
@@ -131,12 +130,9 @@ export default async function CountryDetailPage({
         </div>
       </section>
 
-      {/* Main Content */}
       <div className="container mx-auto px-4 py-16">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {/* Left Column - Main Info */}
           <div className="lg:col-span-2 space-y-8">
-            {/* Salary Details */}
             <div className="bg-white rounded-2xl p-8 shadow-lg">
               <h2 className="text-3xl font-bold text-gray-900 mb-6 flex items-center gap-3">
                 <TrendingUp className="w-8 h-8 text-green-600" />
@@ -285,7 +281,6 @@ export default async function CountryDetailPage({
               </div>
             </div>
 
-            {/* Life Info */}
             <div className="bg-white rounded-2xl p-8 shadow-lg">
               <h2 className="text-3xl font-bold text-gray-900 mb-6">
                 Hayot haqida ma'lumot
@@ -336,10 +331,8 @@ export default async function CountryDetailPage({
             </div>
           </div>
 
-          {/* Right Column - Sidebar */}
           <div className="space-y-8">
-            {/* Documents */}
-            <div className="bg-white rounded-2xl p-6 shadow-lg sticky top-24">
+            <div className="bg-white rounded-2xl p-6 shadow-lg">
               <h3 className="text-2xl font-bold text-gray-900 mb-4 flex items-center gap-2">
                 <FileText className="w-6 h-6 text-blue-600" />
                 Kerakli hujjatlar
@@ -354,13 +347,14 @@ export default async function CountryDetailPage({
               </ul>
             </div>
 
-            <div className="bg-linear-to-r from-blue-600 to-purple-600 rounded-2xl p-8 text-white">
+            <div className="bg-[#89aac3] rounded-2xl p-8 text-white sticky top-24">
               <h3 className="text-2xl font-bold mb-4">Yordam kerakmi?</h3>
               <p className="text-blue-100 mb-6">
                 Mutaxassislarimiz bilan bog'laning va bepul konsultatsiya oling!
               </p>
               <Link
-                href="/contact"
+                href="https://t.me/BestGlobalizeNamangan"
+                target="_blank"
                 className="w-full bg-white text-blue-600 py-3 rounded-lg hover:shadow-xl transition-all duration-300 font-semibold flex items-center justify-center gap-2"
               >
                 Konsultatsiya olish
@@ -371,12 +365,7 @@ export default async function CountryDetailPage({
         </div>
       </div>
 
-      {/* Footer */}
-      <footer className="bg-gray-900 text-gray-300 py-12">
-        <div className="container mx-auto px-4 text-center">
-          <p>&copy; 2024 Best Globalize. Barcha huquqlar himoyalangan.</p>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }
