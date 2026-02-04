@@ -1,4 +1,5 @@
-import { Globe, Link, Mail, Phone } from "lucide-react";
+import { Globe, Mail, Phone } from "lucide-react";
+import Link from "next/link";
 import React from "react";
 
 export default function Footer() {
@@ -26,12 +27,12 @@ export default function Footer() {
               <h4 className="text-white font-semibold mb-4">Havolalar</h4>
               <ul className="space-y-2">
                 <li>
-                  <Link href="#" className="hover:text-blue-400 transition">
+                  <Link href="/countries" className="hover:text-blue-400 transition">
                     Davlatlar
                   </Link>
                 </li>
                 <li>
-                  <Link href="#" className="hover:text-blue-400 transition">
+                  <Link href="#hizmatlar" className="hover:text-blue-400 transition">
                     Xizmatlar
                   </Link>
                 </li>
