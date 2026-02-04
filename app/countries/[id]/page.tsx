@@ -68,7 +68,7 @@ export default async function CountryDetailPage({
         style={{ backgroundImage: `url(${country.backgroundImage})` }}
       >
         <div className="absolute inset-0 bg-linear-to-r from-blue-900/90 to-gray-900/90"></div>
-        <div className="relative container mx-6 px-4 h-full flex items-center">
+        <div className="relative container m-auto px-4 h-full flex items-center">
           <div className="text-white max-w-3xl">
             <div className="flex items-center gap-4 mb-4">
               <span className="text-8xl">{country.flag}</span>
@@ -189,7 +189,6 @@ export default async function CountryDetailPage({
               </div>
             </div>
 
-            {/* Requirements */}
             <div className="bg-white rounded-2xl p-8 shadow-lg">
               <h2 className="text-3xl font-bold text-gray-900 mb-6 flex items-center gap-3">
                 <Users className="w-8 h-8 text-purple-600" />
@@ -236,7 +235,6 @@ export default async function CountryDetailPage({
               </div>
             </div>
 
-            {/* Benefits */}
             <div className="bg-white rounded-2xl p-8 shadow-lg">
               <h2 className="text-3xl font-bold text-gray-900 mb-6 flex items-center gap-3">
                 <Award className="w-8 h-8 text-yellow-600" />
@@ -252,7 +250,6 @@ export default async function CountryDetailPage({
               </div>
             </div>
 
-            {/* Process Steps */}
             <div className="bg-white rounded-2xl p-8 shadow-lg">
               <h2 className="text-3xl font-bold text-gray-900 mb-6">
                 Jarayon bosqichlari
@@ -355,7 +352,7 @@ export default async function CountryDetailPage({
               <Link
                 href="https://t.me/BestGlobalizeNamangan"
                 target="_blank"
-                className="w-full bg-white text-blue-600 py-3 rounded-lg hover:shadow-xl transition-all duration-300 font-semibold flex items-center justify-center gap-2"
+                className="w-full bg-white text-black py-3 rounded-lg hover:shadow-xl transition-all duration-300 font-semibold flex items-center justify-center gap-2"
               >
                 Konsultatsiya olish
                 <ChevronRight className="w-5 h-5" />

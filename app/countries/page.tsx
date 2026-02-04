@@ -14,15 +14,12 @@ import Footer from "@/components/ui/footer";
 
 export default function CountriesPage() {
   const telegramLink = "https://t.me/BestGlobalizeNamangan";
-  const phoneLink = "tel:+998777670017";
-  const phoneNumber = "+998 77 767 00 17";
   return (
     <div className="min-h-screen bg-linear-to-br from-slate-50 to-blue-50">
-      {/* Header */}
       <header className="bg-white/80 backdrop-blur-md shadow-sm sticky top-0 z-50">
         <nav className="container mx-auto px-4 py-4 flex justify-between items-center">
           <Link href="/" className="flex items-center space-x-2">
-            <FactoryIcon className="w-8 h-8 text-black" />
+            <FactoryIcon className="w-8 h-8 text-black hidden md:block" />
             <span className="text-2xl font-bold bg-black bg-clip-text text-transparent">
               Best Globalize
             </span>
@@ -58,7 +55,8 @@ export default function CountriesPage() {
             rel="noopener noreferrer"
             className="bg-linear-to-r from-blue-600 to-blue-700 text-white px-6 py-2.5 rounded-lg hover:shadow-lg transition-all duration-300 hover:scale-105"
           >
-            Bepul konsultatsiya
+            <span className="hidden sm:inline">Bepul konsultatsiya</span>
+            <span className="sm:hidden">Konsultatsiya</span>
           </a>
         </nav>
       </header>
