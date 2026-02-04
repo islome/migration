@@ -23,7 +23,7 @@ export default function Home() {
   const phoneLink = "tel:+998777670017";
   const phoneNumber = "+998 77 767 00 17";
   return (
-    <div className="min-h-screen bg-linear-to-br from-slate-50 to-blue-50">
+    <div className="min-h-screen bg-linear-to-br from-slate-50 to-blue-50 overflow-hidden">
       <Header />
 
       <section className="container mx-auto px-4 py-20 md:py-28">
@@ -194,7 +194,9 @@ export default function Home() {
               </div>
 
               <button className="w-full mt-6 bg-linear-to-r from-blue-600 to-blue-700 text-white py-3 rounded-lg hover:shadow-lg transition-all duration-300 font-semibold">
-                <Link href={`/countries/${item.country}`} >Batafsil ma'lumot</Link>
+                <Link href={`/countries/${item.country}`}>
+                  Batafsil ma'lumot
+                </Link>
               </button>
             </div>
           ))}
