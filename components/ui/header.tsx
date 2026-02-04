@@ -3,10 +3,10 @@ import Link from "next/link";
 import React from "react";
 
 export default function Header() {
-    const telegramLink = "https://t.me/BestGlobalizeNamangan";
+  const telegramLink = "https://t.me/BestGlobalizeNamangan";
   return (
     <div>
-      <header className="bg-white/80 backdrop-blur-md shadow-sm sticky top-0 z-50">
+      <header className="bg-white/80 backdrop-blur-md shadow-sm fixed left-0 w-full top-0 z-50">
         <nav className="container mx-auto px-4 py-4 flex justify-between items-center">
           <div className="flex items-center space-x-2">
             <Factory className="w-8 h-8 text-black" />
