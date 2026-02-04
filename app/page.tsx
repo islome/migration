@@ -22,7 +22,7 @@ export default function Home() {
   const phoneLink = "tel:+998777670017";
   const phoneNumber = "+998 77 767 00 17";
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
+    <div className="min-h-screen bg-linear-to-br from-slate-50 to-blue-50">
       <header className="bg-white/80 backdrop-blur-md shadow-sm sticky top-0 z-50">
         <nav className="container mx-auto px-4 py-4 flex justify-between items-center">
           <div className="flex items-center space-x-2">
@@ -63,7 +63,7 @@ export default function Home() {
             href={telegramLink}
             target="_blank"
             rel="noopener noreferrer"
-            className="bg-gradient-to-r from-blue-600 to-blue-700 text-white px-6 py-2.5 rounded-lg hover:shadow-lg transition-all duration-300 hover:scale-105"
+            className="bg-linear-to-r from-blue-600 to-blue-700 text-white px-6 py-2.5 rounded-lg hover:shadow-lg transition-all duration-300 hover:scale-105"
           >
             Bepul konsultatsiya
           </a>
@@ -74,7 +74,7 @@ export default function Home() {
         <div className="max-w-4xl mx-auto text-center">
           <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
             Qonuniy yo'l bilan <br />
-            <span className="bg-gradient-to-r from-blue-600 via-blue-700 to-purple-600 bg-clip-text text-transparent">
+            <span className="bg-linear-to-r from-blue-600 via-blue-700 to-purple-600 bg-clip-text text-transparent">
               Chet elga ishga
             </span>
           </h1>
@@ -88,7 +88,7 @@ export default function Home() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <a
               href="/countries"
-              className="bg-gradient-to-r from-blue-600 to-blue-700 text-white px-8 py-4 rounded-xl hover:shadow-xl transition-all duration-300 hover:scale-105 flex items-center gap-2 text-lg font-semibold"
+              className="bg-linear-to-r from-blue-600 to-blue-700 text-white px-8 py-4 rounded-xl hover:shadow-xl transition-all duration-300 hover:scale-105 flex items-center gap-2 text-lg font-semibold"
             >
               Davlatlarni ko'rish
               <ArrowRight className="w-5 h-5" />
@@ -213,7 +213,7 @@ export default function Home() {
 
               <div className="space-y-3">
                 <div className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" />
+                  <CheckCircle className="w-5 h-5 text-green-500 mt-0.5 shrink-0" />
                   <div>
                     <p className="text-sm text-gray-500">Oylik maosh</p>
                     <p className="font-semibold text-gray-900">{item.salary}</p>
@@ -221,7 +221,7 @@ export default function Home() {
                 </div>
 
                 <div className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" />
+                  <CheckCircle className="w-5 h-5 text-green-500 mt-0.5 shrink-0" />
                   <div>
                     <p className="text-sm text-gray-500">Mashhur sohalar</p>
                     <p className="font-semibold text-gray-900">{item.jobs}</p>
@@ -229,7 +229,7 @@ export default function Home() {
                 </div>
 
                 <div className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" />
+                  <CheckCircle className="w-5 h-5 text-green-500 mt-0.5 shrink-0" />
                   <div>
                     <p className="text-sm text-gray-500">Viza muddati</p>
                     <p className="font-semibold text-gray-900">{item.visa}</p>
@@ -237,7 +237,7 @@ export default function Home() {
                 </div>
               </div>
 
-              <button className="w-full mt-6 bg-gradient-to-r from-blue-600 to-blue-700 text-white py-3 rounded-lg hover:shadow-lg transition-all duration-300 font-semibold">
+              <button className="w-full mt-6 bg-linear-to-r from-blue-600 to-blue-700 text-white py-3 rounded-lg hover:shadow-lg transition-all duration-300 font-semibold">
                 Batafsil ma'lumot
               </button>
             </div>
@@ -245,7 +245,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="bg-gradient-to-br from-[#89aac3] to-[#6f93b0] text-white py-20">
+      <section className="bg-linear-to-br from-[#89aac3] to-[#6f93b0] text-white py-20">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold mb-4">
@@ -327,9 +327,7 @@ export default function Home() {
                 step: "4",
                 title: "Jo'nash",
                 desc: "Yo'lga tayyorlik va qo'llab-quvvatlash",
-                icon: (
-                  <PlaneTakeoff className="w-8 h-8 mx-auto mb-2" />
-                ),
+                icon: <PlaneTakeoff className="w-8 h-8 mx-auto mb-2" />,
               },
             ].map((item, index) => (
               <div key={index} className="text-center relative z-10">
@@ -396,17 +394,13 @@ export default function Home() {
               color: "orange",
             },
             {
-              icon: (
-                <UserCheck className="w-8 h-8"/>
-              ),
+              icon: <UserCheck className="w-8 h-8" />,
               title: "Ish beruvchilar bilan aloqa",
               desc: "Xorijdagi ishonchli kompaniyalar bilan bog'lanish",
               color: "gray",
             },
             {
-              icon: (
-                <MonitorCheck className="w-8 h-8"/>
-              ),
+              icon: <MonitorCheck className="w-8 h-8" />,
               title: "To'liq monitoring",
               desc: "Ishga joylashganingizdan keyin doimiy qo'llab-quvvatlash",
               color: "yellow",
@@ -454,7 +448,7 @@ export default function Home() {
 
               <div className="space-y-4">
                 <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center shrink-0">
                     <Phone className="w-6 h-6 text-blue-600" />
                   </div>
                   <div>
@@ -466,7 +460,7 @@ export default function Home() {
                 </div>
 
                 <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center shrink-0">
                     <Mail className="w-6 h-6 text-green-600" />
                   </div>
                   <div>
@@ -478,7 +472,7 @@ export default function Home() {
                 </div>
 
                 <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center shrink-0">
                     <MapPin className="w-6 h-6 text-purple-600" />
                   </div>
                   <div>
@@ -493,7 +487,7 @@ export default function Home() {
                 </div>
 
                 <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <div className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center shrink-0">
                     <MessageCircle className="w-6 h-6 text-orange-600" />
                   </div>
                   <div>
@@ -534,7 +528,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="bg-white rounded-2xl overflow-hidden shadow-lg h-full min-h-[500px]">
+          <div className="bg-white rounded-2xl overflow-hidden shadow-lg h-full min-h-125">
             <iframe
               src="https://www.google.com/maps?q=41.004075,71.510085&z=17&output=embed"
               width="100%"

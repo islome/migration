@@ -19,7 +19,7 @@ export default function CountriesPage() {
   const phoneLink = "tel:+998777670017";
   const phoneNumber = "+998 77 767 00 17";
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
+    <div className="min-h-screen bg-linear-to-br from-slate-50 to-blue-50">
       {/* Header */}
       <header className="bg-white/80 backdrop-blur-md shadow-sm sticky top-0 z-50">
         <nav className="container mx-auto px-4 py-4 flex justify-between items-center">
@@ -58,7 +58,7 @@ export default function CountriesPage() {
             href={telegramLink}
             target="_blank"
             rel="noopener noreferrer"
-            className="bg-gradient-to-r from-blue-600 to-blue-700 text-white px-6 py-2.5 rounded-lg hover:shadow-lg transition-all duration-300 hover:scale-105"
+            className="bg-linear-to-r from-blue-600 to-blue-700 text-white px-6 py-2.5 rounded-lg hover:shadow-lg transition-all duration-300 hover:scale-105"
           >
             Bepul konsultatsiya
           </a>
@@ -66,7 +66,7 @@ export default function CountriesPage() {
       </header>
 
 
-      <section className="bg-gradient-to-br from-[#89aac3] to-[#6f93b0] text-white py-20">
+      <section className="bg-linear-to-br from-[#89aac3] to-[#6f93b0] text-white py-20">
         <div className="container mx-auto px-4 text-center">
           <h1 className="text-5xl font-bold mb-6">
             Ish Topish Uchun Eng Yaxshi Davlatlar
@@ -103,7 +103,7 @@ export default function CountriesPage() {
               className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border border-gray-100 group"
             >
               {/* Country Header */}
-              <div className="bg-gradient-to-r from-[#14202e] to-[#2d4356] p-6">
+              <div className="bg-linear-to-r from-[#14202e] to-[#2d4356] p-6">
                 <div className="flex items-center justify-between mb-4">
                   <div className="flex items-center gap-3">
                     <span className="text-6xl">{country.flag}</span>
@@ -126,7 +126,7 @@ export default function CountriesPage() {
                 {/* Quick Stats */}
                 <div className="space-y-3 mb-6">
                   <div className="flex items-start gap-3">
-                    <DollarSign className="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" />
+                    <DollarSign className="w-5 h-5 text-green-500 mt-0.5 shrink-0" />
                     <div>
                       <p className="text-sm text-gray-500">Oylik maosh</p>
                       <p className="font-semibold text-gray-900">
@@ -136,7 +136,7 @@ export default function CountriesPage() {
                   </div>
 
                   <div className="flex items-start gap-3">
-                    <MapPin className="w-5 h-5 text-blue-500 mt-0.5 flex-shrink-0" />
+                    <MapPin className="w-5 h-5 text-blue-500 mt-0.5 shrink-0" />
                     <div>
                       <p className="text-sm text-gray-500">Mashhur kasblar</p>
                       <p className="font-semibold text-gray-900 text-sm">
@@ -146,7 +146,7 @@ export default function CountriesPage() {
                   </div>
 
                   <div className="flex items-start gap-3">
-                    <Clock className="w-5 h-5 text-orange-500 mt-0.5 flex-shrink-0" />
+                    <Clock className="w-5 h-5 text-orange-500 mt-0.5 shrink-0" />
                     <div>
                       <p className="text-sm text-gray-500">Viza muddati</p>
                       <p className="font-semibold text-gray-900">
@@ -156,7 +156,7 @@ export default function CountriesPage() {
                   </div>
 
                   <div className="flex items-start gap-3">
-                    <Award className="w-5 h-5 text-purple-500 mt-0.5 flex-shrink-0" />
+                    <Award className="w-5 h-5 text-purple-500 mt-0.5 shrink-0" />
                     <div>
                       <p className="text-sm text-gray-500">
                         Viza olish ehtimoli
@@ -168,7 +168,6 @@ export default function CountriesPage() {
                   </div>
                 </div>
 
-                {/* CTA Button */}
                 <Link
                   href={`/countries/${country.id}`}
                   className="w-full bg-[#2d4356] text-white py-3 rounded-lg hover:shadow-lg transition-all duration-300 font-semibold flex items-center justify-center gap-2 group-hover:gap-3"
@@ -182,8 +181,7 @@ export default function CountriesPage() {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="bg-gradient-to-br from-[#89aac3] to-[#6f93b0] py-16">
+      <section className="bg-linear-to-br from-[#89aac3] to-[#6f93b0] py-16">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-4xl font-bold text-white mb-6">
             Qaysi davlat sizga mos kelishini bilmayapsizmi?
