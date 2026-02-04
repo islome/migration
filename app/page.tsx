@@ -10,6 +10,10 @@ import {
   Mail,
   MapPin,
   Factory,
+  Languages,
+  MonitorCheck,
+  UserCheck,
+  PlaneTakeoff,
 } from "lucide-react";
 import Link from "next/link";
 
@@ -324,39 +328,7 @@ export default function Home() {
                 title: "Jo'nash",
                 desc: "Yo'lga tayyorlik va qo'llab-quvvatlash",
                 icon: (
-                  <svg
-                    className="w-8 h-8 mx-auto mb-2"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M5 13l4 4L19 7"
-                    />
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M12 19l-7-7 1.41-1.41L12 16.17l9.59-9.58L23 8l-11 11z"
-                    />
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M3.515 11.515l4.242 4.242M16.243 4.757l4.242 4.243"
-                      transform="rotate(-45 12 12)"
-                    />
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M8.485 4.243L12.728 8.485M15.515 11.515l4.242 4.242"
-                      transform="rotate(45 12 12)"
-                    />
-                  </svg>
+                  <PlaneTakeoff className="w-8 h-8 mx-auto mb-2" />
                 ),
               },
             ].map((item, index) => (
@@ -398,7 +370,7 @@ export default function Home() {
               color: "green",
             },
             {
-              icon: <Globe className="w-8 h-8" />,
+              icon: <Languages className="w-8 h-8" />,
               title: "Tarjima xizmati",
               desc: "Notar tasdiqli professional tarjimalar",
               color: "purple",
@@ -425,49 +397,19 @@ export default function Home() {
             },
             {
               icon: (
-                <svg
-                  className="w-8 h-8"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                  />
-                </svg>
+                <UserCheck className="w-8 h-8"/>
               ),
               title: "Ish beruvchilar bilan aloqa",
               desc: "Xorijdagi ishonchli kompaniyalar bilan bog'lanish",
-              color: "indigo",
+              color: "gray",
             },
             {
               icon: (
-                <svg
-                  className="w-8 h-8"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-                  />
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
-                  />
-                </svg>
+                <MonitorCheck className="w-8 h-8"/>
               ),
               title: "To'liq monitoring",
               desc: "Ishga joylashganingizdan keyin doimiy qo'llab-quvvatlash",
-              color: "teal",
+              color: "yellow",
             },
           ].map((item, index) => (
             <div
