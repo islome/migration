@@ -21,51 +21,36 @@ import {
   GraduationCap,
   Languages,
 } from "lucide-react";
+import Header from "@/components/ui/header";
 
-// Generate static params for all countries
 export async function generateStaticParams() {
   return countries.map((country) => ({
     id: country.id,
   }));
 }
 
-export default function CountryDetailPage({
+export default async function CountryDetailPage({
   params,
 }: {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }) {
-  const country = getCountryById(params.id);
+  const { id } = await params;
+  const country = getCountryById(id);
 
   if (!country) {
     notFound();
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
-      <header className="bg-white/80 backdrop-blur-md shadow-sm sticky top-0 z-50">
-        <nav className="container mx-auto px-4 py-4 flex justify-between items-center">
-          <Link href="/" className="flex items-center space-x-2">
-            <Globe className="w-8 h-8 text-blue-600" />
-            <span className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent">
-              ChetElIsh
-            </span>
-          </Link>
+    <div className="min-h-screen bg-linear-to-br from-slate-50 to-blue-50">
+      
 
-          <Link
-            href="/countries"
-            className="flex items-center gap-2 text-gray-700 hover:text-blue-600 transition"
-          >
-            <ArrowLeft className="w-5 h-5" />
-            <span>Barcha davlatlar</span>
-          </Link>
-        </nav>
-      </header>
-
+      <Header />
       <section
         className="relative h-96 bg-cover bg-center"
         style={{ backgroundImage: `url(${country.backgroundImage})` }}
       >
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-900/90 to-purple-900/90"></div>
+        <div className="absolute inset-0 bg-linear-to-r from-blue-900/90 to-purple-900/90"></div>
         <div className="relative container mx-auto px-4 h-full flex items-center">
           <div className="text-white max-w-3xl">
             <div className="flex items-center gap-4 mb-4">
@@ -82,6 +67,7 @@ export default function CountryDetailPage({
         </div>
       </section>
 
+      {/* Stats Cards */}
       <section className="bg-white shadow-lg -mt-16 relative z-10">
         <div className="container mx-auto px-4 py-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
@@ -128,9 +114,12 @@ export default function CountryDetailPage({
         </div>
       </section>
 
+      {/* Main Content */}
       <div className="container mx-auto px-4 py-16">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          {/* Left Column - Main Info */}
           <div className="lg:col-span-2 space-y-8">
+            {/* Salary Details */}
             <div className="bg-white rounded-2xl p-8 shadow-lg">
               <h2 className="text-3xl font-bold text-gray-900 mb-6 flex items-center gap-3">
                 <TrendingUp className="w-8 h-8 text-green-600" />
@@ -169,6 +158,7 @@ export default function CountryDetailPage({
               </div>
             </div>
 
+            {/* Popular Jobs */}
             <div className="bg-white rounded-2xl p-8 shadow-lg">
               <h2 className="text-3xl font-bold text-gray-900 mb-6 flex items-center gap-3">
                 <Briefcase className="w-8 h-8 text-blue-600" />
@@ -186,6 +176,7 @@ export default function CountryDetailPage({
               </div>
             </div>
 
+            {/* Requirements */}
             <div className="bg-white rounded-2xl p-8 shadow-lg">
               <h2 className="text-3xl font-bold text-gray-900 mb-6 flex items-center gap-3">
                 <Users className="w-8 h-8 text-purple-600" />
@@ -193,7 +184,7 @@ export default function CountryDetailPage({
               </h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="flex items-start gap-3">
-                  <CheckCircle className="w-6 h-6 text-green-500 mt-1 flex-shrink-0" />
+                  <CheckCircle className="w-6 h-6 text-green-500 mt-1 shrink-0" />
                   <div>
                     <p className="font-semibold text-gray-900 mb-1">Yosh</p>
                     <p className="text-gray-600">{country.requirements.age}</p>
@@ -201,7 +192,7 @@ export default function CountryDetailPage({
                 </div>
 
                 <div className="flex items-start gap-3">
-                  <CheckCircle className="w-6 h-6 text-green-500 mt-1 flex-shrink-0" />
+                  <CheckCircle className="w-6 h-6 text-green-500 mt-1 shrink-0" />
                   <div>
                     <p className="font-semibold text-gray-900 mb-1">Ma'lumot</p>
                     <p className="text-gray-600">
@@ -211,7 +202,7 @@ export default function CountryDetailPage({
                 </div>
 
                 <div className="flex items-start gap-3">
-                  <CheckCircle className="w-6 h-6 text-green-500 mt-1 flex-shrink-0" />
+                  <CheckCircle className="w-6 h-6 text-green-500 mt-1 shrink-0" />
                   <div>
                     <p className="font-semibold text-gray-900 mb-1">Til</p>
                     <p className="text-gray-600">
@@ -221,7 +212,7 @@ export default function CountryDetailPage({
                 </div>
 
                 <div className="flex items-start gap-3">
-                  <CheckCircle className="w-6 h-6 text-green-500 mt-1 flex-shrink-0" />
+                  <CheckCircle className="w-6 h-6 text-green-500 mt-1 shrink-0" />
                   <div>
                     <p className="font-semibold text-gray-900 mb-1">Tajriba</p>
                     <p className="text-gray-600">
@@ -232,6 +223,7 @@ export default function CountryDetailPage({
               </div>
             </div>
 
+            {/* Benefits */}
             <div className="bg-white rounded-2xl p-8 shadow-lg">
               <h2 className="text-3xl font-bold text-gray-900 mb-6 flex items-center gap-3">
                 <Award className="w-8 h-8 text-yellow-600" />
@@ -240,13 +232,14 @@ export default function CountryDetailPage({
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {country.benefits.map((benefit, index) => (
                   <div key={index} className="flex items-start gap-3">
-                    <CheckCircle className="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" />
+                    <CheckCircle className="w-5 h-5 text-green-500 mt-0.5 shrink-0" />
                     <p className="text-gray-700">{benefit}</p>
                   </div>
                 ))}
               </div>
             </div>
 
+            {/* Process Steps */}
             <div className="bg-white rounded-2xl p-8 shadow-lg">
               <h2 className="text-3xl font-bold text-gray-900 mb-6">
                 Jarayon bosqichlari
@@ -254,12 +247,12 @@ export default function CountryDetailPage({
               <div className="space-y-6">
                 {country.process.map((step, index) => (
                   <div key={index} className="flex gap-4">
-                    <div className="flex-shrink-0">
+                    <div className="shrink-0">
                       <div className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold text-lg">
                         {step.step}
                       </div>
                     </div>
-                    <div className="flex-grow">
+                    <div className="grow">
                       <div className="flex items-center justify-between mb-2">
                         <h3 className="text-xl font-bold text-gray-900">
                           {step.title}
@@ -275,6 +268,7 @@ export default function CountryDetailPage({
               </div>
             </div>
 
+            {/* Life Info */}
             <div className="bg-white rounded-2xl p-8 shadow-lg">
               <h2 className="text-3xl font-bold text-gray-900 mb-6">
                 Hayot haqida ma'lumot
@@ -324,7 +318,10 @@ export default function CountryDetailPage({
               </div>
             </div>
           </div>
+
+          {/* Right Column - Sidebar */}
           <div className="space-y-8">
+            {/* Documents */}
             <div className="bg-white rounded-2xl p-6 shadow-lg sticky top-24">
               <h3 className="text-2xl font-bold text-gray-900 mb-4 flex items-center gap-2">
                 <FileText className="w-6 h-6 text-blue-600" />
@@ -333,28 +330,34 @@ export default function CountryDetailPage({
               <ul className="space-y-3">
                 {country.documents.map((doc, index) => (
                   <li key={index} className="flex items-start gap-2">
-                    <CheckCircle className="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" />
+                    <CheckCircle className="w-5 h-5 text-green-500 mt-0.5 shrink-0" />
                     <span className="text-gray-700 text-sm">{doc}</span>
                   </li>
                 ))}
               </ul>
             </div>
-            <div className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl p-8 text-white">
+
+            <div className="bg-linear-to-r from-blue-600 to-purple-600 rounded-2xl p-8 text-white">
               <h3 className="text-2xl font-bold mb-4">Yordam kerakmi?</h3>
               <p className="text-blue-100 mb-6">
                 Mutaxassislarimiz bilan bog'laning va bepul konsultatsiya oling!
               </p>
-              <button className="w-full bg-white text-blue-600 py-3 rounded-lg hover:shadow-xl transition-all duration-300 font-semibold flex items-center justify-center gap-2">
+              <Link
+                href="/contact"
+                className="w-full bg-white text-blue-600 py-3 rounded-lg hover:shadow-xl transition-all duration-300 font-semibold flex items-center justify-center gap-2"
+              >
                 Konsultatsiya olish
                 <ChevronRight className="w-5 h-5" />
-              </button>
+              </Link>
             </div>
           </div>
         </div>
       </div>
+
+      {/* Footer */}
       <footer className="bg-gray-900 text-gray-300 py-12">
         <div className="container mx-auto px-4 text-center">
-          <p>&copy; 2024 ChetElIsh. Barcha huquqlar himoyalangan.</p>
+          <p>&copy; 2024 Best Globalize. Barcha huquqlar himoyalangan.</p>
         </div>
       </footer>
     </div>
