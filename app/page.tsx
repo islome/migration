@@ -252,33 +252,119 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 relative">
+            <div
+              className="hidden md:block absolute top-10 left-0 right-0 h-0.5 bg-white/30"
+              style={{ width: "calc(100% - 10rem)", left: "5rem" }}
+            />
+
             {[
               {
                 step: "1",
                 title: "Konsultatsiya",
                 desc: "Bepul maslahat va to'liq ma'lumot olish",
+                icon: (
+                  <svg
+                    className="w-8 h-8 mx-auto mb-2"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z"
+                    />
+                  </svg>
+                ),
               },
               {
                 step: "2",
                 title: "Hujjatlar",
                 desc: "Barcha kerakli hujjatlarni tayyorlash",
+                icon: (
+                  <svg
+                    className="w-8 h-8 mx-auto mb-2"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                    />
+                  </svg>
+                ),
               },
               {
                 step: "3",
                 title: "Viza jarayoni",
                 desc: "Viza uchun ariza topshirish va kuzatish",
+                icon: (
+                  <svg
+                    className="w-8 h-8 mx-auto mb-2"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"
+                    />
+                  </svg>
+                ),
               },
               {
                 step: "4",
                 title: "Jo'nash",
                 desc: "Yo'lga tayyorlik va qo'llab-quvvatlash",
+                icon: (
+                  <svg
+                    className="w-8 h-8 mx-auto mb-2"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M5 13l4 4L19 7"
+                    />
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M12 19l-7-7 1.41-1.41L12 16.17l9.59-9.58L23 8l-11 11z"
+                    />
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M3.515 11.515l4.242 4.242M16.243 4.757l4.242 4.243"
+                      transform="rotate(-45 12 12)"
+                    />
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M8.485 4.243L12.728 8.485M15.515 11.515l4.242 4.242"
+                      transform="rotate(45 12 12)"
+                    />
+                  </svg>
+                ),
               },
             ].map((item, index) => (
-              <div key={index} className="text-center">
-                <div className="inline-flex items-center justify-center w-20 h-20 bg-white/20 backdrop-blur-sm rounded-full mb-6 text-3xl font-bold">
+              <div key={index} className="text-center relative z-10">
+                <div className="inline-flex items-center justify-center w-20 h-20 bg-white/20 backdrop-blur-sm rounded-full mb-6 text-3xl font-bold border-4 border-white/40">
                   {item.step}
                 </div>
+                {item.icon}
                 <h3 className="text-2xl font-bold mb-3">{item.title}</h3>
                 <p className="text-blue-100">{item.desc}</p>
               </div>
@@ -317,10 +403,76 @@ export default function Home() {
               desc: "Notar tasdiqli professional tarjimalar",
               color: "purple",
             },
+            {
+              icon: (
+                <svg
+                  className="w-8 h-8"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
+                  />
+                </svg>
+              ),
+              title: "Til kurslari",
+              desc: "Chet el tillarini o'rganish uchun professional kurslar",
+              color: "orange",
+            },
+            {
+              icon: (
+                <svg
+                  className="w-8 h-8"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                  />
+                </svg>
+              ),
+              title: "Ish beruvchilar bilan aloqa",
+              desc: "Xorijdagi ishonchli kompaniyalar bilan bog'lanish",
+              color: "indigo",
+            },
+            {
+              icon: (
+                <svg
+                  className="w-8 h-8"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                  />
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+                  />
+                </svg>
+              ),
+              title: "To'liq monitoring",
+              desc: "Ishga joylashganingizdan keyin doimiy qo'llab-quvvatlash",
+              color: "teal",
+            },
           ].map((item, index) => (
             <div
               key={index}
-              className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100"
+              className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 hover:scale-105"
             >
               <div
                 className={`inline-flex items-center justify-center w-16 h-16 bg-${item.color}-100 rounded-full mb-6 text-${item.color}-600`}
@@ -460,7 +612,9 @@ export default function Home() {
             <div>
               <div className="flex items-center space-x-2 mb-4">
                 <Globe className="w-6 h-6 text-blue-400" />
-                <span className="text-xl font-bold text-white">Best Globalize</span>
+                <span className="text-xl font-bold text-white">
+                  Best Globalize
+                </span>
               </div>
               <p className="text-gray-400">
                 Xalqaro mehnat bozorida ishonchli hamkoringiz
