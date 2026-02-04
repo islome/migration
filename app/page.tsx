@@ -26,7 +26,7 @@ export default function Home() {
     <div className="min-h-screen bg-linear-to-br from-slate-50 to-blue-50 overflow-hidden">
       <Header />
 
-      <section className="container mx-auto px-4 py-20 md:py-28">
+      <section className="container mx-auto px-6 py-20 md:py-28">
         <div className="max-w-4xl mx-auto text-center">
           <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
             Qonuniy yo'l bilan <br />
