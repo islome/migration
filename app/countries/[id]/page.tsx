@@ -21,7 +21,6 @@ import {
   GraduationCap,
   Languages,
 } from "lucide-react";
-import Header from "@/components/ui/header";
 
 export async function generateStaticParams() {
   return countries.map((country) => ({
@@ -43,9 +42,27 @@ export default async function CountryDetailPage({
 
   return (
     <div className="min-h-screen bg-linear-to-br from-slate-50 to-blue-50">
-      
+      {/* Header */}
+      <header className="bg-white/80 backdrop-blur-md shadow-sm sticky top-0 z-50">
+        <nav className="container mx-auto px-4 py-4 flex justify-between items-center">
+          <Link href="/" className="flex items-center space-x-2">
+            <Globe className="w-8 h-8 text-blue-600" />
+            <span className="text-2xl font-bold bg-linear-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent">
+              Best Globalize
+            </span>
+          </Link>
 
-      <Header />
+          <Link
+            href="/countries"
+            className="flex items-center gap-2 text-gray-700 hover:text-blue-600 transition"
+          >
+            <ArrowLeft className="w-5 h-5" />
+            <span>Barcha davlatlar</span>
+          </Link>
+        </nav>
+      </header>
+
+      {/* Hero Section */}
       <section
         className="relative h-96 bg-cover bg-center"
         style={{ backgroundImage: `url(${country.backgroundImage})` }}
