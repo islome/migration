@@ -132,7 +132,108 @@ export const countries: Country[] = [
       taxRate: '14-45% (daromadga qarab)'
     }
   },
+  {
+  id: "slovakia",
+  name: "Slovakiya",
+  nameEn: "Slovakia",
+  flag: "🇸🇰",
+  shortDescription: "Yevropaning markazida joylashgan rivojlangan sanoat mamlakati",
+  salary: "€1,200-2,000",
+  popularJobs: [
+    "Duradgor",
+    "Qolib ishlab chiqarish",
+    "Armatura bog'lash",
+    "Beton quyish",
+    "Blok yotqizish",
+    "Santexnika",
+    "Deraza o'rnatish",
+    "Fasad ishlari"
+  ],
+  visaDuration: "2-3 oy",
+  visaSuccess: "85%",
+  language: "Slovak/Rus",
+  currency: "Euro (€)",
   
+  // Detail page
+  backgroundImage: "https://images.unsplash.com/photo-1555881400-74d7acaacd8b?w=1200&h=600&fit=crop",
+  fullDescription: "Slovakiya - Yevropaning markazida joylashgan, qurilish va ishlab chiqarish sohasida yuqori talabga ega bo'lgan mamlakat. Bratislava va boshqa yirik shaharlarda ko'plab qurilish loyihalari amalga oshirilmoqda.",
+  
+  requirements: {
+    age: "18-45 yosh",
+    education: "O'rta maxsus ma'lumot",
+    language: "Rus tili (B1 daraja)",
+    experience: "Kamida 2 yil tajriba"
+  },
+  
+  benefits: [
+    "Tekin yotoqxona ta'minlanadi",
+    "Rasmiy ro'yhatdan o'tkazish",
+    "Tibbiy sug'urta",
+    "Oylik maosh o'z vaqtida to'lanadi",
+    "Shrek imkoniyati",
+    "Yevropada sayohat qilish imkoniyati",
+    "Oilaviy a'zolarni chaqirish mumkin",
+    "Professional o'sish imkoniyatlari"
+  ],
+  
+  documents: [
+    "Xalqaro pasport (6 oy muddatli)",
+    "Diplom nusxasi (notarial tasdiqlangan)",
+    "Tibbiy ma'lumotnoma",
+    "Jinoyat yo'qligi haqida ma'lumotnoma",
+    "3x4 rangli fotosurat (6 dona)",
+    "Ish tajribasi to'g'risida guvohnoma",
+    "Viza anketasi",
+    "Mehmonxona bron qilish tasdiqnomasi"
+  ],
+  
+  process: [
+    {
+      step: 1,
+      title: "Dastlabki konsultatsiya",
+      description: "Mutaxassislarimiz bilan uchrashib, barcha sharoitlar va talablar bilan tanishish. Shaxsiy malakangizni baholash va mos ish topish.",
+      duration: "1-2 kun"
+    },
+    {
+      step: 2,
+      title: "Hujjatlarni tayyorlash",
+      description: "Barcha kerakli hujjatlarni to'plash, tarjima qilish va notarial tasdiqdan o'tkazish. Ish beruvchi bilan shartnoma tuzish.",
+      duration: "1-2 hafta"
+    },
+    {
+      step: 3,
+      title: "Viza uchun ariza topshirish",
+      description: "Slovakiya elchixonasiga viza uchun barcha hujjatlarni topshirish va intervyudan o'tish. Biometrik ma'lumotlarni topshirish.",
+      duration: "3-4 hafta"
+    },
+    {
+      step: 4,
+      title: "Viza olish va jo'nab ketish",
+      description: "Viza tayyor bo'lgach, chiptalrni bron qilish va Slovakiyaga jo'nab ketish. Aeroportda kutib olish va yotoqxonaga joylashtirish.",
+      duration: "3-5 kun"
+    },
+    {
+      step: 5,
+      title: "Ishga kirish va ro'yxatdan o'tish",
+      description: "Ish joyida ro'yxatdan o'tish, mahalliy ID olish va ishni boshlash. Dastlabki adaptatsiya davri.",
+      duration: "1 hafta"
+    }
+  ],
+  
+  lifeInfo: {
+    housing: "Yotoqxona tekin ta'minlanadi. Odatda 2-4 kishilik xonalar. Barcha kommunal xizmatlar to'langan. Wi-Fi, oshxona va yuvish mashinasi mavjud.",
+    transport: "Jamoat transporti yaxshi rivojlangan. Oylik abonement €30-40. Ko'pchilik ish joylari yotoqxonaga yaqin joylashgan yoki kompaniya transporti mavjud.",
+    food: "Ovqatlanish xarajatlari oyiga €200-300. Supermarketlar arzon. Kompaniya oshxonasida tushlik olish imkoniyati mavjud.",
+    healthcare: "Majburiy tibbiy sug'urta kompaniya tomonidan to'lanadi. Davlat klinikalari va xususiy shifokorlar mavjud. Tez tibbiy yordam tekin."
+  },
+  
+  salaryDetails: {
+    min: 1200,
+    max: 2000,
+    average: 1600,
+    taxRate: "19-25%"
+  }
+},
   {
     id: 'poland',
     name: 'Polsha',
@@ -220,183 +321,117 @@ export const countries: Country[] = [
       taxRate: '12-32% (daromadga qarab)'
     }
   },
-  
   {
-    id: 'canada',
-    name: 'Kanada',
-    nameEn: 'Canada',
-    flag: '🇨🇦',
-    shortDescription: 'Immigratsiya uchun eng qulay davlatlardan biri. Yuqori hayot sifati, kuchli iqtisodiyot va ko\'p millatli jamiyat.',
-    salary: '$4,000 - $7,500',
-    popularJobs: ['IT mutaxassislari', 'Muhandislar', 'Moliya', 'Sog\'liqni saqlash', 'Qurilish'],
-    visaDuration: '6-12 oy',
-    visaSuccess: '92%',
-    language: 'Ingliz/Fransuz tili',
-    currency: 'Kanada dollari (CAD)',
-    backgroundImage: 'https://images.unsplash.com/photo-1517935706615-2717063c2225?w=1920',
-    fullDescription: 'Kanada - dunyodagi eng yashash qulay davlatlardan biri. Kuchli iqtisodiyot, yuqori darajadagi ta\'lim va sog\'liqni saqlash tizimi. Doimiy yashash va fuqarolik olish uchun eng yaxshi imkoniyatlarni taqdim etadi.',
-    
-    requirements: {
-      age: '18-45 yosh (qanchalik yosh bo\'lsa, ball ko\'proq)',
-      education: 'Oliy ma\'lumot (magistr/doktor darajasi qo\'shimcha ball)',
-      language: 'IELTS 6.5+ yoki TEF (fransuz tili)',
-      experience: 'Mutaxassislik bo\'yicha kamida 3 yil tajriba'
-    },
-    
-    benefits: [
-      'Yuqori maosh (oyiga CAD 5,000-9,000)',
-      'Bepul tibbiy xizmat',
-      'Bolalar uchun nafaqa (oyiga CAD 400-600)',
-      'Bepul davlat maktablari',
-      'Kuchli pensiya tizimi',
-      '3 yildan keyin doimiy yashash (PR)',
-      '5 yildan keyin fuqarolik',
-      'Barcha oila a\'zolari uchun imkoniyat'
-    ],
-    
-    documents: [
-      'Pasport',
-      'IELTS/TEF sertifikati',
-      'ECA (ta\'lim baholash)',
-      'Ish tajribasi tasdiqnomalari',
-      'Police clearance certificate',
-      'Tibbiy ko\'rik',
-      'Proof of funds (CAD 13,000+ bitta kishi uchun)',
-      'CV va qoplovchi xat',
-      'Diplom va transkriptlar',
-      'Reference letters'
-    ],
-    
-    process: [
-      {
-        step: 1,
-        title: 'Baholash',
-        description: 'Express Entry tizimida ball to\'plash (CRS score)',
-        duration: '2-3 oy'
-      },
-      {
-        step: 2,
-        title: 'ITA olish',
-        description: 'Invitation to Apply (ITA) kutish va olish',
-        duration: '3-6 oy'
-      },
-      {
-        step: 3,
-        title: 'Ariza',
-        description: 'To\'liq arizani tayyorlash va yuborish',
-        duration: '2-3 oy'
-      },
-      {
-        step: 4,
-        title: 'PR olish',
-        description: 'Permanent Residence vizasini olish',
-        duration: '6-8 oy'
-      }
-    ],
-    
-    lifeInfo: {
-      housing: 'Uy-joy: Oyiga CAD 1,200-2,500. Shahar markazlarida qimmatroq.',
-      transport: 'Transport: Oylik CAD 100-150. Mashinaga ega bo\'lish yaxshiroq.',
-      food: 'Ovqatlanish: Oyiga CAD 400-700. Supermarketlar sifatli.',
-      healthcare: 'Sog\'liqni saqlash: Bepul davlat tizimi (Provincial Health Insurance).'
-    },
-    
-    salaryDetails: {
-      min: 4000,
-      max: 7500,
-      average: 5500,
-      taxRate: '15-33% (federal + provincial)'
-    }
+  id: "israel",
+  name: "Isroil",
+  nameEn: "Israel",
+  flag: "🇮🇱",
+  shortDescription: "Yuqori maosh va professional rivojlanish imkoniyatlari bilan Yaqin Sharq mamlakati",
+  salary: "$2,200+",
+  popularJobs: [
+    "Apalovkachi",
+    "Beton quyish",
+    "Armatura bog'lash",
+    "Bruschatka ustasi",
+    "Fasad tosh ustasi",
+    "Qurilish ishchisi",
+    "Plitka ustasi",
+    "Sement ishchisi"
+  ],
+  visaDuration: "3-4 oy",
+  visaSuccess: "75%",
+  language: "Ingliz/Ivrit",
+  currency: "AQSh dollari ($)",
+  
+  // Detail page
+  backgroundImage: "https://images.unsplash.com/photo-1544966278-27c94aceaf8c?w=1200&h=600&fit=crop",
+  fullDescription: "Isroil - zamonaviy qurilish loyihalari va yuqori sifatli ish sharoitlari bilan mashhur. Tel-Aviv, Iyerusalim va boshqa shaharlarda doimiy qurilish ishlari olib boriladi. Mutaxassislar uchun katta imkoniyatlar.",
+  
+  requirements: {
+    age: "20-40 yosh",
+    education: "Davlatga kirish taqiq bo'lmasligi",
+    language: "Ingliz tili (asosiy muloqot uchun)",
+    experience: "Qurilish sohasida ish tajribaga ega bo'lish talab etiladi. Sudlanmagan bo'lishi shart."
   },
   
-  {
-    id: 'uk',
-    name: 'Buyuk Britaniya',
-    nameEn: 'United Kingdom',
-    flag: '🇬🇧',
-    shortDescription: 'Dunyoning moliya va ta\'lim markazi. Yuqori maosh va karyera rivojlantirish imkoniyatlari.',
-    salary: '$3,800 - $6,500',
-    popularJobs: ['Shifokorlar', 'IT', 'Moliya', 'O\'qituvchilar', 'Muhandislar'],
-    visaDuration: '3-8 oy',
-    visaSuccess: '90%',
-    language: 'Ingliz tili',
-    currency: 'Funt sterling (GBP)',
-    backgroundImage: 'https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=1920',
-    fullDescription: 'Buyuk Britaniya - dunyoning etakchi iqtisodiyotlaridan biri. London moliya markazi, yuqori sifatli ta\'lim va boy madaniy meros. Mutaxassislar uchun ko\'plab imkoniyatlar va yuqori darajadagi hayot.',
-    
-    requirements: {
-      age: '18-50 yosh',
-      education: 'Oliy ma\'lumot (bachelor yoki yuqori)',
-      language: 'IELTS 6.0+ (har bir skill bo\'yicha)',
-      experience: 'Kasbga mos tajriba (Skilled Worker uchun)'
+  benefits: [
+    "Yuqori oylik maosh ($2,200+)",
+    "Rasmiy mehnat shartnomasi",
+    "Tibbiy sug'urta to'liq qoplanadi",
+    "Dam olish kunlari to'lanadi",
+    "Qo'shimcha soatlar uchun ustama haq",
+    "Yashash joyi ta'minlanadi",
+    "Maoshning bir qismi avansda beriladi",
+    "Professional o'sish imkoniyatlari",
+    "Xavfsizlik kafolatlari"
+  ],
+  
+  documents: [
+    "Xalqaro pasport (kamida 6 oy muddatli)",
+    "Jinoyat yo'qligi haqida ma'lumotnoma (apostil bilan)",
+    "Tibbiy ko'rik natijalari (AIDS, gepatit testlari)",
+    "Ish tajribasi to'g'risida tavsifnoma",
+    "3x4 rangli fotosurat (8 dona)",
+    "Nikoh guvohnomasi (oilali bo'lsa)",
+    "Tug'ilganlik haqida guvohnoma",
+    "Diplom yoki sertifikat (agar bo'lsa)",
+    "Ish beruvchidan taklif xati",
+    "Viza anketasi (to'ldirilgan)"
+  ],
+  
+  process: [
+    {
+      step: 1,
+      title: "Bepul konsultatsiya va baholash",
+      description: "Mutaxassislarimiz bilan uchrashuv. Sizning malakangiz va tajribangizni baholash. Isroilga kirish huquqini tekshirish va mos ish topish.",
+      duration: "1-3 kun"
     },
-    
-    benefits: [
-      'Yuqori maosh (oyiga £3,000-6,000)',
-      'NHS - bepul tibbiy xizmat',
-      'Karyera rivojlantirish imkoniyatlari',
-      'Dunyo darajasidagi ta\'lim',
-      'Yevropaga sayohat',
-      '5 yildan keyin ILR (Indefinite Leave to Remain)',
-      '6 yildan keyin fuqarolik',
-      'Oila uchun imtiyozlar'
-    ],
-    
-    documents: [
-      'Pasport (6 oy+ amal qilish muddati)',
-      'Certificate of Sponsorship (CoS)',
-      'IELTS Life Skills yoki IELTS Academic',
-      'Diplom va transkript',
-      'TB test natijasi',
-      'Criminal record certificate',
-      'Moliyaviy ko\'rsatkich (£1,270 bankda)',
-      'Ish tajribasi hujjatlari',
-      'CV',
-      'Passport fotolar'
-    ],
-    
-    process: [
-      {
-        step: 1,
-        title: 'Ish topish',
-        description: 'UK Sponsor License bo\'lgan kompaniyadan CoS olish',
-        duration: '1-3 oy'
-      },
-      {
-        step: 2,
-        title: 'Hujjatlar',
-        description: 'IELTS topshirish va barcha hujjatlarni tayyorlash',
-        duration: '1-2 oy'
-      },
-      {
-        step: 3,
-        title: 'Viza arizasi',
-        description: 'Online ariza va biometrik ma\'lumot berish',
-        duration: '3-8 hafta'
-      },
-      {
-        step: 4,
-        title: 'Safar',
-        description: 'Viza olgandan keyin UK ga jo\'nash',
-        duration: '1-2 hafta'
-      }
-    ],
-    
-    lifeInfo: {
-      housing: 'Uy-joy: Oyiga £800-2,000. London qimmatroq, boshqa shaharlar arzonroq.',
-      transport: 'Transport: Oylik £100-200. Poyezdlar va avtobuslar qulay.',
-      food: 'Ovqatlanish: Oyiga £250-500. Supermarketlar turli narx darajasida.',
-      healthcare: 'Sog\'liqni saqlash: NHS bepul, lekin Immigration Health Surcharge to\'lanadi (£624/yil).'
+    {
+      step: 2,
+      title: "Hujjatlarni tayyorlash va tekshirish",
+      description: "Barcha zarur hujjatlarni to'plash, tarjima qilish va apostil bilan tasdiqlatish. Jinoyat ma'lumotnomasi va tibbiy testlarni topshirish.",
+      duration: "2-3 hafta"
     },
-    
-    salaryDetails: {
-      min: 3800,
-      max: 6500,
-      average: 4800,
-      taxRate: '20-45% (daromadga qarab)'
+    {
+      step: 3,
+      title: "Ish beruvchi bilan shartnoma",
+      description: "Isroildagi kompaniya bilan rasmiy mehnat shartnomasi imzolash. Ish sharoitlari va maosh to'g'risida kelishuv. Taklif xati olish.",
+      duration: "1-2 hafta"
+    },
+    {
+      step: 4,
+      title: "Viza uchun ariza topshirish",
+      description: "Isroil elchixonasiga viza uchun barcha hujjatlarni topshirish. Intervyudan o'tish va biometrik ma'lumotlarni berish. Viza kutish davri.",
+      duration: "4-8 hafta"
+    },
+    {
+      step: 5,
+      title: "Viza olish va jo'nash",
+      description: "Ishchi vizasi tayyor bo'lgach, aviachiptalarni sotib olish. Isroilga uchish va aeroportda ro'yxatdan o'tish. Kompaniya vakili kutib oladi.",
+      duration: "3-5 kun"
+    },
+    {
+      step: 6,
+      title: "Yashash joyiga joylashtirish va ishga kirish",
+      description: "Yashash joyiga olib borish va barcha kerakli narsalar bilan ta'minlash. Ish joyiga olib borish va ishni boshlash. Dastlabki yo'l-yo'riq olish.",
+      duration: "3-7 kun"
     }
+  ],
+  
+  lifeInfo: {
+    housing: "Kompaniya tomonidan yashash joyi ta'minlanadi. Odatda 2-4 kishilik kvartiralar yoki konteyner turar joylar. Barcha kommunal to'lovlar kompaniya tomonidan qoplanadi. Konditsioner, muzlatgich va Wi-Fi mavjud.",
+    transport: "Qurilish maydonchasiga kompaniya transporti bilan borish. Jamoat transporti yaxshi rivojlangan - avtobus va poyezdlar. Dam olish kunlarida shaharga erkin chiqish mumkin.",
+    food: "Ovqatlanish oyiga $300-400. Supermarketlar va bozorlar yaqin atrofda. Ba'zi kompaniyalar tushlik taqdim etadi yoki ovqatlanish uchun qo'shimcha to'lov beradi. Halol go'sht va mahsulotlar oson topiladi.",
+    healthcare: "Majburiy tibbiy sug'urta kompaniya tomonidan to'liq to'lanadi. Yuqori sifatli tibbiy xizmat. Tez tibbiy yordam 24/7 ishlaydi. Kasalxonalar va klinikalar zamonaviy jihozlarga ega."
   },
   
+  salaryDetails: {
+    min: 2200,
+    max: 3500,
+    average: 2800,
+    taxRate: "10-15%"
+  }
+  },
   {
     id: 'uae',
     name: 'Dubay (BAA)',
@@ -571,10 +606,121 @@ export const countries: Country[] = [
       average: 2800,
       taxRate: '15-23% (daromadga qarab)'
     }
+  },
+  {
+  id: "serbia",
+  name: "Serbiya",
+  nameEn: "Serbia",
+  flag: "🇷🇸",
+  shortDescription: "Balkan yarimo'rolidagi qurilish va yo'l qurish loyihalariga ixtisoslashgan mamlakat",
+  salary: "€800-1,500",
+  popularJobs: [
+    "Yordamchi ishchi (10 ta o'rin)",
+    "Ekskavator operatori (2 ta o'rin)",
+    "Paver operatori (1 ta o'rin)",
+    "Asfalt frezalash mashinasi operatori (1 ta o'rin)",
+    "Yo'l qurish ishchisi",
+    "Beton quyish ustasi",
+    "Texnika mexaniki",
+    "Brigada boshlig'i"
+  ],
+  visaDuration: "2-3 oy",
+  visaSuccess: "90%",
+  language: "Rus/Serb",
+  currency: "Evro (€)",
+  
+  // Detail page
+  backgroundImage: "https://images.unsplash.com/photo-1565793298595-6a879b1d9492?w=1200&h=600&fit=crop",
+  fullDescription: "Serbiya - yo'l infratuzilmasi va qurilish loyihalari faol rivojlanayotgan mamlakat. Belgrad va boshqa shaharlarda yirik yo'l qurish ishlari olib borilmoqda. Rus tilida muloqot qilish mumkin bo'lgani uchun moslashish oson.",
+  
+  requirements: {
+    age: "30-45 yosh",
+    education: "Mas'uliyatli va tajribali nomzodlar qabul qilinadi",
+    language: "Rus tili (yaxshi bilish)",
+    experience: "Yo'l qurish yoki qurilish sohasida kamida 3-5 yil tajriba. Texnika operatorlari uchun maxsus hunar va sertifikat talab etiladi."
+  },
+  
+  benefits: [
+    "Rasmiy mehnat shartnomasi",
+    "Yashash joyi kompaniya tomonidan ta'minlanadi",
+    "Tibbiy sug'urta to'liq qoplanadi",
+    "Kunlik ovqatlanish ta'minlanadi",
+    "Maosh o'z vaqtida to'lanadi (oyiga 2 marta)",
+    "Qo'shimcha soatlar uchun ustama haq",
+    "Dam olish kunlari to'lanadi",
+    "Shartnoma uzaytirilishi mumkin",
+    "Rus tilida ishlash muhiti",
+    "Professional o'sish imkoniyatlari"
+  ],
+  
+  documents: [
+    "Xalqaro pasport (kamida 6 oy muddatli)",
+    "Jinoyat yo'qligi haqida ma'lumotnoma",
+    "Tibbiy ma'lumotnoma (umumiy ko'rik)",
+    "Diplom yoki hunar guvohnomasi",
+    "Ish tajribasi to'g'risida tavsifnoma",
+    "Texnika haydovchiligi guvohnomasi (operatorlar uchun)",
+    "Sertifikatlar (agar mavjud bo'lsa)",
+    "3x4 rangli fotosurat (6 dona)",
+    "Viza anketasi",
+    "Ish beruvchidan taklif xati"
+  ],
+  
+  process: [
+    {
+      step: 1,
+      title: "Dastlabki konsultatsiya va tanlash",
+      description: "Mutaxassislarimiz bilan uchrashib, malakangizni baholash. Tajriba va hunarlaringizni tekshirish. Tegishli lavozim uchun nomzodni tanlash.",
+      duration: "2-3 kun"
+    },
+    {
+      step: 2,
+      title: "Hujjatlarni to'plash va tayyorlash",
+      description: "Barcha zarur hujjatlarni yig'ish, tarjima qilish va notarial tasdiqdan o'tkazish. Texnika operatorlari uchun sertifikatlarni tayyorlash.",
+      duration: "1-2 hafta"
+    },
+    {
+      step: 3,
+      title: "Ish beruvchi bilan shartnoma imzolash",
+      description: "Serbiyalik kompaniya bilan rasmiy mehnat shartnomasi tuzish. Ish sharoitlari, maosh va boshqa shartlar bo'yicha kelishuv.",
+      duration: "5-7 kun"
+    },
+    {
+      step: 4,
+      title: "Viza olish jarayoni",
+      description: "Serbiya elchixonasiga viza uchun ariza topshirish. Intervyu va biometrik ma'lumotlarni berish. Ishchi vizasi kutish davri.",
+      duration: "3-6 hafta"
+    },
+    {
+      step: 5,
+      title: "Jo'nab ketish va yashash joyiga joylashtirish",
+      description: "Viza tayyor bo'lgach, aviachiptalarni olish va Serbiyaga uchish. Aeroportda kutib olish va yashash joyiga olib borish.",
+      duration: "2-3 kun"
+    },
+    {
+      step: 6,
+      title: "Ishga kirish va adaptatsiya",
+      description: "Ish joyida ro'yxatdan o'tish va yo'l-yo'riq olish. Xavfsizlik texnikasi bo'yicha instruktaj. Ishni boshlash va jamoaga qo'shilish.",
+      duration: "3-5 kun"
+    }
+  ],
+  
+  lifeInfo: {
+    housing: "Kompaniya tomonidan umumiy turar joy yoki konteyner-uylar ta'minlanadi. Odatda qurilish maydonchasiga yaqin joyda. Barcha kommunal xizmatlar to'langan. Isitish, elektr, suv va Wi-Fi mavjud.",
+    transport: "Ish joyiga kompaniya transporti bilan olib ketiladi. Jamoat transporti arzon va qulay. Dam olish kunlarida shahar markaziga borish uchun avtobus yoki taksi mavjud.",
+    food: "Kunlik ovqatlanish kompaniya tomonidan ta'minlanadi (nonushta va tushlik). Kechki ovqat o'zingiz tayyorlashingiz yoki restoranda ovqatlanishingiz mumkin. Ovqatlanish xarajatlari oyiga €150-250.",
+    healthcare: "Majburiy tibbiy sug'urta kompaniya tomonidan to'lanadi. Davlat shifoxonalari va klinikalar mavjud. Tez tibbiy yordam bepul. Ish joyida tibbiy xodim doim tayyor turadi."
+  },
+  
+  salaryDetails: {
+    min: 800,
+    max: 1500,
+    average: 1100,
+    taxRate: "15-20%"
+  }
   }
 ];
 
-// Helper function
 export const getCountryById = (id: string): Country | undefined => {
   return countries.find(country => country.id === id);
 };
