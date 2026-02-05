@@ -112,6 +112,7 @@ export default function Home() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {[
             {
+              id: "germany",
               country: "Germaniya",
               flag: "🇩🇪",
               salary: "$3,500 - $6,000",
@@ -119,6 +120,7 @@ export default function Home() {
               visa: "Work visa - 3-6 oy",
             },
             {
+              id: "poland",
               country: "Polsha",
               flag: "🇵🇱",
               salary: "$1,800 - $3,500",
@@ -126,6 +128,7 @@ export default function Home() {
               visa: "Work permit - 2-4 oy",
             },
             {
+              id: "canada",
               country: "Kanada",
               flag: "🇨🇦",
               salary: "$4,000 - $7,500",
@@ -133,6 +136,7 @@ export default function Home() {
               visa: "Skilled worker - 6-12 oy",
             },
             {
+              id: "uk",
               country: "Buyuk Britaniya",
               flag: "🇬🇧",
               salary: "$3,800 - $6,500",
@@ -140,6 +144,7 @@ export default function Home() {
               visa: "Skilled worker visa - 3-8 oy",
             },
             {
+              id: "uae",
               country: "Dubay (BAA)",
               flag: "🇦🇪",
               salary: "$2,500 - $8,000",
@@ -147,6 +152,7 @@ export default function Home() {
               visa: "Employment visa - 1-3 oy",
             },
             {
+              id: "czech",
               country: "Chexiya",
               flag: "🇨🇿",
               salary: "$2,000 - $4,000",
@@ -194,7 +200,7 @@ export default function Home() {
               </div>
 
               <button className="w-full mt-6 bg-linear-to-r from-blue-600 to-blue-700 text-white py-3 rounded-lg hover:shadow-lg transition-all duration-300 font-semibold">
-                <Link href={`/countries/${item.country}`}>
+                <Link href={`/countries/${item.id}`}>
                   Batafsil ma'lumot
                 </Link>
               </button>
