@@ -8,17 +8,19 @@ export default function AboutPage() {
     <div className="min-h-screen bg-linear-to-b from-slate-50 to-white text-gray-800">
       <header className="bg-white/80 backdrop-blur-md shadow-sm sticky top-0 z-50">
         <nav className="container mx-auto px-4 py-4 flex justify-between items-center">
-          <Link href="/" className="text-2xl font-bold text-gray-900">
+          <Link href="/" className="flex items-center space-x-2">
             <Factory className="w-8 h-8 text-black hidden md:block" />
-            <span className="text-xl md:text-2xl font-bold bg-black bg-clip-text text-transparent">
+            <span className="text-2xl font-bold bg-black bg-clip-text text-transparent">
               Best Globalize
             </span>
           </Link>
+
           <Link
-            href="/"
-            className="text-gray-600 hover:text-blue-600 transition flex items-center gap-1"
+            href="/countries"
+            className="flex items-center gap-2 text-gray-700 hover:text-blue-600 transition"
           >
-            Bosh sahifaga qaytish <ArrowRight className="w-6 h-6" />
+            <span>Oldingi sahifaga </span>
+            <ArrowRight className="w-6 h-6" />
           </Link>
         </nav>
       </header>
@@ -27,7 +29,7 @@ export default function AboutPage() {
         <div className="grid md:grid-cols-5 gap-12 items-start">
           <div className="md:col-span-2">
             <div className="sticky top-24">
-              <div className="w-48 h-48 md:w-64 md:h-64 rounded-2xl overflow-hidden border-4 border-white shadow-2xl mx-auto md:mx-0 relative">
+              <div className="w-64 h-64 md:w-72 md:h-72 rounded-2xl overflow-hidden border-4 border-white shadow-2xl mx-auto md:mx-0 relative">
                 <Image
                   src="/developer.jpg"
                   alt="Islombek Kamoliddinov"
