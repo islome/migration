@@ -64,8 +64,8 @@ export default function Footer() {
                   </Link>
                 </li>
                 <li>
-                  <Link href="#" className="hover:text-blue-400 transition">
-                    Bog'lanish
+                  <Link href="/about" className="hover:text-blue-400 transition">
+                    Developer
                   </Link>
                 </li>
                 <li>
