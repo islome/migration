@@ -76,7 +76,7 @@ export default function Home() {
               <div className="inline-flex items-center justify-center w-16 h-16 bg-green-100 rounded-full mb-4">
                 <Globe className="w-8 h-8 text-green-600" />
               </div>
-              <h3 className="text-4xl font-bold text-gray-900 mb-2">15+</h3>
+              <h3 className="text-4xl font-bold text-gray-900 mb-2">10+</h3>
               <p className="text-gray-600">Davlatlar bilan hamkorlik</p>
             </div>
 
@@ -84,7 +84,7 @@ export default function Home() {
               <div className="inline-flex items-center justify-center w-16 h-16 bg-purple-100 rounded-full mb-4">
                 <FileCheck className="w-8 h-8 text-purple-600" />
               </div>
-              <h3 className="text-4xl font-bold text-gray-900 mb-2">98%</h3>
+              <h3 className="text-4xl font-bold text-gray-900 mb-2">95%</h3>
               <p className="text-gray-600">Viza olish darajasi</p>
             </div>
 

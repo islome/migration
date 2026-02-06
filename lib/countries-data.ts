@@ -432,93 +432,93 @@ export const countries: Country[] = [
     taxRate: "10-15%"
   }
   },
-  {
-    id: 'uae',
-    name: 'Dubay (BAA)',
-    nameEn: 'Dubai (UAE)',
-    flag: '🇦🇪',
-    shortDescription: 'Soliqsiz daromad, yuqori hayot sifati va issiq iqlim. Qurilish, turizm va moliya sohasida keng imkoniyatlar.',
-    salary: '$2,500 - $8,000',
-    popularJobs: ['Qurilish', 'Mehmonxona xizmati', 'Savdo', 'Moliya', 'IT'],
-    visaDuration: '1-3 oy',
-    visaSuccess: '96%',
-    language: 'Ingliz tili',
-    currency: 'Dirham (AED)',
-    backgroundImage: 'https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=1920',
-    fullDescription: 'Birlashgan Arab Amirliklari - Yaqin Sharqning eng rivojlangan davlati. Daromaddan soliq yo\'q, yuqori maosh va zamonaviy infratuzilma. Dubay global biznes va turizm markazi.',
+  // {
+  //   id: 'uae',
+  //   name: 'Dubay (BAA)',
+  //   nameEn: 'Dubai (UAE)',
+  //   flag: '🇦🇪',
+  //   shortDescription: 'Soliqsiz daromad, yuqori hayot sifati va issiq iqlim. Qurilish, turizm va moliya sohasida keng imkoniyatlar.',
+  //   salary: '$2,500 - $8,000',
+  //   popularJobs: ['Qurilish', 'Mehmonxona xizmati', 'Savdo', 'Moliya', 'IT'],
+  //   visaDuration: '1-3 oy',
+  //   visaSuccess: '96%',
+  //   language: 'Ingliz tili',
+  //   currency: 'Dirham (AED)',
+  //   backgroundImage: 'https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=1920',
+  //   fullDescription: 'Birlashgan Arab Amirliklari - Yaqin Sharqning eng rivojlangan davlati. Daromaddan soliq yo\'q, yuqori maosh va zamonaviy infratuzilma. Dubay global biznes va turizm markazi.',
     
-    requirements: {
-      age: '21-55 yosh',
-      education: 'O\'rta maxsus yoki oliy ma\'lumot',
-      language: 'Ingliz tili o\'rta daraja',
-      experience: 'Kasbga mos tajriba (lavozimga qarab)'
-    },
+  //   requirements: {
+  //     age: '21-55 yosh',
+  //     education: 'O\'rta maxsus yoki oliy ma\'lumot',
+  //     language: 'Ingliz tili o\'rta daraja',
+  //     experience: 'Kasbga mos tajriba (lavozimga qarab)'
+  //   },
     
-    benefits: [
-      'Daromad solig\'i yo\'q (0%)',
-      'Yuqori maosh (oyiga 8,000-30,000 AED)',
-      'Issiq ob-havo yil bo\'yi',
-      'Zamonaviy infratuzilma',
-      'Xavfsiz muhit',
-      'Ko\'p millatli jamiyat',
-      'Oila vizasi imkoniyati',
-      'Repatriation ticket (ish beruvchi to\'laydi)'
-    ],
+  //   benefits: [
+  //     'Daromad solig\'i yo\'q (0%)',
+  //     'Yuqori maosh (oyiga 8,000-30,000 AED)',
+  //     'Issiq ob-havo yil bo\'yi',
+  //     'Zamonaviy infratuzilma',
+  //     'Xavfsiz muhit',
+  //     'Ko\'p millatli jamiyat',
+  //     'Oila vizasi imkoniyati',
+  //     'Repatriation ticket (ish beruvchi to\'laydi)'
+  //   ],
     
-    documents: [
-      'Pasport (6 oy+ muddati)',
-      'Ish taklifi (Job Offer Letter)',
-      'Diplom va sertifikatlar (notarial tasdiqli)',
-      'Tibbiy test (HIV, hepatit va boshqalar)',
-      'Emirates ID uchun rasm',
-      'Passport fotolar',
-      'Eski ish joyidan tavsifnoma',
-      'Police clearance certificate',
-      'Viza ariza shakli',
-      'Tibbiy sug\'urta (ish beruvchi beradi)'
-    ],
+  //   documents: [
+  //     'Pasport (6 oy+ muddati)',
+  //     'Ish taklifi (Job Offer Letter)',
+  //     'Diplom va sertifikatlar (notarial tasdiqli)',
+  //     'Tibbiy test (HIV, hepatit va boshqalar)',
+  //     'Emirates ID uchun rasm',
+  //     'Passport fotolar',
+  //     'Eski ish joyidan tavsifnoma',
+  //     'Police clearance certificate',
+  //     'Viza ariza shakli',
+  //     'Tibbiy sug\'urta (ish beruvchi beradi)'
+  //   ],
     
-    process: [
-      {
-        step: 1,
-        title: 'Ish topish',
-        description: 'Dubai kompaniyasidan ish taklifini olish',
-        duration: '2-6 hafta'
-      },
-      {
-        step: 2,
-        title: 'Employment visa',
-        description: 'Ish beruvchi tomonidan employment visa rasmiylashtiriladi',
-        duration: '1-2 hafta'
-      },
-      {
-        step: 3,
-        title: 'Tibbiy test',
-        description: 'Dubai ga kelgandan keyin tibbiy tekshiruvdan o\'tish',
-        duration: '3-5 kun'
-      },
-      {
-        step: 4,
-        title: 'Emirates ID',
-        description: 'Emirates ID va residence visa olish',
-        duration: '1-2 hafta'
-      }
-    ],
+  //   process: [
+  //     {
+  //       step: 1,
+  //       title: 'Ish topish',
+  //       description: 'Dubai kompaniyasidan ish taklifini olish',
+  //       duration: '2-6 hafta'
+  //     },
+  //     {
+  //       step: 2,
+  //       title: 'Employment visa',
+  //       description: 'Ish beruvchi tomonidan employment visa rasmiylashtiriladi',
+  //       duration: '1-2 hafta'
+  //     },
+  //     {
+  //       step: 3,
+  //       title: 'Tibbiy test',
+  //       description: 'Dubai ga kelgandan keyin tibbiy tekshiruvdan o\'tish',
+  //       duration: '3-5 kun'
+  //     },
+  //     {
+  //       step: 4,
+  //       title: 'Emirates ID',
+  //       description: 'Emirates ID va residence visa olish',
+  //       duration: '1-2 hafta'
+  //     }
+  //   ],
     
-    lifeInfo: {
-      housing: 'Uy-joy: Oyiga 2,000-6,000 AED. Ish beruvchi ko\'pincha to\'laydi.',
-      transport: 'Transport: Oylik 300-500 AED (Metro) yoki mashina (benzin arzon).',
-      food: 'Ovqatlanish: Oyiga 1,000-2,000 AED. Turli xil restoranlar.',
-      healthcare: 'Sog\'liqni saqlash: Majburiy tibbiy sug\'urta ish beruvchi to\'laydi.'
-    },
+  //   lifeInfo: {
+  //     housing: 'Uy-joy: Oyiga 2,000-6,000 AED. Ish beruvchi ko\'pincha to\'laydi.',
+  //     transport: 'Transport: Oylik 300-500 AED (Metro) yoki mashina (benzin arzon).',
+  //     food: 'Ovqatlanish: Oyiga 1,000-2,000 AED. Turli xil restoranlar.',
+  //     healthcare: 'Sog\'liqni saqlash: Majburiy tibbiy sug\'urta ish beruvchi to\'laydi.'
+  //   },
     
-    salaryDetails: {
-      min: 2500,
-      max: 8000,
-      average: 4500,
-      taxRate: '0% (daromad solig\'i yo\'q)'
-    }
-  },
+  //   salaryDetails: {
+  //     min: 2500,
+  //     max: 8000,
+  //     average: 4500,
+  //     taxRate: '0% (daromad solig\'i yo\'q)'
+  //   }
+  // },
   
   {
     id: 'czech',
