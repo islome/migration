@@ -28,7 +28,6 @@ export default function AboutPage() {
           <div className="md:col-span-2">
             <div className="sticky top-24">
               <div className="w-48 h-48 md:w-64 md:h-64 rounded-2xl overflow-hidden border-4 border-white shadow-2xl mx-auto md:mx-0">
-                {/* Agar rasmingiz bo'lsa shu yerga qo'ying */}
                 <Image
                   src="/developer.jpg"
                   alt="Background"
