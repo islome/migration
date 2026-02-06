@@ -200,9 +200,7 @@ export default function Home() {
               </div>
 
               <button className="w-full mt-6 bg-linear-to-r from-blue-600 to-blue-700 text-white py-3 rounded-lg hover:shadow-lg transition-all duration-300 font-semibold">
-                <Link href={`/countries/${item.id}`}>
-                  Batafsil ma'lumot
-                </Link>
+                <Link href={`/countries/${item.id}`}>Batafsil ma'lumot</Link>
               </button>
             </div>
           ))}

@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { ArrowRight, MapPin, Briefcase, Code, Factory } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
@@ -7,7 +7,7 @@ export default function AboutPage() {
   return (
     <div className="min-h-screen bg-linear-to-b from-slate-50 to-white text-gray-800">
       <header className="bg-white/80 backdrop-blur-md shadow-sm sticky top-0 z-50">
-        <nav className="container mx-auto px-6 py-5 flex justify-between items-center">
+        <nav className="container mx-auto px-4 py-4 flex justify-between items-center">
           <Link href="/" className="text-2xl font-bold text-gray-900">
             <Factory className="w-8 h-8 text-black hidden md:block" />
             <span className="text-xl md:text-2xl font-bold bg-black bg-clip-text text-transparent">
@@ -27,20 +27,17 @@ export default function AboutPage() {
         <div className="grid md:grid-cols-5 gap-12 items-start">
           <div className="md:col-span-2">
             <div className="sticky top-24">
-              <div className="w-48 h-48 md:w-64 md:h-64 rounded-2xl overflow-hidden border-4 border-white shadow-2xl mx-auto md:mx-0">
+              <div className="w-48 h-48 md:w-64 md:h-64 rounded-2xl overflow-hidden border-4 border-white shadow-2xl mx-auto md:mx-0 relative">
                 <Image
                   src="/developer.jpg"
-                  alt="Background"
+                  alt="Islombek Kamoliddinov"
                   fill
-                  className="w-full h-full object-cover"
+                  className="object-cover"
                   priority
                 />
-                <div className="w-full h-full bg-linear-to-br from-[#89aac3] to-[#6f93b0] flex items-center justify-center text-white text-7xl font-bold">
-                  Mr.
-                </div>
               </div>
 
-              <div className="mt-8 space-y-4 text-center md:text-left">
+              <div className="mt-6 md:mt-8 space-y-4 text-center md:text-left">
                 <h1 className="text-3xl md:text-4xl font-bold text-gray-900">
                   Islombek
                 </h1>
@@ -61,14 +58,12 @@ export default function AboutPage() {
 
                 <div className="flex gap-6 justify-center md:justify-start mt-8">
                   <a
-                    href="https://t.me/justislombek"
-                    target="_blank"
+                    href="tel:+998882300277"
                     rel="noopener noreferrer"
                     className="text-gray-700 hover:text-blue-600 transition"
                   >
-                    Telegram
+                    Aloqa raqam
                   </a>
-                  {/* Agar GitHub yoki LinkedIn bo'lsa qo'shishingiz mumkin */}
                 </div>
               </div>
             </div>
@@ -77,7 +72,7 @@ export default function AboutPage() {
           <div className="md:col-span-3 space-y-10">
             <section>
               <h2 className="text-3xl font-bold text-gray-900 mb-6">
-                Salom, men Islombek Kamoliddinov
+                Islombek Kamoliddinov
               </h2>
               <div className="prose prose-lg max-w-none text-gray-700 leading-relaxed space-y-6">
                 <p>
