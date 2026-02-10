@@ -7,9 +7,9 @@ export default function SpecialBlogSection() {
   return (
     <section className="py-16 bg-linear-to-br from-gray-50 to-gray-100">
       <div className="container mx-auto px-4">
+        // blog section
         <div className="bg-white rounded-3xl shadow-2xl overflow-hidden">
           <div className="grid grid-cols-1 lg:grid-cols-2 items-stretch">
-            {/* Chap tomon - Blog Content */}
             <div className="p-8 lg:p-12 flex flex-col justify-center order-2 lg:order-1">
               <div className="inline-block mb-4">
                 <span className="bg-linear-to-r from-red-600 to-orange-600 text-white px-4 py-2 rounded-full text-sm font-semibold flex items-center gap-2 w-fit">
@@ -104,25 +104,18 @@ export default function SpecialBlogSection() {
                 <ArrowRight className="w-4 h-4 lg:w-5 lg:h-5 group-hover:translate-x-2 transition-transform" />
               </Link>
             </div>
-
-            {/* O'ng tomon - Video with Thumbnail */}
-            <div className="relative bg-gray-900 min-h-[300px] lg:min-h-0 order-1 lg:order-2">
-              {/* Background Image/Thumbnail */}
+            // video section
+            <div className="relative bg-gray-900 order-1 lg:order-2 flex items-center justify-center overflow-hidden">
               <img
                 src="/screenshot_blog.png"
                 alt="Video thumbnail"
-                className="w-full h-full object-cover"
+                className="absolute inset-0 w-full h-full object-cover"
               />
-
-              {/* Dark Overlay */}
               <div className="absolute inset-0 bg-black/50"></div>
-
-              {/* Play Button */}
-              <a
-                href="https://ojhqnvlgqlxyiipzzneq.supabase.co/storage/v1/object/public/blog/ogoh%20(1).mp4"
+              <a  href="https://ojhqnvlgqlxyiipzzneq.supabase.co/storage/v1/object/public/blog/ogoh%20(1).mp4"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="absolute inset-0 flex items-center justify-center group"
+                className="relative z-10 group"
               >
                 <div className="bg-white/20 backdrop-blur-md rounded-full p-8 group-hover:bg-white/30 transition-all group-hover:scale-110">
                   <PlayCircle className="w-16 h-16 text-white" />
