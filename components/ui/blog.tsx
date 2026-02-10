@@ -105,47 +105,29 @@ export default function SpecialBlogSection() {
               </Link>
             </div>
 
-            {/* O'ng tomon - Video Player */}
-            <div className="relative bg-linear-to-br from-gray-800 to-gray-900 min-h-[300px] lg:min-h-0 order-1 lg:order-2 flex items-center justify-center">
-              {/* Video Thumbnail/Poster */}
-              <div className="absolute inset-0 bg-linear-to-br from-[#14202e] to-[#2d4356] opacity-90"></div>
+            {/* O'ng tomon - Video with Thumbnail */}
+            <div className="relative bg-gray-900 min-h-[300px] lg:min-h-0 order-1 lg:order-2">
+              {/* Background Image/Thumbnail */}
+              <img
+                src="/screenshot_blog.png"
+                alt="Video thumbnail"
+                className="w-full h-full object-cover"
+              />
 
-              {/* Video Icon va Text */}
-              <div className="relative z-10 text-center px-8">
-                <div className="mb-6 flex justify-center">
-                  <div className="bg-white/10 backdrop-blur-md rounded-full p-8 group-hover:bg-white/20 transition-all">
-                    <PlayCircle className="w-20 h-20 text-white" />
-                  </div>
+              {/* Dark Overlay */}
+              <div className="absolute inset-0 bg-black/50"></div>
+
+              {/* Play Button */}
+              <a
+                href="https://ojhqnvlgqlxyiipzzneq.supabase.co/storage/v1/object/public/blog/ogoh%20(1).mp4"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="absolute inset-0 flex items-center justify-center group"
+              >
+                <div className="bg-white/20 backdrop-blur-md rounded-full p-8 group-hover:bg-white/30 transition-all group-hover:scale-110">
+                  <PlayCircle className="w-16 h-16 text-white" />
                 </div>
-
-                <h3 className="text-white text-xl lg:text-2xl font-bold mb-4">
-                  Video ko'rish
-                </h3>
-
-                <p className="text-white/80 text-sm lg:text-base mb-6 max-w-md mx-auto">
-                  Norasmiy ish takliflari va firibgarliklardan qanday saqlanish
-                  haqida batafsil video
-                </p>
-
-                {/* Native Video Player uchun tugma */}
-                <a
-                  href="/ogoh.mp4"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group inline-flex items-center gap-3 bg-white text-gray-900 px-6 lg:px-8 py-3 lg:py-4 rounded-xl hover:shadow-2xl transition-all duration-300 font-semibold text-sm lg:text-base hover:scale-105"
-                >
-                  <PlayCircle className="w-5 h-5" />
-                  Videoni ko'rish
-                </a>
-
-                <p className="text-white/60 text-xs mt-4">
-                  Video yangi oynada ochiladi
-                </p>
-              </div>
-
-              {/* Decorative Elements */}
-              <div className="absolute top-8 left-8 w-20 h-20 bg-white/5 rounded-full blur-xl"></div>
-              <div className="absolute bottom-8 right-8 w-32 h-32 bg-white/5 rounded-full blur-2xl"></div>
+              </a>
             </div>
           </div>
         </div>
