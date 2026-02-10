@@ -1,3 +1,4 @@
+import SpecialBlogSection from "@/components/ui/blog";
 import Country from "@/components/ui/country";
 import Footer from "@/components/ui/footer";
 import Header from "@/components/ui/header";
@@ -297,88 +298,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="py-16 bg-linear-to-br from-gray-50 to-gray-100">
-        <div className="container mx-auto px-4">
-          <div className="bg-white rounded-3xl shadow-2xl overflow-hidden">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-0">
-              {/* Chap tomon - Blog Content */}
-              <div className="p-8 lg:p-12 flex flex-col justify-center">
-                <div className="inline-block mb-4">
-                  <span className="bg-linear-to-r from-[#14202e] to-[#2d4356] text-white px-4 py-2 rounded-full text-sm font-semibold">
-                    Maxsus Blog
-                  </span>
-                </div>
-
-                <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-6 leading-tight">
-                  Xorijda ishlash: Muvaffaqiyatga erishish yo'llari
-                </h2>
-
-                <p className="text-gray-600 text-lg mb-6 leading-relaxed">
-                  Xorijda ish topish va muvaffaqiyatli kareraga erishish uchun
-                  zarur bo'lgan barcha ma'lumotlar. Viza olish jarayoni,
-                  suhbatga tayyorgarlik, madaniy farqlar va ko'plab foydali
-                  maslahatlar bilan tanishing. 
-                  ⚠️ ЭСЛАТМА! Хорижда ишлаш билан
-                  боғлиқ барча жараёнлар: ✔️ Давлат томонидан — Миграция
-                  агентлиги, хусусий секторда — фақат лицензияга эга Хусусий
-                  бандлик агентликлари орқали амалга оширилиши шарт.
-                </p>
-
-                <div className="space-y-4 mb-8">
-                  <div className="flex items-start gap-3">
-                    <div className="w-2 h-2 bg-[#2d4356] rounded-full mt-2"></div>
-                    <p className="text-gray-700">
-                      Viza olish jarayoni va kerakli hujjatlar
-                    </p>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <div className="w-2 h-2 bg-[#2d4356] rounded-full mt-2"></div>
-                    <p className="text-gray-700">
-                      Ish suhbatiga professional tayyorgarlik
-                    </p>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <div className="w-2 h-2 bg-[#2d4356] rounded-full mt-2"></div>
-                    <p className="text-gray-700">
-                      Yangi mamlakatda moslashish va yashaish tajribasi
-                    </p>
-                  </div>
-                </div>
-
-                <Link
-                  href="/blog/xorijda-ishlash-yollari"
-                  className="group inline-flex items-center gap-3 bg-linear-to-r from-[#14202e] to-[#2d4356] text-white px-8 py-4 rounded-xl hover:shadow-2xl transition-all duration-300 font-semibold w-fit"
-                >
-                  Batafsil ma'lumot
-                  <ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform" />
-                </Link>
-              </div>
-
-              {/* O'ng tomon - Video */}
-              <div className="relative bg-gray-900 lg:min-h-150 flex items-center justify-center">
-                <video
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                  className="w-full h-full object-cover"
-                >
-                  <source src="/ogoh.mp4" type="video/mp4" />
-                  Your browser does not support the video tag.
-                </video>
-
-                {/* Video Overlay */}
-                <div className="absolute inset-0 bg-linear-to-t from-black/50 to-transparent pointer-events-none"></div>
-
-                {/* Play Icon Badge */}
-                <div className="absolute bottom-8 right-8 bg-white/20 backdrop-blur-md rounded-full p-4">
-                  <PlayCircle className="w-8 h-8 text-white" />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <SpecialBlogSection />
       <section id="contact" className="container mx-auto px-4 py-20">
         <div className="text-center mb-12">
           <h2 className="text-4xl font-bold text-gray-900 mb-4">
