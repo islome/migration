@@ -1,3 +1,4 @@
+import Country from "@/components/ui/country";
 import Footer from "@/components/ui/footer";
 import Header from "@/components/ui/header";
 import {
@@ -109,102 +110,7 @@ export default function Home() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {[
-            {
-              id: "germany",
-              country: "Germaniya",
-              flag: "🇩🇪",
-              salary: "$3,500 - $6,000",
-              jobs: "Muhandislik, IT, Sog'liqni saqlash",
-              visa: "Work visa - 3-6 oy",
-            },
-            {
-              id: "poland",
-              country: "Polsha",
-              flag: "🇵🇱",
-              salary: "$1,800 - $3,500",
-              jobs: "Qurilish, Logistika, Ishlab chiqarish",
-              visa: "Work permit - 2-4 oy",
-            },
-            {
-              id: "canada",
-              country: "Kanada",
-              flag: "🇨🇦",
-              salary: "$4,000 - $7,500",
-              jobs: "IT, Muhandislik, Moliya",
-              visa: "Skilled worker - 6-12 oy",
-            },
-            {
-              id: "uk",
-              country: "Buyuk Britaniya",
-              flag: "🇬🇧",
-              salary: "$3,800 - $6,500",
-              jobs: "Sog'liqni saqlash, IT, Ta'lim",
-              visa: "Skilled worker visa - 3-8 oy",
-            },
-            {
-              id: "uae",
-              country: "Dubay (BAA)",
-              flag: "🇦🇪",
-              salary: "$2,500 - $8,000",
-              jobs: "Qurilish, Turizm, Moliya",
-              visa: "Employment visa - 1-3 oy",
-            },
-            {
-              id: "czech",
-              country: "Chexiya",
-              flag: "🇨🇿",
-              salary: "$2,000 - $4,000",
-              jobs: "Ishlab chiqarish, IT, Xizmat ko'rsatish",
-              visa: "Employee card - 3-5 oy",
-            },
-          ].map((item, index) => (
-            <div
-              key={index}
-              className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border border-gray-100"
-            >
-              <div className="flex items-center justify-between mb-4">
-                <div className="flex items-center gap-3">
-                  <span className="text-5xl">{item.flag}</span>
-                  <h3 className="text-2xl font-bold text-gray-900">
-                    {item.country}
-                  </h3>
-                </div>
-              </div>
-
-              <div className="space-y-3">
-                <div className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-green-500 mt-0.5 shrink-0" />
-                  <div>
-                    <p className="text-sm text-gray-500">Oylik maosh</p>
-                    <p className="font-semibold text-gray-900">{item.salary}</p>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-green-500 mt-0.5 shrink-0" />
-                  <div>
-                    <p className="text-sm text-gray-500">Mashhur sohalar</p>
-                    <p className="font-semibold text-gray-900">{item.jobs}</p>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-green-500 mt-0.5 shrink-0" />
-                  <div>
-                    <p className="text-sm text-gray-500">Viza muddati</p>
-                    <p className="font-semibold text-gray-900">{item.visa}</p>
-                  </div>
-                </div>
-              </div>
-
-              <button className="w-full mt-6 bg-linear-to-r from-blue-600 to-blue-700 text-white py-3 rounded-lg hover:shadow-lg transition-all duration-300 font-semibold">
-                <Link href={`/countries/${item.id}`}>Batafsil ma'lumot</Link>
-              </button>
-            </div>
-          ))}
-        </div>
+        <Country />
       </section>
 
       <section className="bg-linear-to-br from-[#89aac3] to-[#6f93b0] text-white py-20">
