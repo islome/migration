@@ -86,7 +86,7 @@ export default function Country() {
 
               <Link
                 href={`/countries/${country.id}`}
-                className="w-full bg-[#2d4356] text-white py-3 rounded-lg hover:shadow-lg transition-all duration-300 font-semibold flex items-center justify-center gap-2 group-hover:gap-3"
+                className="w-full bg-[#89aac3] text-white py-3 rounded-lg hover:shadow-lg transition-all duration-300 font-semibold flex items-center justify-center gap-2 group-hover:gap-3"
               >
                 Batafsil ma'lumot
                 <ChevronRight className="w-5 h-5" />
@@ -101,7 +101,7 @@ export default function Country() {
         <div className="flex justify-center mt-12">
           <Link
             href="/countries"
-            className="group bg-linear-to-r from-[#89aac3] to-[#6f93b0] text-black px-8 py-4 rounded-xl hover:shadow-2xl transition-all duration-300 font-semibold flex items-center gap-3 hover:gap-4"
+            className="group bg-linear-to-r from-[#89aac3] to-[#6f93b0] text-white px-8 py-4 rounded-xl hover:shadow-2xl transition-all duration-300 font-semibold flex items-center gap-3 hover:gap-4"
           >
             Ko'proq davlatlarni ko'rish
             <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
