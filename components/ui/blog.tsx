@@ -6,6 +6,14 @@ import { ArrowRight, PlayCircle, AlertTriangle } from "lucide-react";
 export default function SpecialBlogSection() {
   return (
     <section className="py-16 bg-gradient-to-br from-gray-50 to-gray-100">
+       <div className="text-center mb-12">
+          <h2 className="text-4xl font-bold text-gray-900 mb-4">
+            Bizning Bloglar
+          </h2>
+          <p className="text-xl text-gray-600">
+            Ijtimoiy tarmoqlarimizda beriladigan yangiliklardan habardor bo'lish uchun ularga obuna bo'lishingiz mumkin!
+          </p>
+        </div>
       <div className="container mx-auto px-4">
         <div className="bg-white rounded-3xl shadow-2xl overflow-hidden">
           <div className="grid grid-cols-1 lg:grid-cols-2 items-stretch">

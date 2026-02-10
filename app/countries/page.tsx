@@ -9,6 +9,7 @@ import {
   ChevronRight,
   MessageCircle,
   FactoryIcon,
+  UserRoundCheck,
 } from "lucide-react";
 import Footer from "@/components/ui/footer";
 
@@ -60,7 +61,6 @@ export default function CountriesPage() {
           </a>
         </nav>
       </header>
-
 
       <section className="bg-linear-to-br from-[#89aac3] to-[#6f93b0] text-white py-20">
         <div className="container mx-auto px-4 text-center">
@@ -186,15 +186,24 @@ export default function CountriesPage() {
             Mutaxassislarimiz sizga eng mos davlatni tanlashda va barcha
             jarayonlarda yordam beradi.
           </p>
-          <a
-            href={telegramLink}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="border-2 border-white text-white px-8 py-4 rounded-xl hover:bg-white/10 transition-all duration-300 flex items-center gap-2 text-lg font-semibold justify-center"
-          >
-            <MessageCircle className="w-5 h-5" />
-            Telegramda yozish
-          </a>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <a
+              href={telegramLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="border-2 border-white text-white px-8 py-4 rounded-xl hover:bg-white/10 transition-all duration-300 flex items-center gap-2 text-lg font-semibold justify-center"
+            >
+              <MessageCircle className="w-5 h-5" />
+              Telegramda yozish
+            </a>
+            <Link
+              href="/register"
+              className="border-2 border-white text-white px-8 py-4 rounded-xl hover:bg-white/10 transition-all duration-300 flex items-center gap-2 text-lg font-semibold justify-center"
+            >
+              <UserRoundCheck className="w-5 h-5" />
+              Ma'lumot qoldirish
+            </Link>
+          </div>
         </div>
       </section>
 
