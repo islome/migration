@@ -5,14 +5,13 @@ import { ArrowRight, PlayCircle, AlertTriangle } from "lucide-react";
 
 export default function SpecialBlogSection() {
   return (
-    <section className="py-16 bg-linear-to-br from-gray-50 to-gray-100">
+    <section className="py-16 bg-gradient-to-br from-gray-50 to-gray-100">
       <div className="container mx-auto px-4">
-        // blog section
         <div className="bg-white rounded-3xl shadow-2xl overflow-hidden">
           <div className="grid grid-cols-1 lg:grid-cols-2 items-stretch">
             <div className="p-8 lg:p-12 flex flex-col justify-center order-2 lg:order-1">
               <div className="inline-block mb-4">
-                <span className="bg-linear-to-r from-red-600 to-orange-600 text-white px-4 py-2 rounded-full text-sm font-semibold flex items-center gap-2 w-fit">
+                <span className="bg-gradient-to-r from-red-600 to-orange-600 text-white px-4 py-2 rounded-full text-sm font-semibold flex items-center gap-2 w-fit">
                   <AlertTriangle className="w-4 h-4" />
                   Muhim ogohlantirish
                 </span>
@@ -98,13 +97,12 @@ export default function SpecialBlogSection() {
 
               <Link
                 href="/blog/ogohlantirish"
-                className="group inline-flex items-center gap-3 bg-linear-to-r from-[#14202e] to-[#2d4356] text-white px-6 lg:px-8 py-3 lg:py-4 rounded-xl hover:shadow-2xl transition-all duration-300 font-semibold w-fit mt-6 lg:mt-8 text-sm lg:text-base"
+                className="group inline-flex items-center gap-3 bg-gradient-to-r from-[#14202e] to-[#2d4356] text-white px-6 lg:px-8 py-3 lg:py-4 rounded-xl hover:shadow-2xl transition-all duration-300 font-semibold w-fit mt-6 lg:mt-8 text-sm lg:text-base"
               >
                 Batafsil ma'lumot
                 <ArrowRight className="w-4 h-4 lg:w-5 lg:h-5 group-hover:translate-x-2 transition-transform" />
               </Link>
             </div>
-            // video section
             <div className="relative bg-gray-900 order-1 lg:order-2 flex items-center justify-center overflow-hidden">
               <img
                 src="/screenshot_blog.png"
@@ -112,7 +110,8 @@ export default function SpecialBlogSection() {
                 className="absolute inset-0 w-full h-full object-cover"
               />
               <div className="absolute inset-0 bg-black/50"></div>
-              <a  href="https://ojhqnvlgqlxyiipzzneq.supabase.co/storage/v1/object/public/blog/ogoh%20(1).mp4"
+              <a
+                href="https://ojhqnvlgqlxyiipzzneq.supabase.co/storage/v1/object/public/blog/ogoh%20(1).mp4"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="relative z-10 group"
