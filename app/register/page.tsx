@@ -55,7 +55,7 @@ export default function Register() {
 
     try {
       const { data, error: supabaseError } = await supabase
-        .from("registrations")
+        .from("users")
         .insert([
           {
             full_name: formData.full_name.trim(),
