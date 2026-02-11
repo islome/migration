@@ -82,7 +82,7 @@ export default function Register() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 py-12 px-4">
+    <div className="min-h-screen bg-linear-to-br from-gray-50 to-gray-100 py-12 px-4">
       <div className="container mx-auto max-w-2xl">
         {/* Header */}
         <div className="text-center mb-8">
@@ -114,7 +114,7 @@ export default function Register() {
                   onChange={(e) =>
                     setFormData({ ...formData, full_name: e.target.value })
                   }
-                  className="w-full pl-12 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all"
+                  className="w-full pl-12 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all text-black"
                   placeholder="Ism Familiya"
                   required
                 />
@@ -138,7 +138,7 @@ export default function Register() {
                   onChange={(e) =>
                     setFormData({ ...formData, number: e.target.value })
                   }
-                  className="w-full pl-12 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all"
+                  className="w-full pl-12 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all text-black"
                   placeholder="+998 90 123 45 67"
                   required
                 />
@@ -161,7 +161,7 @@ export default function Register() {
                   onChange={(e) =>
                     setFormData({ ...formData, intention: e.target.value })
                   }
-                  className="w-full pl-12 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all appearance-none bg-white"
+                  className="w-full pl-12 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all appearance-none bg-white text-black"
                   required
                 >
                   <option value="">Tanlang...</option>
@@ -201,7 +201,7 @@ export default function Register() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full bg-gradient-to-r from-[#14202e] to-[#2d4356] text-white py-4 rounded-xl hover:shadow-2xl transition-all duration-300 font-semibold flex items-center justify-center gap-3 disabled:opacity-50 disabled:cursor-not-allowed group"
+              className="w-full bg-linear-to-r from-[#14202e] to-[#2d4356] text-white py-4 rounded-xl hover:shadow-2xl transition-all duration-300 font-semibold flex items-center justify-center gap-3 disabled:opacity-50 disabled:cursor-not-allowed group"
             >
               {loading ? (
                 <>
