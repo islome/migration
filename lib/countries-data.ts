@@ -147,7 +147,8 @@ export const countries: Country[] = [
     "Blok yotqizish",
     "Santexnika",
     "Deraza o'rnatish",
-    "Fasad ishlari"
+    "Fasad ishlari",
+    "MAG/TIG Payvandchi"
   ],
   visaDuration: "2-3 oy",
   visaSuccess: "85%",
