@@ -104,7 +104,7 @@ export default function SpecialBlogSection() {
               </div>
 
               <Link
-                href="/blog/ogohlantirish"
+                href="/blog/warning"
                 className="group inline-flex items-center gap-3 bg-gradient-to-r from-[#14202e] to-[#2d4356] text-white px-6 lg:px-8 py-3 lg:py-4 rounded-xl hover:shadow-2xl transition-all duration-300 font-semibold w-fit mt-6 lg:mt-8 text-sm lg:text-base"
               >
                 Batafsil ma'lumot
