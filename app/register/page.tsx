@@ -14,6 +14,7 @@ import {
 } from "lucide-react";
 import Header from "@/components/ui/header";
 import Footer from "@/components/ui/footer";
+import { useRouter } from "next/router";
 
 const intentions = [
   { value: "malumot_ber", label: "Ma'lumot olish" },
@@ -33,6 +34,7 @@ export default function Register() {
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState("");
+  const router = useRouter();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -71,8 +73,10 @@ export default function Register() {
       setSuccess(true);
       setFormData({ full_name: "", number: "", intention: "" });
 
-      setTimeout(() => setSuccess(false), 5000);
-      setTimeout(() => <Link href={"/country"} />, 6000);
+      setTimeout(() => {
+  setSuccess(false);
+  router.push("/country");
+}, 6000);
     } catch (err: any) {
       console.error("Error:", err);
       setError(err.message || "Xatolik yuz berdi. Qaytadan urinib ko'ring.");
