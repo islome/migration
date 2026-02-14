@@ -14,6 +14,7 @@ import {
   Youtube,
 } from "lucide-react";
 import { useWorkingHours } from "@/utils/workingHours";
+import Header from "@/components/ui/header";
 
 export default function ContactPage() {
   const { workingHours, isCurrentlyOpen } = useWorkingHours();
@@ -35,7 +36,7 @@ export default function ContactPage() {
     {
       icon: <MapPin className="w-6 h-6" />,
       label: "Manzil",
-      value: "Toshkent sh, Amir Temur ko'chasi 108",
+      value: "Namangan sh, To'raqo'rg'on Tumani",
       link: "https://www.google.com/maps?q=41.004075,71.510085&z=17&output=embed",
       color: "bg-red-50 text-red-600",
     },
@@ -89,8 +90,8 @@ export default function ContactPage() {
 
   return (
     <div className="min-h-screen bg-white">
+        <Header />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        {/* Header */}
         <div className="text-center mb-16">
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
             Bog'lanish
