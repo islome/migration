@@ -12,6 +12,8 @@ import {
   AlertCircle,
   Loader2,
 } from "lucide-react";
+import Header from "@/components/ui/header";
+import Footer from "@/components/ui/footer";
 
 const intentions = [
   { value: "malumot_ber", label: "Ma'lumot olish" },
@@ -38,14 +40,12 @@ export default function Register() {
     setError("");
     setSuccess(false);
 
-    // Validatsiya
     if (!formData.full_name || !formData.number || !formData.intention) {
       setError("Barcha maydonlarni to'ldiring");
       setLoading(false);
       return;
     }
 
-    // Telefon raqam validatsiyasi (oddiy)
     const phoneRegex = /^[\d\s\+\-\(\)]+$/;
     if (!phoneRegex.test(formData.number)) {
       setError("Telefon raqamni to'g'ri kiriting");
@@ -71,8 +71,8 @@ export default function Register() {
       setSuccess(true);
       setFormData({ full_name: "", number: "", intention: "" });
 
-      // 3 soniyadan keyin success xabarni yashirish
       setTimeout(() => setSuccess(false), 5000);
+      setTimeout(() => <Link href={"/country"} />, 6000);
     } catch (err: any) {
       console.error("Error:", err);
       setError(err.message || "Xatolik yuz berdi. Qaytadan urinib ko'ring.");
@@ -83,6 +83,7 @@ export default function Register() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 py-12 px-4">
+      <Header />
       <div className="container mx-auto max-w-2xl">
         {/* Header */}
         <div className="text-center mb-8">
@@ -174,7 +175,6 @@ export default function Register() {
               </div>
             </div>
 
-            {/* Error Message */}
             {error && (
               <div className="bg-red-50 border-l-4 border-red-500 p-4 rounded-r-xl flex items-start gap-3">
                 <AlertCircle className="w-5 h-5 text-red-500 mt-0.5 shrink-0" />
@@ -182,7 +182,6 @@ export default function Register() {
               </div>
             )}
 
-            {/* Success Message */}
             {success && (
               <div className="bg-green-50 border-l-4 border-green-500 p-4 rounded-r-xl flex items-start gap-3">
                 <CheckCircle className="w-5 h-5 text-green-500 mt-0.5 shrink-0" />
@@ -197,7 +196,6 @@ export default function Register() {
               </div>
             )}
 
-            {/* Submit Button */}
             <button
               type="submit"
               disabled={loading}
@@ -228,6 +226,7 @@ export default function Register() {
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 }
