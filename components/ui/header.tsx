@@ -35,7 +35,7 @@ export default function Header() {
               Qo'llanma
             </Link>
             <Link
-              href="#contact"
+              href="/about/contact"
               className="text-gray-700 hover:text-blue-600 transition"
             >
               Bog'lanish
