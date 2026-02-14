@@ -12,9 +12,8 @@ import {
   AlertCircle,
   Loader2,
 } from "lucide-react";
-import Header from "@/components/ui/header";
-import Footer from "@/components/ui/footer";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 
 const intentions = [
   { value: "malumot_ber", label: "Ma'lumot olish" },
@@ -35,7 +34,7 @@ export default function Register() {
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState("");
   const router = useRouter();
-
+  
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
@@ -73,10 +72,13 @@ export default function Register() {
       setSuccess(true);
       setFormData({ full_name: "", number: "", intention: "" });
 
-      setTimeout(() => {
-        setSuccess(false);
-        router.push("/country");
-      }, 6000);
+      useEffect(() => {
+        const timer = setTimeout(() => {
+          router.push("/country");
+        }, 6000);
+
+        return () => clearTimeout(timer);
+      }, [router]);
     } catch (err: any) {
       console.error("Error:", err);
       setError(err.message || "Xatolik yuz berdi. Qaytadan urinib ko'ring.");
@@ -179,7 +181,7 @@ export default function Register() {
             </div>
 
             {error && (
-              <div className="bg-red-50 border-l-4 border-red-500 p-4 rounded-r-xl flex items-start gap-3 animate-fade-in" >
+              <div className="bg-red-50 border-l-4 border-red-500 p-4 rounded-r-xl flex items-start gap-3 animate-fade-in">
                 <AlertCircle className="w-5 h-5 text-red-500 mt-0.5 shrink-0" />
                 <p className="text-red-700 text-sm">{error}</p>
               </div>
