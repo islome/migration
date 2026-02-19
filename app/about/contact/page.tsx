@@ -24,7 +24,7 @@ export default function ContactPage() {
       label: "Telefon",
       value: "+998 77 767 00 17",
       link: "tel:+998777670017",
-      color: "bg-blue-50 text-blue-600",
+      color: "bg-green-50 text-green-600",
     },
     {
       icon: <Mail className="w-6 h-6" />,
@@ -45,7 +45,7 @@ export default function ContactPage() {
       label: "Veb-sayt",
       value: "www.bestglobilizenam.uz",
       link: "https://www.bestglobalizenam.uz",
-      color: "bg-green-50 text-green-600",
+      color: "bg-blue-50 text-blue-600",
     },
   ];
 
