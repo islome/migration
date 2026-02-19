@@ -90,6 +90,15 @@ export default function Footer() {
             <div>
               <h4 className="text-white font-semibold mb-4">Bog'lanish</h4>
               <ul className="space-y-2">
+                <li className="flex items-center gap-2 ml-2">
+                  <UserRoundSearchIcon className="w-4 h-4" />
+                  <Link
+                    href="/about/contact"
+                    className="hover:text-blue-400 transition"
+                  >
+                    Aloqa
+                  </Link>
+                </li>
                 <li className="flex items-center gap-2">
                   <a
                     href={phoneLink}
@@ -107,15 +116,6 @@ export default function Footer() {
                   ></a>
                   <Mail className="w-4 h-4" />
                   bestglobalizenam@gmail.uz
-                </li>
-                <li className="flex items-center gap-2">
-                  <UserRoundSearchIcon className="w-4 h-4" />
-                  <Link
-                    href="/about/contact"
-                    className="hover:text-blue-400 transition"
-                  >
-                    Aloqa
-                  </Link>
                 </li>
               </ul>
             </div>
