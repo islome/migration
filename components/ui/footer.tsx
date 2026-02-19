@@ -1,4 +1,4 @@
-import { Factory, Mail, Phone } from "lucide-react";
+import { Factory, Mail, Phone, UserRoundSearchIcon } from "lucide-react";
 import Link from "next/link";
 import React from "react";
 
@@ -64,7 +64,10 @@ export default function Footer() {
                   </Link>
                 </li>
                 <li>
-                  <Link href="/about" className="hover:text-blue-400 transition">
+                  <Link
+                    href="/about"
+                    className="hover:text-blue-400 transition"
+                  >
                     Developer
                   </Link>
                 </li>
@@ -104,6 +107,15 @@ export default function Footer() {
                   ></a>
                   <Mail className="w-4 h-4" />
                   bestglobalizenam@gmail.uz
+                </li>
+                <li className="flex items-center gap-2">
+                  <UserRoundSearchIcon className="w-4 h-4" />
+                  <Link
+                    href="/about/contact"
+                    className="hover:text-blue-400 transition"
+                  >
+                    Aloqa
+                  </Link>
                 </li>
               </ul>
             </div>
