@@ -14,31 +14,26 @@ export default function Header() {
       <header className="bg-white/80 backdrop-blur-md shadow-sm fixed left-0 w-full top-0 z-50">
         <nav className="container mx-auto px-4 py-4 flex justify-between items-center">
           <div
-            className="group relative flex items-center"
+            className="group flex items-center gap-3 relative"
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
           >
             <div
-              className={
-                "hidden md:flex absolute left-0 top-1/2 -translate-y-1/2 items-center gap-3 " +
-                "transition-all duration-300 ease-out " +
-                (isHovered
+              className={cn(
+                "flex items-center gap-2 transition-all duration-300",
+                isHovered
                   ? "opacity-100 translate-x-0"
-                  : "opacity-0 -translate-x-5 pointer-events-none")
-              }
+                  : "opacity-0 -translate-x-10 pointer-events-none",
+              )}
             >
-              <Link href="/admin" className="flex items-center gap-3">
-                <ShieldCheckIcon
-                  className={
-                    "w-6 h-6 text-green-600 transition-transform duration-300 " +
-                    (isHovered ? "scale-110" : "scale-100")
-                  }
-                />
-                <Separator
-                  orientation="vertical"
-                  className="h-5 bg-gray-300/70"
-                />
-              </Link>
+              <ShieldCheckIcon
+                className="-ml-1 text-green-500  hidden md:block"
+                aria-label="admin-panel"
+              />
+              <Separator
+                orientation="vertical"
+                className="h-5 bg-gray-300/80"
+              />
             </div>
 
             <div className="flex items-center gap-3">
