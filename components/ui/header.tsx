@@ -1,18 +1,46 @@
-import { Factory } from "lucide-react";
+"use client";
+import { cn } from "@/lib/utils";
+import { Factory, ShieldCheckIcon } from "lucide-react";
 import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
+import { Separator } from "./separator";
 
 export default function Header() {
   const telegramLink = "https://t.me/BestGlobalizeNamangan";
+  const [isHovered, setIsHovered] = useState(false);
+
   return (
     <div>
       <header className="bg-white/80 backdrop-blur-md shadow-sm fixed left-0 w-full top-0 z-50">
         <nav className="container mx-auto px-4 py-4 flex justify-between items-center">
-          <div className="flex items-center space-x-2">
-            <Factory className="w-8 h-8 text-black hidden md:block" />
-            <span className="text-xl md:text-2xl font-bold bg-black bg-clip-text text-transparent">
-              Best Globalize
-            </span>
+          <div
+            className="group flex items-center gap-3 relative"
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
+          >
+            <div
+              className={cn(
+                "flex items-center gap-2 transition-all duration-300",
+                isHovered
+                  ? "opacity-100 translate-x-0"
+                  : "opacity-0 -translate-x-10 pointer-events-none",
+              )}
+            >
+              <Link href={"/admin"}>
+                <ShieldCheckIcon className="-ml-1 text-green-500 transition-transform duration-300 group-hover:scale-110" />
+              </Link>
+              <Separator
+                orientation="vertical"
+                className="h-5 bg-gray-300/80"
+              />
+            </div>
+
+            <div className="flex items-center gap-2.5">
+              <Factory className="w-7 h-7 md:w-8 md:h-8 text-black hidden md:block" />
+              <span className="text-xl md:text-2xl font-extrabold bg-linear-to-r from-gray-900 via-black to-gray-800 bg-clip-text text-transparent tracking-tight">
+                <Link href="/">Best Globalize</Link>
+              </span>
+            </div>
           </div>
 
           <div className="hidden md:flex space-x-8">
