@@ -24,7 +24,7 @@ export default function Header() {
                 "transition-all duration-300 ease-out " +
                 (isHovered
                   ? "opacity-100 translate-x-0"
-                  : "opacity-0 -translate-x-20 pointer-events-none")
+                  : "opacity-0 -translate-x-5 pointer-events-none")
               }
             >
               <Link href="/admin" className="flex items-center gap-3">
