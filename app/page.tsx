@@ -33,7 +33,7 @@ export default function Home() {
         <div className="max-w-4xl mx-auto mt-2 text-center">
           <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
             Qonuniy yo'l bilan <br />
-            <span className="bg-linear-to-r from-blue-600 via-blue-700 to-purple-600 bg-clip-text text-transparent">
+            <span className="bg-linear-to-r from-[#14202e] to-[#2d4356] bg-clip-text text-transparent">
               Chet elga ishga
             </span>
           </h1>

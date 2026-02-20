@@ -1,4 +1,4 @@
-import { Factory } from "lucide-react";
+import { Factory, ShieldCheckIcon } from "lucide-react";
 import Link from "next/link";
 import React from "react";
 
@@ -8,11 +8,18 @@ export default function Header() {
     <div>
       <header className="bg-white/80 backdrop-blur-md shadow-sm fixed left-0 w-full top-0 z-50">
         <nav className="container mx-auto px-4 py-4 flex justify-between items-center">
-          <div className="flex items-center space-x-2">
+          <div className="flex items-center space-x-2 group">
             <Factory className="w-8 h-8 text-black hidden md:block" />
             <span className="text-xl md:text-2xl font-bold bg-black bg-clip-text text-transparent">
-              Best Globalize
+              <Link href={"/"}>Best Globalize</Link>
             </span>
+            <Link
+              href="/admin"
+              className="hidden md:flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 ml-1"
+              title="Admin panel"
+            >
+              <ShieldCheckIcon className="w-4 h-4 text-gray-400 hover:text-blue-600 transition-colors duration-200 hover:scale-130" />
+            </Link>
           </div>
 
           <div className="hidden md:flex space-x-8">
