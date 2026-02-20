@@ -14,12 +14,12 @@ import {
 } from "lucide-react";
 
 const intentions = [
-  { value: "malumot_ber", label: "Ma'lumot olish" },
-  { value: "konsultatsiya", label: "Konsultatsiyaga yozilish" },
-  { value: "aloqa", label: "Aloqaga chiqish" },
-  { value: "viza_yordam", label: "Viza olishda yordam" },
-  { value: "ish_topish", label: "Ish topishda yordam" },
-  { value: "boshqa", label: "Boshqa" },
+  { value: "Malumot berish", label: "Ma'lumot olish" },
+  { value: "Konsultatsiya", label: "Konsultatsiyaga yozilish" },
+  { value: "Aloqaga chiqish", label: "Aloqaga chiqish" },
+  { value: "Vizaga yordam", label: "Viza olishda yordam" },
+  { value: "Ish topish", label: "Ish topishda yordam" },
+  { value: "Boshqa", label: "Boshqa" },
 ];
 
 export default function Register() {
