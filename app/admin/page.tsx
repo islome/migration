@@ -997,7 +997,7 @@ export default function AdminPage() {
 
                           <td className="px-4 py-4">
                             {user.intention ? (
-                              <span className="inline-flex items-center gap-1.5 bg-purple-50 border border-purple-200 text-purple-600 text-xs px-2.5 py-1 rounded-full">
+                              <span className="inline-flex items-center gap-1.5 bg-blue-50 border border-blue-200 text-blue-600 text-xs px-2.5 py-1 rounded-full">
                                 <Target className="w-3 h-3" />
                                 {user.intention}
                               </span>
