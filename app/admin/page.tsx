@@ -658,7 +658,7 @@ export default function AdminPage() {
 
                           <td className="px-5 py-4">
                             <div className="flex items-center gap-3">
-                              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#89aac3]/30 to-[#6b8fa8]/20 border border-[#89aac3]/20 flex items-center justify-center shrink-0 text-xs font-semibold text-[#4a7a9b]">
+                              <div className="w-8 h-8 rounded-lg bg-[#6b8fa8]/20 border border-[#89aac3]/20 flex items-center justify-center shrink-0 text-xs font-semibold text-[#4a7a9b]">
                                 {user.full_name?.charAt(0)?.toUpperCase() ||
                                   "?"}
                               </div>
