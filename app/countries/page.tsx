@@ -62,12 +62,12 @@ export default function CountriesPage() {
         </nav>
       </header>
 
-      <section className="bg-linear-to-br from-[#89aac3] to-[#6f93b0] text-white py-20">
+      <section className="bg-white text-black py-20">
         <div className="container mx-auto px-4 text-center">
           <h1 className="text-5xl font-bold mb-6">
             Ish Topish Uchun Eng Yaxshi Davlatlar
           </h1>
-          <p className="text-xl text-blue-100 max-w-3xl mx-auto mb-8">
+          <p className="text-xl text-gray-500 max-w-3xl mx-auto mb-8">
             Dunyoning turli burchaklarida qonuniy ish topish va yashash
             imkoniyati. Har bir davlat haqida batafsil ma'lumot va professional
             yordam.
@@ -76,15 +76,15 @@ export default function CountriesPage() {
           <div className="flex flex-wrap justify-center gap-4 mt-8">
             <div className="bg-white/20 backdrop-blur-sm rounded-lg px-6 py-3">
               <p className="text-3xl font-bold">{countries.length}+</p>
-              <p className="text-blue-100">Davlatlar</p>
+              <p className="text-black">Davlatlar</p>
             </div>
             <div className="bg-white/20 backdrop-blur-sm rounded-lg px-6 py-3">
               <p className="text-3xl font-bold">1000+</p>
-              <p className="text-blue-100">Muvaffaqiyatli mijozlar</p>
+              <p className="text-black">Muvaffaqiyatli mijozlar</p>
             </div>
             <div className="bg-white/20 backdrop-blur-sm rounded-lg px-6 py-3">
               <p className="text-3xl font-bold">95%+</p>
-              <p className="text-blue-100">Viza olish darajasi</p>
+              <p className="text-black">Viza olish darajasi</p>
             </div>
           </div>
         </div>
@@ -177,12 +177,12 @@ export default function CountriesPage() {
         </div>
       </section>
 
-      <section className="bg-linear-to-br from-[#89aac3] to-[#6f93b0] py-16">
+      <section className="bg-white py-16">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-4xl font-bold text-white mb-6">
+          <h2 className="text-4xl font-bold text-black mb-6">
             Qaysi davlat sizga mos kelishini bilmayapsizmi?
           </h2>
-          <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
+          <p className="text-xl text-gray-500 mb-8 max-w-2xl mx-auto">
             Mutaxassislarimiz sizga eng mos davlatni tanlashda va barcha
             jarayonlarda yordam beradi.
           </p>
@@ -191,14 +191,14 @@ export default function CountriesPage() {
               href={telegramLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="border-2 border-white text-white px-8 py-4 rounded-xl hover:bg-white/10 transition-all duration-300 flex items-center gap-2 text-lg font-semibold justify-center"
+              className="bg-[#2d4356] text-white px-8 py-4 rounded-xl hover:bg-white/10 transition-all duration-300 flex items-center gap-2 text-lg font-semibold justify-center"
             >
               <MessageCircle className="w-5 h-5" />
               Telegramda yozish
             </a>
             <Link
               href="/register"
-              className="border-2 border-white text-white px-8 py-4 rounded-xl hover:bg-white/10 transition-all duration-300 flex items-center gap-2 text-lg font-semibold justify-center"
+              className="bg-[#2d4356] text-white px-8 py-4 rounded-xl hover:bg-white/10 transition-all duration-300 flex items-center gap-2 text-lg font-semibold justify-center"
             >
               <UserRoundCheck className="w-5 h-5" />
               Ma'lumot qoldirish

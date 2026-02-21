@@ -13,17 +13,17 @@ export default function Footer() {
   const phoneNumber = "+998 77 767 00 17";
   return (
     <div>
-      <footer className="bg-gray-900 text-gray-300 py-12">
+      <footer className="bg-linear-to-br from-[#89aac3] to-[#6f93b0] text-white py-12">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
             <div>
               <div className="flex items-center space-x-2 mb-4">
-                <Factory className="w-8 h-8 text-white" />
-                <span className="text-xl font-bold text-white">
+                <Factory className="w-8 h-8 text-black" />
+                <span className="text-xl font-bold text-black">
                   Best Globalize
                 </span>
               </div>
-              <p className="text-gray-400">
+              <p className="text-gray-500">
                 Xalqaro mehnat bozorida ishonchli hamkoringiz
               </p>
             </div>
