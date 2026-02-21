@@ -19,7 +19,6 @@ import {
   PlaneTakeoff,
   PlayCircle,
 } from "lucide-react";
-import Link from "next/link";
 
 export default function Home() {
   const telegramLink = "https://t.me/BestGlobalizeNamangan";

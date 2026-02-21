@@ -1,8 +1,8 @@
 import {
   Factory,
   Mail,
-  Paperclip,
   Phone,
+  UserRoundCheck,
   UserRoundSearchIcon,
 } from "lucide-react";
 import Link from "next/link";
@@ -105,7 +105,7 @@ export default function Footer() {
                   </Link>
                 </li>
                 <li className="flex items-center gap-2 ml-2">
-                  <Paperclip className="w-4 h-4" />
+                  <UserRoundCheck className="w-4 h-4" />
                   <Link
                     href="/register"
                     className="hover:text-blue-400 transition"
