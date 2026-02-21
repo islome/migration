@@ -115,7 +115,7 @@ export default function FAQPage() {
         {!loading && !error && (
           <>
             {/* Category tabs */}
-            <div className="flex flex-wrap gap-2 mb-8">
+            <div className="flex flex-wrap gap-2 mb-8 animate-div">
               {categories.map((cat) => (
                 <button
                   key={cat.id}
@@ -140,7 +140,7 @@ export default function FAQPage() {
 
             {/* Accordion */}
             {currentFAQs.length > 0 ? (
-              <div className="bg-white rounded-2xl border border-gray-200 overflow-hidden">
+              <div className="bg-white rounded-2xl border border-gray-200 overflow-hidden animate-div">
                 <Accordion
                   type="single"
                   collapsible
@@ -173,7 +173,7 @@ export default function FAQPage() {
             )}
 
             {/* CTA */}
-            <div className="mt-8 bg-blue-50 border border-blue-100 rounded-2xl p-6 flex items-center justify-between gap-4">
+            <div className="mt-8 bg-blue-50 border border-blue-100 rounded-2xl p-6 flex items-center justify-between gap-4 animate-div">
               <div className="flex items-start gap-3">
                 <MessageCircle
                   size={20}

@@ -356,7 +356,7 @@ export default function FAQAdminPage() {
               {categories.length} ta kategoriya · {items.length} ta savol-javob
             </p>
           </div>
-          <div className="flex gap-2">
+          <div className="flex gap-2 animate-div">
             <button
               onClick={() => setCategoryModal("new")}
               className="flex items-center gap-2 border border-gray-200 bg-white text-gray-700 text-sm font-medium px-4 py-2.5 rounded-xl hover:bg-gray-50 transition-colors"
@@ -394,7 +394,7 @@ export default function FAQAdminPage() {
               return (
                 <div
                   key={cat.id}
-                  className="bg-white rounded-2xl border border-gray-200 overflow-hidden"
+                  className="bg-white rounded-2xl border border-gray-200 overflow-hidden animate-div"
                 >
                   {/* Category row */}
                   <div className="flex items-center gap-3 px-5 py-4">
