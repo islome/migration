@@ -64,7 +64,7 @@ export default function Footer() {
               <h4 className="text-white font-semibold mb-4">Yordam</h4>
               <ul className="space-y-2">
                 <li>
-                  <Link href="#" className="hover:text-gray-600 transition">
+                  <Link href="/about/faq" className="hover:text-gray-600 transition">
                     FAQ
                   </Link>
                 </li>
