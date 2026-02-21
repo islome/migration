@@ -74,15 +74,15 @@ export default function CountriesPage() {
           </p>
 
           <div className="flex flex-wrap justify-center gap-4 mt-8">
-            <div className="bg-white/20 backdrop-blur-sm rounded-lg px-6 py-3">
+            <div className="bg-white/50 backdrop-blur-sm rounded-lg px-6 py-3">
               <p className="text-3xl font-bold">{countries.length}+</p>
               <p className="text-black">Davlatlar</p>
             </div>
-            <div className="bg-white/20 backdrop-blur-sm rounded-lg px-6 py-3">
+            <div className="bg-white/50 backdrop-blur-sm rounded-lg px-6 py-3">
               <p className="text-3xl font-bold">1000+</p>
               <p className="text-black">Muvaffaqiyatli mijozlar</p>
             </div>
-            <div className="bg-white/20 backdrop-blur-sm rounded-lg px-6 py-3">
+            <div className="bg-white/50 backdrop-blur-sm rounded-lg px-6 py-3">
               <p className="text-3xl font-bold">95%+</p>
               <p className="text-black">Viza olish darajasi</p>
             </div>
@@ -91,7 +91,7 @@ export default function CountriesPage() {
       </section>
 
       {/* Countries Grid */}
-      <section className="container mx-auto px-4 py-20">
+      <section className="container bg-white mx-auto px-4 py-20">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {countries.map((country) => (
             <div
