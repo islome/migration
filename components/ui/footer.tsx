@@ -1,6 +1,11 @@
-import { Factory, Mail, Phone, UserRoundSearchIcon } from "lucide-react";
+import {
+  Factory,
+  Mail,
+  Paperclip,
+  Phone,
+  UserRoundSearchIcon,
+} from "lucide-react";
 import Link from "next/link";
-import React from "react";
 
 export default function Footer() {
   const telegramLink = "https://t.me/BestGlobalizeNamangan";
@@ -97,6 +102,15 @@ export default function Footer() {
                     className="hover:text-blue-400 transition"
                   >
                     Aloqa
+                  </Link>
+                </li>
+                <li className="flex items-center gap-2 ml-2">
+                  <Paperclip className="w-4 h-4" />
+                  <Link
+                    href="/register"
+                    className="hover:text-blue-400 transition"
+                  >
+                    Ma'lumot qoldirish
                   </Link>
                 </li>
                 <li className="flex items-center gap-2">
