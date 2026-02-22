@@ -175,14 +175,14 @@ export default function Register() {
               <div className="h-px bg-gray-100" />
 
               {error && (
-                <div className="flex items-start gap-3 bg-red-50 border border-red-100 text-red-700 text-sm rounded-xl px-4 py-3">
+                <div className="flex items-start gap-3 bg-red-50 border border-red-100 text-red-700 text-sm rounded-xl px-4 py-3 animate-in">
                   <AlertCircle className="w-4 h-4 mt-0.5 shrink-0 text-red-500" />
                   <p>{error}</p>
                 </div>
               )}
 
               {success && (
-                <div className="flex items-start gap-3 bg-green-50 border border-green-100 rounded-xl px-4 py-3">
+                <div className="flex items-start gap-3 bg-green-50 border border-green-100 rounded-xl px-4 py-3 animate-in">
                   <CheckCircle className="w-4 h-4 text-green-500 mt-0.5 shrink-0" />
                   <div>
                     <p className="text-green-700 font-semibold text-sm">
