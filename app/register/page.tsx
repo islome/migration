@@ -90,7 +90,7 @@ export default function Register() {
             </p>
           </div>
 
-          <div className="bg-white rounded-2xl border border-gray-200 shadow-sm p-8">
+          <div className="bg-white rounded-2xl border border-gray-200 shadow-sm p-8 animate-div">
             <form onSubmit={handleSubmit} className="space-y-5">
               <div>
                 <label
@@ -108,7 +108,7 @@ export default function Register() {
                     onChange={(e) =>
                       setFormData({ ...formData, full_name: e.target.value })
                     }
-                    className="w-full pl-11 pr-4 py-3 border border-gray-200 rounded-xl text-sm text-gray-800 placeholder:text-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                    className="w-full pl-11 pr-4 py-3 border border-gray-200 rounded-xl text-sm text-gray-800 placeholder:text-gray-300 focus:outline-none focus:ring-2 focus:ring-[#6f93b0] focus:border-transparent transition-all"
                     placeholder="Ism Familiya"
                     required
                   />
@@ -137,7 +137,7 @@ export default function Register() {
                         .slice(0, 9);
                       setFormData({ ...formData, number: digits });
                     }}
-                    className="w-full pl-24 pr-4 py-3 border border-gray-200 rounded-xl text-sm text-gray-800 placeholder:text-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                    className="w-full pl-24 pr-4 py-3 border border-gray-200 rounded-xl text-sm text-gray-800 placeholder:text-gray-300 focus:outline-none focus:ring-2 focus:ring-[#6f93b0] focus:border-transparent transition-all"
                     placeholder="90 123 45 67"
                     required
                   />
@@ -159,7 +159,7 @@ export default function Register() {
                     onChange={(e) =>
                       setFormData({ ...formData, intention: e.target.value })
                     }
-                    className="w-full pl-11 pr-4 py-3 border border-gray-200 rounded-xl text-sm text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all appearance-none bg-white"
+                    className="w-full pl-11 pr-4 py-3 border border-gray-200 rounded-xl text-sm text-gray-800 focus:outline-none focus:ring-2 focus:ring-[#6f93b0] focus:border-transparent transition-all appearance-none bg-white"
                     required
                   >
                     <option value="">Tanlang...</option>
@@ -198,7 +198,7 @@ export default function Register() {
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full bg-linear-to-br from-[#89aac3] to-[#6f93b0] hover:bg-[#1e2f3d] text-gray-600 py-3.5 rounded-xl text-sm font-semibold flex items-center justify-center gap-2.5 transition-all duration-200 group disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full bg-linear-to-br from-[#89aac3] to-[#6f93b0] hover:bg-[#1e2f3d] text-white py-3.5 rounded-xl text-sm font-black flex items-center justify-center gap-2.5 transition-all duration-200 group disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {loading ? (
                   <>
@@ -215,13 +215,6 @@ export default function Register() {
             </form>
           </div>
 
-          <div className="flex items-center justify-center gap-6 mt-5">
-            {["🔒 Xavfsiz", "⚡ Tez javob", "✅ Bepul"].map((badge) => (
-              <span key={badge} className="text-xs text-gray-400">
-                {badge}
-              </span>
-            ))}
-          </div>
         </div>
       </div>
       <Footer />
