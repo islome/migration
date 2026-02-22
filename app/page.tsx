@@ -26,25 +26,51 @@ export default function Home() {
   const phoneLink = "tel:+998777670017";
   const phoneNumber = "+998 77 767 00 17";
   return (
-    <div className="min-h-screen bg-linear-to-br from-slate-50 to-blue-50 overflow-hidden">
+    <div className="min-h-screen bg-white overflow-hidden">
       <Header />
 
       <section className="container mx-auto px-6 py-20 md:py-28">
         <div className="max-w-4xl mx-auto mt-2 text-center">
           <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
-            Qonuniy yo'l bilan <br />
-            <span className="bg-linear-to-r from-[#14202e] to-[#2d4356] bg-clip-text text-transparent">
+            <span
+              className="block"
+              style={{
+                animation:
+                  "fadeSlideUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.1s both",
+              }}
+            >
+              Qonuniy yo'l bilan
+            </span>
+            <span
+              className="block bg-linear-to-r from-[#14202e] to-[#2d4356] bg-clip-text text-transparent"
+              style={{
+                animation:
+                  "fadeSlideUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.1s both",
+              }}
+            >
               Chet elga ishga
             </span>
           </h1>
 
-          <p className="text-xl text-gray-600 mb-10 max-w-2xl mx-auto">
+          <p
+            className="text-xl text-gray-600 mb-10 max-w-2xl mx-auto"
+            style={{
+              animation:
+                "fadeSlideUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.3s both",
+            }}
+          >
             Xalqaro mehnat bozorida ish topish va barcha rasmiy hujjatlarni
             tayyorlashda professional yordam. Sizning orzuingizdagi davlatda
             ishlash imkoniyati.
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+          <div
+            className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+            style={{
+              animation:
+                "fadeSlideUp 1s cubic-bezier(0.22, 1, 0.36, 1) 1s both",
+            }}
+          >
             <a
               href="/countries"
               className="bg-linear-to-r from-blue-600 to-blue-700 text-white px-8 py-4 rounded-xl hover:shadow-xl transition-all duration-300 hover:scale-105 flex items-center gap-2 text-lg font-semibold"
@@ -55,6 +81,7 @@ export default function Home() {
             <a
               href={telegramLink}
               target="_blank"
+              rel="noopener noreferrer"
               className="border-2 border-blue-600 text-blue-600 px-8 py-4 rounded-xl hover:bg-blue-50 transition-all duration-300 flex items-center gap-2 text-lg font-semibold"
             >
               <MessageCircle className="w-5 h-5" />
@@ -62,6 +89,19 @@ export default function Home() {
             </a>
           </div>
         </div>
+
+        <style>{`
+        @keyframes fadeSlideUp {
+          from {
+            opacity: 0;
+            transform: translateY(28px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+      `}</style>
       </section>
 
       <section className="bg-white py-16">
