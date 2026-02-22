@@ -251,7 +251,7 @@ function StepCard({ step, index }: { step: (typeof steps)[0]; index: number }) {
           className="w-full flex items-center gap-4 p-6 text-left"
         >
           {/* Step number */}
-          <span className="text-3xl font-black text-gray-100 shrink-0 w-10 leading-none">
+          <span className="text-3xl font-black text-gray-500 shrink-0 w-10 leading-none">
             {step.number}
           </span>
 

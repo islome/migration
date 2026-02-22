@@ -16,7 +16,7 @@ import Footer from "@/components/ui/footer";
 export default function CountriesPage() {
   const telegramLink = "https://t.me/BestGlobalizeNamangan";
   return (
-    <div className="min-h-screen bg-linear-to-br from-slate-50 to-blue-50">
+    <div className="min-h-screen bg-white">
       <header className="bg-white/80 backdrop-blur-md shadow-sm sticky top-0 z-50">
         <nav className="container mx-auto px-4 py-4 flex justify-between items-center">
           <Link href="/" className="flex items-center space-x-2">
@@ -74,15 +74,15 @@ export default function CountriesPage() {
           </p>
 
           <div className="flex flex-wrap justify-center gap-4 mt-8">
-            <div className="bg-white/50 backdrop-blur-sm rounded-lg px-6 py-3">
+            <div className="bg-gray-300 backdrop-blur-sm rounded-lg px-6 py-3">
               <p className="text-3xl font-bold">{countries.length}+</p>
               <p className="text-black">Davlatlar</p>
             </div>
-            <div className="bg-white/50 backdrop-blur-sm rounded-lg px-6 py-3">
+            <div className="bg-gray-300 backdrop-blur-sm rounded-lg px-6 py-3">
               <p className="text-3xl font-bold">1000+</p>
               <p className="text-black">Muvaffaqiyatli mijozlar</p>
             </div>
-            <div className="bg-white/50 backdrop-blur-sm rounded-lg px-6 py-3">
+            <div className="bg-gray-300 backdrop-blur-sm rounded-lg px-6 py-3">
               <p className="text-3xl font-bold">95%+</p>
               <p className="text-black">Viza olish darajasi</p>
             </div>
@@ -191,14 +191,14 @@ export default function CountriesPage() {
               href={telegramLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-[#2d4356] text-white px-8 py-4 rounded-xl hover:bg-white/10 transition-all duration-300 flex items-center gap-2 text-lg font-semibold justify-center"
+              className="bg-linear-to-br from-[#89aac3] to-[#6f93b0] text-white px-8 py-4 rounded-xl hover:bg-white/10 transition-all duration-300 flex items-center gap-2 text-lg font-semibold justify-center"
             >
               <MessageCircle className="w-5 h-5" />
               Telegramda yozish
             </a>
             <Link
               href="/register"
-              className="bg-[#2d4356] text-white px-8 py-4 rounded-xl hover:bg-white/10 transition-all duration-300 flex items-center gap-2 text-lg font-semibold justify-center"
+              className="bg-linear-to-br from-[#89aac3] to-[#6f93b0] text-white px-8 py-4 rounded-xl hover:bg-white/10 transition-all duration-300 flex items-center gap-2 text-lg font-semibold justify-center"
             >
               <UserRoundCheck className="w-5 h-5" />
               Ma'lumot qoldirish
