@@ -19,6 +19,7 @@ import {
   PlaneTakeoff,
   PlayCircle,
 } from "lucide-react";
+import Image from "next/image";
 
 export default function Home() {
   const telegramLink = "https://t.me/BestGlobalizeNamangan";
@@ -374,25 +375,40 @@ export default function Home() {
                   Ijtimoiy tarmoqlar
                 </h4>
                 <div className="flex gap-4">
-                  <a
-                    href={telegramLink}
-                    className="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center text-white hover:bg-blue-700 transition"
-                  >
-                    <MessageCircle className="w-6 h-6" />
-                  </a>
-                  <a
-                    href={phoneLink}
-                    className="w-12 h-12 bg-blue-500 rounded-lg flex items-center justify-center text-white hover:bg-blue-600 transition"
-                  >
-                    <Phone className="w-6 h-6" />
-                  </a>
-                  <a
-                    href="bestglobalizenamangan@mail.uz"
-                    className="w-12 h-12 bg-red-600 rounded-lg flex items-center justify-center text-white hover:bg-red-700 transition"
-                  >
-                    <Mail className="w-6 h-6" />
-                  </a>
-                </div>
+                      <a
+                        href=""
+                        className="w-12 h-12 rounded-lg flex items-center justify-center text-white hover:bg-blue-200 transition"
+                      >
+                        <Image
+                          src="/icons/telegram.svg"
+                          width={30}
+                          height={30}
+                          alt="Telegram"
+                        />
+                      </a>
+                      <a
+                        href=""
+                        className="w-12 h-12 rounded-lg flex items-center justify-center text-white hover:bg-green-200 transition"
+                      >
+                        <Image
+                          src="/icons/phone-call.svg"
+                          width={30}
+                          height={30}
+                          alt="Phone"
+                        />
+                      </a>
+                      <a
+                        href="bestglobalizenamangan@mail.uz"
+                        className="w-12 h-12 rounded-lg flex items-center justify-center text-white hover:bg-red-200 transition"
+                      >
+                        <Image
+                          src="/icons/instagram.svg"
+                          width={30}
+                          height={30}
+                          alt="Telegram"
+                        />
+                      </a>
+                    </div>
               </div>
             </div>
           </div>
