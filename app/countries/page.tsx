@@ -37,7 +37,7 @@ export default function CountriesPage() {
               Davlatlar
             </Link>
             <Link
-              href="#services"
+              href="/about/services"
               className="text-gray-700 hover:text-blue-600 transition"
             >
               Xizmatlar

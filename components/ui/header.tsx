@@ -30,13 +30,13 @@ export default function Header() {
               Davlatlar
             </Link>
             <Link
-              href="#services"
+              href="/about/services"
               className="text-gray-700 hover:text-blue-600 transition"
             >
               Xizmatlar
             </Link>
             <Link
-              href="#guide"
+              href="/about/guide"
               className="text-gray-700 hover:text-blue-600 transition"
             >
               Qo'llanma
