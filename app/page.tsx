@@ -26,10 +26,10 @@ export default function Home() {
   const phoneLink = "tel:+998777670017";
   const phoneNumber = "+998 77 767 00 17";
   return (
-    <div className="min-h-screen bg-white overflow-hidden">
+    <div className="min-h-screen bg-white overflow-hidden pt-10">
       <Header />
 
-      <section className="container mx-auto px-6 py-20 md:py-28">
+      <section className="container mx-auto px-6 py-20 md:py-28 mt-20">
         <div className="max-w-4xl mx-auto mt-2 text-center">
           <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
             <span
@@ -48,7 +48,7 @@ export default function Home() {
                   "fadeSlideUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.1s both",
               }}
             >
-              Chet elga ishga
+              <span className="text-green-500">Chet el</span>ga ishga
             </span>
           </h1>
 
@@ -155,7 +155,19 @@ export default function Home() {
         <Country />
       </section>
 
-      <section className="bg-linear-to-br from-[#89aac3] to-[#6f93b0] text-white py-20">
+      <section className="bg-linear-to-br from-[#89aac3] to-[#6f93b0] text-white relative py-20">
+        <div className="absolute top-0 left-0 w-full overflow-hidden leading-none rotate-180">
+          <svg
+            viewBox="0 0 1200 120"
+            preserveAspectRatio="none"
+            className="w-full h-16"
+          >
+            <path
+              d="M0,60 C300,120 900,0 1200,60 L1200,120 L0,120 Z"
+              fill="white"
+            />
+          </svg>
+        </div>
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold mb-4">
@@ -165,7 +177,18 @@ export default function Home() {
               4 ta oddiy qadam orqali maqsadingizga erishing
             </p>
           </div>
-
+          <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-none">
+            <svg
+              viewBox="0 0 1200 120"
+              preserveAspectRatio="none"
+              className="w-full h-16"
+            >
+              <path
+                d="M0,60 C300,120 900,0 1200,60 L1200,120 L0,120 Z"
+                fill="white"
+              />
+            </svg>
+          </div>
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8 relative">
             <div
               className="hidden md:block absolute top-10 left-0 right-0 h-0.5 bg-white/30"
