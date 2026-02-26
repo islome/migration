@@ -169,24 +169,21 @@ export default function AdminPage() {
     setLoginLoading(true);
     setLoginError("");
 
-    const { data, error } = await supabase
-      .from("admin")
-      .select("id")
-      .eq("username", username)
-      .eq("password", password)
-      .single();
+    const { data, error } = await supabase.rpc("admin_login", {
+      p_username: username,
+      p_password: password,
+    });
 
-    if (error || !data) {
+    if (error || !data || data.length === 0) {
       setLoginError("Username yoki parol noto'g'ri");
       setLoginLoading(false);
       return;
     }
 
-    setAdminUsername(username);
+    setAdminUsername(data[0].username);
     setIsLoggedIn(true);
     setLoginLoading(false);
   };
-
   // ── Fetch users ──────────────────────────────────────────
   const fetchUsers = async (isRefresh = false) => {
     if (isRefresh) setRefreshing(true);
