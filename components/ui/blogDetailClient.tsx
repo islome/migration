@@ -48,7 +48,7 @@ export default function BlogDetailClient({ blog }: { blog: Blog }) {
               yilda elon qilgan
             </p>
 
-            <p className="text-2xl leading-relaxed text-gray-700">
+            <p className="text-2xl leading-relaxed text-gray-700 whitespace-pre-wrap">
               {blog.description}
             </p>
           </div>

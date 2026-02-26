@@ -61,7 +61,7 @@ export default async function BlogsPage() {
                     <h3 className="text-xl font-bold text-gray-900 mt-3 mb-2">
                       {blog.title}
                     </h3>
-                    <p className="text-gray-600 text-sm line-clamp-3">
+                    <p className="text-gray-600 text-sm line-clamp-3 whitespace-pre-wrap">
                       {truncateWords(blog.description, 25)}{" "}
                     </p>
                     <p className="text-gray-400 text-xs mt-4">
