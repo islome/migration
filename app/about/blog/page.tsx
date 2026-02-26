@@ -1,6 +1,6 @@
 // app/blogs/page.tsx
 import { supabase } from "@/lib/supabase";
-import VideoCard from "@/components/ui/videoCard"; // ← import qo'sh
+import VideoCard from "@/components/ui/videoCard"; 
 import Header from "@/components/ui/header";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
@@ -14,9 +14,9 @@ const categoryConfig = {
   },
 };
 function truncateWords(text: string, wordLimit: number) {
-  const words = text.trim().split(/\s+/);
-  if (words.length <= wordLimit) return text;
-  return words.slice(0, wordLimit).join(" ") + "...";
+  const words = text.trim().split(/\s+/)
+  if (words.length <= wordLimit) return text
+  return words.slice(0, wordLimit).join(" ") + "..."
 }
 async function getBlogs() {
   const { data } = await supabase
@@ -61,7 +61,7 @@ export default async function BlogsPage() {
                     <h3 className="text-xl font-bold text-gray-900 mt-3 mb-2">
                       {blog.title}
                     </h3>
-                    <p className="text-gray-600 text-sm line-clamp-3 whitespace-pre-wrap">
+                    <p className="text-gray-600 text-sm line-clamp-3">
                       {truncateWords(blog.description, 25)}{" "}
                     </p>
                     <p className="text-gray-400 text-xs mt-4">
