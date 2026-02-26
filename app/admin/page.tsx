@@ -170,7 +170,7 @@ export default function AdminPage() {
     setLoginError("");
 
     const { data, error } = await supabase
-      .from("admins")
+      .from("admin")
       .select("id")
       .eq("username", username)
       .eq("password", password)
