@@ -1,6 +1,9 @@
+// app/blogs/page.tsx
 import { supabase } from "@/lib/supabase";
-import VideoCard from "@/components/ui/videoCard"; 
+import VideoCard from "@/components/ui/videoCard"; // ← import qo'sh
 import Header from "@/components/ui/header";
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 
 const categoryConfig = {
   new: { label: "Yangilik", color: "bg-blue-100 text-blue-700" },
@@ -10,7 +13,11 @@ const categoryConfig = {
     color: "bg-green-100 text-green-700",
   },
 };
-
+function truncateWords(text: string, wordLimit: number) {
+  const words = text.trim().split(/\s+/);
+  if (words.length <= wordLimit) return text;
+  return words.slice(0, wordLimit).join(" ") + "...";
+}
 async function getBlogs() {
   const { data } = await supabase
     .from("blogs")
@@ -55,11 +62,18 @@ export default async function BlogsPage() {
                       {blog.title}
                     </h3>
                     <p className="text-gray-600 text-sm line-clamp-3">
-                      {blog.description}
+                      {truncateWords(blog.description, 25)}{" "}
                     </p>
                     <p className="text-gray-400 text-xs mt-4">
                       {new Date(blog.created_at).toLocaleDateString("uz-UZ")}
                     </p>
+                    <Link
+                      href={`/about/blog/${blog.id}`}
+                      className="mt-4 flex items-center gap-2 text-blue-600 font-semibold hover:gap-3 transition-all"
+                    >
+                      Batafsil ko'rish
+                      <ArrowRight className="w-4 h-4" />
+                    </Link>
                   </div>
                 </div>
               );
