@@ -16,6 +16,8 @@ import {
   ChevronRight,
   Hash,
   Logs,
+  PencilIcon,
+  FileQuestion,
 } from "lucide-react";
 
 type Log = {
@@ -108,6 +110,20 @@ export default function LogsPage() {
             >
               <Logs className="w-3.5 h-3.5" />
               Logs
+            </Link>
+             <Link
+              href="/admin/faq"
+              className="flex items-center gap-2 text-sm text-gray-500 hover:text-[#4a7a9b] px-3 py-1.5 rounded-lg hover:bg-[#89aac3]/10 border border-transparent hover:border-[#89aac3]/20 transition"
+            >
+              <FileQuestion className="w-3.5 h-3.5" />
+              FAQs
+            </Link>
+            <Link
+              href="/admin/blogs"
+              className="flex items-center gap-2 text-sm text-gray-500 hover:text-[#4a7a9b] px-3 py-1.5 rounded-lg hover:bg-[#89aac3]/10 border border-transparent hover:border-[#89aac3]/20 transition"
+            >
+              <PencilIcon className="w-3.5 h-3.5" />
+              Blogs
             </Link>
           </div>
           <div className="flex gap-2">

@@ -13,20 +13,20 @@ import {
   PieChart,
   Pie,
   Cell,
-  Legend,
   ResponsiveContainer,
 } from "recharts";
 import {
   Shield,
   BarChart2,
   Users,
-  ArrowLeft,
   Loader2,
   TrendingUp,
   PieChart as PieIcon,
   CheckCircle2,
   Clock,
   Logs,
+  FileQuestion,
+  PencilIcon,
 } from "lucide-react";
 
 type User = {
@@ -58,7 +58,6 @@ const BAR_COLORS = [
   "#5d9ab8",
 ];
 
-// Custom Tooltip for BarChart
 const CustomBarTooltip = ({ active, payload, label }: any) => {
   if (active && payload && payload.length) {
     return (
@@ -74,7 +73,6 @@ const CustomBarTooltip = ({ active, payload, label }: any) => {
   return null;
 };
 
-// Custom Tooltip for PieChart
 const CustomPieTooltip = ({ active, payload }: any) => {
   if (active && payload && payload.length) {
     return (
@@ -94,7 +92,6 @@ const CustomPieTooltip = ({ active, payload }: any) => {
   return null;
 };
 
-// Custom Pie Label
 const renderCustomLabel = ({
   cx,
   cy,
@@ -138,7 +135,6 @@ export default function AnalyticsPage() {
     fetch();
   }, []);
 
-  // Status data
   const total = users.length;
   const kutmoqdaCount = users.filter((u) => u.status === "kutmoqda").length;
   const yakunlanganCount = users.filter(
@@ -160,7 +156,6 @@ export default function AnalyticsPage() {
     },
   ];
 
-  // Intention data
   const intentionData = intentions.map((int, i) => ({
     label: int.label,
     shortLabel:
@@ -173,7 +168,6 @@ export default function AnalyticsPage() {
 
   return (
     <div className="min-h-screen bg-[#f0f5f9]">
-      {/* Header */}
       <header className="bg-white border-b border-gray-200 px-6 py-4 shadow-sm">
         <div className="container mx-auto flex justify-between items-center">
           <div className="flex items-center gap-3">
@@ -188,7 +182,6 @@ export default function AnalyticsPage() {
             </div>
           </div>
 
-          {/* Nav */}
           <div className="flex items-center gap-2">
             <Link
               href="/admin"
@@ -210,6 +203,20 @@ export default function AnalyticsPage() {
             >
               <Logs className="w-3.5 h-3.5" />
               Logs
+            </Link>
+            <Link
+              href="/admin/blogs"
+              className="flex items-center gap-2 text-sm text-[#4a7a9b] bg-[#89aac3]/15 px-3 py-1.5 rounded-lg border border-[#89aac3]/30 transition"
+            >
+              <PencilIcon className="w-3.5 h-3.5" />
+              Blogs
+            </Link>
+            <Link
+              href="/admin/faq"
+              className="flex items-center gap-2 text-sm text-gray-500 hover:text-[#4a7a9b] px-3 py-1.5 rounded-lg hover:bg-[#89aac3]/10 border border-transparent hover:border-[#89aac3]/20 transition"
+            >
+              <FileQuestion className="w-3.5 h-3.5" />
+              FAQs
             </Link>
           </div>
         </div>
