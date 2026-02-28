@@ -65,15 +65,31 @@ export default function CountriesPage() {
       <section className="bg-white text-black py-20">
         <div className="container mx-auto px-4 text-center">
           <h1 className="text-5xl font-bold mb-6">
-            Ish Topish Uchun Eng Yaxshi Davlatlar
+            Ish Topish Uchun{" "}
+            <span
+              style={{
+                animation:
+                  "fadeSlideUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.1s both",
+              }}
+              className="bg-blue-600 bg-clip-text text-transparent"
+            >
+              Eng Yaxshi
+            </span>{" "}
+            Davlatlar
           </h1>
-          <p className="text-xl text-gray-500 max-w-3xl mx-auto mb-8">
-            Dunyoning turli burchaklarida qonuniy ish topish va yashash
-            imkoniyati. Har bir davlat haqida batafsil ma'lumot va professional
-            yordam.
+          <p
+            style={{
+              animation:
+                "fadeSlideUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.3s both",
+            }}
+            className="text-xl text-gray-500 max-w-3xl mx-auto mb-8"
+          >
+            Dunyoning turli burchaklarida <strong>qonuniy ish topish</strong> va{" "}
+            <strong>yashash imkoniyati</strong>. Har bir davlat haqida batafsil
+            ma'lumot va professional yordam.
           </p>
 
-          <div className="flex flex-wrap justify-center gap-4 mt-8">
+          <div className="flex flex-wrap justify-center gap-4 mt-8 animate-div">
             <div className="bg-gray-300 backdrop-blur-sm rounded-lg px-6 py-3">
               <p className="text-3xl font-bold">{countries.length}+</p>
               <p className="text-black">Davlatlar</p>
