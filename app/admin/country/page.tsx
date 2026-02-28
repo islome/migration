@@ -266,7 +266,7 @@ const CountryCard = ({
           transition: "background 0.3s ease",
         }}
       >
-        <span style={{ fontSize: "42px", lineHeight: 1 }}>{country.flag}</span>
+        <span style={{ fontSize: "42px", lineHeight: 1, color: "white" }}>{country.flag}</span>
         <div>
           <h3
             style={{

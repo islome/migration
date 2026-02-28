@@ -1,5 +1,6 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import { useRef, useState } from "react";
 import { supabase } from "@/lib/supabase";
 import { Input } from "@/components/ui/input";
@@ -133,6 +134,7 @@ function DynamicList({
 }
 
 export default function CreateCountryPage() {
+  const router = useRouter();
   const [form, setForm] = useState<FormData>(emptyForm);
   const [imageFile, setImageFile] = useState<File | null>(null);
   const [imagePreview, setImagePreview] = useState<string | null>(null);
@@ -214,7 +216,7 @@ export default function CreateCountryPage() {
       setForm(emptyForm);
       setImageFile(null);
       setImagePreview(null);
-      setTimeout(() => setSuccess(false), 4000);
+      setTimeout(() => router.push("/admin/country"), 4000);
     } catch (err: unknown) {
       setError(err instanceof Error ? err.message : "Xatolik yuz berdi");
     } finally {

@@ -121,7 +121,7 @@ export default async function CountryDetailPage({
           }}
         >
           <Link
-            href="/admin/countries"
+            href="/admin/country"
             style={{
               display: "inline-flex",
               alignItems: "center",
