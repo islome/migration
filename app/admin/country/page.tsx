@@ -679,7 +679,6 @@ export default function CountriesPage() {
               </button>
             </div>
 
-            {/* Search */}
             <div
               style={{
                 marginTop: "24px",
@@ -760,7 +759,7 @@ export default function CountriesPage() {
                 <CountryCard
                   key={country.id}
                   country={country}
-                  onDetail={() => router.push(`/admin/countries/${country.id}`)}
+                  onDetail={() => router.push(`/admin/country/${country.id}`)}
                 />
               ))}
             </div>
