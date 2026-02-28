@@ -18,6 +18,7 @@ import {
   Logs,
   PencilIcon,
   FileQuestion,
+  Construction,
 } from "lucide-react";
 
 type Log = {
@@ -110,6 +111,13 @@ export default function LogsPage() {
             >
               <Logs className="w-3.5 h-3.5" />
               Logs
+            </Link>
+            <Link
+              href="/admin/country"
+              className="flex items-center gap-2 text-sm text-[#4a7a9b] bg-[#89aac3]/15 px-3 py-1.5 rounded-lg border border-[#89aac3]/30 transition"
+            >
+              <Construction className="w-3.5 h-3.5" />
+              Davlat
             </Link>
              <Link
               href="/admin/faq"

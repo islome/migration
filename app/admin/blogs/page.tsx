@@ -3,6 +3,7 @@ import Link from "next/link";
 import {
   BarChart2,
   Clock,
+  Construction,
   PaperclipIcon,
   Pencil,
   Plus,
@@ -69,6 +70,13 @@ export default async function AdminBlogs() {
             >
               <Clock className="w-3.5 h-3.5" />
               Logs
+            </Link>
+            <Link
+              href="/admin/country"
+              className="flex items-center gap-2 text-sm text-[#4a7a9b] bg-[#89aac3]/15 px-3 py-1.5 rounded-lg border border-[#89aac3]/30 transition"
+            >
+              <Construction className="w-3.5 h-3.5" />
+              Davlat
             </Link>
             <Link
               href="/admin/blogs"

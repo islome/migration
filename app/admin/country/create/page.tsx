@@ -11,7 +11,6 @@ import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { X, Plus, Upload } from "lucide-react";
 
-
 interface ProcessStep {
   step: number;
   title: string;
@@ -683,7 +682,11 @@ export default function CreateCountryPage() {
           />
         </CardContent>
       </Card>
-
+      {success && (
+        <div className=" text-sm text-green-600 font-medium">
+          ✓ Davlat muvaffaqiyatli saqlandi!
+        </div>
+      )}
       <div className="flex justify-end gap-3 pb-10">
         <Button variant="outline" onClick={() => setForm(emptyForm)}>
           Tozalash

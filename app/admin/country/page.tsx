@@ -634,14 +634,6 @@ export default function CountriesPage() {
               }}
             >
               <div>
-                <div
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    gap: "10px",
-                    marginBottom: "8px",
-                  }}
-                ></div>
                 <h1
                   style={{
                     margin: 0,
