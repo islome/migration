@@ -720,7 +720,6 @@ export default function CountriesPage() {
             </div>
           </div>
 
-          {/* Error */}
           {error && (
             <div
               style={{
@@ -737,7 +736,6 @@ export default function CountriesPage() {
             </div>
           )}
 
-          {/* Grid */}
           {loading ? (
             <div
               style={{

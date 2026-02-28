@@ -691,7 +691,6 @@ export default function AdminPage() {
       </header>
 
       <main className="container mx-auto px-6 py-8">
-        {/* Stats */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
           {[
             { icon: Users, label: "Jami", value: users.length, color: "blue" },
@@ -739,7 +738,6 @@ export default function AdminPage() {
           ))}
         </div>
 
-        {/* Status Tabs */}
         <div className="flex gap-2 mb-5">
           {(
             [
@@ -763,7 +761,6 @@ export default function AdminPage() {
           ))}
         </div>
 
-        {/* Toolbar */}
         <div className="flex flex-col sm:flex-row gap-3 mb-4">
           <div className="relative flex-1">
             <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
@@ -818,7 +815,6 @@ export default function AdminPage() {
           </button>
         </div>
 
-        {/* Bulk action bar */}
         {isSomeSelected && (
           <div className="flex items-center gap-3 bg-[#89aac3]/10 border border-[#89aac3]/30 rounded-xl px-4 py-3 mb-4">
             <span className="text-sm font-medium text-[#4a7a9b]">
@@ -866,7 +862,6 @@ export default function AdminPage() {
           </div>
         )}
 
-        {/* Table */}
         {usersLoading ? (
           <div className="flex flex-col items-center justify-center py-24 gap-3">
             <Loader2 className="w-8 h-8 animate-spin text-[#89aac3]" />
@@ -1058,11 +1053,10 @@ export default function AdminPage() {
               </table>
             </div>
 
-            {/* Pagination footer */}
             {filtered.length > 0 && (
               <div className="border-t border-gray-100 px-5 py-3 flex items-center justify-between bg-gray-50/40">
                 <p className="text-xs text-gray-400">
-                  {(page - 1) * PAGE_SIZE + 1}–
+                  {(page - 1) * PAGE_SIZE + 1}-
                   {Math.min(page * PAGE_SIZE, filtered.length)} /{" "}
                   {filtered.length} ta
                   {search && ` — "${search}"`}
