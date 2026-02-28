@@ -8,8 +8,10 @@ import {
   BarChart2,
   Clock,
   Construction,
+  EditIcon,
   PaperclipIcon,
   Shield,
+  TrashIcon,
   Users,
   VoicemailIcon,
 } from "lucide-react";
@@ -210,12 +212,17 @@ const SkeletonCard = () => (
   </div>
 );
 
+// ─── Country Card ─────────────────────────────────────────────────────────────
 const CountryCard = ({
   country,
   onDetail,
+  onEdit,
+  onDelete,
 }: {
   country: Country;
   onDetail: () => void;
+  onEdit: () => void;
+  onDelete: () => void;
 }) => {
   const [hovered, setHovered] = useState(false);
   const accent = getAccentColor(country.visa_success);
@@ -246,6 +253,7 @@ const CountryCard = ({
         cursor: "pointer",
       }}
     >
+      {/* Header */}
       <div
         style={{
           background: hovered
@@ -483,7 +491,14 @@ const CountryCard = ({
       </div>
 
       {/* Footer */}
-      <div style={{ padding: "0 24px 24px" }}>
+      <div
+        style={{
+          padding: "0 24px 24px",
+          display: "flex",
+          flexDirection: "column",
+          gap: "8px",
+        }}
+      >
         <button
           onClick={onDetail}
           style={{
@@ -507,6 +522,65 @@ const CountryCard = ({
           <span>Batafsil ma'lumot</span>
           <ChevronRight />
         </button>
+
+        <div style={{ display: "flex", gap: "8px" }}>
+          <button
+            onClick={onEdit}
+            style={{
+              flex: 1,
+              padding: "10px",
+              borderRadius: "10px",
+              cursor: "pointer",
+              border: "1.5px solid #E2E8F0",
+              background: "#F8FAFC",
+              color: "#475569",
+              fontSize: "13px",
+              fontWeight: "600",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              gap: "6px",
+              transition: "all 0.2s",
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.borderColor = "#6366F1";
+              e.currentTarget.style.color = "#6366F1";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.borderColor = "#E2E8F0";
+              e.currentTarget.style.color = "#475569";
+            }}
+          >
+            <EditIcon /> Tahrirlash
+          </button>
+          <button
+            onClick={onDelete}
+            style={{
+              flex: 1,
+              padding: "10px",
+              borderRadius: "10px",
+              cursor: "pointer",
+              border: "1.5px solid #FEE2E2",
+              background: "#FFF5F5",
+              color: "#EF4444",
+              fontSize: "13px",
+              fontWeight: "600",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              gap: "6px",
+              transition: "all 0.2s",
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.background = "#FEE2E2";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.background = "#FFF5F5";
+            }}
+          >
+            <TrashIcon /> O'chirish
+          </button>
+        </div>
       </div>
     </div>
   );
@@ -542,6 +616,12 @@ export default function CountriesPage() {
       c.name.toLowerCase().includes(search.toLowerCase()) ||
       c.name_en.toLowerCase().includes(search.toLowerCase()),
   );
+  const deleteCountry = async (id: string) => {
+    if (!confirm("Haqiqatan ham bu davlatni o'chirmoqchimisiz?")) return;
+    const { error } = await supabase.from("countries").delete().eq("id", id);
+    if (error) alert(error.message);
+    else setCountries((prev) => prev.filter((c) => c.id !== id));
+  };
 
   return (
     <>
@@ -679,6 +759,7 @@ export default function CountriesPage() {
               </button>
             </div>
 
+            {/* Search */}
             <div
               style={{
                 marginTop: "24px",
@@ -719,6 +800,7 @@ export default function CountriesPage() {
             </div>
           </div>
 
+          {/* Error */}
           {error && (
             <div
               style={{
@@ -735,6 +817,7 @@ export default function CountriesPage() {
             </div>
           )}
 
+          {/* Grid */}
           {loading ? (
             <div
               style={{
@@ -760,6 +843,10 @@ export default function CountriesPage() {
                   key={country.id}
                   country={country}
                   onDetail={() => router.push(`/admin/country/${country.id}`)}
+                  onEdit={() =>
+                    router.push(`/admin/country/${country.id}/edit`)
+                  }
+                  onDelete={() => deleteCountry(country.id)}
                 />
               ))}
             </div>
