@@ -33,6 +33,7 @@ import {
   Minus,
   Logs,
   PencilLineIcon,
+  Construction,
 } from "lucide-react";
 
 type User = {
@@ -95,7 +96,6 @@ function ToastContainer({
   );
 }
 
-// ─── Main Page ────────────────────────────────────────────
 export default function AdminPage() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [adminUsername, setAdminUsername] = useState("");
@@ -133,7 +133,6 @@ export default function AdminPage() {
   const [loginError, setLoginError] = useState("");
   const [loginLoading, setLoginLoading] = useState(false);
 
-  // ── Toast helpers ────────────────────────────────────────
   const addToast = useCallback((type: Toast["type"], message: string) => {
     const id = ++toastId.current;
     setToasts((prev) => [...prev, { id, type, message }]);
@@ -147,7 +146,6 @@ export default function AdminPage() {
     setToasts((prev) => prev.filter((t) => t.id !== id));
   }, []);
 
-  // ── Log activity ─────────────────────────────────────────
   const logActivity = async (
     action: string,
     userId: string,
@@ -163,7 +161,6 @@ export default function AdminPage() {
     });
   };
 
-  // ── Login ────────────────────────────────────────────────
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoginLoading(true);
@@ -187,7 +184,6 @@ export default function AdminPage() {
     setLoginLoading(false);
   };
 
-  // ── Fetch users ──────────────────────────────────────────
   const fetchUsers = async (isRefresh = false) => {
     if (isRefresh) setRefreshing(true);
     else setUsersLoading(true);
@@ -212,7 +208,6 @@ export default function AdminPage() {
     fetchUsers();
   }, [isLoggedIn]);
 
-  // ── Filter + sort ────────────────────────────────────────
   useEffect(() => {
     let result = [...users];
 
@@ -240,11 +235,9 @@ export default function AdminPage() {
     setSelected(new Set());
   }, [search, sortOrder, statusFilter, users]);
 
-  // ── Pagination ───────────────────────────────────────────
   const totalPages = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE));
   const paginated = filtered.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE);
 
-  // ── Selection helpers ────────────────────────────────────
   const isAllPageSelected =
     paginated.length > 0 && paginated.every((u) => selected.has(u.id));
   const isSomeSelected = selected.size > 0;
@@ -273,7 +266,6 @@ export default function AdminPage() {
     });
   };
 
-  // ── Single delete ─────────────────────────────────────────
   const handleDelete = async () => {
     if (!deleteTarget) return;
     setDeleteLoading(true);
@@ -300,7 +292,6 @@ export default function AdminPage() {
     setDeleteTarget(null);
   };
 
-  // ── Bulk delete ───────────────────────────────────────────
   const handleBulkDelete = async () => {
     setDeleteLoading(true);
     const ids = Array.from(selected);
@@ -325,7 +316,6 @@ export default function AdminPage() {
     setBulkDeleteOpen(false);
   };
 
-  // ── Single status toggle ──────────────────────────────────
   const handleToggleStatus = async (user: User) => {
     setTogglingId(user.id);
     const newStatus =
@@ -356,7 +346,6 @@ export default function AdminPage() {
     setTogglingId(null);
   };
 
-  // ── Bulk status change ────────────────────────────────────
   const handleBulkStatus = async (newStatus: "kutmoqda" | "yakunlangan") => {
     setBulkStatusLoading(true);
     const ids = Array.from(selected);
@@ -392,7 +381,6 @@ export default function AdminPage() {
     setBulkStatusLoading(false);
   };
 
-  // ── Export CSV ────────────────────────────────────────────
   const exportCSV = () => {
     const rows = [
       ["#", "Ism", "Raqam", "Maqsad", "Status", "Sana"],
@@ -431,7 +419,6 @@ export default function AdminPage() {
   const kutmoqda = users.filter((u) => u.status === "kutmoqda").length;
   const yakunlangan = users.filter((u) => u.status === "yakunlangan").length;
 
-  // LOGIN
   if (!isLoggedIn) {
     return (
       <div className="min-h-screen bg-[#89aac3] flex items-center justify-center p-4">
@@ -525,7 +512,6 @@ export default function AdminPage() {
     <div className="min-h-screen bg-[#f0f5f9] text-gray-800">
       <ToastContainer toasts={toasts} remove={removeToast} />
 
-      {/* ── Single Delete Modal ── */}
       {deleteTarget && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
           <div
@@ -586,7 +572,6 @@ export default function AdminPage() {
         </div>
       )}
 
-      {/* ── Bulk Delete Modal ── */}
       {bulkDeleteOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
           <div
@@ -637,7 +622,6 @@ export default function AdminPage() {
         </div>
       )}
 
-      {/* ── Header ── */}
       <header className="bg-white border-b border-gray-200 px-6 py-4 shadow-sm sticky top-0 z-40">
         <div className="container mx-auto flex justify-between items-center">
           <div className="flex items-center gap-3">
@@ -666,6 +650,13 @@ export default function AdminPage() {
             >
               <BarChart2 className="w-3.5 h-3.5" />
               Statistika
+            </Link>
+            <Link
+              href="/admin/country"
+              className="flex items-center gap-2 text-sm text-gray-500 hover:text-[#4a7a9b] px-3 py-1.5 rounded-lg hover:bg-[#89aac3]/10 border border-transparent hover:border-[#89aac3]/20 transition"
+            >
+              <Construction className="w-3.5 h-3.5" />
+              Davlat
             </Link>
             <Link
               href="/admin/logs"
