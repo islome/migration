@@ -44,8 +44,8 @@ export default function Home() {
   type Message = { role: "user" | "ai"; text: string };
   const [messages, setMessages] = useState<Message[]>([]);
   const [loading, setLoading] = useState(false);
-  const bottomRef = useRef(null);
-  const textareaRef = useRef(null);
+  const bottomRef = useRef<HTMLDivElement>(null);
+  const textareaRef = useRef<HTMLTextAreaElement>(null);
 
   useEffect(() => {
     bottomRef.current?.scrollIntoView({ behavior: "smooth" });
