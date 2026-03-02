@@ -205,33 +205,6 @@ export default function AdminPage() {
   };
 
   useEffect(() => {
-    const channel = supabase
-      .channel("users-realtime")
-      .on(
-        "postgres_changes",
-        { event: "*", schema: "public", table: "users" },
-        (payload) => {
-          if (payload.eventType === "INSERT") {
-            setUsers((prev) => [payload.new as any, ...prev]);
-          } else if (payload.eventType === "UPDATE") {
-            setUsers((prev) =>
-              prev.map((u) =>
-                u.id === payload.new.id ? (payload.new as any) : u,
-              ),
-            );
-          } else if (payload.eventType === "DELETE") {
-            setUsers((prev) => prev.filter((u) => u.id !== payload.old.id));
-          }
-        },
-      )
-      .subscribe();
-
-    return () => {
-      supabase.removeChannel(channel);
-    };
-  }, []);
-
-  useEffect(() => {
     if (!isLoggedIn) return;
     fetchUsers();
   }, [isLoggedIn]);
