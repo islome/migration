@@ -205,6 +205,33 @@ export default function AdminPage() {
   };
 
   useEffect(() => {
+    const channel = supabase
+      .channel("users-realtime")
+      .on(
+        "postgres_changes",
+        { event: "*", schema: "public", table: "users" },
+        (payload) => {
+          if (payload.eventType === "INSERT") {
+            setUsers((prev) => [payload.new as any, ...prev]);
+          } else if (payload.eventType === "UPDATE") {
+            setUsers((prev) =>
+              prev.map((u) =>
+                u.id === payload.new.id ? (payload.new as any) : u,
+              ),
+            );
+          } else if (payload.eventType === "DELETE") {
+            setUsers((prev) => prev.filter((u) => u.id !== payload.old.id));
+          }
+        },
+      )
+      .subscribe();
+
+    return () => {
+      supabase.removeChannel(channel);
+    };
+  }, []);
+
+  useEffect(() => {
     if (!isLoggedIn) return;
     fetchUsers();
   }, [isLoggedIn]);
@@ -977,7 +1004,7 @@ export default function AdminPage() {
 
                           <td className="px-4 py-4">
                             <div className="flex items-center gap-3">
-                              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#89aac3]/30 to-[#6b8fa8]/20 border border-[#89aac3]/20 flex items-center justify-center shrink-0 text-xs font-semibold text-[#4a7a9b]">
+                              <div className="w-8 h-8 rounded-lg bg-linear-to-br from-[#89aac3]/30 to-[#6b8fa8]/20 border border-[#89aac3]/20 flex items-center justify-center shrink-0 text-xs font-semibold text-[#4a7a9b]">
                                 {user.full_name?.charAt(0)?.toUpperCase() ||
                                   "?"}
                               </div>
