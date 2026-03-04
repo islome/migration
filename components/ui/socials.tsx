@@ -26,7 +26,7 @@ const socials = [
     hover: "hover:bg-green-100",
   },
   {
-    href: "",
+    href: "https://www.instagram.com/bestglobalizexba?igsh=cmZ4dzlhbzllbXMy&utm_source=qr",
     icon: "/icons/instagram.png",
     alt: "Instagram",
     size: 30,

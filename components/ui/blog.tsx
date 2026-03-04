@@ -19,7 +19,7 @@ export default function SpecialBlogSection() {
           <div className="grid grid-cols-1 lg:grid-cols-2 items-stretch">
             <div className="p-8 lg:p-12 flex flex-col justify-center order-2 lg:order-1">
               <div className="inline-block mb-4">
-                <span className="bg-gradient-to-r from-red-600 to-orange-600 text-white px-4 py-2 rounded-full text-sm font-semibold flex items-center gap-2 w-fit">
+                <span className="bg-linear-to-r from-red-600 to-orange-600 text-white px-4 py-2 rounded-full text-sm font-semibold flex items-center gap-2 w-fit">
                   <AlertTriangle className="w-4 h-4" />
                   Muhim ogohlantirish
                 </span>
@@ -104,8 +104,8 @@ export default function SpecialBlogSection() {
               </div>
 
               <Link
-                href="/blog/warning"
-                className="group inline-flex items-center gap-3 bg-gradient-to-r from-[#14202e] to-[#2d4356] text-white px-6 lg:px-8 py-3 lg:py-4 rounded-xl hover:shadow-2xl transition-all duration-300 font-semibold w-fit mt-6 lg:mt-8 text-sm lg:text-base"
+                href="/about/blog/c9178d8c-5df9-4b7f-8329-fe03ccc0ce26"
+                className="group inline-flex items-center gap-3 bg-linear-to-r from-[#14202e] to-[#2d4356] text-white px-6 lg:px-8 py-3 lg:py-4 rounded-xl hover:shadow-2xl transition-all duration-300 font-semibold w-fit mt-6 lg:mt-8 text-sm lg:text-base"
               >
                 Batafsil ma'lumot
                 <ArrowRight className="w-4 h-4 lg:w-5 lg:h-5 group-hover:translate-x-2 transition-transform" />
