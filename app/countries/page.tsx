@@ -204,7 +204,7 @@ export default function CountriesPage() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <a
-              href={telegramLink}
+              href={"https://t.me/bestglobalizenam"}
               target="_blank"
               rel="noopener noreferrer"
               className="bg-linear-to-br from-[#89aac3] to-[#6f93b0] text-white px-8 py-4 rounded-xl hover:bg-white/10 transition-all duration-300 flex items-center gap-2 text-lg font-semibold justify-center"
