@@ -35,6 +35,7 @@ import {
   PencilLineIcon,
   Construction,
   BotIcon,
+  PencilIcon,
 } from "lucide-react";
 
 type User = {
@@ -665,6 +666,13 @@ export default function AdminPage() {
             >
               <Logs className="w-3.5 h-3.5" />
               Logs
+            </Link>
+            <Link
+              href="/admin/blogs"
+              className="flex items-center gap-2 text-sm text-gray-500 hover:text-[#4a7a9b] px-3 py-1.5 rounded-lg hover:bg-[#89aac3]/10 border border-transparent hover:border-[#89aac3]/20 transition"
+            >
+              <PencilIcon className="w-3.5 h-3.5" />
+              Blogs
             </Link>
             <Link
               href="/admin/faq"

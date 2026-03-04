@@ -54,7 +54,7 @@ export const countries: Country[] = [
     salary: '$3,500 - $6,000',
     popularJobs: ['IT mutaxassislari', 'Muhandislar', 'Shifokorlar', 'Hamshiralar', 'Dasturchilar'],
     visaDuration: '3-6 oy',
-    visaSuccess: '95%',
+    visaSuccess: '90%',
     language: 'Nemis tili (B1-B2)',
     currency: 'Euro (EUR)',
     backgroundImage: 'https://images.unsplash.com/photo-1467269204594-9661b134dd2b?w=1920',
@@ -151,7 +151,7 @@ export const countries: Country[] = [
     "MAG/TIG Payvandchi"
   ],
   visaDuration: "2-3 oy",
-  visaSuccess: "85%",
+  visaSuccess: "95%",
   language: "Slovak/Rus",
   currency: "Euro (€)",
   
@@ -340,7 +340,7 @@ export const countries: Country[] = [
     "Sement ishchisi"
   ],
   visaDuration: "3-4 oy",
-  visaSuccess: "75%",
+  visaSuccess: "80%",
   language: "Ingliz/Ivrit",
   currency: "AQSh dollari ($)",
   
