@@ -110,6 +110,29 @@ function AIMessageActions({
   );
 }
 
+function UserCopyButton({ text }: { text: string }) {
+  const [copied, setCopied] = useState(false);
+
+  const handleCopy = async () => {
+    await navigator.clipboard.writeText(text);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
+
+  return (
+    <button
+      onClick={handleCopy}
+      className="opacity-0 group-hover:opacity-100 transition-opacity flex items-center gap-1 text-[11px] text-neutral-400 hover:text-neutral-600"
+    >
+      {copied ? (
+        <Check size={11} className="text-green-500" />
+      ) : (
+        <Copy size={11} />
+      )}
+      {copied ? "Nusxalandi" : "Nusxalash"}
+    </button>
+  );
+}
 export default function Home() {
   const [input, setInput] = useState("");
   type Message = { role: "user" | "ai"; text: string };
@@ -247,25 +270,29 @@ export default function Home() {
                 {msg.role === "user" ? "Siz" : "AI"}
               </span>
 
-              <p
-                className={`text-[1.15rem] leading-[1.8] whitespace-pre-wrap max-w-[88%] ${
-                  msg.role === "user" ? "text-neutral-600" : "text-neutral-900"
-                }`}
-              >
-                {msg.role === "ai" && i === messages.length - 1 ? (
-                  <TypewriterText text={msg.text} />
-                ) : (
-                  msg.text
-                )}
-              </p>
-
-              {msg.role === "ai" && (
-                <AIMessageActions
-                  text={msg.text}
-                  onRefresh={
-                    i === messages.length - 1 ? handleRefresh : undefined
-                  }
-                />
+              {msg.role === "user" ? (
+                <div className="flex flex-col items-end gap-1">
+                  <div className="bg-neutral-900 text-white px-4 py-2.5 rounded-2xl rounded-br-sm max-w-[88%] text-[1.05rem] leading-[1.7] whitespace-pre-wrap">
+                    {msg.text}
+                  </div>
+                  <UserCopyButton text={msg.text} />
+                </div>
+              ) : (
+                <div className="flex flex-col items-start gap-1">
+                  <p className="text-[1.15rem] leading-[1.8] whitespace-pre-wrap max-w-[88%] text-neutral-900">
+                    {i === messages.length - 1 ? (
+                      <TypewriterText text={msg.text} />
+                    ) : (
+                      msg.text
+                    )}
+                  </p>
+                  <AIMessageActions
+                    text={msg.text}
+                    onRefresh={
+                      i === messages.length - 1 ? handleRefresh : undefined
+                    }
+                  />
+                </div>
               )}
             </div>
           ))}
