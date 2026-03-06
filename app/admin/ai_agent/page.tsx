@@ -1,5 +1,6 @@
 "use client";
 
+import PageInfoModal from "@/components/ui/guide";
 import {
   BarChart2,
   Clock,
@@ -155,6 +156,32 @@ export default function Home() {
           </div>
         </div>
       </header>
+      <PageInfoModal
+        pageKey="dashboard"
+        title="Sun'iy Intellekt"
+        subtitle="Bu sahifada nima qilish mumkinligini bilib oling"
+        steps={[
+          {
+            icon: "🤖",
+            title: "Sun'iy intellekt yordamchi",
+            description:
+              "Blog yoki Yangi Davlat qo'shmoqchi bo'lsangiz, qo'shimcha ma'lumot uchun undan foydalansangiz bo'ladi.",
+          },
+          {
+            icon: "🔍",
+            title: "Nima qiladi",
+            description:
+              "Sun'iy Intellektga siz o'z ishingiz to'g'risida istalgan savolingizni berish va izlanish qilishingiz mumkin bo'ladi.",
+          },
+          {
+            icon: "📤",
+            title: "Izlanish",
+            description:
+              "Sun'iy intellektga Admin uchun kerakli va qiziqtirgan savollarni berish va qo'shimcha ma'lumot olishingiz mumkin.",
+          },
+        ]}
+        accentColor="blue"
+      />
       <div
         className="flex flex-col h-screen bg-white text-neutral-900"
         style={{ fontFamily: "'EB Garamond', Georgia, serif" }}
@@ -164,12 +191,11 @@ export default function Home() {
         textarea { font-family: inherit; }
       `}</style>
 
-        {/* Messages */}
         <div className="flex-1 overflow-y-auto">
           <div className="max-w-xl w-full mx-auto px-6 py-12 space-y-10">
             {messages.length === 0 && (
-              <p className="text-neutral-300 text-xl italic mt-28 text-center select-none">
-                What Can I help with?
+              <p className="text-neutral-500 text-xl italic mt-28 text-center select-none">
+                Nima yordam bera olaman?
               </p>
             )}
 
@@ -180,7 +206,7 @@ export default function Home() {
                   msg.role === "user" ? "items-end" : "items-start"
                 }`}
               >
-                <span className="text-[11px] tracking-widest uppercase text-neutral-300">
+                <span className="text-[11px] tracking-widest uppercase text-neutral-400">
                   {msg.role === "user" ? "Siz" : "AI"}
                 </span>
 
@@ -223,13 +249,13 @@ export default function Home() {
 
         <div className="bg-white border-t border-neutral-100">
           <div className="max-w-xl w-full mx-auto px-6 py-4">
-            <div className="flex items-end gap-3 border border-neutral-200 rounded-2xl px-4 py-3 bg-neutral-50 focus-within:bg-white focus-within:border-neutral-400 transition-all duration-200">
+            <div className="flex items-end gap-3 border border-neutral-200 rounded-2xl px-4 py-3 bg-neutral-50 focus-within:bg-white focus-within:border-neutral-500 transition-all duration-200">
               <textarea
                 ref={textareaRef}
                 rows={1}
                 value={input}
-                placeholder="Ask anything"
-                className="flex-1 bg-transparent outline-none resize-none text-[1.05rem] leading-relaxed text-neutral-800 placeholder-neutral-300"
+                placeholder="Istalgan narsa yozing"
+                className="flex-1 bg-transparent outline-none resize-none text-[1.05rem] leading-relaxed text-neutral-800 placeholder-neutral-500"
                 style={{ maxHeight: "140px", overflowY: "auto" }}
                 onChange={(e) => {
                   setInput(e.target.value);
@@ -246,7 +272,7 @@ export default function Home() {
               <button
                 onClick={handleSubmit}
                 disabled={loading || !input.trim()}
-                className="flex-shrink-0 w-7 h-7 rounded-full bg-neutral-900 flex items-center justify-center disabled:opacity-20 hover:bg-neutral-700 active:scale-95 transition-all duration-150"
+                className="shrink-0 w-7 h-7 rounded-full bg-neutral-900 flex items-center justify-center disabled:opacity-20 hover:bg-neutral-700 active:scale-95 transition-all duration-150"
               >
                 <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
                   <path
@@ -259,7 +285,7 @@ export default function Home() {
                 </svg>
               </button>
             </div>
-            <p className="text-center text-[11px] text-neutral-300 mt-2 select-none tracking-wide">
+            <p className="text-center text-[11px] text-neutral-500 mt-2 select-none tracking-wide">
               Enter — yuborish · Shift+Enter — yangi qator
             </p>
           </div>

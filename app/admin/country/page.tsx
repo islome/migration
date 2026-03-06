@@ -6,6 +6,7 @@ import { supabase } from "@/lib/supabase";
 import Link from "next/link";
 import {
   BarChart2,
+  BotIcon,
   Clock,
   Construction,
   EditIcon,
@@ -266,7 +267,9 @@ const CountryCard = ({
           transition: "background 0.3s ease",
         }}
       >
-        <span style={{ fontSize: "42px", lineHeight: 1, color: "white" }}>{country.flag}</span>
+        <span style={{ fontSize: "42px", lineHeight: 1, color: "white" }}>
+          {country.flag}
+        </span>
         <div>
           <h3
             style={{
@@ -681,6 +684,13 @@ export default function CountriesPage() {
             >
               <VoicemailIcon className="w-3.5 h-3.5" />
               FAQs
+            </Link>
+            <Link
+              href="/admin/ai_agent"
+              className="flex items-center gap-2 text-sm text-gray-500 hover:text-[#4a7a9b] px-3 py-1.5 rounded-lg hover:bg-[#89aac3]/10 border border-transparent hover:border-[#89aac3]/20 transition"
+            >
+              <BotIcon className="w-3.5 h-3.5" />
+              AI
             </Link>
           </div>
 
