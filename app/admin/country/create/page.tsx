@@ -11,6 +11,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { X, Plus, Upload } from "lucide-react";
+import AIAssistant from "@/components/AiAsisstant";
 
 interface ProcessStep {
   step: number;
@@ -697,6 +698,7 @@ export default function CreateCountryPage() {
           {loading ? "Saqlanmoqda..." : "Davlatni saqlash"}
         </Button>
       </div>
+      <AIAssistant />
     </div>
   );
 }

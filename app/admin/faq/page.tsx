@@ -15,6 +15,7 @@ import {
   Trash2,
   X,
 } from "lucide-react";
+import AIAssistant from "@/components/AiAsisstant";
 
 type Category = {
   id: string;
@@ -574,6 +575,7 @@ export default function FAQAdminPage() {
           onClose={() => setFaqModal(null)}
         />
       )}
+      <AIAssistant />
     </div>
   );
 }

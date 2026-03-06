@@ -27,6 +27,7 @@ import {
   PencilIcon,
   Construction,
 } from "lucide-react";
+import AIAssistant from "@/components/AiAsisstant";
 
 const WORD_LIMIT = 250;
 const MAX_SIZE_MB = 50;
@@ -308,6 +309,7 @@ export default function AdminBlogsPage() {
             </Button>
           </CardContent>
         </Card>
+        <AIAssistant />
       </div>
     </>
   );

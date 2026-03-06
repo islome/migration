@@ -641,6 +641,7 @@ export default function AdminPage() {
           <div className="flex items-center gap-2">
             <Link
               href="/admin"
+              title="Foydalanuvchilarni boshqarish va ro'yxatini ko'rish"
               className="flex items-center gap-2 text-sm text-[#4a7a9b] bg-[#89aac3]/15 px-3 py-1.5 rounded-lg border border-[#89aac3]/30 transition"
             >
               <Users className="w-3.5 h-3.5" />
@@ -648,6 +649,7 @@ export default function AdminPage() {
             </Link>
             <Link
               href="/admin/analytics"
+              title="Sayt statistikasi va tashrif buyuruvchilar ma'lumotlari"
               className="flex items-center gap-2 text-sm text-gray-500 hover:text-[#4a7a9b] px-3 py-1.5 rounded-lg hover:bg-[#89aac3]/10 border border-transparent hover:border-[#89aac3]/20 transition"
             >
               <BarChart2 className="w-3.5 h-3.5" />
@@ -655,6 +657,7 @@ export default function AdminPage() {
             </Link>
             <Link
               href="/admin/country"
+              title="Yangi davlat qo'shish va tahrirlash"
               className="flex items-center gap-2 text-sm text-gray-500 hover:text-[#4a7a9b] px-3 py-1.5 rounded-lg hover:bg-[#89aac3]/10 border border-transparent hover:border-[#89aac3]/20 transition"
             >
               <Construction className="w-3.5 h-3.5" />
@@ -662,6 +665,7 @@ export default function AdminPage() {
             </Link>
             <Link
               href="/admin/logs"
+              title="Tizimda bo'lgan barcha amallar tarixi"
               className="flex items-center gap-2 text-sm text-gray-500 hover:text-[#4a7a9b] px-3 py-1.5 rounded-lg hover:bg-[#89aac3]/10 border border-transparent hover:border-[#89aac3]/20 transition"
             >
               <Logs className="w-3.5 h-3.5" />
@@ -669,6 +673,7 @@ export default function AdminPage() {
             </Link>
             <Link
               href="/admin/blogs"
+              title="Blog maqolalarini yaratish va boshqarish"
               className="flex items-center gap-2 text-sm text-gray-500 hover:text-[#4a7a9b] px-3 py-1.5 rounded-lg hover:bg-[#89aac3]/10 border border-transparent hover:border-[#89aac3]/20 transition"
             >
               <PencilIcon className="w-3.5 h-3.5" />
@@ -676,6 +681,7 @@ export default function AdminPage() {
             </Link>
             <Link
               href="/admin/faq"
+              title="Ko'p so'raladigan savol-javoblarni boshqarish"
               className="flex items-center gap-2 text-sm text-gray-500 hover:text-[#4a7a9b] px-3 py-1.5 rounded-lg hover:bg-[#89aac3]/10 border border-transparent hover:border-[#89aac3]/20 transition"
             >
               <PencilLineIcon className="w-3.5 h-3.5" />
@@ -683,6 +689,7 @@ export default function AdminPage() {
             </Link>
             <Link
               href="/admin/ai_agent"
+              title="Kerakli ma'lumotlarni sun`iy intellektdan so`rash"
               className="flex items-center gap-2 text-sm text-gray-500 hover:text-[#4a7a9b] px-3 py-1.5 rounded-lg hover:bg-[#89aac3]/10 border border-transparent hover:border-[#89aac3]/20 transition"
             >
               <BotIcon className="w-3.5 h-3.5" />
