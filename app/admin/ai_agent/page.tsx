@@ -2,7 +2,21 @@
 
 import PageInfoModal from "@/components/ui/guide";
 import { useState, useEffect, useRef } from "react";
-import { Copy, Share2, ThumbsUp, RotateCcw, Check } from "lucide-react";
+import {
+  Copy,
+  Share2,
+  ThumbsUp,
+  RotateCcw,
+  Check,
+  VoicemailIcon,
+  PaperclipIcon,
+  Construction,
+  Clock,
+  BarChart2,
+  Users,
+  Shield,
+} from "lucide-react";
+import Link from "next/link";
 
 function TypewriterText({ text }: { text: string }) {
   const [displayed, setDisplayed] = useState("");
@@ -223,7 +237,73 @@ export default function Home() {
         @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Science+Gothic:wght@100..900&display=swap');
         textarea { font-family: inherit; }
       `}</style>
+      <header className="bg-white border-b border-gray-200 px-6 py-4 shadow-sm sticky top-0 z-40">
+        <div className="container mx-auto flex justify-between items-center">
+          <div className="flex items-center gap-3">
+            <div className="w-9 h-9 bg-[#89aac3]/15 border border-[#89aac3]/30 rounded-xl flex items-center justify-center">
+              <Shield className="w-4 h-4 text-[#4a7a9b]" />
+            </div>
+            <div>
+              <span className="font-semibold text-gray-800 text-sm">
+                Admin Panel
+              </span>
+              <p className="text-gray-400 text-xs">Best Globalize</p>
+            </div>
+          </div>
 
+          <div className="flex items-center gap-2">
+            <Link
+              href="/admin"
+              className="flex items-center gap-2 text-sm text-[#4a7a9b] bg-[#89aac3]/15 px-3 py-1.5 rounded-lg border border-[#89aac3]/30 transition"
+            >
+              <Users className="w-3.5 h-3.5" />
+              Foydalanuvchilar
+            </Link>
+            <Link
+              href="/admin/analytics"
+              className="flex items-center gap-2 text-sm text-gray-500 hover:text-[#4a7a9b] px-3 py-1.5 rounded-lg hover:bg-[#89aac3]/10 border border-transparent hover:border-[#89aac3]/20 transition"
+            >
+              <BarChart2 className="w-3.5 h-3.5" />
+              Statistika
+            </Link>
+            <Link
+              href="/admin/logs"
+              className="flex items-center gap-2 text-sm text-gray-500 hover:text-[#4a7a9b] px-3 py-1.5 rounded-lg hover:bg-[#89aac3]/10 border border-transparent hover:border-[#89aac3]/20 transition"
+            >
+              <Clock className="w-3.5 h-3.5" />
+              Logs
+            </Link>
+            <Link
+              href="/admin/country/create"
+              className="flex items-center gap-2 text-sm text-gray-500 hover:text-[#4a7a9b] px-3 py-1.5 rounded-lg hover:bg-[#89aac3]/10 border border-transparent hover:border-[#89aac3]/20 transition"
+            >
+              <Construction className="w-3.5 h-3.5" />
+              Country
+            </Link>
+            <Link
+              href="/admin/blogs"
+              className="flex items-center gap-2 text-sm text-gray-500 hover:text-[#4a7a9b] px-3 py-1.5 rounded-lg hover:bg-[#89aac3]/10 border border-transparent hover:border-[#89aac3]/20 transition"
+            >
+              <PaperclipIcon className="w-3.5 h-3.5" />
+              Blogs
+            </Link>
+            <Link
+              href="/admin/faq"
+              className="flex items-center gap-2 text-sm text-gray-500 hover:text-[#4a7a9b] px-3 py-1.5 rounded-lg hover:bg-[#89aac3]/10 border border-transparent hover:border-[#89aac3]/20 transition"
+            >
+              <VoicemailIcon className="w-3.5 h-3.5" />
+              FAQs
+            </Link>
+          </div>
+
+          <div className="flex items-center gap-3">
+            <div className="flex items-center gap-2 bg-gray-50 border border-gray-200 px-3 py-1.5 rounded-lg">
+              <div className="w-1.5 h-1.5 bg-green-400 rounded-full animate-pulse" />
+              <span className="text-xs text-gray-500">bestie</span>
+            </div>
+          </div>
+        </div>
+      </header>
       <PageInfoModal
         pageKey="dashboard"
         title="Sun'iy Intellekt"
