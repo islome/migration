@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { supabase } from "@/lib/supabase";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -40,8 +40,6 @@ export default function AdminBlogsPage() {
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState("");
-  const [uploadProgress, setUploadProgress] = useState(0);
-  const [adminUsername, setAdminUsername] = useState("");
 
   const wordCount = description.trim()
     ? description.trim().split(/\s+/).length
@@ -113,6 +111,31 @@ export default function AdminBlogsPage() {
       setLoading(false);
     }
   };
+  const textareaRef = useRef<HTMLTextAreaElement>(null);
+  const [showLinkModal, setShowLinkModal] = useState(false);
+  const [linkText, setLinkText] = useState("");
+  const [linkUrl, setLinkUrl] = useState("");
+  const [savedSelection, setSavedSelection] = useState({ start: 0, end: 0 });
+
+  function openLinkModal() {
+    const ta = textareaRef.current;
+    if (!ta) return;
+    const start = ta.selectionStart;
+    const end = ta.selectionEnd;
+    setSavedSelection({ start, end });
+    setLinkText(description.substring(start, end) || "");
+    setLinkUrl("");
+    setShowLinkModal(true);
+  }
+
+  function insertLink() {
+    const markdown = `[${linkText || "link"}](${linkUrl || "#"})`;
+    const { start, end } = savedSelection;
+    setDescription(
+      description.substring(0, start) + markdown + description.substring(end),
+    );
+    setShowLinkModal(false);
+  }
 
   return (
     <>
@@ -230,15 +253,65 @@ export default function AdminBlogsPage() {
                   {wordCount}/{WORD_LIMIT} so'z
                 </span>
               </Label>
+
+              {/* Toolbar */}
+              <div className="flex gap-2">
+                <button
+                  type="button"
+                  onClick={openLinkModal}
+                  className="flex items-center gap-1 px-3 py-1 text-sm border border-gray-200 rounded-md bg-gray-50 hover:bg-blue-50 hover:border-blue-400 hover:text-blue-600 transition-colors"
+                >
+                  🔗 Link qo'shish
+                </button>
+              </div>
+
               <Textarea
                 id="description"
+                ref={textareaRef}
                 placeholder="Blog tavsifini kiriting (max 250 so'z)"
                 rows={5}
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
                 className={wordCount > WORD_LIMIT ? "border-red-500" : ""}
               />
+              <p className="text-xs text-gray-400">
+                💡 Link formati: [matn](https://url.com)
+              </p>
             </div>
+
+            {showLinkModal && (
+              <div className="fixed inset-0 bg-black/30 z-50 flex items-center justify-center">
+                <div className="bg-white rounded-xl p-6 w-80 shadow-xl space-y-4">
+                  <h3 className="font-semibold text-lg">🔗 Link qo'shish</h3>
+                  <div className="space-y-1">
+                    <Label>Link matni</Label>
+                    <Input
+                      placeholder="Bu yerga bosing"
+                      value={linkText}
+                      onChange={(e) => setLinkText(e.target.value)}
+                    />
+                  </div>
+                  <div className="space-y-1">
+                    <Label>URL</Label>
+                    <Input
+                      placeholder="https://example.com"
+                      value={linkUrl}
+                      onChange={(e) => setLinkUrl(e.target.value)}
+                      onKeyDown={(e) => e.key === "Enter" && insertLink()}
+                    />
+                  </div>
+                  <div className="flex gap-2 justify-end">
+                    <Button
+                      variant="outline"
+                      onClick={() => setShowLinkModal(false)}
+                    >
+                      Bekor
+                    </Button>
+                    <Button onClick={insertLink}>Qo'shish</Button>
+                  </div>
+                </div>
+              </div>
+            )}
 
             {/* Video Upload */}
             <div className="space-y-2">
