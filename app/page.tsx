@@ -1,15 +1,18 @@
+"use client";
+
+import { useState } from "react";
 import SpecialBlogSection from "@/components/ui/blog";
 import Country from "@/components/ui/country";
 import Footer from "@/components/ui/footer";
 import Header from "@/components/ui/header";
 import SocialMedias from "@/components/ui/socials";
+import Link from "next/link";
 import {
   ArrowRight,
   Globe,
   Users,
   FileCheck,
   TrendingUp,
-  CheckCircle,
   MessageCircle,
   Phone,
   Mail,
@@ -18,13 +21,87 @@ import {
   MonitorCheck,
   UserCheck,
   PlaneTakeoff,
-  PlayCircle,
 } from "lucide-react";
+import {
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+  SheetDescription,
+  SheetClose,
+  SheetFooter,
+} from "@/components/ui/sheet";
 
 export default function Home() {
   const telegramLink = "https://t.me/BestGlobalizeNamangan";
-  const phoneLink = "tel:+998777670017";
   const phoneNumber = "+998 77 767 00 17";
+  const [serviceModal, setServiceModal] = useState<number | null>(null);
+
+  const services = [
+    {
+      icon: <MessageCircle className="w-8 h-8" />,
+      title: "Shaxsiy konsultatsiya",
+      desc: "Mutaxassislarimiz bilan individual maslakat va yo'l-yo'riq",
+      details:
+        "Sizga mos ish yo'nalishini aniqlash, hujjatlar va mehnat shartlari bo'yicha individual maslahat. Biz sizga barcha savollarga javob beramiz va keyingi qadamlaringizni rejalashtiramiz.",
+      color: "blue",
+    },
+    {
+      icon: <FileCheck className="w-8 h-8" />,
+      title: "Hujjat tayyorlash",
+      desc: "Barcha rasmiy hujjatlarni to'g'ri va tez tayyorlash",
+      details:
+        "Rasmiy hujjatlarni to'plash, tarjima qilish va tasdiqlash jarayonini boshqaramiz. Hujjatlaringizni konsullik va ish beruvchi talablari asosida tayyorlab beramiz.",
+      color: "green",
+    },
+    {
+      icon: <Languages className="w-8 h-8" />,
+      title: "Tarjima xizmati",
+      desc: "Notar tasdiqli professional tarjimalar",
+      details:
+        "Notar tasdiqli tarjimalar, konsullik hujjatlari va ish shartnomalari uchun professional tarjima xizmatlari. Matnlarni aniq va tez tarjima qilamiz.",
+      color: "purple",
+    },
+    {
+      icon: (
+        <svg
+          className="w-8 h-8"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
+          />
+        </svg>
+      ),
+      title: "Til kurslari",
+      desc: "Chet el tillarini o'rganish uchun professional kurslar",
+      details:
+        "Chet tilini ish muhitida o'rganish, imtihonlar uchun tayyorlanish va amaliy muloqotga yo'naltirilgan darslar. Til bilimlaringizni ishga tayyorlaymiz.",
+      color: "orange",
+    },
+    {
+      icon: <UserCheck className="w-8 h-8" />,
+      title: "Ish beruvchilar bilan aloqa",
+      desc: "Xorijdagi ishonchli kompaniyalar bilan bog'lanish",
+      details:
+        "Siz uchun mos ish beruvchilarni topish, intervyu tashkil etish va ish takliflarini olishda yordam beramiz. Ish beruvchilar bilan to'g'ri aloqani yo'lga qo'yamiz.",
+      color: "gray",
+    },
+    {
+      icon: <MonitorCheck className="w-8 h-8" />,
+      title: "To'liq monitoring",
+      desc: "Ishga joylashganingizdan keyin doimiy qo'llab-quvvatlash",
+      details:
+        "Yangi joyga ko'chib o'tganingizdan keyin ham doimiy qo'llab-quvvatlash, muammolarni hal qilish va yangilanishlarni taqdim etamiz.",
+      color: "yellow",
+    },
+  ];
+
   return (
     <div className="min-h-screen bg-white overflow-hidden pt-10">
       <Header />
@@ -39,7 +116,7 @@ export default function Home() {
                   "fadeSlideUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.1s both",
               }}
             >
-              Qonuniy yo'l bilan
+              Qonuniy yo&apos;l bilan
             </span>
             <span
               className="block bg-linear-to-r from-[#14202e] to-[#2d4356] bg-clip-text text-transparent"
@@ -71,14 +148,14 @@ export default function Home() {
                 "fadeSlideUp 1s cubic-bezier(0.22, 1, 0.36, 1) 1s both",
             }}
           >
-            <a
+            <Link
               href="/countries"
               className="bg-linear-to-r from-blue-600 to-blue-700 text-white px-8 py-4 rounded-xl hover:shadow-xl transition-all duration-300 hover:scale-105 flex items-center gap-2 text-lg font-semibold"
             >
-              Davlatlarni ko'rish
+              Davlatlarni ko&apos;rish
               <ArrowRight className="w-5 h-5" />
-            </a>
-            <a
+            </Link>
+            <Link
               href={telegramLink}
               target="_blank"
               rel="noopener noreferrer"
@@ -86,7 +163,7 @@ export default function Home() {
             >
               <MessageCircle className="w-5 h-5" />
               Maslahat olish
-            </a>
+            </Link>
           </div>
         </div>
 
@@ -145,10 +222,10 @@ export default function Home() {
       <section id="countries" className="container mx-auto px-4 py-20">
         <div className="text-center mb-12">
           <h2 className="text-4xl font-bold text-gray-900 mb-4">
-            Ommabop yo'nalishlar
+            Ommabop yo&apos;nalishlar
           </h2>
           <p className="text-xl text-gray-600">
-            Eng ko'p talabga ega davlatlar va ularning imkoniyatlari
+            Eng ko&apos;p talabga ega davlatlar va ularning imkoniyatlari
           </p>
         </div>
 
@@ -282,63 +359,12 @@ export default function Home() {
             Bizning xizmatlar
           </h2>
           <p className="text-xl text-gray-600">
-            Sizga kerak bo'lgan barcha yordam bir joyda
+            Sizga kerak bo&#39;lgan barcha yordam bir joyda
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {[
-            {
-              icon: <MessageCircle className="w-8 h-8" />,
-              title: "Shaxsiy konsultatsiya",
-              desc: "Mutaxassislarimiz bilan individual maslakat va yo'l-yo'riq",
-              color: "blue",
-            },
-            {
-              icon: <FileCheck className="w-8 h-8" />,
-              title: "Hujjat tayyorlash",
-              desc: "Barcha rasmiy hujjatlarni to'g'ri va tez tayyorlash",
-              color: "green",
-            },
-            {
-              icon: <Languages className="w-8 h-8" />,
-              title: "Tarjima xizmati",
-              desc: "Notar tasdiqli professional tarjimalar",
-              color: "purple",
-            },
-            {
-              icon: (
-                <svg
-                  className="w-8 h-8"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
-                  />
-                </svg>
-              ),
-              title: "Til kurslari",
-              desc: "Chet el tillarini o'rganish uchun professional kurslar",
-              color: "orange",
-            },
-            {
-              icon: <UserCheck className="w-8 h-8" />,
-              title: "Ish beruvchilar bilan aloqa",
-              desc: "Xorijdagi ishonchli kompaniyalar bilan bog'lanish",
-              color: "gray",
-            },
-            {
-              icon: <MonitorCheck className="w-8 h-8" />,
-              title: "To'liq monitoring",
-              desc: "Ishga joylashganingizdan keyin doimiy qo'llab-quvvatlash",
-              color: "yellow",
-            },
-          ].map((item, index) => (
+          {services.map((item, index) => (
             <div
               key={index}
               className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 hover:scale-105"
@@ -352,14 +378,87 @@ export default function Home() {
                 {item.title}
               </h3>
               <p className="text-gray-600 mb-6">{item.desc}</p>
-              <button className="text-blue-600 font-semibold hover:gap-3 flex items-center gap-2 transition-all">
+              <a
+                href="#"
+                onClick={(event) => {
+                  event.preventDefault();
+                  setServiceModal(index);
+                }}
+                className="text-blue-600 font-semibold hover:gap-3 flex items-center gap-2 transition-all cursor-pointer"
+              >
                 Batafsil
                 <ArrowRight className="w-5 h-5" />
-              </button>
+              </a>
             </div>
           ))}
         </div>
       </section>
+
+      <Sheet
+        open={serviceModal !== null}
+        onOpenChange={(open) => {
+          if (!open) setServiceModal(null);
+        }}
+      >
+        <SheetContent
+          side="bottom"
+          className="max-w-5xl mx-auto rounded-t-[2rem] bg-white p-8 sm:p-10"
+        >
+          {serviceModal !== null && (
+            <>
+              <SheetHeader className="space-y-4">
+                <SheetTitle className="text-3xl font-bold text-gray-900">
+                  {services[serviceModal].title}
+                </SheetTitle>
+                <SheetDescription className="text-gray-600">
+                  {services[serviceModal].desc}
+                </SheetDescription>
+              </SheetHeader>
+              <div className="space-y-6 py-4 text-gray-700">
+                <p className="text-lg leading-8">
+                  {services[serviceModal].details}
+                </p>
+                <div className="grid gap-4 sm:grid-cols-2">
+                  <div className="rounded-3xl border border-gray-200 bg-slate-50 p-6">
+                    <h4 className="text-lg font-semibold text-gray-900 mb-2">
+                      Nima uchun bu xizmat?
+                    </h4>
+                    <p className="text-gray-600 leading-7">
+                      Bizning xizmatimiz sizga jarayonni qisqartirish va xavfsiz yurish uchun mo&#39;ljallangan.
+                    </p>
+                  </div>
+                  <div className="rounded-3xl border border-gray-200 bg-slate-50 p-6">
+                    <h4 className="text-lg font-semibold text-gray-900 mb-2">
+                      Qanday yordam beramiz?
+                    </h4>
+                    <p className="text-gray-600 leading-7">
+                      Har bir bosqichda shaxsiy yondashuv, hujjat nazorati va doimiy aloqa taqdim etamiz.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <SheetFooter className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+                <p className="text-sm text-gray-500">
+                  Ma&#39;lumotni to&#39;liq o&#39;rganib chiqing, keyin biz bilan bog&#39;laning.
+                </p>
+                <div className="flex items-center gap-3">
+                  <SheetClose className="inline-flex items-center justify-center rounded-full bg-blue-600 px-5 py-3 text-sm font-semibold text-white transition hover:bg-blue-700">
+                    Yopish
+                  </SheetClose>
+                  <a
+                    href={telegramLink}
+                    target="_blank"
+                    rel="noreferrer noopener"
+                    className="inline-flex items-center justify-center rounded-full border border-blue-600 px-5 py-3 text-sm font-semibold text-blue-600 transition hover:bg-blue-50"
+                  >
+                    Maslahat olish
+                  </a>
+                </div>
+              </SheetFooter>
+            </>
+          )}
+        </SheetContent>
+      </Sheet>
 
       <SpecialBlogSection />
       <section id="contact" className="container mx-auto px-4 py-20">
@@ -368,7 +467,7 @@ export default function Home() {
             Bizning manzil
           </h2>
           <p className="text-xl text-gray-600">
-            Ofisimizga tashrif buyuring yoki biz bilan bog'laning
+            Ofisimizga tashrif buyuring yoki biz bilan bog&#39;laning
           </p>
         </div>
 
@@ -376,7 +475,7 @@ export default function Home() {
           <div className="space-y-6">
             <div className="bg-white rounded-2xl p-8 shadow-lg">
               <h3 className="text-2xl font-bold text-gray-900 mb-6">
-                Bog'lanish ma'lumotlari
+                Bog&#39;lanish ma&#39;lumotlari
               </h3>
 
               <div className="space-y-4">
@@ -411,10 +510,10 @@ export default function Home() {
                   <div>
                     <p className="text-sm text-gray-500 mb-1">Manzil</p>
                     <p className="text-lg font-semibold text-gray-900">
-                      Namangan Viloyati, To'raqo'rg'on tumani, Yangiobod MFY
+                      Namangan Viloyati, To&apos;raqo&apos;rg&apos;on tumani, Yangiobod MFY
                     </p>
                     <p className="text-gray-600">
-                      Mo'njal: To'raqo'rg'on Bandlik binosi
+                      Mo&apos;njal: To&apos;raqo&apos;rg&apos;on Bandlik binosi
                     </p>
                   </div>
                 </div>

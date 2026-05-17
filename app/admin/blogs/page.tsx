@@ -116,7 +116,7 @@ export default async function AdminBlogs() {
 
         {/* List */}
         {blogs.length === 0 ? (
-          <p className="text-gray-400 text-center py-20">Hozircha blog yo'q</p>
+          <p className="text-gray-400 text-center py-20">Hozircha blog yo&apos;q</p>
         ) : (
           <div className="space-y-4">
             {blogs.map((blog) => {
