@@ -2,8 +2,6 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import ReactMarkdown from "react-markdown";
-import remarkGfm from "remark-gfm";
 import { supabase } from "@/lib/supabase";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -109,9 +107,8 @@ export default function AdminBlogsPage() {
       setVideoFile(null);
       setSuccess(true);
       setTimeout(() => setSuccess(false), 3000);
-    } catch (err: unknown) {
-      const msg = (err as Error)?.message || "Xatolik yuz berdi!";
-      setError(msg);
+    } catch (err: any) {
+      setError(err.message || "Xatolik yuz berdi!");
     } finally {
       setLoading(false);
     }
@@ -241,27 +238,6 @@ export default function AdminBlogsPage() {
                 onChange={(e) => setDescription(e.target.value)}
                 className={wordCount > WORD_LIMIT ? "border-red-500" : ""}
               />
-
-              <div className="mt-3">
-                <Label>Oldindan ko'rish</Label>
-                <div className="prose max-w-none bg-gray-50 p-4 rounded-lg border border-gray-100 mt-2">
-                  {description ? (
-                    <ReactMarkdown
-                      remarkPlugins={[remarkGfm]}
-                      components={{
-                        a: (props: any) => (
-                          // open links in new tab and style them
-                          <a {...props} target="_blank" rel="noopener noreferrer" className="text-blue-600 underline" />
-                        ),
-                      }}
-                    >
-                      {description}
-                    </ReactMarkdown>
-                  ) : (
-                    <p className="text-gray-400">Hech narsa ko'rinmaydi</p>
-                  )}
-                </div>
-              </div>
             </div>
 
             {/* Video Upload */}
