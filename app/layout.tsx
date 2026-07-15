@@ -9,8 +9,11 @@ const jakarta = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Global HR XBA",
+  title: "Global HR Office",
   description: "Namangan Viloyati, xususiy bandlik agentligi",
+  icons: {
+    icon: "/favicon.ico",
+  },
 };
 
 export default function RootLayout({
