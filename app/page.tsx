@@ -33,8 +33,8 @@ import {
 } from "@/components/ui/sheet";
 
 export default function Home() {
-  const telegramLink = "https://t.me/BestGlobalizeNamangan";
-  const phoneNumber = "+998 77 767 00 17";
+  const telegramLink = "https://t.me/migrationuz";
+  const phoneNumber = "+998 95 344 99 90";
   const [serviceModal, setServiceModal] = useState<number | null>(null);
 
   const services = [
@@ -498,7 +498,7 @@ export default function Home() {
                   <div>
                     <p className="text-sm text-gray-500 mb-1">Email</p>
                     <p className="text-lg font-semibold text-gray-900">
-                      bestglobalizenamangan@mail.uz
+                      namanganhragency@mail.uz
                     </p>
                   </div>
                 </div>
@@ -510,10 +510,10 @@ export default function Home() {
                   <div>
                     <p className="text-sm text-gray-500 mb-1">Manzil</p>
                     <p className="text-lg font-semibold text-gray-900">
-                      Namangan Viloyati, To&apos;raqo&apos;rg&apos;on tumani, Yangiobod MFY
+                      Namangan Shahar, Boburshox ko&apos;chasi, 94-uy
                     </p>
                     <p className="text-gray-600">
-                      Mo&apos;njal: To&apos;raqo&apos;rg&apos;on Bandlik binosi
+                      Mo&apos;njal: Lola-Chorsu yo&apos;lida, eski “Tamanno” oshxonasi yonida
                     </p>
                   </div>
                 </div>
@@ -543,13 +543,13 @@ export default function Home() {
 
           <div className="bg-white rounded-2xl overflow-hidden shadow-lg h-full min-h-125">
             <iframe
-              src="https://www.google.com/maps?q=41.004075,71.510085&z=17&output=embed"
+              src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3913.6942047380985!2d71.68843707603943!3d40.98715997135355!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zNDDCsDU5JzEzLjgiTiA3McKwNDEnMjcuNiJF!5e1!3m2!1sen!2sde!4v1784150664724!5m2!1sen!2sde"
               width="100%"
               height="100%"
               style={{ border: 0, minHeight: "500px" }}
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
-              title="Best Globalize Office Location"
+              title="Global HR Office Location"
             />
           </div>
         </div>

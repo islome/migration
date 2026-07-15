@@ -481,7 +481,7 @@ export default function GuidePage() {
                 Qo'ng'iroq qilish
               </a>
               <a
-                href="https://t.me/BestGlobalizeNamangan"
+                href="https://t.me/migrationuz"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center justify-center gap-2 bg-blue-500 hover:bg-blue-400 text-white text-sm font-semibold px-6 py-3 rounded-xl transition-colors"

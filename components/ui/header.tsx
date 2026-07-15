@@ -1,18 +1,85 @@
-import { Factory, ShieldCheckIcon } from "lucide-react";
+"use client";
+
+import { ShieldCheckIcon } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import { usePathname } from "next/navigation";
+import React, { useEffect, useState } from "react";
 
 export default function Header() {
-  const telegramLink = "https://t.me/BestGlobalizeNamangan";
+  const telegramLink = "https://t.me/migrationuz";
+  const pathname = usePathname();
+  const [showLogo, setShowLogo] = useState(false);
+
+  const isActive = (href: string) => {
+    if (href === "/countries") {
+      return pathname === "/countries" || pathname.startsWith("/countries/");
+    }
+
+    if (href === "/about/services") {
+      return pathname === "/about/services" || pathname.startsWith("/about/services");
+    }
+
+    if (href === "/about/guide") {
+      return pathname === "/about/guide" || pathname.startsWith("/about/guide");
+    }
+
+    if (href === "/about/contact") {
+      return pathname === "/about/contact" || pathname.startsWith("/about/contact");
+    }
+
+    return pathname === href;
+  };
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowLogo(window.scrollY > 50);
+    };
+
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
     <div>
       <header className="bg-white/80 backdrop-blur-md shadow-sm fixed left-0 w-full top-0 z-50">
         <nav className="container mx-auto px-4 py-4 flex justify-between items-center">
           <div className="flex items-center space-x-2 group">
-            <Factory className="w-8 h-8 text-black hidden md:block" />
-            <span className="text-xl md:text-2xl font-bold bg-black bg-clip-text text-transparent">
-              <Link href={"/"}>Best Globalize</Link>
-            </span>
+            <div className="relative h-8 w-[150px] md:w-[180px] flex items-center overflow-hidden">
+              <div
+                className={`absolute inset-0 flex items-center transition-all duration-300 ${
+                  showLogo
+                    ? "translate-y-0 opacity-100"
+                    : "pointer-events-none -translate-y-2 opacity-0"
+                }`}
+                style={{ animation: showLogo ? "fadeSlideUp 0.35s ease-out both" : undefined }}
+              >
+                <Link href="/" className="flex items-center">
+                  <Image
+                    src="/icons/logo.png"
+                    alt="Global HR logo"
+                    width={140}
+                    height={42}
+                    className="h-8 w-auto object-contain"
+                    priority
+                  />
+                </Link>
+              </div>
+
+              <div
+                className={`absolute inset-0 flex items-center transition-all duration-300 ${
+                  showLogo
+                    ? "pointer-events-none translate-y-2 opacity-0"
+                    : "translate-y-0 opacity-100"
+                }`}
+              >
+                <span className="text-xl md:text-2xl font-bold bg-black bg-clip-text text-transparent">
+                  <Link href="/">Global HR</Link>
+                </span>
+              </div>
+            </div>
             <Link
               href="/admin"
               className="hidden md:flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 ml-1"
@@ -25,27 +92,43 @@ export default function Header() {
           <div className="hidden md:flex space-x-8">
             <Link
               href="/countries"
-              className="text-gray-700 hover:text-blue-600 transition"
+              className={`transition ${
+                isActive("/countries")
+                  ? "font-bold text-blue-700"
+                  : "text-gray-700 hover:text-blue-600"
+              }`}
             >
               Davlatlar
             </Link>
             <Link
               href="/about/services"
-              className="text-gray-700 hover:text-blue-600 transition"
+              className={`transition ${
+                isActive("/about/services")
+                  ? "font-bold text-blue-700"
+                  : "text-gray-700 hover:text-blue-600"
+              }`}
             >
               Xizmatlar
             </Link>
             <Link
               href="/about/guide"
-              className="text-gray-700 hover:text-blue-600 transition"
+              className={`transition ${
+                isActive("/about/guide")
+                  ? "font-bold text-blue-700"
+                  : "text-gray-700 hover:text-blue-600"
+              }`}
             >
-              Qo'llanma
+              Qo&apos;llanma
             </Link>
             <Link
               href="/about/contact"
-              className="text-gray-700 hover:text-blue-600 transition"
+              className={`transition ${
+                isActive("/about/contact")
+                  ? "font-bold text-blue-700"
+                  : "text-gray-700 hover:text-blue-600"
+              }`}
             >
-              Bog'lanish
+              Bog&apos;lanish
             </Link>
           </div>
 
@@ -60,6 +143,19 @@ export default function Header() {
           </a>
         </nav>
       </header>
+
+      <style jsx global>{`
+        @keyframes fadeSlideUp {
+          from {
+            opacity: 0;
+            transform: translateY(10px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+      `}</style>
     </div>
   );
 }

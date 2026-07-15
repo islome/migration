@@ -1,39 +1,122 @@
+"use client";
+
 import { countries } from "@/lib/countries-data";
 import Link from "next/link";
 import {
-  ArrowRight,
   MapPin,
   DollarSign,
   Clock,
   Award,
   ChevronRight,
   MessageCircle,
-  FactoryIcon,
   UserRoundCheck,
+  ShieldCheckIcon,
 } from "lucide-react";
 import Footer from "@/components/ui/footer";
+import Image from "next/image";
+import { usePathname } from "next/navigation";
+
+import { useEffect, useState } from "react";
 
 export default function CountriesPage() {
-  const telegramLink = "https://t.me/BestGlobalizeNamangan";
+  const telegramLink = "https://t.me/migrationuz";
+  const pathname = usePathname();
+  const [showLogo, setShowLogo] = useState(false);
+
+  const isActive = (href: string) => {
+    if (href === "/countries") {
+      return pathname === "/countries" || pathname.startsWith("/countries/");
+    }
+
+    if (href === "/about/services") {
+      return (
+        pathname === "/about/services" || pathname.startsWith("/about/services")
+      );
+    }
+
+    if (href === "/about/guide") {
+      return pathname === "/about/guide" || pathname.startsWith("/about/guide");
+    }
+
+    if (href === "/about/contact") {
+      return (
+        pathname === "/about/contact" || pathname.startsWith("/about/contact")
+      );
+    }
+
+    return pathname === href;
+  };
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowLogo(window.scrollY > 50);
+    };
+
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
   return (
     <div className="min-h-screen bg-white">
-      <header className="bg-white/80 backdrop-blur-md shadow-sm sticky top-0 z-50">
+      <header className="bg-white/80 backdrop-blur-md shadow-sm fixed left-0 w-full top-0 z-50">
         <nav className="container mx-auto px-4 py-4 flex justify-between items-center">
-          <Link href="/" className="flex items-center space-x-2">
-            <FactoryIcon className="w-8 h-8 text-black hidden md:block" />
-            <span className="text-2xl font-bold bg-black bg-clip-text text-transparent">
-              Best Globalize
-            </span>
-          </Link>
+          <div className="flex items-center space-x-2 group">
+            <div className="relative h-8 w-[150px] md:w-[180px] flex items-center overflow-hidden">
+              <div
+                className={`absolute inset-0 flex items-center transition-all duration-300 ${
+                  showLogo
+                    ? "translate-y-0 opacity-100"
+                    : "pointer-events-none -translate-y-2 opacity-0"
+                }`}
+                style={{
+                  animation: showLogo
+                    ? "fadeSlideUp 0.35s ease-out both"
+                    : undefined,
+                }}
+              >
+                <Link href="/" className="flex items-center">
+                  <Image
+                    src="/icons/logo.png"
+                    alt="Global HR logo"
+                    width={140}
+                    height={42}
+                    className="h-8 w-auto object-contain"
+                    priority
+                  />
+                </Link>
+              </div>
+
+              <div
+                className={`absolute inset-0 flex items-center transition-all duration-300 ${
+                  showLogo
+                    ? "pointer-events-none translate-y-2 opacity-0"
+                    : "translate-y-0 opacity-100"
+                }`}
+              >
+                <span className="text-xl md:text-2xl font-bold bg-black bg-clip-text text-transparent">
+                  <Link href="/">Global HR</Link>
+                </span>
+              </div>
+            </div>
+            <Link
+              href="/admin"
+              className="hidden md:flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300"
+              title="Admin panel"
+            >
+              <ShieldCheckIcon className="w-4 h-4 text-gray-400 hover:text-blue-600 transition-colors duration-200 hover:scale-130" />
+            </Link>
+          </div>
 
           <div className="hidden md:flex space-x-8">
             <Link
-              href="/"
-              className="text-gray-700 hover:text-blue-600 transition"
+              href="/countries"
+              className={`transition ${
+                isActive("/countries")
+                  ? "font-bold text-blue-700"
+                  : "text-gray-700 hover:text-blue-600"
+              }`}
             >
-              Bosh sahifa
-            </Link>
-            <Link href="/countries" className="text-blue-600 font-semibold">
               Davlatlar
             </Link>
             <Link
@@ -43,10 +126,16 @@ export default function CountriesPage() {
               Xizmatlar
             </Link>
             <Link
+              href="/about/guide"
+              className="text-gray-700 hover:text-blue-600 transition"
+            >
+              Qo&apos;llanma
+            </Link>
+            <Link
               href="/about/contact"
               className="text-gray-700 hover:text-blue-600 transition"
             >
-              Bog'lanish
+              Bog&apos;lanish
             </Link>
           </div>
 
@@ -54,7 +143,7 @@ export default function CountriesPage() {
             href={telegramLink}
             target="_blank"
             rel="noopener noreferrer"
-            className="bg-linear-to-r from-blue-600 to-blue-700 text-white px-6 py-2.5 rounded-lg hover:shadow-lg transition-all duration-300 hover:scale-105"
+            className="bg-linear-to-r from-blue-600 to-blue-700 text-white px-3 md:px-6 py-2 md:py-2.5 rounded-lg hover:shadow-lg transition-all duration-300 hover:scale-105 text-sm md:text-base"
           >
             <span className="hidden sm:inline">Bepul konsultatsiya</span>
             <span className="sm:hidden">Konsultatsiya</span>
@@ -62,7 +151,7 @@ export default function CountriesPage() {
         </nav>
       </header>
 
-      <section className="bg-white text-black py-20">
+      <section className="bg-white text-black py-20 mt-32">
         <div className="container mx-auto px-4 text-center">
           <h1 className="text-5xl font-bold mb-6">
             Ish Topish Uchun{" "}

@@ -9,7 +9,7 @@ const jakarta = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Best Globalize",
+  title: "Global HR XBA",
   description: "Namangan Viloyati, xususiy bandlik agentligi",
 };
 

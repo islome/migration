@@ -5,7 +5,6 @@ import {
   Phone,
   Mail,
   Globe,
-  Clock,
   Facebook,
   Instagram,
   Send,
@@ -37,15 +36,15 @@ export default function ContactPage() {
     {
       icon: <MapPin className="w-6 h-6" />,
       label: "Manzil",
-      value: "Namangan sh, To'raqo'rg'on Tumani",
-      link: "https://www.google.com/maps?q=41.004075,71.510085&z=17&output=embed",
+      value: "Namangan sh, Boburshox ko'chasi, 94-uy",
+      link: "https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3913.6942047380985!2d71.68843707603943!3d40.98715997135355!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zNDDCsDU5JzEzLjgiTiA3McKwNDEnMjcuNiJF!5e1!3m2!1sen!2sde!4v1784150664724!5m2!1sen!2sde",
       color: "bg-red-50 text-red-600",
     },
     {
       icon: <Globe className="w-6 h-6" />,
       label: "Veb-sayt",
-      value: "www.bestglobilizenam.uz",
-      link: "https://www.bestglobalizenam.uz",
+      value: "www.globalhragency.uz",
+      link: "https://www.globalhragency.uz",
       color: "bg-blue-50 text-blue-600",
     },
   ];
@@ -91,7 +90,7 @@ export default function ContactPage() {
 
   return (
     <div className="min-h-screen bg-white">
-        <Header />
+      <Header />
       <div className="max-w-7xl mx-auto my-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="text-center mb-16 mt-16">
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
@@ -210,9 +209,9 @@ export default function ContactPage() {
           </h2>
           <div className="bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm">
             <iframe
-              src="https://www.google.com/maps?q=41.004075,71.510085&z=17&output=embed"
+              src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3913.6942047380985!2d71.68843707603943!3d40.98715997135355!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zNDDCsDU5JzEzLjgiTiA3McKwNDEnMjcuNiJF!5e1!3m2!1sen!2sde!4v1784150664724!5m2!1sen!2sde"
               width="100%"
-              height="450"
+              height="500"
               style={{ border: 0 }}
               allowFullScreen
               loading="lazy"

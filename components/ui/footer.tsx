@@ -5,12 +5,13 @@ import {
   UserRoundCheck,
   UserRoundSearchIcon,
 } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 
 export default function Footer() {
-  const telegramLink = "https://t.me/BestGlobalizeNamangan";
-  const phoneLink = "tel:+998777670017";
-  const phoneNumber = "+998 77 767 00 17";
+  const telegramLink = "https://t.me/migrationuz";
+  const phoneLink = "tel:+998953449990";
+  const phoneNumber = "+998 95 344 99 90";
   return (
     <div>
       <footer className="bg-linear-to-br from-[#89aac3] to-[#6f93b0] text-white py-12">
@@ -18,10 +19,13 @@ export default function Footer() {
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
             <div>
               <div className="flex items-center space-x-2 mb-4">
-                <Factory className="w-8 h-8 text-white" />
-                <span className="text-xl font-bold text-white">
-                  Best Globalize
-                </span>
+                <Image
+                  src="/icons/Hr.png"
+                  alt="Global HR Logo"
+                  width={32}
+                  height={32}
+                />
+                <span className="text-xl font-bold text-white">Global HR</span>
               </div>
               <p className="text-gray-100">
                 Xalqaro mehnat bozorida ishonchli hamkoringiz
@@ -48,12 +52,18 @@ export default function Footer() {
                   </Link>
                 </li>
                 <li>
-                  <Link href="/about/guide" className="hover:text-gray-600 transition">
+                  <Link
+                    href="/about/guide"
+                    className="hover:text-gray-600 transition"
+                  >
                     Qo'llanma
                   </Link>
                 </li>
                 <li>
-                  <Link href="/about/blog" className="hover:text-gray-600 transition">
+                  <Link
+                    href="/about/blog"
+                    className="hover:text-gray-600 transition"
+                  >
                     Blog
                   </Link>
                 </li>
@@ -64,7 +74,10 @@ export default function Footer() {
               <h4 className="text-white font-semibold mb-4">Yordam</h4>
               <ul className="space-y-2">
                 <li>
-                  <Link href="/about/faq" className="hover:text-gray-600 transition">
+                  <Link
+                    href="/about/faq"
+                    className="hover:text-gray-600 transition"
+                  >
                     FAQ
                   </Link>
                 </li>
@@ -113,30 +126,44 @@ export default function Footer() {
                     Ma'lumot qoldirish
                   </Link>
                 </li>
-                <li className="flex items-center gap-2">
+                <li className="flex items-center gap-2 ml-2">
+                  <Phone className="w-4 h-4" />
                   <a
                     href={phoneLink}
+                    rel="noopener noreferrer"
                     className="hover:text-gray-600 transition flex items-center gap-2"
-                  ></a>
-                  <Phone className="w-4 h-4" />
-                  {phoneNumber}
+                  >
+                    {phoneNumber}
+                  </a>
                 </li>
                 <li className="flex items-center gap-2">
+                  <div className="w-4 h-4 ml-2" />
+                  <a
+                    href="tel:+998992829990"
+                    rel="noopener noreferrer"
+                    className="hover:text-gray-600 transition flex items-center gap-2"
+                  >
+                    +998 99 282 99 90
+                  </a>
+                  <div className="w-4 h-4" />
+                </li>
+                <li className="flex items-center gap-2">
+                  <Mail className="w-4 h-4 ml-2" />
                   <a
                     href={telegramLink}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="hover:text-gray-600 transition flex items-center gap-2"
-                  ></a>
-                  <Mail className="w-4 h-4" />
-                  bestglobalizenam@gmail.uz
+                  >
+                    namanganhragency@mail.uz
+                  </a>
                 </li>
               </ul>
             </div>
           </div>
 
           <div className="border-t border-gray-200 pt-8 text-center text-white">
-            <p>&copy; 2026 Best Globalize. Barcha huquqlar himoyalangan.</p>
+            <p>&copy; 2026 Global HR XBA. Barcha huquqlar himoyalangan.</p>
           </div>
         </div>
       </footer>
