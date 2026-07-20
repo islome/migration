@@ -17,7 +17,9 @@ export default function Header() {
     }
 
     if (href === "/about/services") {
-      return pathname === "/about/services" || pathname.startsWith("/about/services");
+      return (
+        pathname === "/about/services" || pathname.startsWith("/about/services")
+      );
     }
 
     if (href === "/about/guide") {
@@ -25,7 +27,9 @@ export default function Header() {
     }
 
     if (href === "/about/contact") {
-      return pathname === "/about/contact" || pathname.startsWith("/about/contact");
+      return (
+        pathname === "/about/contact" || pathname.startsWith("/about/contact")
+      );
     }
 
     return pathname === href;
@@ -47,16 +51,21 @@ export default function Header() {
       <header className="bg-white/80 backdrop-blur-md shadow-sm fixed left-0 w-full top-0 z-50">
         <nav className="container mx-auto px-4 py-4 flex justify-between items-center">
           <div className="flex items-center space-x-2 group">
-            <div className="relative h-8 w-[150px] md:w-[180px] flex items-center overflow-hidden">
+            <div className="relative h-10 md:h-12 w-[150px] md:w-[190px] flex items-center overflow-hidden">
+              {/* Logo rasm holati */}
               <div
                 className={`absolute inset-0 flex items-center transition-all duration-300 ${
                   showLogo
                     ? "translate-y-0 opacity-100"
                     : "pointer-events-none -translate-y-2 opacity-0"
                 }`}
-                style={{ animation: showLogo ? "fadeSlideUp 0.35s ease-out both" : undefined }}
+                style={{
+                  animation: showLogo
+                    ? "fadeSlideUp 0.35s ease-out both"
+                    : undefined,
+                }}
               >
-                <Link href="/" className="flex items-center">
+                <Link href="/" className="flex items-center gap-2">
                   <Image
                     src="/icons/logo.png"
                     alt="Global HR logo"
@@ -65,9 +74,15 @@ export default function Header() {
                     className="h-8 w-auto object-contain"
                     priority
                   />
+                  <span className="hidden md:block text-[14px] leading-tight text-gray-500">
+                    Namangan
+                    <br />
+                    Filiali
+                  </span>
                 </Link>
               </div>
 
+              {/* Matn holati */}
               <div
                 className={`absolute inset-0 flex items-center transition-all duration-300 ${
                   showLogo
@@ -75,9 +90,14 @@ export default function Header() {
                     : "translate-y-0 opacity-100"
                 }`}
               >
-                <span className="text-xl md:text-2xl font-bold bg-black bg-clip-text text-transparent">
-                  <Link href="/">Global HR</Link>
-                </span>
+                <Link href="/" className="flex flex-col leading-tight">
+                  <span className="text-xl md:text-2xl font-bold bg-black bg-clip-text text-transparent">
+                    Global HR
+                  </span>
+                  <span className="text-[10px] md:text-xs text-gray-500">
+                    Namangan Filiali
+                  </span>
+                </Link>
               </div>
             </div>
             <Link
@@ -133,7 +153,7 @@ export default function Header() {
           </div>
 
           <a
-            href={telegramLink}
+            href="https://t.me/NAMANGAN2308"
             target="_blank"
             rel="noopener noreferrer"
             className="bg-linear-to-r from-blue-600 to-blue-700 text-white px-3 md:px-6 py-2 md:py-2.5 rounded-lg hover:shadow-lg transition-all duration-300 hover:scale-105 text-sm md:text-base"

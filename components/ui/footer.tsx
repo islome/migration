@@ -1,15 +1,8 @@
-import {
-  Factory,
-  Mail,
-  Phone,
-  UserRoundCheck,
-  UserRoundSearchIcon,
-} from "lucide-react";
+import { Mail, Phone, UserRoundCheck, UserRoundSearchIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
 export default function Footer() {
-  const telegramLink = "https://t.me/migrationuz";
   const phoneLink = "tel:+998953449990";
   const phoneNumber = "+998 95 344 99 90";
   return (
@@ -18,14 +11,21 @@ export default function Footer() {
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
             <div>
-              <div className="flex items-center space-x-2 mb-4">
+              <div className="flex items-center space-x-3 mb-3">
                 <Image
                   src="/icons/Hr.png"
                   alt="Global HR Logo"
-                  width={32}
-                  height={32}
+                  width={48}
+                  height={48}
                 />
-                <span className="text-xl font-bold text-white">Global HR</span>
+                <div className="flex flex-col">
+                  <span className="text-xl font-bold text-white leading-tight">
+                    Global HR
+                  </span>
+                  <span className="text-xs text-gray-300 leading-tight">
+                    Namangan Filiali
+                  </span>
+                </div>
               </div>
               <p className="text-gray-100">
                 Xalqaro mehnat bozorida ishonchli hamkoringiz
@@ -150,12 +150,12 @@ export default function Footer() {
                 <li className="flex items-center gap-2">
                   <Mail className="w-4 h-4 ml-2" />
                   <a
-                    href={telegramLink}
+                    href="akrommannonov@gmail.com"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="hover:text-gray-600 transition flex items-center gap-2"
                   >
-                    namanganhragency@mail.uz
+                    akrommannonov@gmail.com
                   </a>
                 </li>
               </ul>

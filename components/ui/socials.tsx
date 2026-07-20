@@ -5,28 +5,28 @@ import { useState } from "react";
 
 const socials = [
   {
-    href: "https://t.me/BestGlobalizeNamangan", 
+    href: "https://t.me/migrationuz", 
     icon: "/icons/telegram.png",
     alt: "Telegram",
     size: 30,
     hover: "hover:bg-blue-100",
   },
   {
-    href: "tel:+998777670017", 
+    href: "tel:+998953449990", 
     icon: "/icons/phone-call.png",
     alt: "Phone",
     size: 30,
     hover: "hover:bg-green-100",
   },
   {
-    href: "",
+    href: "https://wa.me/998972307500",
     icon: "/icons/whatsapp.png",
     alt: "WhatsApp",
     size: 35,
     hover: "hover:bg-green-100",
   },
   {
-    href: "https://www.instagram.com/bestglobalizexba?igsh=cmZ4dzlhbzllbXMy&utm_source=qr",
+    href: "https://www.instagram.com/globalagency_hr",
     icon: "/icons/instagram.png",
     alt: "Instagram",
     size: 30,
