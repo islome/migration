@@ -128,7 +128,7 @@ export default function PageInfoModal({
                 onClick={handleClose}
                 className="text-xm text-zinc-600 hover:text-zinc-600 dark:hover:text-zinc-300 transition-colors cursor-pointer"
               >
-                Ko'rsatma &apos;ni o&apos;tkazib yuborish
+                Ko&apos;rsatma &apos;ni o&apos;tkazib yuborish
               </button>
 
               <div className="flex gap-2">
