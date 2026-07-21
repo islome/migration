@@ -8,7 +8,7 @@ export async function POST(request) {
     const { message } = await request.json();
 
     const response = await client.responses.create({
-      model: "gpt-5.3-mini",
+      model: "gpt-5.4-mini",
       input: message,
       store: true,
     });
