@@ -169,7 +169,7 @@ export default function AdminPage() {
     setLoginError("");
 
     const { data, error } = await supabase
-      .from("admins")
+      .from("admin")
       .select("id")
       .eq("username", username)
       .eq("password", password)
@@ -439,7 +439,7 @@ export default function AdminPage() {
             </div>
             <h1 className="text-xl font-semibold text-gray-800">Admin Panel</h1>
             <p className="text-gray-400 text-xs mt-1 tracking-widest uppercase">
-              Global 
+              Global HR
             </p>
           </div>
 
