@@ -32,6 +32,27 @@ export async function POST(request: Request) {
       .single();
 
     if (error || !data) {
+      // Diagnostika (faqat server logi). Bo'sh natija ko'pincha =
+      // env'dagi kalit anon key (service_role emas) + admin jadvali qulflangan.
+      let keyRole = "?";
+      try {
+        const part = (process.env.SUPABASE_SERVICE_ROLE_KEY || "")
+          .split(".")[1]
+          .replace(/-/g, "+")
+          .replace(/_/g, "/");
+        keyRole = JSON.parse(Buffer.from(part, "base64").toString()).role;
+      } catch {
+        keyRole = "decode-fail (sb_secret_ yangi format?)";
+      }
+      console.error(
+        "[login] admin topilmadi:",
+        error?.message ?? "0 qator qaytdi",
+        "| username:",
+        username,
+        "| ENV KEY ROLE:",
+        keyRole,
+        "(<- 'service_role' bo'lishi shart!)",
+      );
       return NextResponse.json(
         { error: "Username yoki parol noto'g'ri" },
         { status: 401 },
@@ -40,6 +61,7 @@ export async function POST(request: Request) {
 
     const ok = await verifyPassword(password, data.password);
     if (!ok) {
+      console.error("[login] parol mos kelmadi | username:", username);
       return NextResponse.json(
         { error: "Username yoki parol noto'g'ri" },
         { status: 401 },
@@ -68,7 +90,9 @@ export async function POST(request: Request) {
       maxAge: SESSION_MAX_AGE,
     });
     return res;
-  } catch {
+  } catch (e) {
+    // ko'pincha: SUPABASE_SERVICE_ROLE_KEY yo'q/noto'g'ri -> getSupabaseAdmin throw
+    console.error("[login] kutilmagan xato:", e);
     return NextResponse.json({ error: "Xatolik yuz berdi" }, { status: 500 });
   }
 }
