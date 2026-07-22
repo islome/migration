@@ -1,11 +1,13 @@
 import { NextResponse } from "next/server";
-import { getSupabaseAdmin } from "@/lib/supabaseAdmin";
+import { supabase } from "@/lib/supabase";
 import { signSession, ADMIN_COOKIE, SESSION_MAX_AGE } from "@/lib/security_link";
-import { verifyPassword, hashPassword, isHashed } from "@/lib/password";
+import { verifyPassword } from "@/lib/password";
 
-// Admin login — credentiallar SERVER tomonда service_role bilan tekshiriladi.
-// Shu tufayli `admin` jadvalini anon uchun butunlay yopish mumkin (parollar
-// endi brauzerga chiqmaydi). Muvaffaqiyatда imzolangan httpOnly cookie qo'yiladi.
+// Admin login — ANON key bilan `admin` jadvalini o'qiydi.
+// SHART: `admin` jadvalida anon SELECT policy ochiq bo'lishi kerak
+// (supabase/rls_policies.sql -> admin bo'limi).
+// Muvaffaqiyatда imzolangan httpOnly cookie qo'yiladi — session + proxy shunga
+// tayanadi (ular o'zgarmaydi).
 export async function POST(request: Request) {
   try {
     const { username, password } = await request.json();
@@ -24,34 +26,20 @@ export async function POST(request: Request) {
       );
     }
 
-    const db = getSupabaseAdmin();
-    const { data, error } = await db
+    const { data, error } = await supabase
       .from("admin")
       .select("id, username, password")
       .eq("username", username)
       .single();
 
     if (error || !data) {
-      // Diagnostika (faqat server logi). Bo'sh natija ko'pincha =
-      // env'dagi kalit anon key (service_role emas) + admin jadvali qulflangan.
-      let keyRole = "?";
-      try {
-        const part = (process.env.SUPABASE_SERVICE_ROLE_KEY || "")
-          .split(".")[1]
-          .replace(/-/g, "+")
-          .replace(/_/g, "/");
-        keyRole = JSON.parse(Buffer.from(part, "base64").toString()).role;
-      } catch {
-        keyRole = "decode-fail (sb_secret_ yangi format?)";
-      }
+      // Bo'sh natija ko'pincha = admin jadvalida anon SELECT policy yo'q.
       console.error(
         "[login] admin topilmadi:",
         error?.message ?? "0 qator qaytdi",
         "| username:",
         username,
-        "| ENV KEY ROLE:",
-        keyRole,
-        "(<- 'service_role' bo'lishi shart!)",
+        "| admin RLS anon SELECT ochiqmi tekshiring",
       );
       return NextResponse.json(
         { error: "Username yoki parol noto'g'ri" },
@@ -59,6 +47,7 @@ export async function POST(request: Request) {
       );
     }
 
+    // verifyPassword ochiq-matn va scrypt hash ikkalasini ham qo'llaydi.
     const ok = await verifyPassword(password, data.password);
     if (!ok) {
       console.error("[login] parol mos kelmadi | username:", username);
@@ -66,16 +55,6 @@ export async function POST(request: Request) {
         { error: "Username yoki parol noto'g'ri" },
         { status: 401 },
       );
-    }
-
-    // upgrade-on-login: eski ochiq-matndagi parolni hash'ga o'tkazamiz
-    if (!isHashed(data.password)) {
-      try {
-        const hashed = await hashPassword(password);
-        await db.from("admin").update({ password: hashed }).eq("id", data.id);
-      } catch {
-        /* upgrade muvaffaqiyatsiz bo'lsa ham login davom etadi */
-      }
     }
 
     const resolvedName = data.username ?? username;
@@ -91,7 +70,6 @@ export async function POST(request: Request) {
     });
     return res;
   } catch (e) {
-    // ko'pincha: SUPABASE_SERVICE_ROLE_KEY yo'q/noto'g'ri -> getSupabaseAdmin throw
     console.error("[login] kutilmagan xato:", e);
     return NextResponse.json({ error: "Xatolik yuz berdi" }, { status: 500 });
   }

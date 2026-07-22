@@ -105,18 +105,22 @@ end $$;
 
 
 -- ────────────────────────────────────────────────────────────────────────────
--- 4) 🔒🔒 admin (username + PAROL) — anon uchun BUTUNLAY YOPIQ.
---    Login endi /api/admin/login server route'i orqali service_role bilan o'qiydi,
---    shu tufayli parollar boshqa anon key'ga ko'rinmaydi. Parollar birinchi
---    muvaffaqiyatli loginda avtomatik scrypt hash'ga o'tadi (upgrade-on-login).
+-- 4) admin (username + PAROL) — login ANON key bilan o'qiydi => anon SELECT OCHIQ.
+--    ⚠️ XAVF: anon key'i bor har kim admin username+parolni O'QIY oladi
+--    (parol hash bo'lsa ham hash ochiladi). Xavfsizroq: service_role login yoki
+--    SECURITY DEFINER RPC. Hozir sizning talabingiz bo'yicha anon SELECT ochildi.
+--    Yozish (INSERT/UPDATE/DELETE) anon uchun YOPIQ => parolni o'zgartirib bo'lmaydi.
 -- ────────────────────────────────────────────────────────────────────────────
 alter table public.admin enable row level security;
 
--- ehtimoliy eski anon policy'larни tozalaymiz (nom har xil bo'lishi mumkin)
 drop policy if exists "admin_anon_select" on public.admin;
-drop policy if exists "admin_public_select" on public.admin;
-drop policy if exists "Enable read access for all users" on public.admin;
--- (anon uchun HECH QANDAY policy yaratilmaydi => service_role'dan boshqa hech kim o'qiy olmaydi)
+create policy "admin_anon_select" on public.admin
+  for select to anon, authenticated using (true);
+
+-- yozuv anon uchun ochilmaydi (eski yozuv policy'lari bo'lsa olib tashlaymiz)
+drop policy if exists "admin_anon_insert" on public.admin;
+drop policy if exists "admin_anon_update" on public.admin;
+drop policy if exists "admin_anon_delete" on public.admin;
 
 
 -- ────────────────────────────────────────────────────────────────────────────
