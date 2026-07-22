@@ -134,6 +134,7 @@ export default function AdminPage() {
   const [showPassword, setShowPassword] = useState(false);
   const [loginError, setLoginError] = useState("");
   const [loginLoading, setLoginLoading] = useState(false);
+  const [checkingSession, setCheckingSession] = useState(true);
 
   const addToast = useCallback((type: Toast["type"], message: string) => {
     const id = ++toastId.current;
@@ -168,22 +169,27 @@ export default function AdminPage() {
     setLoginLoading(true);
     setLoginError("");
 
-    const { data, error } = await supabase
-      .from("admin")
-      .select("id")
-      .eq("username", username)
-      .eq("password", password)
-      .single();
+    try {
+      const res = await fetch("/api/admin/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ username, password }),
+      });
+      const body = await res.json();
 
-    if (error || !data) {
-      setLoginError("Username yoki parol noto'g'ri");
+      if (!res.ok) {
+        setLoginError(body?.error || "Username yoki parol noto'g'ri");
+        return;
+      }
+
+      setAdminUsername(body.username ?? username);
+      setIsLoggedIn(true);
+      setPassword("");
+    } catch {
+      setLoginError("Server bilan bog'lanishda xato");
+    } finally {
       setLoginLoading(false);
-      return;
     }
-
-    setAdminUsername(username);
-    setIsLoggedIn(true);
-    setLoginLoading(false);
   };
 
   const fetchUsers = async (isRefresh = false) => {
@@ -204,6 +210,28 @@ export default function AdminPage() {
       addToast("info", "Yangilandi");
     } else setUsersLoading(false);
   };
+
+  // Sahifa ochilганda serverdan sessiyani tiklaymiz (cookie httpOnly).
+  useEffect(() => {
+    let active = true;
+    (async () => {
+      try {
+        const res = await fetch("/api/admin/session");
+        const body = await res.json();
+        if (active && body?.ok) {
+          setAdminUsername(body.username ?? "");
+          setIsLoggedIn(true);
+        }
+      } catch {
+        /* e'tiborsiz qoldiramiz */
+      } finally {
+        if (active) setCheckingSession(false);
+      }
+    })();
+    return () => {
+      active = false;
+    };
+  }, []);
 
   useEffect(() => {
     if (!isLoggedIn) return;
@@ -408,7 +436,12 @@ export default function AdminPage() {
     addToast("success", "CSV yuklab olindi");
   };
 
-  const handleLogout = () => {
+  const handleLogout = async () => {
+    try {
+      await fetch("/api/admin/logout", { method: "POST" });
+    } catch {
+      /* e'tiborsiz qoldiramiz */
+    }
     setIsLoggedIn(false);
     setUsers([]);
     setFiltered([]);
@@ -420,6 +453,14 @@ export default function AdminPage() {
 
   const kutmoqda = users.filter((u) => u.status === "kutmoqda").length;
   const yakunlangan = users.filter((u) => u.status === "yakunlangan").length;
+
+  if (checkingSession) {
+    return (
+      <div className="min-h-screen bg-[#89aac3] flex items-center justify-center">
+        <Loader2 className="w-8 h-8 animate-spin text-white" />
+      </div>
+    );
+  }
 
   if (!isLoggedIn) {
     return (
