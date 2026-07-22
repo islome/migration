@@ -105,7 +105,7 @@ export default function CountriesPage() {
       <header className="bg-white/80 backdrop-blur-md shadow-sm fixed left-0 w-full top-0 z-50">
         <nav className="container mx-auto px-4 py-4 flex justify-between items-center">
           <div className="flex items-center space-x-2 group">
-            <div className="relative h-8 w-[150px] md:w-[180px] flex items-center overflow-hidden">
+            <div className="relative h-8 w-37.5 md:w-45 flex items-center overflow-hidden">
               <div
                 className={`absolute inset-0 flex items-center transition-all duration-300 ${
                   showLogo
@@ -142,13 +142,6 @@ export default function CountriesPage() {
                 </span>
               </div>
             </div>
-            <Link
-              href="/admin"
-              className="hidden md:flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300"
-              title="Admin panel"
-            >
-              <ShieldCheckIcon className="w-4 h-4 text-gray-400 hover:text-blue-600 transition-colors duration-200 hover:scale-130" />
-            </Link>
           </div>
 
           <div className="hidden md:flex space-x-8">

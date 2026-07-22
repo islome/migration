@@ -58,15 +58,12 @@ export interface CountryDetail {
   process: ProcessStep[];
 }
 
-// Country detail dizayni — admin ham, public (user) tomon ham AYNAN shu komponentni
-// ishlatadi, faqat backHref/backLabel farq qiladi. showConsultation=true bo'lsa
-// (public tomon) sidebar'ga konsultatsiya CTA kartasi qo'shiladi.
 export default function CountryDetailView({
   country,
   backHref,
   backLabel,
   showConsultation = false,
-  telegramLink = "https://t.me/BestGlobalizeNamangan",
+  telegramLink = "https://t.me/NAMANGAN2308",
 }: {
   country: CountryDetail;
   backHref: string;
