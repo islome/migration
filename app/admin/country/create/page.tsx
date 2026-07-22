@@ -180,38 +180,45 @@ export default function CreateCountryPage() {
         backgroundImage = data.publicUrl;
       }
 
-      const { error: dbErr } = await supabase.from("countries").insert({
-        id: form.id,
-        name: form.name,
-        name_en: form.nameEn,
-        flag: form.flag,
-        short_description: form.shortDescription,
-        full_description: form.fullDescription,
-        salary: form.salary,
-        visa_duration: form.visaDuration,
-        visa_success: form.visaSuccess,
-        language: form.language,
-        currency: form.currency,
-        background_image: backgroundImage,
-        req_age: form.reqAge,
-        req_education: form.reqEducation,
-        req_language: form.reqLanguage,
-        req_experience: form.reqExperience,
-        salary_min: Number(form.salaryMin) || null,
-        salary_max: Number(form.salaryMax) || null,
-        salary_average: Number(form.salaryAverage) || null,
-        tax_rate: form.taxRate,
-        life_housing: form.lifeHousing,
-        life_transport: form.lifeTransport,
-        life_food: form.lifeFood,
-        life_healthcare: form.lifeHealthcare,
-        popular_jobs: form.popularJobs.filter(Boolean),
-        benefits: form.benefits.filter(Boolean),
-        documents: form.documents.filter(Boolean),
-        process: form.process.map((s, i) => ({ ...s, step: i + 1 })),
+      const res = await fetch("/api/admin/countries", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          id: form.id,
+          name: form.name,
+          name_en: form.nameEn,
+          flag: form.flag,
+          short_description: form.shortDescription,
+          full_description: form.fullDescription,
+          salary: form.salary,
+          visa_duration: form.visaDuration,
+          visa_success: form.visaSuccess,
+          language: form.language,
+          currency: form.currency,
+          background_image: backgroundImage,
+          req_age: form.reqAge,
+          req_education: form.reqEducation,
+          req_language: form.reqLanguage,
+          req_experience: form.reqExperience,
+          salary_min: Number(form.salaryMin) || null,
+          salary_max: Number(form.salaryMax) || null,
+          salary_average: Number(form.salaryAverage) || null,
+          tax_rate: form.taxRate,
+          life_housing: form.lifeHousing,
+          life_transport: form.lifeTransport,
+          life_food: form.lifeFood,
+          life_healthcare: form.lifeHealthcare,
+          popular_jobs: form.popularJobs.filter(Boolean),
+          benefits: form.benefits.filter(Boolean),
+          documents: form.documents.filter(Boolean),
+          process: form.process.map((s, i) => ({ ...s, step: i + 1 })),
+        }),
       });
 
-      if (dbErr) throw dbErr;
+      if (!res.ok) {
+        const b = await res.json().catch(() => ({}));
+        throw new Error(b.error || "Saqlashda xatolik");
+      }
 
       setSuccess(true);
       setForm(emptyForm);

@@ -230,9 +230,11 @@ export default function EditCountryPage() {
         backgroundImage = data.publicUrl;
       }
 
-      const { error: dbErr } = await supabase
-        .from("countries")
-        .update({
+      const res = await fetch("/api/admin/countries", {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          id,
           name: form.name,
           name_en: form.nameEn,
           flag: form.flag,
@@ -260,10 +262,13 @@ export default function EditCountryPage() {
           benefits: form.benefits.filter(Boolean),
           documents: form.documents.filter(Boolean),
           process: form.process.map((s, i) => ({ ...s, step: i + 1 })),
-        })
-        .eq("id", id);
+        }),
+      });
 
-      if (dbErr) throw dbErr;
+      if (!res.ok) {
+        const b = await res.json().catch(() => ({}));
+        throw new Error(b.error || "Saqlashda xatolik");
+      }
 
       setSuccess(true);
       setTimeout(() => router.push("/admin/country"), 1500);

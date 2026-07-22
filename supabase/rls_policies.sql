@@ -15,13 +15,14 @@
 
 
 -- ────────────────────────────────────────────────────────────────────────────
--- 1) PUBLIC KONTENT — countries, blogs, faq_items, faq_categories
---    anon SELECT + anon INSERT/UPDATE/DELETE (admin boshqaruvi hozircha anon).
+-- 1) PUBLIC KONTENT (anon-write, hozircha) — blogs, faq_items, faq_categories
+--    anon SELECT + anon INSERT/UPDATE/DELETE (admin boshqaruvi hali anon).
+--    (countries pastda ALOHIDA — u endi server-write, qulflangan.)
 -- ────────────────────────────────────────────────────────────────────────────
 do $$
 declare t text;
 begin
-  foreach t in array array['countries','blogs','faq_items','faq_categories']
+  foreach t in array array['blogs','faq_items','faq_categories']
   loop
     begin
       execute format('alter table public.%I enable row level security', t);
@@ -42,6 +43,24 @@ begin
     end;
   end loop;
 end $$;
+
+
+-- ────────────────────────────────────────────────────────────────────────────
+-- 1b) 🔒 countries — public SELECT (saytda ko'rinadi) + WRITE anon uchun YOPIQ.
+--     Yaratish/tahrirlash/o'chirish endi /api/admin/countries (service_role) orqali.
+--     (Rasm upload hali anon storage'da — 5-bo'limdagi country-images bucket.)
+-- ────────────────────────────────────────────────────────────────────────────
+alter table public.countries enable row level security;
+
+drop policy if exists "countries_public_select" on public.countries;
+create policy "countries_public_select" on public.countries
+  for select to anon, authenticated using (true);
+
+-- eski anon write policy'lar bo'lsa — olib tashlaymiz (anon yoza olmasin)
+drop policy if exists "countries_anon_insert" on public.countries;
+drop policy if exists "countries_anon_update" on public.countries;
+drop policy if exists "countries_anon_delete" on public.countries;
+-- (INSERT/UPDATE/DELETE uchun anon policy ATAYIN yaratilmaydi)
 
 
 -- ────────────────────────────────────────────────────────────────────────────

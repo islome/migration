@@ -621,9 +621,17 @@ export default function CountriesPage() {
   );
   const deleteCountry = async (id: string) => {
     if (!confirm("Haqiqatan ham bu davlatni o'chirmoqchimisiz?")) return;
-    const { error } = await supabase.from("countries").delete().eq("id", id);
-    if (error) alert(error.message);
-    else setCountries((prev) => prev.filter((c) => c.id !== id));
+    const res = await fetch("/api/admin/countries", {
+      method: "DELETE",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ id }),
+    });
+    if (!res.ok) {
+      const b = await res.json().catch(() => ({}));
+      alert(b.error || "O'chirishda xatolik");
+    } else {
+      setCountries((prev) => prev.filter((c) => c.id !== id));
+    }
   };
 
   return (
