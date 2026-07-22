@@ -52,6 +52,8 @@ export default function Register() {
     }
 
     try {
+      // Diqqat: .select() QO'SHMANG — `users` RLS'da faqat INSERT ochiq
+      // (SELECT yopiq). .insert().select() bo'lsa qaytarish qismi RLS'ga uriladi.
       const { error: supabaseError } = await supabase
         .from("users")
         .insert([
@@ -60,8 +62,7 @@ export default function Register() {
             number: formData.number.trim(),
             intention: formData.intention,
           },
-        ])
-        .select();
+        ]);
 
       if (supabaseError) throw supabaseError;
 

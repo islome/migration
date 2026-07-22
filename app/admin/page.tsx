@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect, useCallback, useRef } from "react";
-import { supabase } from "@/lib/supabase";
 import Link from "next/link";
 import {
   Shield,
@@ -149,20 +148,9 @@ export default function AdminPage() {
     setToasts((prev) => prev.filter((t) => t.id !== id));
   }, []);
 
-  const logActivity = async (
-    action: string,
-    userId: string,
-    userName: string,
-    details: string,
-  ) => {
-    await supabase.from("activity_log").insert({
-      action,
-      user_id: userId,
-      user_name: userName,
-      details,
-      performed_by: adminUsername,
-    });
-  };
+  // Eslatma: users amallarи (list/status/delete) endi /api/admin/users server
+  // route'i orqali (service_role) bajariladi va activity_log ham o'sha yerda
+  // yoziladi. Shu tufayli `users` va `admin` jadvallarini anon uchun yopish mumkin.
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -196,15 +184,19 @@ export default function AdminPage() {
     if (isRefresh) setRefreshing(true);
     else setUsersLoading(true);
 
-    const { data, error } = await supabase
-      .from("users")
-      .select("id, full_name, number, created_at, intention, status")
-      .order("created_at", { ascending: false });
-
-    if (!error && data) {
-      setUsers(data);
-      setSelected(new Set());
+    try {
+      const res = await fetch("/api/admin/users");
+      const body = await res.json();
+      if (res.ok && body.users) {
+        setUsers(body.users);
+        setSelected(new Set());
+      } else {
+        addToast("error", body?.error || "Ma'lumot yuklanmadi");
+      }
+    } catch {
+      addToast("error", "Server bilan bog'lanishda xato");
     }
+
     if (isRefresh) {
       setRefreshing(false);
       addToast("info", "Yangilandi");
@@ -300,22 +292,20 @@ export default function AdminPage() {
     if (!deleteTarget) return;
     setDeleteLoading(true);
 
-    const { error } = await supabase
-      .from("users")
-      .delete()
-      .eq("id", deleteTarget.id);
-
-    if (!error) {
-      await logActivity(
-        "delete",
-        deleteTarget.id,
-        deleteTarget.full_name,
-        "Foydalanuvchi o'chirildi",
-      );
-      setUsers((prev) => prev.filter((u) => u.id !== deleteTarget.id));
-      addToast("success", `${deleteTarget.full_name} o'chirildi`);
-    } else {
-      addToast("error", "O'chirishda xatolik yuz berdi");
+    try {
+      const res = await fetch("/api/admin/users", {
+        method: "DELETE",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ ids: [deleteTarget.id] }),
+      });
+      if (res.ok) {
+        setUsers((prev) => prev.filter((u) => u.id !== deleteTarget.id));
+        addToast("success", `${deleteTarget.full_name} o'chirildi`);
+      } else {
+        addToast("error", "O'chirishda xatolik yuz berdi");
+      }
+    } catch {
+      addToast("error", "Server bilan bog'lanishda xato");
     }
 
     setDeleteLoading(false);
@@ -325,21 +315,22 @@ export default function AdminPage() {
   const handleBulkDelete = async () => {
     setDeleteLoading(true);
     const ids = Array.from(selected);
-    const names = users
-      .filter((u) => ids.includes(u.id))
-      .map((u) => u.full_name);
 
-    const { error } = await supabase.from("users").delete().in("id", ids);
-
-    if (!error) {
-      for (let i = 0; i < ids.length; i++) {
-        await logActivity("delete", ids[i], names[i] ?? "—", "Bulk delete");
+    try {
+      const res = await fetch("/api/admin/users", {
+        method: "DELETE",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ ids }),
+      });
+      if (res.ok) {
+        setUsers((prev) => prev.filter((u) => !ids.includes(u.id)));
+        setSelected(new Set());
+        addToast("success", `${ids.length} ta foydalanuvchi o'chirildi`);
+      } else {
+        addToast("error", "Xatolik yuz berdi");
       }
-      setUsers((prev) => prev.filter((u) => !ids.includes(u.id)));
-      setSelected(new Set());
-      addToast("success", `${ids.length} ta foydalanuvchi o'chirildi`);
-    } else {
-      addToast("error", "Xatolik yuz berdi");
+    } catch {
+      addToast("error", "Server bilan bog'lanishda xato");
     }
 
     setDeleteLoading(false);
@@ -351,27 +342,25 @@ export default function AdminPage() {
     const newStatus =
       user.status === "yakunlangan" ? "kutmoqda" : "yakunlangan";
 
-    const { error } = await supabase
-      .from("users")
-      .update({ status: newStatus })
-      .eq("id", user.id);
-
-    if (!error) {
-      await logActivity(
-        "status_change",
-        user.id,
-        user.full_name,
-        `Status: ${user.status} → ${newStatus}`,
-      );
-      setUsers((prev) =>
-        prev.map((u) => (u.id === user.id ? { ...u, status: newStatus } : u)),
-      );
-      addToast(
-        "success",
-        `${user.full_name} → ${newStatus === "yakunlangan" ? "Yakunlangan" : "Kutmoqda"}`,
-      );
-    } else {
-      addToast("error", "Status o'zgartirishda xatolik");
+    try {
+      const res = await fetch("/api/admin/users", {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ ids: [user.id], status: newStatus }),
+      });
+      if (res.ok) {
+        setUsers((prev) =>
+          prev.map((u) => (u.id === user.id ? { ...u, status: newStatus } : u)),
+        );
+        addToast(
+          "success",
+          `${user.full_name} → ${newStatus === "yakunlangan" ? "Yakunlangan" : "Kutmoqda"}`,
+        );
+      } else {
+        addToast("error", "Status o'zgartirishda xatolik");
+      }
+    } catch {
+      addToast("error", "Server bilan bog'lanishda xato");
     }
     setTogglingId(null);
   };
@@ -380,33 +369,28 @@ export default function AdminPage() {
     setBulkStatusLoading(true);
     const ids = Array.from(selected);
 
-    const { error } = await supabase
-      .from("users")
-      .update({ status: newStatus })
-      .in("id", ids);
-
-    if (!error) {
-      const names = users
-        .filter((u) => ids.includes(u.id))
-        .map((u) => u.full_name);
-      for (let i = 0; i < ids.length; i++) {
-        await logActivity(
-          "status_change",
-          ids[i],
-          names[i] ?? "—",
-          `Bulk → ${newStatus}`,
+    try {
+      const res = await fetch("/api/admin/users", {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ ids, status: newStatus }),
+      });
+      if (res.ok) {
+        setUsers((prev) =>
+          prev.map((u) =>
+            ids.includes(u.id) ? { ...u, status: newStatus } : u,
+          ),
         );
+        setSelected(new Set());
+        addToast(
+          "success",
+          `${ids.length} ta → ${newStatus === "yakunlangan" ? "Yakunlangan" : "Kutmoqda"}`,
+        );
+      } else {
+        addToast("error", "Xatolik yuz berdi");
       }
-      setUsers((prev) =>
-        prev.map((u) => (ids.includes(u.id) ? { ...u, status: newStatus } : u)),
-      );
-      setSelected(new Set());
-      addToast(
-        "success",
-        `${ids.length} ta → ${newStatus === "yakunlangan" ? "Yakunlangan" : "Kutmoqda"}`,
-      );
-    } else {
-      addToast("error", "Xatolik yuz berdi");
+    } catch {
+      addToast("error", "Server bilan bog'lanishda xato");
     }
     setBulkStatusLoading(false);
   };

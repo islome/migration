@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { supabase } from "@/lib/supabase";
 import Link from "next/link";
 import {
   BarChart,
@@ -126,14 +125,17 @@ export default function AnalyticsPage() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const fetch = async () => {
-      const { data, error } = await supabase
-        .from("users")
-        .select("id, status, intention");
-      if (!error && data) setUsers(data);
+    const load = async () => {
+      try {
+        const res = await fetch("/api/admin/users");
+        const body = await res.json();
+        if (res.ok && body.users) setUsers(body.users);
+      } catch {
+        /* e'tiborsiz qoldiramiz */
+      }
       setLoading(false);
     };
-    fetch();
+    load();
   }, []);
 
   const total = users.length;

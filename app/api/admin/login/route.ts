@@ -1,9 +1,11 @@
 import { NextResponse } from "next/server";
-import { supabase } from "@/lib/supabase";
+import { getSupabaseAdmin } from "@/lib/supabaseAdmin";
 import { signSession, ADMIN_COOKIE, SESSION_MAX_AGE } from "@/lib/security_link";
+import { verifyPassword, hashPassword, isHashed } from "@/lib/password";
 
-// Admin login — credentiallar server tomonda tekshiriladi, muvaffaqiyatда
-// imzolangan httpOnly cookie o'rnatiladi. Bu cookie'ni middleware o'qiydi.
+// Admin login — credentiallar SERVER tomonда service_role bilan tekshiriladi.
+// Shu tufayli `admin` jadvalini anon uchun butunlay yopish mumkin (parollar
+// endi brauzerga chiqmaydi). Muvaffaqiyatда imzolangan httpOnly cookie qo'yiladi.
 export async function POST(request: Request) {
   try {
     const { username, password } = await request.json();
@@ -22,13 +24,11 @@ export async function POST(request: Request) {
       );
     }
 
-    // TODO(xavfsizlik): parol hozir ochiq matnda solishtirilyapti (mavjud
-    // `admin` jadvali shunday). Keyinchalik bcrypt/argon2 hashга o'tkazish kerak.
-    const { data, error } = await supabase
+    const db = getSupabaseAdmin();
+    const { data, error } = await db
       .from("admin")
-      .select("id, username")
+      .select("id, username, password")
       .eq("username", username)
-      .eq("password", password)
       .single();
 
     if (error || !data) {
@@ -36,6 +36,24 @@ export async function POST(request: Request) {
         { error: "Username yoki parol noto'g'ri" },
         { status: 401 },
       );
+    }
+
+    const ok = await verifyPassword(password, data.password);
+    if (!ok) {
+      return NextResponse.json(
+        { error: "Username yoki parol noto'g'ri" },
+        { status: 401 },
+      );
+    }
+
+    // upgrade-on-login: eski ochiq-matndagi parolni hash'ga o'tkazamiz
+    if (!isHashed(data.password)) {
+      try {
+        const hashed = await hashPassword(password);
+        await db.from("admin").update({ password: hashed }).eq("id", data.id);
+      } catch {
+        /* upgrade muvaffaqiyatsiz bo'lsa ham login davom etadi */
+      }
     }
 
     const resolvedName = data.username ?? username;
