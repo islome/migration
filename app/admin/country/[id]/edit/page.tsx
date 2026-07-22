@@ -291,7 +291,7 @@ export default function EditCountryPage() {
             variant="ghost"
             size="sm"
             className="gap-2 mb-2 -ml-2 text-muted-foreground"
-            onClick={() => router.push("/admin/countries")}
+            onClick={() => router.push("/admin/country")}
           >
             <ArrowLeft size={16} /> Orqaga
           </Button>
