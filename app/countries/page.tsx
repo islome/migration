@@ -1,6 +1,5 @@
 "use client";
 
-import { countries } from "@/lib/countries-data";
 import Link from "next/link";
 import {
   MapPin,
@@ -11,7 +10,9 @@ import {
   MessageCircle,
   UserRoundCheck,
   ShieldCheckIcon,
+  Loader2,
 } from "lucide-react";
+import { supabase } from "@/lib/supabase";
 import Footer from "@/components/ui/footer";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
@@ -22,6 +23,48 @@ export default function CountriesPage() {
   const telegramLink = "https://t.me/migrationuz";
   const pathname = usePathname();
   const [showLogo, setShowLogo] = useState(false);
+
+  type CardCountry = {
+    id: string;
+    flag: string;
+    name: string;
+    nameEn: string;
+    shortDescription: string;
+    salary: string;
+    popularJobs: string[];
+    visaDuration: string;
+    visaSuccess: string;
+  };
+  const [countries, setCountries] = useState<CardCountry[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const load = async () => {
+      const { data } = await supabase
+        .from("countries")
+        .select(
+          "id, flag, name, name_en, short_description, salary, popular_jobs, visa_duration, visa_success",
+        )
+        .order("created_at", { ascending: false });
+      if (data) {
+        setCountries(
+          data.map((c) => ({
+            id: c.id,
+            flag: c.flag,
+            name: c.name,
+            nameEn: c.name_en,
+            shortDescription: c.short_description,
+            salary: c.salary,
+            popularJobs: c.popular_jobs ?? [],
+            visaDuration: c.visa_duration,
+            visaSuccess: c.visa_success,
+          })),
+        );
+      }
+      setLoading(false);
+    };
+    load();
+  }, []);
 
   const isActive = (href: string) => {
     if (href === "/countries") {
@@ -197,6 +240,17 @@ export default function CountriesPage() {
 
       {/* Countries Grid */}
       <section className="container bg-white mx-auto px-4 py-20">
+        {loading && (
+          <div className="flex flex-col items-center justify-center py-24 gap-3">
+            <Loader2 className="w-8 h-8 animate-spin text-[#2d4356]" />
+            <p className="text-gray-400">Yuklanmoqda...</p>
+          </div>
+        )}
+        {!loading && countries.length === 0 && (
+          <div className="text-center py-24 text-gray-400">
+            Hozircha davlatlar qo&apos;shilmagan
+          </div>
+        )}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {countries.map((country) => (
             <div

@@ -35,6 +35,7 @@ import {
   Construction,
   BotIcon,
   PencilIcon,
+  ArrowLeft,
 } from "lucide-react";
 
 type User = {
@@ -148,10 +149,6 @@ export default function AdminPage() {
     setToasts((prev) => prev.filter((t) => t.id !== id));
   }, []);
 
-  // Eslatma: users amallarи (list/status/delete) endi /api/admin/users server
-  // route'i orqali (service_role) bajariladi va activity_log ham o'sha yerda
-  // yoziladi. Shu tufayli `users` va `admin` jadvallarini anon uchun yopish mumkin.
-
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoginLoading(true);
@@ -203,7 +200,6 @@ export default function AdminPage() {
     } else setUsersLoading(false);
   };
 
-  // Sahifa ochilганda serverdan sessiyani tiklaymiz (cookie httpOnly).
   useEffect(() => {
     let active = true;
     (async () => {
@@ -449,6 +445,13 @@ export default function AdminPage() {
   if (!isLoggedIn) {
     return (
       <div className="min-h-screen bg-[#89aac3] flex items-center justify-center p-4">
+        <Link
+          href="/"
+          className="absolute top-6 left-6 flex items-center gap-2 text-white hover:underline"
+        >
+          <ArrowLeft className="w-5 h-5" />
+          <span>Saytfa qaytish</span>
+        </Link>
         <div
           className="absolute inset-0 opacity-[0.07]"
           style={{

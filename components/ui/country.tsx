@@ -1,4 +1,7 @@
-import { countries } from "@/lib/countries-data";
+"use client";
+
+import { useEffect, useState } from "react";
+import { supabase } from "@/lib/supabase";
 import Link from "next/link";
 import {
   ArrowRight,
@@ -7,10 +10,62 @@ import {
   Clock,
   Award,
   ChevronRight,
+  Loader2,
 } from "lucide-react";
 
+type CardCountry = {
+  id: string;
+  flag: string;
+  name: string;
+  nameEn: string;
+  shortDescription: string;
+  salary: string;
+  popularJobs: string[];
+  visaDuration: string;
+  visaSuccess: string;
+};
+
 export default function Country() {
+  const [countries, setCountries] = useState<CardCountry[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const load = async () => {
+      const { data } = await supabase
+        .from("countries")
+        .select(
+          "id, flag, name, name_en, short_description, salary, popular_jobs, visa_duration, visa_success",
+        )
+        .order("created_at", { ascending: false });
+      if (data) {
+        setCountries(
+          data.map((c) => ({
+            id: c.id,
+            flag: c.flag,
+            name: c.name,
+            nameEn: c.name_en,
+            shortDescription: c.short_description,
+            salary: c.salary,
+            popularJobs: c.popular_jobs ?? [],
+            visaDuration: c.visa_duration,
+            visaSuccess: c.visa_success,
+          })),
+        );
+      }
+      setLoading(false);
+    };
+    load();
+  }, []);
+
   const displayedCountries = countries.slice(0, 3);
+
+  if (loading) {
+    return (
+      <div className="flex justify-center py-16">
+        <Loader2 className="w-8 h-8 animate-spin text-[#89aac3]" />
+      </div>
+    );
+  }
 
   return (
     <div className="space-y-8">
