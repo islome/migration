@@ -49,7 +49,7 @@ export default async function CountryDetailPage({
           <Link href="/" className="flex items-center space-x-2">
             <Factory className="w-8 h-8 text-black hidden md:block"/>
             <span className="text-2xl font-bold bg-black bg-clip-text text-transparent">
-              Best Globalize
+              Global <span className="text-blue-600">HR</span>
             </span>
           </Link>
 
