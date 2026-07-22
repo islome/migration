@@ -100,13 +100,13 @@ export default function Header() {
                 </Link>
               </div>
             </div>
-            <Link
+            {/* <Link
               href="/admin"
               className="hidden md:flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 ml-1"
               title="Admin panel"
             >
               <ShieldCheckIcon className="w-4 h-4 text-gray-400 hover:text-blue-600 transition-colors duration-200 hover:scale-130" />
-            </Link>
+            </Link> */}
           </div>
 
           <div className="hidden md:flex space-x-8">
