@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { supabase } from "@/lib/supabase";
+import { Reveal } from "@/components/ui/reveal";
 import Link from "next/link";
 import {
   ArrowRight,
@@ -70,11 +71,9 @@ export default function Country() {
   return (
     <div className="space-y-8">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {displayedCountries.map((country) => (
-          <div
-            key={country.id}
-            className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border border-gray-100 group"
-          >
+        {displayedCountries.map((country, index) => (
+          <Reveal key={country.id} delay={(index % 3) * 0.1} className="h-full">
+            <div className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border border-gray-100 group h-full">
             {/* Country Header */}
             <div className="bg-linear-to-r from-[#89aac3] to-[#6f93b0] p-6">
               <div className="flex items-center justify-between mb-4">
@@ -148,6 +147,7 @@ export default function Country() {
               </Link>
             </div>
           </div>
+          </Reveal>
         ))}
       </div>
 

@@ -6,6 +6,7 @@ import Country from "@/components/ui/country";
 import Footer from "@/components/ui/footer";
 import Header from "@/components/ui/header";
 import SocialMedias from "@/components/ui/socials";
+import { Reveal } from "@/components/ui/reveal";
 import Link from "next/link";
 import {
   ArrowRight,
@@ -106,9 +107,9 @@ export default function Home() {
     <div className="min-h-screen bg-white overflow-hidden pt-10">
       <Header />
 
-      <section className="container mx-auto px-6 py-20 md:py-28 mt-20">
-        <div className="max-w-4xl mx-auto mt-2 text-center">
-          <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
+      <section className="container mx-auto px-6 py-24 md:py-32 mt-20">
+        <div className="max-w-5xl mx-auto mt-2 text-center">
+          <h1 className="text-6xl md:text-7xl lg:text-8xl font-bold text-gray-900 mb-8 leading-tight">
             <span
               className="block"
               style={{
@@ -130,7 +131,7 @@ export default function Home() {
           </h1>
 
           <p
-            className="text-xl text-gray-600 mb-10 max-w-2xl mx-auto"
+            className="text-xl md:text-2xl text-gray-600 mb-12 max-w-3xl mx-auto"
             style={{
               animation:
                 "fadeSlideUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.3s both",
@@ -150,18 +151,18 @@ export default function Home() {
           >
             <Link
               href="/countries"
-              className="bg-linear-to-r from-blue-600 to-blue-700 text-white px-8 py-4 rounded-xl hover:shadow-xl transition-all duration-300 hover:scale-105 flex items-center gap-2 text-lg font-semibold"
+              className="bg-linear-to-r from-blue-600 to-blue-700 text-white px-10 py-5 rounded-xl hover:shadow-xl transition-all duration-300 hover:scale-105 flex items-center gap-2 text-xl font-semibold"
             >
               Davlatlarni ko&apos;rish
-              <ArrowRight className="w-5 h-5" />
+              <ArrowRight className="w-6 h-6" />
             </Link>
             <Link
               href={telegramLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="border-2 border-blue-600 text-blue-600 px-8 py-4 rounded-xl hover:bg-blue-50 transition-all duration-300 flex items-center gap-2 text-lg font-semibold"
+              className="border-2 border-blue-600 text-blue-600 px-10 py-5 rounded-xl hover:bg-blue-50 transition-all duration-300 flex items-center gap-2 text-xl font-semibold"
             >
-              <MessageCircle className="w-5 h-5" />
+              <MessageCircle className="w-6 h-6" />
               Maslahat olish
             </Link>
           </div>
@@ -184,50 +185,60 @@ export default function Home() {
       <section className="bg-white py-16">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-            <div className="text-center">
-              <div className="inline-flex items-center justify-center w-16 h-16 bg-blue-100 rounded-full mb-4">
-                <Users className="w-8 h-8 text-blue-600" />
+            <Reveal delay={0}>
+              <div className="text-center">
+                <div className="inline-flex items-center justify-center w-16 h-16 bg-blue-100 rounded-full mb-4">
+                  <Users className="w-8 h-8 text-blue-600" />
+                </div>
+                <h3 className="text-4xl font-bold text-gray-900 mb-2">1000+</h3>
+                <p className="text-gray-600">Muvaffaqiyatli mijozlar</p>
               </div>
-              <h3 className="text-4xl font-bold text-gray-900 mb-2">1000+</h3>
-              <p className="text-gray-600">Muvaffaqiyatli mijozlar</p>
-            </div>
+            </Reveal>
 
-            <div className="text-center">
-              <div className="inline-flex items-center justify-center w-16 h-16 bg-green-100 rounded-full mb-4">
-                <Globe className="w-8 h-8 text-green-600" />
+            <Reveal delay={0.1}>
+              <div className="text-center">
+                <div className="inline-flex items-center justify-center w-16 h-16 bg-green-100 rounded-full mb-4">
+                  <Globe className="w-8 h-8 text-green-600" />
+                </div>
+                <h3 className="text-4xl font-bold text-gray-900 mb-2">10+</h3>
+                <p className="text-gray-600">Davlatlar bilan hamkorlik</p>
               </div>
-              <h3 className="text-4xl font-bold text-gray-900 mb-2">10+</h3>
-              <p className="text-gray-600">Davlatlar bilan hamkorlik</p>
-            </div>
+            </Reveal>
 
-            <div className="text-center">
-              <div className="inline-flex items-center justify-center w-16 h-16 bg-purple-100 rounded-full mb-4">
-                <FileCheck className="w-8 h-8 text-purple-600" />
+            <Reveal delay={0.2}>
+              <div className="text-center">
+                <div className="inline-flex items-center justify-center w-16 h-16 bg-purple-100 rounded-full mb-4">
+                  <FileCheck className="w-8 h-8 text-purple-600" />
+                </div>
+                <h3 className="text-4xl font-bold text-gray-900 mb-2">95%</h3>
+                <p className="text-gray-600">Viza olish darajasi</p>
               </div>
-              <h3 className="text-4xl font-bold text-gray-900 mb-2">95%</h3>
-              <p className="text-gray-600">Viza olish darajasi</p>
-            </div>
+            </Reveal>
 
-            <div className="text-center">
-              <div className="inline-flex items-center justify-center w-16 h-16 bg-orange-100 rounded-full mb-4">
-                <TrendingUp className="w-8 h-8 text-orange-600" />
+            <Reveal delay={0.3}>
+              <div className="text-center">
+                <div className="inline-flex items-center justify-center w-16 h-16 bg-orange-100 rounded-full mb-4">
+                  <TrendingUp className="w-8 h-8 text-orange-600" />
+                </div>
+                <h3 className="text-4xl font-bold text-gray-900 mb-2">5+</h3>
+                <p className="text-gray-600">Yillik tajriba</p>
               </div>
-              <h3 className="text-4xl font-bold text-gray-900 mb-2">5+</h3>
-              <p className="text-gray-600">Yillik tajriba</p>
-            </div>
+            </Reveal>
           </div>
         </div>
       </section>
 
       <section id="countries" className="container mx-auto px-4 py-20">
-        <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">
-            Ommabop yo&apos;nalishlar
-          </h2>
-          <p className="text-xl text-gray-600">
-            Eng ko&apos;p talabga ega davlatlar va ularning imkoniyatlari
-          </p>
-        </div>
+        <Reveal>
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">
+              Ommabop yo&apos;nalishlar
+            </h2>
+            <p className="text-xl text-gray-600">
+              Eng ko&apos;p talabga ega davlatlar va ularning imkoniyatlari
+            </p>
+          </div>
+        </Reveal>
 
         <Country />
       </section>
@@ -246,14 +257,16 @@ export default function Home() {
           </svg>
         </div>
         <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold mb-4">
-              Jarayon qanday ishlaydi?
-            </h2>
-            <p className="text-xl text-blue-100">
-              4 ta oddiy qadam orqali maqsadingizga erishing
-            </p>
-          </div>
+          <Reveal>
+            <div className="text-center mb-12">
+              <h2 className="text-4xl font-bold mb-4">
+                Jarayon qanday ishlaydi?
+              </h2>
+              <p className="text-xl text-blue-100">
+                4 ta oddiy qadam orqali maqsadingizga erishing
+              </p>
+            </div>
+          </Reveal>
           <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-none">
             <svg
               viewBox="0 0 1200 120"
@@ -340,56 +353,61 @@ export default function Home() {
                 icon: <PlaneTakeoff className="w-8 h-8 mx-auto mb-2" />,
               },
             ].map((item, index) => (
-              <div key={index} className="text-center relative z-10">
+              <Reveal
+                key={index}
+                delay={index * 0.12}
+                className="text-center relative z-10"
+              >
                 <div className="inline-flex items-center justify-center w-20 h-20 bg-white/20 backdrop-blur-sm rounded-full mb-6 text-3xl font-bold border-4 border-white/40">
                   {item.step}
                 </div>
                 {item.icon}
                 <h3 className="text-2xl font-bold mb-3">{item.title}</h3>
                 <p className="text-blue-100">{item.desc}</p>
-              </div>
+              </Reveal>
             ))}
           </div>
         </div>
       </section>
 
       <section id="services" className="container mx-auto px-4 py-20">
-        <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">
-            Bizning xizmatlar
-          </h2>
-          <p className="text-xl text-gray-600">
-            Sizga kerak bo&#39;lgan barcha yordam bir joyda
-          </p>
-        </div>
+        <Reveal>
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">
+              Bizning xizmatlar
+            </h2>
+            <p className="text-xl text-gray-600">
+              Sizga kerak bo&#39;lgan barcha yordam bir joyda
+            </p>
+          </div>
+        </Reveal>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {services.map((item, index) => (
-            <div
-              key={index}
-              className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 hover:scale-105"
-            >
-              <div
-                className={`inline-flex items-center justify-center w-16 h-16 bg-${item.color}-100 rounded-full mb-6 text-${item.color}-600`}
-              >
-                {item.icon}
+            <Reveal key={index} delay={(index % 3) * 0.1} className="h-full">
+              <div className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 hover:scale-105 h-full">
+                <div
+                  className={`inline-flex items-center justify-center w-16 h-16 bg-${item.color}-100 rounded-full mb-6 text-${item.color}-600`}
+                >
+                  {item.icon}
+                </div>
+                <h3 className="text-2xl font-bold text-gray-900 mb-4">
+                  {item.title}
+                </h3>
+                <p className="text-gray-600 mb-6">{item.desc}</p>
+                <a
+                  href="#"
+                  onClick={(event) => {
+                    event.preventDefault();
+                    setServiceModal(index);
+                  }}
+                  className="text-blue-600 font-semibold hover:gap-3 flex items-center gap-2 transition-all cursor-pointer"
+                >
+                  Batafsil
+                  <ArrowRight className="w-5 h-5" />
+                </a>
               </div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">
-                {item.title}
-              </h3>
-              <p className="text-gray-600 mb-6">{item.desc}</p>
-              <a
-                href="#"
-                onClick={(event) => {
-                  event.preventDefault();
-                  setServiceModal(index);
-                }}
-                className="text-blue-600 font-semibold hover:gap-3 flex items-center gap-2 transition-all cursor-pointer"
-              >
-                Batafsil
-                <ArrowRight className="w-5 h-5" />
-              </a>
-            </div>
+            </Reveal>
           ))}
         </div>
       </section>
@@ -462,16 +480,18 @@ export default function Home() {
 
       <SpecialBlogSection />
       <section id="contact" className="container mx-auto px-4 py-20">
-        <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">
-            Bizning manzil
-          </h2>
-          <p className="text-xl text-gray-600">
-            Ofisimizga tashrif buyuring yoki biz bilan bog&#39;laning
-          </p>
-        </div>
+        <Reveal>
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">
+              Bizning manzil
+            </h2>
+            <p className="text-xl text-gray-600">
+              Ofisimizga tashrif buyuring yoki biz bilan bog&#39;laning
+            </p>
+          </div>
+        </Reveal>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <Reveal className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           <div className="space-y-6">
             <div className="bg-white rounded-2xl p-8 shadow-lg">
               <h3 className="text-2xl font-bold text-gray-900 mb-6">
@@ -552,7 +572,7 @@ export default function Home() {
               title="Global HR Office Location"
             />
           </div>
-        </div>
+        </Reveal>
       </section>
 
       <Footer />
