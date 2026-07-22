@@ -22,29 +22,29 @@ export default function ContactPage() {
     {
       icon: <Phone className="w-6 h-6" />,
       label: "Telefon",
-      value: "+998 77 767 00 17",
-      link: "tel:+998777670017",
+      value: "+998 95 344 99 90",
+      link: "tel:+998953449990",
       color: "bg-green-50 text-green-600",
     },
     {
       icon: <Mail className="w-6 h-6" />,
       label: "Email",
-      value: "info@migrationuz.com",
-      link: "mailto:info@migrationuz.com",
+      value: "akrommannonov@gmail.com",
+      link: "mailto:akrommannonov@gmail.com",
       color: "bg-purple-50 text-purple-600",
     },
     {
       icon: <MapPin className="w-6 h-6" />,
       label: "Manzil",
       value: "Namangan sh, Boburshox ko'chasi, 94-uy",
-      link: "https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3913.6942047380985!2d71.68843707603943!3d40.98715997135355!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zNDDCsDU5JzEzLjgiTiA3McKwNDEnMjcuNiJF!5e1!3m2!1sen!2sde!4v1784150664724!5m2!1sen!2sde",
+      link: "https://maps.app.goo.gl/KVC3U6Umex9GwDYKA",
       color: "bg-red-50 text-red-600",
     },
     {
       icon: <Globe className="w-6 h-6" />,
       label: "Veb-sayt",
-      value: "www.globalhragency.uz",
-      link: "https://www.globalhragency.uz",
+      value: "www.namglobalhr.uz",
+      link: "https://www.namglobalhr.uz",
       color: "bg-blue-50 text-blue-600",
     },
   ];
@@ -59,32 +59,20 @@ export default function ContactPage() {
     {
       name: "Instagram",
       icon: <Instagram className="w-5 h-5" />,
-      link: "https://instagram.com",
+      link: "https://www.instagram.com/globalagency_hr",
       color: "hover:bg-pink-50 hover:text-pink-600",
     },
     {
       name: "Telegram",
       icon: <Send className="w-5 h-5" />,
-      link: "https://t.me/BestGlobalizeNamangan",
+      link: "https://t.me/migrationuz",
       color: "hover:bg-sky-50 hover:text-sky-600",
-    },
-    {
-      name: "LinkedIn",
-      icon: <Linkedin className="w-5 h-5" />,
-      link: "https://linkedin.com/bestglobalize",
-      color: "hover:bg-blue-50 hover:text-blue-700",
     },
     {
       name: "WhatsApp",
       icon: <MessageCircle className="w-5 h-5" />,
-      link: "https://wa.me/998777670017",
+      link: "https://wa.me/998972307500",
       color: "hover:bg-green-50 hover:text-green-600",
-    },
-    {
-      name: "YouTube",
-      icon: <Youtube className="w-5 h-5" />,
-      link: "https://youtube.com",
-      color: "hover:bg-red-50 hover:text-red-600",
     },
   ];
 

@@ -474,7 +474,7 @@ export default function GuidePage() {
             </p>
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
               <a
-                href="tel:+998777670017"
+                href="tel:+998953449990"
                 className="flex items-center justify-center gap-2 bg-white text-blue-700 text-sm font-semibold px-6 py-3 rounded-xl hover:bg-blue-50 transition-colors"
               >
                 <Phone className="w-4 h-4" />

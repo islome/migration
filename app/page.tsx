@@ -446,7 +446,7 @@ export default function Home() {
                     Yopish
                   </SheetClose>
                   <a
-                    href={telegramLink}
+                    href="https://t.me/NAMANGAN2308"
                     target="_blank"
                     rel="noreferrer noopener"
                     className="inline-flex items-center justify-center rounded-full border border-blue-600 px-5 py-3 text-sm font-semibold text-blue-600 transition hover:bg-blue-50"
@@ -498,7 +498,7 @@ export default function Home() {
                   <div>
                     <p className="text-sm text-gray-500 mb-1">Email</p>
                     <p className="text-lg font-semibold text-gray-900">
-                      namanganhragency@mail.uz
+                      akrommannonov@gmail.com
                     </p>
                   </div>
                 </div>
