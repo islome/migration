@@ -8,7 +8,8 @@ type Blog = {
   title: string;
   category: string;
   description: string;
-  video_url: string;
+  video_url: string | null;
+  image_url: string | null;
   created_at: string;
 };
 
@@ -54,16 +55,26 @@ export default function BlogDetailClient({ blog }: { blog: Blog }) {
           </div>
 
           <div className="w-auto order-2 lg:order-0 overflow-hidden lg:self-start">
-            <video
-              src={blog.video_url}
-              style={{ height: "740px", width: "auto" }}
-              className="object-cover rounded-2xl mx-auto block"
-              controls
-              autoPlay
-              muted
-              loop
-              playsInline
-            />
+            {blog.video_url ? (
+              <video
+                src={blog.video_url}
+                style={{ height: "740px", width: "auto" }}
+                className="object-cover rounded-2xl mx-auto block"
+                controls
+                autoPlay
+                muted
+                loop
+                playsInline
+              />
+            ) : blog.image_url ? (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img
+                src={blog.image_url}
+                alt={blog.title}
+                style={{ maxHeight: "740px", width: "auto" }}
+                className="object-cover rounded-2xl mx-auto block"
+              />
+            ) : null}
           </div>
         </div>
       </div>

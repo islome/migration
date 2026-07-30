@@ -149,7 +149,11 @@ export default async function AdminBlogs() {
                       <Pencil className="w-4 h-4" />
                       Edit
                     </Link>
-                    <DeleteButton id={blog.id} videoUrl={blog.video_url} />
+                    <DeleteButton
+                      id={blog.id}
+                      videoUrl={blog.video_url}
+                      imageUrl={blog.image_url}
+                    />
                   </div>
                 </div>
               );

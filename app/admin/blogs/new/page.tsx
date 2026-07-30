@@ -26,17 +26,21 @@ import {
   FileQuestion,
   PencilIcon,
   Construction,
+  ImageIcon,
+  X,
 } from "lucide-react";
 import AIAssistant from "@/components/AiAsisstant";
 
 const WORD_LIMIT = 250;
-const MAX_SIZE_MB = 50;
+const MAX_SIZE_MB = 50; // video
+const MAX_IMAGE_SIZE_MB = 10; // rasm
 
 export default function AdminBlogsPage() {
   const [title, setTitle] = useState("");
   const [category, setCategory] = useState("");
   const [description, setDescription] = useState("");
   const [videoFile, setVideoFile] = useState<File | null>(null);
+  const [imageFile, setImageFile] = useState<File | null>(null);
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState("");
@@ -58,10 +62,28 @@ export default function AdminBlogsPage() {
     setVideoFile(file);
   };
 
+  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    const sizeMB = file.size / (1024 * 1024);
+    if (sizeMB > MAX_IMAGE_SIZE_MB) {
+      setError(`Rasm hajmi ${MAX_IMAGE_SIZE_MB}MB dan oshmasligi kerak!`);
+      return;
+    }
+    setError("");
+    setImageFile(file);
+  };
+
   const handleSubmit = async () => {
-    // Validation
-    if (!title || !category || !description || !videoFile) {
-      setError("Barcha maydonlarni to'ldiring!");
+    // Validation — sarlavha/kategoriya/tavsif majburiy,
+    // media'dan esa kamida bittasi (video YOKI rasm) bo'lishi shart.
+    if (!title || !category || !description) {
+      setError("Sarlavha, kategoriya va tavsifni to'ldiring!");
+      return;
+    }
+    if (!videoFile && !imageFile) {
+      setError("Kamida video yoki rasm yuklang!");
       return;
     }
     if (wordCount > WORD_LIMIT) {
@@ -73,20 +95,32 @@ export default function AdminBlogsPage() {
     setError("");
 
     try {
-      // 1. Videoni Storage ga yuklash
-      const fileName = `${Date.now()}-${videoFile.name}`;
-      const { data: storageData, error: storageError } = await supabase.storage
-        .from("videos")
-        .upload(fileName, videoFile);
+      let videoUrl: string | null = null;
+      let imageUrl: string | null = null;
 
-      if (storageError) throw storageError;
+      // 1. Video bo'lsa — "videos" bucket'ga yuklash
+      if (videoFile) {
+        const fileName = `${Date.now()}-${videoFile.name}`;
+        const { error: storageError } = await supabase.storage
+          .from("videos")
+          .upload(fileName, videoFile);
+        if (storageError) throw storageError;
 
-      // 2. Public URL olish
-      const { data: urlData } = supabase.storage
-        .from("videos")
-        .getPublicUrl(fileName);
+        videoUrl = supabase.storage.from("videos").getPublicUrl(fileName)
+          .data.publicUrl;
+      }
 
-      const videoUrl = urlData.publicUrl;
+      // 2. Rasm bo'lsa — "blog-images" bucket'ga yuklash
+      if (imageFile) {
+        const fileName = `${Date.now()}-${imageFile.name}`;
+        const { error: imgError } = await supabase.storage
+          .from("blog-images")
+          .upload(fileName, imageFile);
+        if (imgError) throw imgError;
+
+        imageUrl = supabase.storage.from("blog-images").getPublicUrl(fileName)
+          .data.publicUrl;
+      }
 
       // 3. DB ga saqlash
       const { error: dbError } = await supabase.from("blogs").insert({
@@ -94,6 +128,7 @@ export default function AdminBlogsPage() {
         category,
         description,
         video_url: videoUrl,
+        image_url: imageUrl,
       });
 
       if (dbError) throw dbError;
@@ -103,6 +138,7 @@ export default function AdminBlogsPage() {
       setCategory("");
       setDescription("");
       setVideoFile(null);
+      setImageFile(null);
       setSuccess(true);
       setTimeout(() => setSuccess(false), 3000);
     } catch (err: any) {
@@ -313,10 +349,17 @@ export default function AdminBlogsPage() {
               </div>
             )}
 
-            {/* Video Upload */}
-            <div className="space-y-2">
-              <Label>Video (max 50MB)</Label>
-              <div className="border-2 border-dashed border-gray-200 rounded-xl p-6 text-center hover:border-blue-400 transition-colors">
+            {/* Media Upload — video YOKI rasm (kamida bittasi majburiy) */}
+            <div className="space-y-3">
+              <Label>
+                Media
+                <span className="ml-2 text-sm text-gray-400 font-normal">
+                  Video yoki rasm — kamida bittasi majburiy
+                </span>
+              </Label>
+
+              {/* Video */}
+              <div className="relative border-2 border-dashed border-gray-200 rounded-xl p-6 text-center hover:border-blue-400 transition-colors">
                 <input
                   type="file"
                   accept="video/*"
@@ -324,7 +367,7 @@ export default function AdminBlogsPage() {
                   className="hidden"
                   id="video-upload"
                 />
-                <label htmlFor="video-upload" className="cursor-pointer">
+                <label htmlFor="video-upload" className="cursor-pointer block">
                   <Upload className="w-8 h-8 text-gray-400 mx-auto mb-2" />
                   {videoFile ? (
                     <div>
@@ -337,15 +380,70 @@ export default function AdminBlogsPage() {
                     </div>
                   ) : (
                     <div>
-                      <p className="text-gray-600">
-                        Video yuklash uchun bosing
-                      </p>
+                      <p className="text-gray-600">Video yuklash uchun bosing</p>
                       <p className="text-sm text-gray-400">
                         MP4, MOV, AVI (max 50MB)
                       </p>
                     </div>
                   )}
                 </label>
+                {videoFile && (
+                  <button
+                    type="button"
+                    onClick={() => setVideoFile(null)}
+                    className="absolute top-2 right-2 p-1 rounded-full bg-gray-100 hover:bg-red-100 text-gray-500 hover:text-red-600 transition"
+                    aria-label="Videoni olib tashlash"
+                  >
+                    <X className="w-4 h-4" />
+                  </button>
+                )}
+              </div>
+
+              {/* Rasm */}
+              <div className="relative border-2 border-dashed border-gray-200 rounded-xl p-6 text-center hover:border-blue-400 transition-colors">
+                <input
+                  type="file"
+                  accept="image/*"
+                  onChange={handleImageChange}
+                  className="hidden"
+                  id="image-upload"
+                />
+                <label htmlFor="image-upload" className="cursor-pointer block">
+                  {imageFile ? (
+                    <div>
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img
+                        src={URL.createObjectURL(imageFile)}
+                        alt="preview"
+                        className="mx-auto max-h-40 rounded-lg mb-2 object-contain"
+                      />
+                      <p className="font-medium text-green-600">
+                        {imageFile.name}
+                      </p>
+                      <p className="text-sm text-gray-400">
+                        {(imageFile.size / (1024 * 1024)).toFixed(1)} MB
+                      </p>
+                    </div>
+                  ) : (
+                    <div>
+                      <ImageIcon className="w-8 h-8 text-gray-400 mx-auto mb-2" />
+                      <p className="text-gray-600">Rasm yuklash uchun bosing</p>
+                      <p className="text-sm text-gray-400">
+                        JPG, PNG, WEBP (max 10MB)
+                      </p>
+                    </div>
+                  )}
+                </label>
+                {imageFile && (
+                  <button
+                    type="button"
+                    onClick={() => setImageFile(null)}
+                    className="absolute top-2 right-2 p-1 rounded-full bg-gray-100 hover:bg-red-100 text-gray-500 hover:text-red-600 transition"
+                    aria-label="Rasmni olib tashlash"
+                  >
+                    <X className="w-4 h-4" />
+                  </button>
+                )}
               </div>
             </div>
 

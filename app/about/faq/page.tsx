@@ -184,12 +184,12 @@ export default function FAQPage() {
                     Savolingiz javobsiz qoldimi?
                   </p>
                   <p className="text-sm text-gray-500">
-                    Mutaxassislarimiz bepul 30 daqiqalik konsultatsiya beradi.
+                    Mutaxassislarimiz bepul 20 daqiqalik konsultatsiya beradi.
                   </p>
                 </div>
               </div>
               <a
-                href="tel:+998777670017"
+                href="tel:+998953449990"
                 className="shrink-0 bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium px-5 py-2.5 rounded-xl transition-colors"
               >
                 Bog'lanish

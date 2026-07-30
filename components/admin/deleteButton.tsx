@@ -7,10 +7,11 @@ import { Trash2, Loader2 } from "lucide-react";
 
 type Props = {
   id: string;
-  videoUrl: string;
+  videoUrl: string | null;
+  imageUrl?: string | null;
 };
 
-export default function DeleteButton({ id, videoUrl }: Props) {
+export default function DeleteButton({ id, videoUrl, imageUrl }: Props) {
   const [loading, setLoading] = useState(false);
   const [confirm, setConfirm] = useState(false);
   const router = useRouter();
@@ -19,9 +20,19 @@ export default function DeleteButton({ id, videoUrl }: Props) {
     setLoading(true);
     try {
       // Storage dan videoni o'chirish
-      const fileName = videoUrl.split("/").pop();
-      if (fileName) {
-        await supabase.storage.from("videos").remove([fileName]);
+      if (videoUrl) {
+        const fileName = videoUrl.split("/").pop();
+        if (fileName) {
+          await supabase.storage.from("videos").remove([fileName]);
+        }
+      }
+
+      // Storage dan rasmni o'chirish
+      if (imageUrl) {
+        const fileName = imageUrl.split("/").pop();
+        if (fileName) {
+          await supabase.storage.from("blog-images").remove([fileName]);
+        }
       }
 
       // DB dan o'chirish

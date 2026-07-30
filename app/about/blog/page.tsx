@@ -50,7 +50,11 @@ export default async function BlogsPage() {
                   key={blog.id}
                   className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 border border-gray-100 animate-div"
                 >
-                  <VideoCard src={blog.video_url} title={blog.title} />
+                  <VideoCard
+                    videoUrl={blog.video_url}
+                    imageUrl={blog.image_url}
+                    title={blog.title}
+                  />
 
                   <div className="p-6">
                     <span
