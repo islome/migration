@@ -4,6 +4,9 @@ import BlogDetailClient from "@/components/ui/blogDetailClient";
 import { notFound } from "next/navigation";
 import Header from "@/components/ui/header";
 
+// ISR: detail sahifa 60s cache'lanadi; tahrir/o'chirishда revalidate qilinadi.
+export const revalidate = 60;
+
 async function getBlog(id: string) {
   const { data } = await supabase
     .from("blogs")

@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { supabase } from "@/lib/supabase";
 import { Trash2, Loader2 } from "lucide-react";
+import { revalidateBlogs } from "@/app/admin/blogs/actions";
 
 type Props = {
   id: string;
@@ -38,6 +39,12 @@ export default function DeleteButton({ id, videoUrl, imageUrl }: Props) {
       // DB dan o'chirish
       await supabase.from("blogs").delete().eq("id", id);
 
+      // Public/admin ro'yxatlarni darhol yangilash (best-effort)
+      try {
+        await revalidateBlogs();
+      } catch {
+        /* revalidatsiya xatosi o'chirishni buzmasin */
+      }
       router.refresh();
     } catch (err) {
       console.error(err);

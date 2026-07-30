@@ -14,10 +14,12 @@ export default function VideoCard({ videoUrl, imageUrl, title }: Props) {
     return (
       <a href={videoUrl} target="_blank" rel="noopener noreferrer">
         <div className="relative aspect-video bg-gray-600 cursor-pointer group">
+          {/* Poster (rasm) bo'lsa videoni umuman yuklamaymiz — resurs tejaladi.
+              Poster yo'q bo'lsa, birinchi kadrni thumbnail sifatida ko'rsatamiz. */}
           <video
-            src={`${videoUrl}#t=0.1`}
+            src={imageUrl ? videoUrl : `${videoUrl}#t=0.1`}
             className="w-full h-full object-cover"
-            preload="metadata"
+            preload={imageUrl ? "none" : "metadata"}
             muted
             playsInline
             poster={imageUrl ?? undefined}

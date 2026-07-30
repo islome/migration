@@ -5,6 +5,10 @@ import Header from "@/components/ui/header";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 
+// ISR: sahifa 60s cache'lanadi (tez yuklanadi, DB kam so'raladi).
+// Blog qo'shil/tahrirlanganda revalidateBlogs() darhol yangilaydi.
+export const revalidate = 60;
+
 const categoryConfig = {
   new: { label: "Yangilik", color: "bg-blue-100 text-blue-700" },
   warning: { label: "Ogohlantirish", color: "bg-yellow-100 text-yellow-700" },

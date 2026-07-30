@@ -23,6 +23,7 @@ import {
   ImageIcon,
 } from "lucide-react";
 import Link from "next/link";
+import { revalidateBlogs } from "@/app/admin/blogs/actions";
 
 type Blog = {
   id: string;
@@ -132,7 +133,7 @@ export default function EditBlogClient({ blog }: { blog: Blog }) {
         const newFileName = `${Date.now()}-${videoFile.name}`;
         const { error: uploadError } = await supabase.storage
           .from("videos")
-          .upload(newFileName, videoFile);
+          .upload(newFileName, videoFile, { cacheControl: "31536000" });
         if (uploadError) throw uploadError;
 
         videoUrl = supabase.storage.from("videos").getPublicUrl(newFileName)
@@ -151,7 +152,7 @@ export default function EditBlogClient({ blog }: { blog: Blog }) {
         const newFileName = `${Date.now()}-${imageFile.name}`;
         const { error: uploadError } = await supabase.storage
           .from("blog-images")
-          .upload(newFileName, imageFile);
+          .upload(newFileName, imageFile, { cacheControl: "31536000" });
         if (uploadError) throw uploadError;
 
         imageUrl = supabase.storage.from("blog-images").getPublicUrl(newFileName)
@@ -177,6 +178,13 @@ export default function EditBlogClient({ blog }: { blog: Blog }) {
         .eq("id", blog.id);
 
       if (dbError) throw dbError;
+
+      // Public/admin ro'yxatlarni darhol yangilash (best-effort)
+      try {
+        await revalidateBlogs();
+      } catch {
+        /* revalidatsiya xatosi asosiy oqimni buzmasin */
+      }
 
       setSuccess(true);
       setTimeout(() => router.push("/admin/blogs"), 1500);

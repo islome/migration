@@ -13,6 +13,9 @@ import {
 } from "lucide-react";
 import DeleteButton from "@/components/admin/deleteButton";
 
+// Admin har doim yangi ma'lumot ko'rsin (qo'shgani darhol ko'rinsin).
+export const dynamic = "force-dynamic";
+
 async function getBlogs() {
   const { data } = await supabase
     .from("blogs")

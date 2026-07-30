@@ -30,6 +30,7 @@ import {
   X,
 } from "lucide-react";
 import AIAssistant from "@/components/AiAsisstant";
+import { revalidateBlogs } from "../actions";
 
 const WORD_LIMIT = 250;
 const MAX_SIZE_MB = 50; // video
@@ -103,7 +104,7 @@ export default function AdminBlogsPage() {
         const fileName = `${Date.now()}-${videoFile.name}`;
         const { error: storageError } = await supabase.storage
           .from("videos")
-          .upload(fileName, videoFile);
+          .upload(fileName, videoFile, { cacheControl: "31536000" });
         if (storageError) throw storageError;
 
         videoUrl = supabase.storage.from("videos").getPublicUrl(fileName)
@@ -115,7 +116,7 @@ export default function AdminBlogsPage() {
         const fileName = `${Date.now()}-${imageFile.name}`;
         const { error: imgError } = await supabase.storage
           .from("blog-images")
-          .upload(fileName, imageFile);
+          .upload(fileName, imageFile, { cacheControl: "31536000" });
         if (imgError) throw imgError;
 
         imageUrl = supabase.storage.from("blog-images").getPublicUrl(fileName)
@@ -132,6 +133,14 @@ export default function AdminBlogsPage() {
       });
 
       if (dbError) throw dbError;
+
+      // Public/admin ro'yxatlarni darhol yangilash — blog kech chiqmasin.
+      // Best-effort: revalidatsiya xatosi yaratishni buzmasin (ISR 60s zaxira).
+      try {
+        await revalidateBlogs();
+      } catch {
+        /* revalidatsiya xatosi asosiy oqimni buzmasin */
+      }
 
       // Reset
       setTitle("");
