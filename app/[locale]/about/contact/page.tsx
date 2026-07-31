@@ -8,41 +8,44 @@ import {
   Facebook,
   Instagram,
   Send,
-  Linkedin,
   MessageCircle,
-  Youtube,
   ClockCheckIcon,
 } from "lucide-react";
 import { useWorkingHours } from "@/utils/workingHours";
 import Header from "@/components/ui/header";
+import { useTranslations } from "next-intl";
 
 export default function ContactPage() {
-  const { workingHours, isCurrentlyOpen } = useWorkingHours();
+  const t = useTranslations("contactPage");
+  const { workingHours, isCurrentlyOpen } = useWorkingHours(
+    t.raw("days") as string[],
+    t("closedDay"),
+  );
   const contactInfo = [
     {
       icon: <Phone className="w-6 h-6" />,
-      label: "Telefon",
+      label: t("phone"),
       value: "+998 95 344 99 90",
       link: "tel:+998953449990",
       color: "bg-green-50 text-green-600",
     },
     {
       icon: <Mail className="w-6 h-6" />,
-      label: "Email",
+      label: t("email"),
       value: "akrommannonov@gmail.com",
       link: "mailto:akrommannonov@gmail.com",
       color: "bg-purple-50 text-purple-600",
     },
     {
       icon: <MapPin className="w-6 h-6" />,
-      label: "Manzil",
-      value: "Namangan sh, Boburshox ko'chasi, 94-uy",
+      label: t("address"),
+      value: t("addressValue"),
       link: "https://maps.app.goo.gl/KVC3U6Umex9GwDYKA",
       color: "bg-red-50 text-red-600",
     },
     {
       icon: <Globe className="w-6 h-6" />,
-      label: "Veb-sayt",
+      label: t("website"),
       value: "www.namglobalhr.uz",
       link: "https://www.namglobalhr.uz",
       color: "bg-blue-50 text-blue-600",
@@ -82,10 +85,10 @@ export default function ContactPage() {
       <div className="max-w-7xl mx-auto my-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="text-center mb-16 mt-16">
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-            Bog'lanish
+            {t("title")}
           </h1>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Bizning jamoamiz sizga yordam berishga tayyor
+            {t("subtitle")}
           </p>
         </div>
 
@@ -93,7 +96,7 @@ export default function ContactPage() {
           {/* Contact Information */}
           <div className="lg:col-span-2 space-y-6">
             <h2 className="text-2xl font-semibold text-gray-900 mb-6">
-              Kontakt ma'lumotlar
+              {t("infoTitle")}
             </h2>
 
             <div className="grid sm:grid-cols-2 gap-4">
@@ -123,7 +126,7 @@ export default function ContactPage() {
             {/* Social Media */}
             <div className="pt-8">
               <h3 className="text-xl font-semibold text-gray-900 mb-6">
-                Ijtimoiy tarmoqlar
+                {t("social")}
               </h3>
               <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-3">
                 {socialMedia.map((social, index) => (
@@ -147,13 +150,13 @@ export default function ContactPage() {
           {/* Working Hours */}
           <div>
             <h2 className="text-2xl font-semibold text-gray-900 mb-6">
-              Ish vaqti
+              {t("hoursTitle")}
             </h2>
             <div className="bg-gray-50 border border-gray-200 rounded-lg p-6">
               <div className="flex items-center mb-6 pb-4 border-b border-gray-300">
                 <ClockCheckIcon className="w-5 h-5 text-yellow-600 mr-3" />
                 <span className="text-sm font-medium text-gray-700">
-                  Ish soatlari
+                  {t("hoursCard")}
                 </span>
               </div>
               <div className="space-y-4">
@@ -182,7 +185,7 @@ export default function ContactPage() {
                     }`}
                   />
                   <span className="text-sm text-gray-600 font-medium">
-                    {isCurrentlyOpen ? "Hozir ochiq" : "Hozir yopiq"}
+                    {isCurrentlyOpen ? t("open") : t("closed")}
                   </span>
                 </div>
               </div>
@@ -193,7 +196,7 @@ export default function ContactPage() {
         {/* Map Section */}
         <div className="mt-12">
           <h2 className="text-2xl font-semibold text-gray-900 mb-6">
-            Bizning manzil
+            {t("mapTitle")}
           </h2>
           <div className="bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm">
             <iframe
@@ -212,21 +215,21 @@ export default function ContactPage() {
           <div className="mt-6 grid sm:grid-cols-3 gap-4">
             <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 text-center">
               <p className="text-sm text-blue-600 font-medium mb-1">
-                Ish kunlari
+                {t("workDays")}
               </p>
-              <p className="text-xs text-blue-800">Dushanba - Shanba</p>
+              <p className="text-xs text-blue-800">{t("workDaysValue")}</p>
             </div>
             <div className="bg-purple-50 border border-purple-200 rounded-lg p-4 text-center">
               <p className="text-sm text-purple-600 font-medium mb-1">
-                Tezkor aloqa
+                {t("quick")}
               </p>
-              <p className="text-xs text-purple-800">24/7 Telegram</p>
+              <p className="text-xs text-purple-800">{t("quickValue")}</p>
             </div>
             <div className="bg-green-50 border border-green-200 rounded-lg p-4 text-center">
               <p className="text-sm text-green-600 font-medium mb-1">
-                Javob vaqti
+                {t("response")}
               </p>
-              <p className="text-xs text-green-800">1 soat ichida</p>
+              <p className="text-xs text-green-800">{t("responseValue")}</p>
             </div>
           </div>
         </div>

@@ -6,9 +6,10 @@ import { revalidatePath } from "next/cache";
 // ro'yxatlarini DARHOL yangilash (ISR cache'ni bust qilish).
 // Shu tufayli yangi blog saytda kech chiqmaydi.
 export async function revalidateBlogs() {
-  revalidatePath("/"); // bosh sahifa (SpecialBlogSection — oxirgi blog)
-  revalidatePath("/about/blog"); // public ro'yxat
-  revalidatePath("/about/blog/[id]", "page"); // barcha detail sahifalar
-  revalidatePath("/about/blog/warning"); // warning sahifasi (oxirgi blog)
-  revalidatePath("/admin/blogs"); // admin ro'yxat
+  // Public sahifalar endi [locale] ostida — pattern orqali barcha locale'lar yangilanadi
+  revalidatePath("/[locale]", "page"); // bosh sahifa (SpecialBlogSection)
+  revalidatePath("/[locale]/about/blog", "page"); // public ro'yxat
+  revalidatePath("/[locale]/about/blog/[id]", "page"); // barcha detail sahifalar
+  revalidatePath("/[locale]/about/blog/warning", "page"); // warning sahifasi
+  revalidatePath("/admin/blogs"); // admin ro'yxat (locale'siz)
 }

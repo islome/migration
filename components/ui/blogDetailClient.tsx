@@ -1,7 +1,8 @@
 // components/BlogDetailClient.tsx
 "use client";
 
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
+import { useLocale, useTranslations } from "next-intl";
 import { ArrowLeft, ArrowRight, Calendar } from "lucide-react";
 import Footer from "./footer";
 import { renderBlogDescription } from "@/lib/blogText";
@@ -16,24 +17,40 @@ type Blog = {
   created_at: string;
 };
 
-const categoryConfig: Record<string, { label: string; color: string }> = {
-  new: { label: "Yangilik", color: "bg-blue-100 text-blue-700" },
-  warning: { label: "Ogohlantirish", color: "bg-yellow-100 text-yellow-700" },
+const categoryConfig: Record<
+  string,
+  { labelKey: "catNew" | "catWarning" | "catSuccess"; color: string }
+> = {
+  new: { labelKey: "catNew", color: "bg-blue-100 text-blue-700" },
+  warning: { labelKey: "catWarning", color: "bg-yellow-100 text-yellow-700" },
   successful_job: {
-    label: "Muvaffaqiyat",
+    labelKey: "catSuccess",
     color: "bg-green-100 text-green-700",
   },
 };
 
+const dateLocales: Record<string, string> = {
+  uz: "uz-UZ",
+  ru: "ru-RU",
+  en: "en-US",
+};
+
 export default function BlogDetailClient({ blog }: { blog: Blog }) {
+  const t = useTranslations("blogDetail");
+  const tCats = useTranslations("blogList");
+  const locale = useLocale();
+
   const cat = categoryConfig[blog.category];
   const hasMedia = Boolean(blog.video_url || blog.image_url);
 
-  const date = new Date(blog.created_at).toLocaleDateString("uz-UZ", {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-  });
+  const date = new Date(blog.created_at).toLocaleDateString(
+    dateLocales[locale] || "uz-UZ",
+    {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    },
+  );
 
   return (
     <div className="min-h-screen bg-white">
@@ -44,7 +61,7 @@ export default function BlogDetailClient({ blog }: { blog: Blog }) {
           className="inline-flex items-center gap-2 text-sm font-medium text-gray-500 hover:text-gray-900 transition-colors"
         >
           <ArrowLeft className="w-4 h-4" />
-          Barcha bloglar
+          {t("back")}
         </Link>
 
         {/* Sarlavha bloki */}
@@ -53,7 +70,7 @@ export default function BlogDetailClient({ blog }: { blog: Blog }) {
             <span
               className={`inline-flex items-center px-3.5 py-1.5 rounded-full text-sm font-semibold ${cat?.color || "bg-gray-100 text-gray-700"}`}
             >
-              {cat?.label || "Blog"}
+              {cat ? tCats(cat.labelKey) : "Blog"}
             </span>
             <span className="inline-flex items-center gap-1.5 text-sm text-gray-500">
               <Calendar className="w-4 h-4" />
@@ -107,7 +124,7 @@ export default function BlogDetailClient({ blog }: { blog: Blog }) {
             href="/about/blog"
             className="inline-flex items-center gap-2 text-blue-600 font-semibold hover:gap-3 transition-all"
           >
-            Boshqa bloglarni ko&apos;rish
+            {t("more")}
             <ArrowRight className="w-4 h-4" />
           </Link>
         </div>

@@ -8,7 +8,8 @@ import Footer from "@/components/ui/footer";
 import Header from "@/components/ui/header";
 import SocialMedias from "@/components/ui/socials";
 import { Reveal } from "@/components/ui/reveal";
-import Link from "next/link";
+import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
 import {
   ArrowRight,
   Globe,
@@ -39,6 +40,13 @@ export default function HomeClient({
 }: {
   latestBlog: Blog | null;
 }) {
+  const tHero = useTranslations("hero");
+  const tStats = useTranslations("stats");
+  const tPopular = useTranslations("popular");
+  const tProcess = useTranslations("process");
+  const tServices = useTranslations("services");
+  const tContact = useTranslations("contact");
+
   const telegramLink = "https://t.me/migrationuz";
   const phoneNumber = "+998 95 344 99 90";
   const [serviceModal, setServiceModal] = useState<number | null>(null);
@@ -46,26 +54,23 @@ export default function HomeClient({
   const services = [
     {
       icon: <MessageCircle className="w-8 h-8" />,
-      title: "Shaxsiy konsultatsiya",
-      desc: "Mutaxassislarimiz bilan individual maslakat va yo'l-yo'riq",
-      details:
-        "Sizga mos ish yo'nalishini aniqlash, hujjatlar va mehnat shartlari bo'yicha individual maslahat. Biz sizga barcha savollarga javob beramiz va keyingi qadamlaringizni rejalashtiramiz.",
+      title: tServices("s1Title"),
+      desc: tServices("s1Desc"),
+      details: tServices("s1Details"),
       color: "blue",
     },
     {
       icon: <FileCheck className="w-8 h-8" />,
-      title: "Hujjat tayyorlash",
-      desc: "Barcha rasmiy hujjatlarni to'g'ri va tez tayyorlash",
-      details:
-        "Rasmiy hujjatlarni to'plash, tarjima qilish va tasdiqlash jarayonini boshqaramiz. Hujjatlaringizni konsullik va ish beruvchi talablari asosida tayyorlab beramiz.",
+      title: tServices("s2Title"),
+      desc: tServices("s2Desc"),
+      details: tServices("s2Details"),
       color: "green",
     },
     {
       icon: <Languages className="w-8 h-8" />,
-      title: "Tarjima xizmati",
-      desc: "Notar tasdiqli professional tarjimalar",
-      details:
-        "Notar tasdiqli tarjimalar, konsullik hujjatlari va ish shartnomalari uchun professional tarjima xizmatlari. Matnlarni aniq va tez tarjima qilamiz.",
+      title: tServices("s3Title"),
+      desc: tServices("s3Desc"),
+      details: tServices("s3Details"),
       color: "purple",
     },
     {
@@ -84,27 +89,93 @@ export default function HomeClient({
           />
         </svg>
       ),
-      title: "Til kurslari",
-      desc: "Chet el tillarini o'rganish uchun professional kurslar",
-      details:
-        "Chet tilini ish muhitida o'rganish, imtihonlar uchun tayyorlanish va amaliy muloqotga yo'naltirilgan darslar. Til bilimlaringizni ishga tayyorlaymiz.",
+      title: tServices("s4Title"),
+      desc: tServices("s4Desc"),
+      details: tServices("s4Details"),
       color: "orange",
     },
     {
       icon: <UserCheck className="w-8 h-8" />,
-      title: "Ish beruvchilar bilan aloqa",
-      desc: "Xorijdagi ishonchli kompaniyalar bilan bog'lanish",
-      details:
-        "Siz uchun mos ish beruvchilarni topish, intervyu tashkil etish va ish takliflarini olishda yordam beramiz. Ish beruvchilar bilan to'g'ri aloqani yo'lga qo'yamiz.",
+      title: tServices("s5Title"),
+      desc: tServices("s5Desc"),
+      details: tServices("s5Details"),
       color: "gray",
     },
     {
       icon: <MonitorCheck className="w-8 h-8" />,
-      title: "To'liq monitoring",
-      desc: "Ishga joylashganingizdan keyin doimiy qo'llab-quvvatlash",
-      details:
-        "Yangi joyga ko'chib o'tganingizdan keyin ham doimiy qo'llab-quvvatlash, muammolarni hal qilish va yangilanishlarni taqdim etamiz.",
+      title: tServices("s6Title"),
+      desc: tServices("s6Desc"),
+      details: tServices("s6Details"),
       color: "yellow",
+    },
+  ];
+
+  const processSteps = [
+    {
+      step: "1",
+      title: tProcess("step1Title"),
+      desc: tProcess("step1Desc"),
+      icon: (
+        <svg
+          className="w-8 h-8 mx-auto mb-2"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z"
+          />
+        </svg>
+      ),
+    },
+    {
+      step: "2",
+      title: tProcess("step2Title"),
+      desc: tProcess("step2Desc"),
+      icon: (
+        <svg
+          className="w-8 h-8 mx-auto mb-2"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+          />
+        </svg>
+      ),
+    },
+    {
+      step: "3",
+      title: tProcess("step3Title"),
+      desc: tProcess("step3Desc"),
+      icon: (
+        <svg
+          className="w-8 h-8 mx-auto mb-2"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"
+          />
+        </svg>
+      ),
+    },
+    {
+      step: "4",
+      title: tProcess("step4Title"),
+      desc: tProcess("step4Desc"),
+      icon: <PlaneTakeoff className="w-8 h-8 mx-auto mb-2" />,
     },
   ];
 
@@ -122,7 +193,7 @@ export default function HomeClient({
                   "fadeSlideUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.1s both",
               }}
             >
-              Qonuniy yo&apos;l bilan
+              {tHero("line1")}
             </span>
             <span
               className="block bg-linear-to-r from-[#14202e] to-[#2d4356] bg-clip-text text-transparent"
@@ -131,7 +202,8 @@ export default function HomeClient({
                   "fadeSlideUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.1s both",
               }}
             >
-              <span className="text-green-500">Chet el</span>ga ishga
+              <span className="text-green-500">{tHero("green")}</span>
+              {tHero("tail")}
             </span>
           </h1>
 
@@ -142,9 +214,7 @@ export default function HomeClient({
                 "fadeSlideUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.3s both",
             }}
           >
-            Xalqaro mehnat bozorida ish topish va barcha rasmiy hujjatlarni
-            tayyorlashda professional yordam. Sizning orzuingizdagi davlatda
-            ishlash imkoniyati.
+            {tHero("subtitle")}
           </p>
 
           <div
@@ -158,18 +228,18 @@ export default function HomeClient({
               href="/countries"
               className="bg-linear-to-r from-blue-600 to-blue-700 text-white px-10 py-5 rounded-xl hover:shadow-xl transition-all duration-300 hover:scale-105 flex items-center gap-2 text-xl font-semibold"
             >
-              Davlatlarni ko&apos;rish
+              {tHero("ctaCountries")}
               <ArrowRight className="w-6 h-6" />
             </Link>
-            <Link
+            <a
               href={telegramLink}
               target="_blank"
               rel="noopener noreferrer"
               className="border-2 border-blue-600 text-blue-600 px-10 py-5 rounded-xl hover:bg-blue-50 transition-all duration-300 flex items-center gap-2 text-xl font-semibold"
             >
               <MessageCircle className="w-6 h-6" />
-              Maslahat olish
-            </Link>
+              {tHero("ctaConsult")}
+            </a>
           </div>
         </div>
 
@@ -196,7 +266,7 @@ export default function HomeClient({
                   <Users className="w-8 h-8 text-blue-600" />
                 </div>
                 <h3 className="text-4xl font-bold text-gray-900 mb-2">1000+</h3>
-                <p className="text-gray-600">Muvaffaqiyatli mijozlar</p>
+                <p className="text-gray-600">{tStats("clients")}</p>
               </div>
             </Reveal>
 
@@ -206,7 +276,7 @@ export default function HomeClient({
                   <Globe className="w-8 h-8 text-green-600" />
                 </div>
                 <h3 className="text-4xl font-bold text-gray-900 mb-2">10+</h3>
-                <p className="text-gray-600">Davlatlar bilan hamkorlik</p>
+                <p className="text-gray-600">{tStats("countries")}</p>
               </div>
             </Reveal>
 
@@ -216,7 +286,7 @@ export default function HomeClient({
                   <FileCheck className="w-8 h-8 text-purple-600" />
                 </div>
                 <h3 className="text-4xl font-bold text-gray-900 mb-2">95%</h3>
-                <p className="text-gray-600">Viza olish darajasi</p>
+                <p className="text-gray-600">{tStats("visa")}</p>
               </div>
             </Reveal>
 
@@ -226,7 +296,7 @@ export default function HomeClient({
                   <TrendingUp className="w-8 h-8 text-orange-600" />
                 </div>
                 <h3 className="text-4xl font-bold text-gray-900 mb-2">5+</h3>
-                <p className="text-gray-600">Yillik tajriba</p>
+                <p className="text-gray-600">{tStats("experience")}</p>
               </div>
             </Reveal>
           </div>
@@ -237,11 +307,9 @@ export default function HomeClient({
         <Reveal>
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              Ommabop yo&apos;nalishlar
+              {tPopular("title")}
             </h2>
-            <p className="text-xl text-gray-600">
-              Eng ko&apos;p talabga ega davlatlar va ularning imkoniyatlari
-            </p>
+            <p className="text-xl text-gray-600">{tPopular("subtitle")}</p>
           </div>
         </Reveal>
 
@@ -264,12 +332,8 @@ export default function HomeClient({
         <div className="container mx-auto px-4">
           <Reveal>
             <div className="text-center mb-12">
-              <h2 className="text-4xl font-bold mb-4">
-                Jarayon qanday ishlaydi?
-              </h2>
-              <p className="text-xl text-blue-100">
-                4 ta oddiy qadam orqali maqsadingizga erishing
-              </p>
+              <h2 className="text-4xl font-bold mb-4">{tProcess("title")}</h2>
+              <p className="text-xl text-blue-100">{tProcess("subtitle")}</p>
             </div>
           </Reveal>
           <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-none">
@@ -290,74 +354,7 @@ export default function HomeClient({
               style={{ width: "calc(100% - 10rem)", left: "5rem" }}
             />
 
-            {[
-              {
-                step: "1",
-                title: "Konsultatsiya",
-                desc: "Bepul maslahat va to'liq ma'lumot olish",
-                icon: (
-                  <svg
-                    className="w-8 h-8 mx-auto mb-2"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z"
-                    />
-                  </svg>
-                ),
-              },
-              {
-                step: "2",
-                title: "Hujjatlar",
-                desc: "Barcha kerakli hujjatlarni tayyorlash",
-                icon: (
-                  <svg
-                    className="w-8 h-8 mx-auto mb-2"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
-                    />
-                  </svg>
-                ),
-              },
-              {
-                step: "3",
-                title: "Viza jarayoni",
-                desc: "Viza uchun ariza topshirish va kuzatish",
-                icon: (
-                  <svg
-                    className="w-8 h-8 mx-auto mb-2"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"
-                    />
-                  </svg>
-                ),
-              },
-              {
-                step: "4",
-                title: "Jo'nash",
-                desc: "Yo'lga tayyorlik va qo'llab-quvvatlash",
-                icon: <PlaneTakeoff className="w-8 h-8 mx-auto mb-2" />,
-              },
-            ].map((item, index) => (
+            {processSteps.map((item, index) => (
               <Reveal
                 key={index}
                 delay={index * 0.12}
@@ -379,11 +376,9 @@ export default function HomeClient({
         <Reveal>
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              Bizning xizmatlar
+              {tServices("title")}
             </h2>
-            <p className="text-xl text-gray-600">
-              Sizga kerak bo&#39;lgan barcha yordam bir joyda
-            </p>
+            <p className="text-xl text-gray-600">{tServices("subtitle")}</p>
           </div>
         </Reveal>
 
@@ -408,7 +403,7 @@ export default function HomeClient({
                   }}
                   className="text-blue-600 font-semibold hover:gap-3 flex items-center gap-2 transition-all cursor-pointer"
                 >
-                  Batafsil
+                  {tServices("detail")}
                   <ArrowRight className="w-5 h-5" />
                 </a>
               </div>
@@ -444,29 +439,27 @@ export default function HomeClient({
                 <div className="grid gap-4 sm:grid-cols-2">
                   <div className="rounded-3xl border border-gray-200 bg-slate-50 p-6">
                     <h4 className="text-lg font-semibold text-gray-900 mb-2">
-                      Nima uchun bu xizmat?
+                      {tServices("whyTitle")}
                     </h4>
                     <p className="text-gray-600 leading-7">
-                      Bizning xizmatimiz sizga jarayonni qisqartirish va xavfsiz yurish uchun mo&#39;ljallangan.
+                      {tServices("whyText")}
                     </p>
                   </div>
                   <div className="rounded-3xl border border-gray-200 bg-slate-50 p-6">
                     <h4 className="text-lg font-semibold text-gray-900 mb-2">
-                      Qanday yordam beramiz?
+                      {tServices("howTitle")}
                     </h4>
                     <p className="text-gray-600 leading-7">
-                      Har bir bosqichda shaxsiy yondashuv, hujjat nazorati va doimiy aloqa taqdim etamiz.
+                      {tServices("howText")}
                     </p>
                   </div>
                 </div>
               </div>
               <SheetFooter className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-                <p className="text-sm text-gray-500">
-                  Ma&#39;lumotni to&#39;liq o&#39;rganib chiqing, keyin biz bilan bog&#39;laning.
-                </p>
+                <p className="text-sm text-gray-500">{tServices("note")}</p>
                 <div className="flex items-center gap-3">
                   <SheetClose className="inline-flex items-center justify-center rounded-full bg-blue-600 px-5 py-3 text-sm font-semibold text-white transition hover:bg-blue-700">
-                    Yopish
+                    {tServices("close")}
                   </SheetClose>
                   <a
                     href="https://t.me/NAMANGAN2308"
@@ -474,7 +467,7 @@ export default function HomeClient({
                     rel="noreferrer noopener"
                     className="inline-flex items-center justify-center rounded-full border border-blue-600 px-5 py-3 text-sm font-semibold text-blue-600 transition hover:bg-blue-50"
                   >
-                    Maslahat olish
+                    {tServices("consult")}
                   </a>
                 </div>
               </SheetFooter>
@@ -488,11 +481,9 @@ export default function HomeClient({
         <Reveal>
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              Bizning manzil
+              {tContact("title")}
             </h2>
-            <p className="text-xl text-gray-600">
-              Ofisimizga tashrif buyuring yoki biz bilan bog&#39;laning
-            </p>
+            <p className="text-xl text-gray-600">{tContact("subtitle")}</p>
           </div>
         </Reveal>
 
@@ -500,7 +491,7 @@ export default function HomeClient({
           <div className="space-y-6">
             <div className="bg-white rounded-2xl p-8 shadow-lg">
               <h3 className="text-2xl font-bold text-gray-900 mb-6">
-                Bog&#39;lanish ma&#39;lumotlari
+                {tContact("infoTitle")}
               </h3>
 
               <div className="space-y-4">
@@ -509,7 +500,9 @@ export default function HomeClient({
                     <Phone className="w-6 h-6 text-blue-600" />
                   </div>
                   <div>
-                    <p className="text-sm text-gray-500 mb-1">Telefon raqam</p>
+                    <p className="text-sm text-gray-500 mb-1">
+                      {tContact("phoneLabel")}
+                    </p>
                     <p className="text-lg font-semibold text-gray-900">
                       {phoneNumber}
                     </p>
@@ -521,7 +514,9 @@ export default function HomeClient({
                     <Mail className="w-6 h-6 text-green-600" />
                   </div>
                   <div>
-                    <p className="text-sm text-gray-500 mb-1">Email</p>
+                    <p className="text-sm text-gray-500 mb-1">
+                      {tContact("emailLabel")}
+                    </p>
                     <p className="text-lg font-semibold text-gray-900">
                       akrommannonov@gmail.com
                     </p>
@@ -533,13 +528,13 @@ export default function HomeClient({
                     <MapPin className="w-6 h-6 text-purple-600" />
                   </div>
                   <div>
-                    <p className="text-sm text-gray-500 mb-1">Manzil</p>
+                    <p className="text-sm text-gray-500 mb-1">
+                      {tContact("addressLabel")}
+                    </p>
                     <p className="text-lg font-semibold text-gray-900">
-                      Namangan Shahar, Boburshox ko&apos;chasi, 94-uy
+                      {tContact("addressValue")}
                     </p>
-                    <p className="text-gray-600">
-                      Mo&apos;njal: Lola-Chorsu yo&apos;lida, eski “Tamanno” oshxonasi yonida
-                    </p>
+                    <p className="text-gray-600">{tContact("addressHint")}</p>
                   </div>
                 </div>
 
@@ -548,18 +543,20 @@ export default function HomeClient({
                     <MessageCircle className="w-6 h-6 text-orange-600" />
                   </div>
                   <div>
-                    <p className="text-sm text-gray-500 mb-1">Ish vaqti</p>
-                    <p className="text-lg font-semibold text-gray-900">
-                      Dushanba - Shanba
+                    <p className="text-sm text-gray-500 mb-1">
+                      {tContact("hoursLabel")}
                     </p>
-                    <p className="text-gray-600">09:00 - 18:00</p>
+                    <p className="text-lg font-semibold text-gray-900">
+                      {tContact("hoursDays")}
+                    </p>
+                    <p className="text-gray-600">{tContact("hoursTime")}</p>
                   </div>
                 </div>
               </div>
 
               <div className="mt-8 pt-8 border-t border-gray-200">
                 <h4 className="text-lg font-bold text-gray-900 mb-4">
-                  Ijtimoiy tarmoqlar
+                  {tContact("socialTitle")}
                 </h4>
                 <SocialMedias />
               </div>

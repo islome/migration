@@ -8,40 +8,47 @@ type ScheduleItem = {
   isOpen: boolean;
 };
 
-export function useWorkingHours() {
+const DEFAULT_DAYS = [
+  "Yakshanba",
+  "Dushanba",
+  "Seshanba",
+  "Chorshanba",
+  "Payshanba",
+  "Juma",
+  "Shanba",
+];
+
+// dayNames/closedLabel — i18n uchun (berilmasa uz default).
+// Jadval statik (kun nomlari + soatlar), faqat "hozir ochiqmi" holati effect'da.
+export function useWorkingHours(dayNames?: string[], closedLabel?: string) {
   const [isCurrentlyOpen, setIsCurrentlyOpen] = useState(false);
-  const [workingHours, setWorkingHours] = useState<ScheduleItem[]>([]);
+
+  const days = dayNames && dayNames.length === 7 ? dayNames : DEFAULT_DAYS;
+  const closed = closedLabel ?? "Yopiq";
+
+  const workingHours: ScheduleItem[] = days.map((day, index) => {
+    // Dushanba(1) → Shanba(6) — ish kunlari
+    const isThisDayWeekday = index >= 1 && index <= 6;
+    return {
+      day,
+      time: isThisDayWeekday ? "09:00 - 18:00" : closed,
+      isOpen: isThisDayWeekday,
+    };
+  });
 
   useEffect(() => {
     const updateStatus = () => {
       // Toshkent vaqti (UTC+5)
       const now = new Date();
-      // Agar server vaqti noto'g'ri bo'lsa, quyidagini qo'llashingiz mumkin:
-      // const now = new Date(Date.now() + 5 * 60 * 60 * 1000); // +5 soat
 
-      const dayOfWeek = now.getDay();           // 0 = yakshanba, 1 = dushanba, ..., 6 = shanba
+      const dayOfWeek = now.getDay(); // 0 = yakshanba, 1 = dushanba, ..., 6 = shanba
       const hour = now.getHours();
-      const minute = now.getMinutes();
 
       // Dushanba(1) → Shanba(6) → 9:00 dan 18:00 gacha ochiq
       const isWeekday = dayOfWeek >= 1 && dayOfWeek <= 6;
       const isInTimeRange = hour >= 9 && hour < 18; // 18:00 da yopiladi
 
-      const isOpenNow = isWeekday && isInTimeRange;
-
-      setIsCurrentlyOpen(isOpenNow);
-
-      const days = ["Yakshanba", "Dushanba", "Seshanba", "Chorshanba", "Payshanba", "Juma", "Shanba"];
-      const newSchedule: ScheduleItem[] = days.map((day, index) => {
-        const isThisDayWeekday = index >= 1 && index <= 6;
-        return {
-          day,
-          time: isThisDayWeekday ? "09:00 - 18:00" : "Yopiq",
-          isOpen: isThisDayWeekday,
-        };
-      });
-
-      setWorkingHours(newSchedule);
+      setIsCurrentlyOpen(isWeekday && isInTimeRange);
     };
 
     updateStatus();

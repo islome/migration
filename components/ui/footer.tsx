@@ -1,8 +1,10 @@
 import { Mail, Phone, UserRoundCheck, UserRoundSearchIcon } from "lucide-react";
 import Image from "next/image";
-import Link from "next/link";
+import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
 
 export default function Footer() {
+  const t = useTranslations("footer");
   const phoneLink = "tel:+998953449990";
   const phoneNumber = "+998 95 344 99 90";
   return (
@@ -27,20 +29,18 @@ export default function Footer() {
                   </span>
                 </div>
               </div>
-              <p className="text-gray-100">
-                Xalqaro mehnat bozorida ishonchli hamkoringiz
-              </p>
+              <p className="text-gray-100">{t("tagline")}</p>
             </div>
 
             <div>
-              <h4 className="text-white font-semibold mb-4">Havolalar</h4>
+              <h4 className="text-white font-semibold mb-4">{t("colLinks")}</h4>
               <ul className="space-y-2">
                 <li>
                   <Link
                     href="/countries"
                     className="hover:text-gray-600 transition"
                   >
-                    Davlatlar
+                    {t("countries")}
                   </Link>
                 </li>
                 <li>
@@ -48,7 +48,7 @@ export default function Footer() {
                     href="/about/services"
                     className="hover:text-gray-600 transition"
                   >
-                    Xizmatlar
+                    {t("services")}
                   </Link>
                 </li>
                 <li>
@@ -56,7 +56,7 @@ export default function Footer() {
                     href="/about/guide"
                     className="hover:text-gray-600 transition"
                   >
-                    Qo'llanma
+                    {t("guide")}
                   </Link>
                 </li>
                 <li>
@@ -64,49 +64,50 @@ export default function Footer() {
                     href="/about/blog"
                     className="hover:text-gray-600 transition"
                   >
-                    Blog
+                    {t("blog")}
                   </Link>
                 </li>
               </ul>
             </div>
 
             <div>
-              <h4 className="text-white font-semibold mb-4">Yordam</h4>
+              <h4 className="text-white font-semibold mb-4">{t("colHelp")}</h4>
               <ul className="space-y-2">
                 <li>
                   <Link
                     href="/about/faq"
                     className="hover:text-gray-600 transition"
                   >
-                    FAQ
+                    {t("faq")}
                   </Link>
                 </li>
                 <li>
-                  <Link
-                    href="/about"
-                    className="hover:text-gray-600 transition"
-                  >
-                    Developer
+                  <Link href="/about" className="hover:text-gray-600 transition">
+                    {t("developer")}
                   </Link>
                 </li>
                 <li>
-                  <Link
+                  <a
                     href="https://gov.uz/oz/migration/activity_page/xususiy-bandlik-agentliklari_"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="hover:text-gray-600 transition"
                   >
-                    Litsenziya
-                  </Link>
+                    {t("license")}
+                  </a>
                 </li>
                 <li>
-                  <Link href="#" className="hover:text-gray-600 transition">
-                    Shartlar
+                  <Link href="/" className="hover:text-gray-600 transition">
+                    {t("terms")}
                   </Link>
                 </li>
               </ul>
             </div>
 
             <div>
-              <h4 className="text-white font-semibold mb-4">Bog'lanish</h4>
+              <h4 className="text-white font-semibold mb-4">
+                {t("colContact")}
+              </h4>
               <ul className="space-y-2">
                 <li className="flex items-center gap-2 ml-2">
                   <UserRoundSearchIcon className="w-4 h-4" />
@@ -114,7 +115,7 @@ export default function Footer() {
                     href="/about/contact"
                     className="hover:text-gray-600 transition"
                   >
-                    Aloqa
+                    {t("contactLink")}
                   </Link>
                 </li>
                 <li className="flex items-center gap-2 ml-2">
@@ -123,7 +124,7 @@ export default function Footer() {
                     href="/register"
                     className="hover:text-gray-600 transition"
                   >
-                    Ma'lumot qoldirish
+                    {t("register")}
                   </Link>
                 </li>
                 <li className="flex items-center gap-2 ml-2">
@@ -150,8 +151,7 @@ export default function Footer() {
                 <li className="flex items-center gap-2">
                   <Mail className="w-4 h-4 ml-2" />
                   <a
-                    href="akrommannonov@gmail.com"
-                    target="_blank"
+                    href="mailto:akrommannonov@gmail.com"
                     rel="noopener noreferrer"
                     className="hover:text-gray-600 transition flex items-center gap-2"
                   >
@@ -163,7 +163,7 @@ export default function Footer() {
           </div>
 
           <div className="border-t border-gray-200 pt-8 text-center text-white">
-            <p>&copy; 2026 Global HR XBA. Barcha huquqlar himoyalangan.</p>
+            <p>{t("rights")}</p>
           </div>
         </div>
       </footer>

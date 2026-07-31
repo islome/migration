@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import { useTranslations } from "next-intl";
 import { supabase } from "@/lib/supabase";
 import {
   Accordion,
@@ -27,12 +28,13 @@ type FAQItem = {
 };
 
 export default function FAQPage() {
+  const t = useTranslations("faq");
   const router = useRouter();
   const [categories, setCategories] = useState<Category[]>([]);
   const [items, setItems] = useState<FAQItem[]>([]);
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+  const [loadFailed, setLoadFailed] = useState(false);
 
   useEffect(() => {
     const loadData = async () => {
@@ -48,7 +50,7 @@ export default function FAQPage() {
         ]);
 
       if (catsErr || faqsErr) {
-        setError("Ma'lumotlarni yuklashda xatolik yuz berdi.");
+        setLoadFailed(true);
       } else {
         setCategories(cats || []);
         setItems(faqs || []);
@@ -72,10 +74,10 @@ export default function FAQPage() {
             className="flex items-center gap-2 text-sm text-gray-500 hover:text-gray-900 transition-colors"
           >
             <ArrowLeft size={16} />
-            Orqaga
+            {t("back")}
           </button>
           <div className="h-4 w-px bg-gray-200" />
-          <span className="text-sm text-gray-400">FAQ</span>
+          <span className="text-sm text-gray-400">{t("crumb")}</span>
         </div>
       </div>
 
@@ -85,15 +87,14 @@ export default function FAQPage() {
           <div className="flex items-center gap-2 mb-3">
             <HelpCircle size={18} className="text-blue-500" />
             <span className="text-sm font-medium text-blue-500">
-              Ko'p so'raladigan savollar
+              {t("badge")}
             </span>
           </div>
           <h1 className="text-3xl font-bold text-gray-900 mb-2">
-            Savollaringizga javob topamiz
+            {t("title")}
           </h1>
           <p className="text-gray-500 text-base">
-            Immigratsiya jarayoni haqida eng tez-tez beriladigan savollar va
-            ularning javoblari.
+            {t("subtitle")}
           </p>
         </div>
 
@@ -105,14 +106,14 @@ export default function FAQPage() {
         )}
 
         {/* Error */}
-        {error && !loading && (
+        {loadFailed && !loading && (
           <div className="bg-red-50 border border-red-200 text-red-600 text-sm rounded-xl px-5 py-4">
-            {error}
+            {t("loadError")}
           </div>
         )}
 
         {/* Content */}
-        {!loading && !error && (
+        {!loading && !loadFailed && (
           <>
             {/* Category tabs */}
             <div className="flex flex-wrap gap-2 mb-8 animate-div">
@@ -167,7 +168,7 @@ export default function FAQPage() {
             ) : (
               <div className="bg-white rounded-2xl border border-gray-200 p-12 text-center">
                 <p className="text-gray-400 text-sm">
-                  Bu bo'limda hali savollar yo'q
+                  {t("empty")}
                 </p>
               </div>
             )}
@@ -181,10 +182,10 @@ export default function FAQPage() {
                 />
                 <div>
                   <p className="font-semibold text-gray-800 mb-0.5">
-                    Savolingiz javobsiz qoldimi?
+                    {t("ctaTitle")}
                   </p>
                   <p className="text-sm text-gray-500">
-                    Mutaxassislarimiz bepul 20 daqiqalik konsultatsiya beradi.
+                    {t("ctaText")}
                   </p>
                 </div>
               </div>
@@ -192,7 +193,7 @@ export default function FAQPage() {
                 href="tel:+998953449990"
                 className="shrink-0 bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium px-5 py-2.5 rounded-xl transition-colors"
               >
-                Bog'lanish
+                {t("ctaBtn")}
               </a>
             </div>
           </>

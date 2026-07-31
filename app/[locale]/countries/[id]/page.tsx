@@ -1,5 +1,6 @@
 import { supabase } from "@/lib/supabase";
 import { notFound } from "next/navigation";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import CountryDetailView, {
   type CountryDetail,
 } from "@/components/CountryDetailView";
@@ -16,9 +17,12 @@ export async function generateStaticParams() {
 export default async function CountryDetailPage({
   params,
 }: {
-  params: Promise<{ id: string }>;
+  params: Promise<{ id: string; locale: string }>;
 }) {
-  const { id } = await params;
+  const { id, locale } = await params;
+  setRequestLocale(locale);
+
+  const t = await getTranslations("countryDetail");
 
   const { data: country, error } = await supabase
     .from("countries")
@@ -32,7 +36,7 @@ export default async function CountryDetailPage({
     <CountryDetailView
       country={country}
       backHref="/countries"
-      backLabel="Barcha davlatlar"
+      backLabel={t("back")}
       showConsultation
     />
   );

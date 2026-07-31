@@ -13,17 +13,20 @@ import {
 } from "lucide-react";
 import Header from "@/components/ui/header";
 import Footer from "@/components/ui/footer";
-
-const intentions = [
-  { value: "Malumot berish", label: "Ma'lumot olish" },
-  { value: "Konsultatsiya", label: "Konsultatsiyaga yozilish" },
-  { value: "Aloqaga chiqish", label: "Aloqaga chiqish" },
-  { value: "Vizaga yordam", label: "Viza olishda yordam" },
-  { value: "Ish topish", label: "Ish topishda yordam" },
-  { value: "Boshqa masala", label: "Boshqa" },
-];
+import { useTranslations } from "next-intl";
 
 export default function Register() {
+  const t = useTranslations("register");
+
+  // value — DB'ga yoziladigan qiymat (o'zgarmaydi!), label — tarjima
+  const intentions = [
+    { value: "Malumot berish", label: t("i1") },
+    { value: "Konsultatsiya", label: t("i2") },
+    { value: "Aloqaga chiqish", label: t("i3") },
+    { value: "Vizaga yordam", label: t("i4") },
+    { value: "Ish topish", label: t("i5") },
+    { value: "Boshqa masala", label: t("i6") },
+  ];
   const [formData, setFormData] = useState({
     full_name: "",
     number: "",
@@ -40,13 +43,13 @@ export default function Register() {
     setSuccess(false);
 
     if (!formData.full_name || !formData.number || !formData.intention) {
-      setError("Barcha maydonlarni to'ldiring");
+      setError(t("errFill"));
       setLoading(false);
       return;
     }
 
     if (formData.number.length !== 9) {
-      setError("Telefon raqamni to'liq kiriting (9 ta raqam)");
+      setError(t("errPhone"));
       setLoading(false);
       return;
     }
@@ -71,7 +74,7 @@ export default function Register() {
       setTimeout(() => setSuccess(false), 6000);
     } catch (err: any) {
       console.error("Error:", err);
-      setError(err.message || "Xatolik yuz berdi. Qaytadan urinib ko'ring.");
+      setError(err.message || t("errGeneric"));
     } finally {
       setLoading(false);
     }
@@ -84,10 +87,10 @@ export default function Register() {
         <div className="w-full max-w-md">
           <div className="text-center mb-8">
             <h1 className="text-3xl font-bold text-gray-900 mb-2">
-              Ro'yxatdan o'tish
+              {t("title")}
             </h1>
             <p className="text-gray-500 text-sm">
-              Ma'lumotlaringizni qoldiring — biz 24 soat ichida bog'lanamiz
+              {t("subtitle")}
             </p>
           </div>
 
@@ -98,7 +101,7 @@ export default function Register() {
                   htmlFor="full_name"
                   className="block text-xs font-semibold text-gray-500 mb-1.5 uppercase tracking-wide"
                 >
-                  To'liq ismingiz
+                  {t("nameLabel")}
                 </label>
                 <div className="relative">
                   <User className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
@@ -110,7 +113,7 @@ export default function Register() {
                       setFormData({ ...formData, full_name: e.target.value })
                     }
                     className="w-full pl-11 pr-4 py-3 border border-gray-200 rounded-xl text-sm text-gray-800 placeholder:text-gray-300 focus:outline-none focus:ring-2 focus:ring-[#6f93b0] focus:border-transparent transition-all"
-                    placeholder="Ism Familiya"
+                    placeholder={t("namePlaceholder")}
                     required
                   />
                 </div>
@@ -121,7 +124,7 @@ export default function Register() {
                   htmlFor="number"
                   className="block text-xs font-semibold text-gray-500 mb-1.5 uppercase tracking-wide"
                 >
-                  Telefon raqamingiz
+                  {t("phoneLabel")}
                 </label>
                 <div className="relative flex items-center">
                   <span className="absolute left-11 text-sm text-gray-800 font-medium pointer-events-none">
@@ -150,7 +153,7 @@ export default function Register() {
                   htmlFor="intention"
                   className="block text-xs font-semibold text-gray-500 mb-1.5 uppercase tracking-wide"
                 >
-                  Maqsadingiz
+                  {t("goalLabel")}
                 </label>
                 <div className="relative">
                   <Target className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
@@ -163,7 +166,7 @@ export default function Register() {
                     className="w-full pl-11 pr-4 py-3 border border-gray-200 rounded-xl text-sm text-gray-800 focus:outline-none focus:ring-2 focus:ring-[#6f93b0] focus:border-transparent transition-all appearance-none bg-white"
                     required
                   >
-                    <option value="">Tanlang...</option>
+                    <option value="">{t("choose")}</option>
                     {intentions.map((intent) => (
                       <option key={intent.value} value={intent.value}>
                         {intent.label}
@@ -187,10 +190,10 @@ export default function Register() {
                   <CheckCircle className="w-4 h-4 text-green-500 mt-0.5 shrink-0" />
                   <div>
                     <p className="text-green-700 font-semibold text-sm">
-                      Muvaffaqiyatli yuborildi!
+                      {t("successTitle")}
                     </p>
                     <p className="text-green-600 text-xs mt-0.5">
-                      Tez orada siz bilan bog'lanamiz.
+                      {t("successText")}
                     </p>
                   </div>
                 </div>
@@ -204,11 +207,11 @@ export default function Register() {
                 {loading ? (
                   <>
                     <Loader2 className="w-4 h-4 animate-spin" />
-                    Yuborilmoqda...
+                    {t("submitting")}
                   </>
                 ) : (
                   <>
-                    Yuborish
+                    {t("submit")}
                     <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                   </>
                 )}

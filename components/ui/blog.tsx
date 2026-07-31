@@ -1,4 +1,3 @@
-import Link from "next/link";
 import {
   ArrowRight,
   PlayCircle,
@@ -7,39 +6,50 @@ import {
   CheckCircle2,
   Calendar,
 } from "lucide-react";
+import { useLocale, useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
 import type { Blog } from "@/lib/blogs";
 import { stripBlogLinks, truncateWords } from "@/lib/blogText";
 
-// Kategoriyaga mos badge (rang + ikonka)
+// Kategoriyaga mos badge (rang + ikonka); label tarjima kalitidan olinadi
 const categoryConfig: Record<
   string,
-  { label: string; gradient: string; Icon: typeof Sparkles }
+  { labelKey: "catNew" | "catWarning" | "catSuccess"; gradient: string; Icon: typeof Sparkles }
 > = {
   new: {
-    label: "Yangilik",
+    labelKey: "catNew",
     gradient: "from-blue-600 to-indigo-600",
     Icon: Sparkles,
   },
   warning: {
-    label: "Muhim ogohlantirish",
+    labelKey: "catWarning",
     gradient: "from-red-600 to-orange-600",
     Icon: AlertTriangle,
   },
   successful_job: {
-    label: "Muvaffaqiyatli ish",
+    labelKey: "catSuccess",
     gradient: "from-green-600 to-emerald-600",
     Icon: CheckCircle2,
   },
+};
+
+const dateLocales: Record<string, string> = {
+  uz: "uz-UZ",
+  ru: "ru-RU",
+  en: "en-US",
 };
 
 // Bosh sahifadagi "eng oxirgi blog" bo'limi.
 // Presentational: blog server tomonda fetch qilinib prop orqali keladi —
 // yangi blog qo'shilganda (revalidate orqali) o'z-o'zidan yangilanadi.
 export default function SpecialBlogSection({ blog }: { blog: Blog | null }) {
+  const t = useTranslations("blogSection");
+  const locale = useLocale();
+
   if (!blog) return null;
 
   const cat = categoryConfig[blog.category] || {
-    label: "Blog",
+    labelKey: "catNew" as const,
     gradient: "from-gray-700 to-gray-900",
     Icon: Sparkles,
   };
@@ -47,21 +57,20 @@ export default function SpecialBlogSection({ blog }: { blog: Blog | null }) {
 
   const detailHref = `/about/blog/${blog.id}`;
   const teaser = truncateWords(stripBlogLinks(blog.description), 45);
-  const date = new Date(blog.created_at).toLocaleDateString("uz-UZ", {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-  });
+  const date = new Date(blog.created_at).toLocaleDateString(
+    dateLocales[locale] || "uz-UZ",
+    {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    },
+  );
 
   return (
     <section className="py-16 bg-white">
       <div className="text-center mb-12">
-        <h2 className="text-4xl font-bold text-gray-900 mb-4">
-          Bizning Bloglar
-        </h2>
-        <p className="text-xl text-gray-600">
-          Eng so&apos;nggi yangilik va e&apos;lonlarimiz bilan tanishing
-        </p>
+        <h2 className="text-4xl font-bold text-gray-900 mb-4">{t("title")}</h2>
+        <p className="text-xl text-gray-600">{t("subtitle")}</p>
       </div>
 
       <div className="container mx-auto px-4">
@@ -74,7 +83,7 @@ export default function SpecialBlogSection({ blog }: { blog: Blog | null }) {
                   className={`bg-linear-to-r ${cat.gradient} text-white px-4 py-2 rounded-full text-sm font-semibold flex items-center gap-2 w-fit`}
                 >
                   <CatIcon className="w-4 h-4" />
-                  {cat.label}
+                  {t(cat.labelKey)}
                 </span>
                 <span className="inline-flex items-center gap-1.5 text-sm text-gray-500">
                   <Calendar className="w-4 h-4" />
@@ -95,14 +104,14 @@ export default function SpecialBlogSection({ blog }: { blog: Blog | null }) {
                   href={detailHref}
                   className="group inline-flex items-center gap-3 bg-linear-to-r from-[#14202e] to-[#2d4356] text-white px-6 lg:px-8 py-3 lg:py-4 rounded-xl hover:shadow-2xl transition-all duration-300 font-semibold w-fit text-sm lg:text-base"
                 >
-                  Batafsil ma&apos;lumot
+                  {t("readMore")}
                   <ArrowRight className="w-4 h-4 lg:w-5 lg:h-5 group-hover:translate-x-2 transition-transform" />
                 </Link>
                 <Link
                   href="/about/blog"
                   className="inline-flex items-center gap-2 text-blue-600 font-semibold hover:gap-3 transition-all text-sm lg:text-base"
                 >
-                  Barcha bloglar
+                  {t("allBlogs")}
                   <ArrowRight className="w-4 h-4" />
                 </Link>
               </div>

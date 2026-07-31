@@ -3,7 +3,8 @@
 import { useEffect, useState } from "react";
 import { supabase } from "@/lib/supabase";
 import { Reveal } from "@/components/ui/reveal";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
+import { useTranslations } from "next-intl";
 import {
   ArrowRight,
   MapPin,
@@ -27,6 +28,7 @@ type CardCountry = {
 };
 
 export default function Country() {
+  const t = useTranslations("countriesPage");
   const [countries, setCountries] = useState<CardCountry[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -100,7 +102,7 @@ export default function Country() {
                 <div className="flex items-start gap-3">
                   <DollarSign className="w-5 h-5 text-green-500 mt-0.5 shrink-0" />
                   <div>
-                    <p className="text-sm text-gray-500">Oylik maosh</p>
+                    <p className="text-sm text-gray-500">{t("cardSalary")}</p>
                     <p className="font-semibold text-gray-900">
                       {country.salary}
                     </p>
@@ -110,7 +112,7 @@ export default function Country() {
                 <div className="flex items-start gap-3">
                   <MapPin className="w-5 h-5 text-blue-500 mt-0.5 shrink-0" />
                   <div>
-                    <p className="text-sm text-gray-500">Mashhur kasblar</p>
+                    <p className="text-sm text-gray-500">{t("cardJobs")}</p>
                     <p className="font-semibold text-gray-900 text-sm">
                       {country.popularJobs.slice(0, 3).join(", ")}
                     </p>
@@ -120,7 +122,7 @@ export default function Country() {
                 <div className="flex items-start gap-3">
                   <Clock className="w-5 h-5 text-orange-500 mt-0.5 shrink-0" />
                   <div>
-                    <p className="text-sm text-gray-500">Viza muddati</p>
+                    <p className="text-sm text-gray-500">{t("cardVisaDuration")}</p>
                     <p className="font-semibold text-gray-900">
                       {country.visaDuration}
                     </p>
@@ -130,7 +132,7 @@ export default function Country() {
                 <div className="flex items-start gap-3">
                   <Award className="w-5 h-5 text-purple-500 mt-0.5 shrink-0" />
                   <div>
-                    <p className="text-sm text-gray-500">Viza olish ehtimoli</p>
+                    <p className="text-sm text-gray-500">{t("cardVisaSuccess")}</p>
                     <p className="font-semibold text-gray-900">
                       {country.visaSuccess}
                     </p>
@@ -142,7 +144,7 @@ export default function Country() {
                 href={`/countries/${country.id}`}
                 className="w-full bg-[#89aac3] text-white py-3 rounded-lg hover:shadow-lg transition-all duration-300 font-semibold flex items-center justify-center gap-2 group-hover:gap-3"
               >
-                Batafsil ma'lumot
+                {t("cardMore")}
                 <ChevronRight className="w-5 h-5" />
               </Link>
             </div>
@@ -158,7 +160,7 @@ export default function Country() {
             href="/countries"
             className="group bg-linear-to-r from-[#89aac3] to-[#6f93b0] text-white px-8 py-4 rounded-xl hover:shadow-2xl transition-all duration-300 font-semibold flex items-center gap-3 hover:gap-4"
           >
-            Ko'proq davlatlarni ko'rish
+            {t("showMore")}
             <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
           </Link>
         </div>

@@ -1,4 +1,5 @@
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
+import { useTranslations } from "next-intl";
 import {
   ArrowLeft,
   DollarSign,
@@ -71,6 +72,7 @@ export default function CountryDetailView({
   showConsultation?: boolean;
   telegramLink?: string;
 }) {
+  const t = useTranslations("countryDetail");
   const visaNum = parseInt(country.visa_success);
 
   return (
@@ -180,7 +182,7 @@ export default function CountryDetailView({
               {country.visa_success && (
                 <Chip
                   icon={<Award size={13} />}
-                  label={`Viza: ${country.visa_success}`}
+                  label={`${t("visaChip")}: ${country.visa_success}`}
                 />
               )}
             </div>
@@ -206,7 +208,7 @@ export default function CountryDetailView({
             style={{ display: "flex", flexDirection: "column", gap: "24px" }}
           >
             {/* Tavsif */}
-            <Section title="Davlat haqida">
+            <Section title={t("aboutTitle")}>
               <p
                 style={{
                   margin: 0,
@@ -221,7 +223,7 @@ export default function CountryDetailView({
 
             {/* Mashhur kasblar */}
             {country.popular_jobs?.length > 0 && (
-              <Section title="Mashhur kasblar" icon={<Briefcase size={18} />}>
+              <Section title={t("jobsTitle")} icon={<Briefcase size={18} />}>
                 <div style={{ display: "flex", flexWrap: "wrap", gap: "8px" }}>
                   {country.popular_jobs.map((job, i) => (
                     <span
@@ -244,7 +246,7 @@ export default function CountryDetailView({
 
             {/* Imtiyozlar */}
             {country.benefits?.length > 0 && (
-              <Section title="Imtiyozlar" icon={<CheckCircle size={18} />}>
+              <Section title={t("benefitsTitle")} icon={<CheckCircle size={18} />}>
                 <div
                   style={{
                     display: "grid",
@@ -277,7 +279,7 @@ export default function CountryDetailView({
 
             {/* Hujjatlar */}
             {country.documents?.length > 0 && (
-              <Section title="Kerakli hujjatlar" icon={<FileText size={18} />}>
+              <Section title={t("docsTitle")} icon={<FileText size={18} />}>
                 <div
                   style={{
                     display: "flex",
@@ -320,7 +322,7 @@ export default function CountryDetailView({
             {/* Jarayon */}
             {country.process?.length > 0 && (
               <Section
-                title="Jarayon bosqichlari"
+                title={t("processTitle")}
                 icon={<TrendingUp size={18} />}
               >
                 <div
@@ -424,7 +426,7 @@ export default function CountryDetailView({
               country.life_transport ||
               country.life_food ||
               country.life_healthcare) && (
-              <Section title="Hayot haqida ma'lumot" icon={<Home size={18} />}>
+              <Section title={t("lifeTitle")} icon={<Home size={18} />}>
                 <div
                   style={{
                     display: "grid",
@@ -435,7 +437,7 @@ export default function CountryDetailView({
                   {country.life_housing && (
                     <LifeCard
                       icon={<Home size={16} />}
-                      label="Uy-joy"
+                      label={t("lifeHousing")}
                       text={country.life_housing}
                       color="#F0FDF4"
                       iconColor="#16A34A"
@@ -444,7 +446,7 @@ export default function CountryDetailView({
                   {country.life_transport && (
                     <LifeCard
                       icon={<Car size={16} />}
-                      label="Transport"
+                      label={t("lifeTransport")}
                       text={country.life_transport}
                       color="#EFF6FF"
                       iconColor="#2563EB"
@@ -453,7 +455,7 @@ export default function CountryDetailView({
                   {country.life_food && (
                     <LifeCard
                       icon={<ShoppingCart size={16} />}
-                      label="Ovqatlanish"
+                      label={t("lifeFood")}
                       text={country.life_food}
                       color="#FFF7ED"
                       iconColor="#EA580C"
@@ -462,7 +464,7 @@ export default function CountryDetailView({
                   {country.life_healthcare && (
                     <LifeCard
                       icon={<Heart size={16} />}
-                      label="Sog'liqni saqlash"
+                      label={t("lifeHealth")}
                       text={country.life_healthcare}
                       color="#FDF4FF"
                       iconColor="#9333EA"
@@ -501,7 +503,7 @@ export default function CountryDetailView({
                   letterSpacing: "0.5px",
                 }}
               >
-                Oylik maosh
+                {t("salary")}
               </p>
               <p
                 style={{
@@ -526,11 +528,11 @@ export default function CountryDetailView({
                   }}
                 >
                   <StatItem
-                    label="O'rtacha"
+                    label={t("avg")}
                     value={`$${country.salary_average.toLocaleString()}`}
                   />
                   {country.tax_rate && (
-                    <StatItem label="Soliq" value={country.tax_rate} />
+                    <StatItem label={t("tax")} value={country.tax_rate} />
                   )}
                 </div>
               )}
@@ -553,7 +555,7 @@ export default function CountryDetailView({
                   color: "#0F172A",
                 }}
               >
-                Viza ma'lumotlari
+                {t("visaInfo")}
               </h3>
               <div
                 style={{
@@ -565,14 +567,14 @@ export default function CountryDetailView({
                 {country.visa_duration && (
                   <InfoRow
                     icon={<Clock size={15} />}
-                    label="Viza muddati"
+                    label={t("visaDuration")}
                     value={country.visa_duration}
                   />
                 )}
                 {!isNaN(visaNum) && (
                   <InfoRow
                     icon={<Award size={15} />}
-                    label="Muvaffaqiyat"
+                    label={t("visaSuccess")}
                     value={country.visa_success}
                     highlight
                   />
@@ -601,7 +603,7 @@ export default function CountryDetailView({
                     color: "#0F172A",
                   }}
                 >
-                  Talablar
+                  {t("reqTitle")}
                 </h3>
                 <div
                   style={{
@@ -613,28 +615,28 @@ export default function CountryDetailView({
                   {country.req_age && (
                     <InfoRow
                       icon={<Users size={15} />}
-                      label="Yosh"
+                      label={t("reqAge")}
                       value={country.req_age}
                     />
                   )}
                   {country.req_education && (
                     <InfoRow
                       icon={<GraduationCap size={15} />}
-                      label="Ta'lim"
+                      label={t("reqEdu")}
                       value={country.req_education}
                     />
                   )}
                   {country.req_language && (
                     <InfoRow
                       icon={<Languages size={15} />}
-                      label="Til"
+                      label={t("reqLang")}
                       value={country.req_language}
                     />
                   )}
                   {country.req_experience && (
                     <InfoRow
                       icon={<Briefcase size={15} />}
-                      label="Tajriba"
+                      label={t("reqExp")}
                       value={country.req_experience}
                     />
                   )}
@@ -659,7 +661,7 @@ export default function CountryDetailView({
                     fontWeight: "800",
                   }}
                 >
-                  Yordam kerakmi?
+                  {t("helpTitle")}
                 </h3>
                 <p
                   style={{
@@ -669,10 +671,9 @@ export default function CountryDetailView({
                     lineHeight: "1.6",
                   }}
                 >
-                  Mutaxassislarimiz bilan bog'laning va bepul konsultatsiya
-                  oling!
+                  {t("helpText")}
                 </p>
-                <Link
+                <a
                   href={telegramLink}
                   target="_blank"
                   rel="noopener noreferrer"
@@ -690,9 +691,9 @@ export default function CountryDetailView({
                     textDecoration: "none",
                   }}
                 >
-                  <MessageCircle size={18} /> Konsultatsiya olish
+                  <MessageCircle size={18} /> {t("helpBtn")}
                   <ChevronRight size={16} />
-                </Link>
+                </a>
               </div>
             )}
           </div>

@@ -1,13 +1,13 @@
 "use client";
 
-import { ShieldCheckIcon } from "lucide-react";
 import Image from "next/image";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { useTranslations } from "next-intl";
+import { Link, usePathname } from "@/i18n/navigation";
 import React, { useEffect, useState } from "react";
+import LanguageSwitcher from "./languageSwitcher";
 
 export default function Header() {
-  const telegramLink = "https://t.me/migrationuz";
+  const t = useTranslations("header");
   const pathname = usePathname();
   const [showLogo, setShowLogo] = useState(false);
 
@@ -100,13 +100,6 @@ export default function Header() {
                 </Link>
               </div>
             </div>
-            {/* <Link
-              href="/admin"
-              className="hidden md:flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 ml-1"
-              title="Admin panel"
-            >
-              <ShieldCheckIcon className="w-4 h-4 text-gray-400 hover:text-blue-600 transition-colors duration-200 hover:scale-130" />
-            </Link> */}
           </div>
 
           <div className="hidden md:flex space-x-8">
@@ -118,7 +111,7 @@ export default function Header() {
                   : "text-gray-700 hover:text-blue-600"
               }`}
             >
-              Davlatlar
+              {t("countries")}
             </Link>
             <Link
               href="/about/services"
@@ -128,7 +121,7 @@ export default function Header() {
                   : "text-gray-700 hover:text-blue-600"
               }`}
             >
-              Xizmatlar
+              {t("services")}
             </Link>
             <Link
               href="/about/guide"
@@ -138,7 +131,7 @@ export default function Header() {
                   : "text-gray-700 hover:text-blue-600"
               }`}
             >
-              Qo&apos;llanma
+              {t("guide")}
             </Link>
             <Link
               href="/about/contact"
@@ -148,19 +141,22 @@ export default function Header() {
                   : "text-gray-700 hover:text-blue-600"
               }`}
             >
-              Bog&apos;lanish
+              {t("contact")}
             </Link>
           </div>
 
-          <a
-            href="https://t.me/NAMANGAN2308"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="bg-linear-to-r from-blue-600 to-blue-700 text-white px-3 md:px-6 py-2 md:py-2.5 rounded-lg hover:shadow-lg transition-all duration-300 hover:scale-105 text-sm md:text-base"
-          >
-            <span className="hidden sm:inline">Bepul konsultatsiya</span>
-            <span className="sm:hidden">Konsultatsiya</span>
-          </a>
+          <div className="flex items-center gap-2 md:gap-3">
+            <LanguageSwitcher />
+            <a
+              href="https://t.me/NAMANGAN2308"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-linear-to-r from-blue-600 to-blue-700 text-white px-3 md:px-6 py-2 md:py-2.5 rounded-lg hover:shadow-lg transition-all duration-300 hover:scale-105 text-sm md:text-base"
+            >
+              <span className="hidden sm:inline">{t("consultFull")}</span>
+              <span className="sm:hidden">{t("consultShort")}</span>
+            </a>
+          </div>
         </nav>
       </header>
 

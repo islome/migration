@@ -1,6 +1,7 @@
 "use client";
 
 import { Play } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 type Props = {
   videoUrl: string | null;
@@ -9,6 +10,8 @@ type Props = {
 };
 
 export default function VideoCard({ videoUrl, imageUrl, title }: Props) {
+  const t = useTranslations("blogList");
+
   // Video ustuvor; video bo'lmasa rasm ko'rsatiladi.
   if (videoUrl) {
     return (
@@ -54,7 +57,7 @@ export default function VideoCard({ videoUrl, imageUrl, title }: Props) {
   // Media umuman bo'lmasa — placeholder
   return (
     <div className="relative aspect-video bg-gray-200 flex items-center justify-center">
-      <span className="text-gray-400 text-sm">Media yo&apos;q</span>
+      <span className="text-gray-400 text-sm">{t("noMedia")}</span>
     </div>
   );
 }

@@ -1,6 +1,7 @@
 "use client";
 
-import Link from "next/link";
+import { Link, usePathname } from "@/i18n/navigation";
+import { useTranslations } from "next-intl";
 import {
   MapPin,
   DollarSign,
@@ -9,17 +10,17 @@ import {
   ChevronRight,
   MessageCircle,
   UserRoundCheck,
-  ShieldCheckIcon,
   Loader2,
 } from "lucide-react";
 import { supabase } from "@/lib/supabase";
 import Footer from "@/components/ui/footer";
 import Image from "next/image";
-import { usePathname } from "next/navigation";
 
 import { useEffect, useState } from "react";
 
 export default function CountriesPage() {
+  const t = useTranslations("countriesPage");
+  const tNav = useTranslations("header");
   const telegramLink = "https://t.me/migrationuz";
   const pathname = usePathname();
   const [showLogo, setShowLogo] = useState(false);
@@ -153,25 +154,25 @@ export default function CountriesPage() {
                   : "text-gray-700 hover:text-blue-600"
               }`}
             >
-              Davlatlar
+              {tNav("countries")}
             </Link>
             <Link
               href="/about/services"
               className="text-gray-700 hover:text-blue-600 transition"
             >
-              Xizmatlar
+              {tNav("services")}
             </Link>
             <Link
               href="/about/guide"
               className="text-gray-700 hover:text-blue-600 transition"
             >
-              Qo&apos;llanma
+              {tNav("guide")}
             </Link>
             <Link
               href="/about/contact"
               className="text-gray-700 hover:text-blue-600 transition"
             >
-              Bog&apos;lanish
+              {tNav("contact")}
             </Link>
           </div>
 
@@ -181,8 +182,8 @@ export default function CountriesPage() {
             rel="noopener noreferrer"
             className="bg-linear-to-r from-blue-600 to-blue-700 text-white px-3 md:px-6 py-2 md:py-2.5 rounded-lg hover:shadow-lg transition-all duration-300 hover:scale-105 text-sm md:text-base"
           >
-            <span className="hidden sm:inline">Bepul konsultatsiya</span>
-            <span className="sm:hidden">Konsultatsiya</span>
+            <span className="hidden sm:inline">{tNav("consultFull")}</span>
+            <span className="sm:hidden">{tNav("consultShort")}</span>
           </a>
         </nav>
       </header>
@@ -190,17 +191,19 @@ export default function CountriesPage() {
       <section className="bg-white text-black py-20 mt-32">
         <div className="container mx-auto px-4 text-center">
           <h1 className="text-5xl font-bold mb-6">
-            Ish Topish Uchun{" "}
-            <span
-              style={{
-                animation:
-                  "fadeSlideUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.1s both",
-              }}
-              className="bg-blue-600 bg-clip-text text-transparent"
-            >
-              Eng Yaxshi
-            </span>{" "}
-            Davlatlar
+            {t.rich("heroTitle", {
+              accent: (chunks) => (
+                <span
+                  style={{
+                    animation:
+                      "fadeSlideUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.1s both",
+                  }}
+                  className="bg-blue-600 bg-clip-text text-transparent"
+                >
+                  {chunks}
+                </span>
+              ),
+            })}
           </h1>
           <p
             style={{
@@ -209,23 +212,23 @@ export default function CountriesPage() {
             }}
             className="text-xl text-gray-500 max-w-3xl mx-auto mb-8"
           >
-            Dunyoning turli burchaklarida <strong>qonuniy ish topish</strong> va{" "}
-            <strong>yashash imkoniyati</strong>. Har bir davlat haqida batafsil
-            ma'lumot va professional yordam.
+            {t.rich("heroSubtitle", {
+              strong: (chunks) => <strong>{chunks}</strong>,
+            })}
           </p>
 
           <div className="flex flex-wrap justify-center gap-4 mt-8 animate-div">
             <div className="bg-gray-300 backdrop-blur-sm rounded-lg px-6 py-3">
               <p className="text-3xl font-bold">{countries.length}+</p>
-              <p className="text-black">Davlatlar</p>
+              <p className="text-black">{t("statCountries")}</p>
             </div>
             <div className="bg-gray-300 backdrop-blur-sm rounded-lg px-6 py-3">
               <p className="text-3xl font-bold">1000+</p>
-              <p className="text-black">Muvaffaqiyatli mijozlar</p>
+              <p className="text-black">{t("statClients")}</p>
             </div>
             <div className="bg-gray-300 backdrop-blur-sm rounded-lg px-6 py-3">
               <p className="text-3xl font-bold">95%+</p>
-              <p className="text-black">Viza olish darajasi</p>
+              <p className="text-black">{t("statVisa")}</p>
             </div>
           </div>
         </div>
@@ -236,12 +239,12 @@ export default function CountriesPage() {
         {loading && (
           <div className="flex flex-col items-center justify-center py-24 gap-3">
             <Loader2 className="w-8 h-8 animate-spin text-[#2d4356]" />
-            <p className="text-gray-400">Yuklanmoqda...</p>
+            <p className="text-gray-400">{t("loading")}</p>
           </div>
         )}
         {!loading && countries.length === 0 && (
           <div className="text-center py-24 text-gray-400">
-            Hozircha davlatlar qo&apos;shilmagan
+            {t("empty")}
           </div>
         )}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -276,7 +279,7 @@ export default function CountriesPage() {
                   <div className="flex items-start gap-3">
                     <DollarSign className="w-5 h-5 text-green-500 mt-0.5 shrink-0" />
                     <div>
-                      <p className="text-sm text-gray-500">Oylik maosh</p>
+                      <p className="text-sm text-gray-500">{t("cardSalary")}</p>
                       <p className="font-semibold text-gray-900">
                         {country.salary}
                       </p>
@@ -286,7 +289,7 @@ export default function CountriesPage() {
                   <div className="flex items-start gap-3">
                     <MapPin className="w-5 h-5 text-blue-500 mt-0.5 shrink-0" />
                     <div>
-                      <p className="text-sm text-gray-500">Mashhur kasblar</p>
+                      <p className="text-sm text-gray-500">{t("cardJobs")}</p>
                       <p className="font-semibold text-gray-900 text-sm">
                         {country.popularJobs.slice(0, 3).join(", ")}
                       </p>
@@ -296,7 +299,7 @@ export default function CountriesPage() {
                   <div className="flex items-start gap-3">
                     <Clock className="w-5 h-5 text-orange-500 mt-0.5 shrink-0" />
                     <div>
-                      <p className="text-sm text-gray-500">Viza muddati</p>
+                      <p className="text-sm text-gray-500">{t("cardVisaDuration")}</p>
                       <p className="font-semibold text-gray-900">
                         {country.visaDuration}
                       </p>
@@ -307,7 +310,7 @@ export default function CountriesPage() {
                     <Award className="w-5 h-5 text-purple-500 mt-0.5 shrink-0" />
                     <div>
                       <p className="text-sm text-gray-500">
-                        Viza olish ehtimoli
+                        {t("cardVisaSuccess")}
                       </p>
                       <p className="font-semibold text-gray-900">
                         {country.visaSuccess}
@@ -320,7 +323,7 @@ export default function CountriesPage() {
                   href={`/countries/${country.id}`}
                   className="w-full bg-[#2d4356] text-white py-3 rounded-lg hover:shadow-lg transition-all duration-300 font-semibold flex items-center justify-center gap-2 group-hover:gap-3"
                 >
-                  Batafsil ma'lumot
+                  {t("cardMore")}
                   <ChevronRight className="w-5 h-5" />
                 </Link>
               </div>
@@ -332,11 +335,10 @@ export default function CountriesPage() {
       <section className="bg-white py-16">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-4xl font-bold text-black mb-6">
-            Qaysi davlat sizga mos kelishini bilmayapsizmi?
+            {t("ctaTitle")}
           </h2>
           <p className="text-xl text-gray-500 mb-8 max-w-2xl mx-auto">
-            Mutaxassislarimiz sizga eng mos davlatni tanlashda va barcha
-            jarayonlarda yordam beradi.
+            {t("ctaText")}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <a
@@ -346,14 +348,14 @@ export default function CountriesPage() {
               className="bg-linear-to-br from-[#89aac3] to-[#6f93b0] text-white px-8 py-4 rounded-xl hover:bg-white/10 transition-all duration-300 flex items-center gap-2 text-lg font-semibold justify-center"
             >
               <MessageCircle className="w-5 h-5" />
-              Telegramda yozish
+              {t("ctaTelegram")}
             </a>
             <Link
               href="/register"
               className="bg-linear-to-br from-[#89aac3] to-[#6f93b0] text-white px-8 py-4 rounded-xl hover:bg-white/10 transition-all duration-300 flex items-center gap-2 text-lg font-semibold justify-center"
             >
               <UserRoundCheck className="w-5 h-5" />
-              Ma'lumot qoldirish
+              {t("ctaRegister")}
             </Link>
           </div>
         </div>
