@@ -69,7 +69,7 @@ export default function BlogDetailClient({ blog }: { blog: Blog }) {
         {/* Kontent: mobilda media -> matn; desktopda matn (3/5) + sticky media (2/5) */}
         <div className="mt-10 lg:mt-14 grid grid-cols-1 lg:grid-cols-5 gap-10 lg:gap-16 items-start">
           {hasMedia && (
-            <figure className="lg:col-span-2 lg:order-2 lg:sticky lg:top-12">
+            <figure className="lg:col-span-2 lg:order-2 lg:sticky lg:top-14">
               <div className="overflow-hidden rounded-2xl bg-gray-950 shadow-2xl ring-1 ring-gray-900/10">
                 {blog.video_url ? (
                   <video
