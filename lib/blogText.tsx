@@ -15,6 +15,13 @@ export function stripBlogLinks(text: string): string {
   return text.replace(LINK_RE, "$1");
 }
 
+// Teaser/kartochkalar uchun: matnni so'z chegarasida qisqartiradi.
+export function truncateWords(text: string, wordLimit: number): string {
+  const words = text.trim().split(/\s+/);
+  if (words.length <= wordLimit) return text;
+  return words.slice(0, wordLimit).join(" ") + "...";
+}
+
 // Detail sahifa uchun: [matn](url) ni bosiladigan <a> elementiga aylantiradi,
 // qolgan matn (yangi qatorlar bilan) o'z holicha qoladi.
 export function renderBlogDescription(text: string): ReactNode[] {

@@ -1,10 +1,14 @@
-import SpecialBlogSection from '@/components/ui/blog'
-import React from 'react'
+import SpecialBlogSection from "@/components/ui/blog";
+import { getLatestBlog } from "@/lib/blogs";
 
-export default function page() {
+// ISR: 60s cache; blog o'zgarganda revalidateBlogs() yangilaydi.
+export const revalidate = 60;
+
+export default async function WarningPage() {
+  const blog = await getLatestBlog();
   return (
     <div>
-      <SpecialBlogSection />
+      <SpecialBlogSection blog={blog} />
     </div>
-  )
+  );
 }

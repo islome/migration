@@ -1,134 +1,146 @@
-"use client";
-
 import Link from "next/link";
-import { ArrowRight, PlayCircle, AlertTriangle } from "lucide-react";
+import {
+  ArrowRight,
+  PlayCircle,
+  AlertTriangle,
+  Sparkles,
+  CheckCircle2,
+  Calendar,
+} from "lucide-react";
+import type { Blog } from "@/lib/blogs";
+import { stripBlogLinks, truncateWords } from "@/lib/blogText";
 
-export default function SpecialBlogSection() {
+// Kategoriyaga mos badge (rang + ikonka)
+const categoryConfig: Record<
+  string,
+  { label: string; gradient: string; Icon: typeof Sparkles }
+> = {
+  new: {
+    label: "Yangilik",
+    gradient: "from-blue-600 to-indigo-600",
+    Icon: Sparkles,
+  },
+  warning: {
+    label: "Muhim ogohlantirish",
+    gradient: "from-red-600 to-orange-600",
+    Icon: AlertTriangle,
+  },
+  successful_job: {
+    label: "Muvaffaqiyatli ish",
+    gradient: "from-green-600 to-emerald-600",
+    Icon: CheckCircle2,
+  },
+};
+
+// Bosh sahifadagi "eng oxirgi blog" bo'limi.
+// Presentational: blog server tomonda fetch qilinib prop orqali keladi —
+// yangi blog qo'shilganda (revalidate orqali) o'z-o'zidan yangilanadi.
+export default function SpecialBlogSection({ blog }: { blog: Blog | null }) {
+  if (!blog) return null;
+
+  const cat = categoryConfig[blog.category] || {
+    label: "Blog",
+    gradient: "from-gray-700 to-gray-900",
+    Icon: Sparkles,
+  };
+  const CatIcon = cat.Icon;
+
+  const detailHref = `/about/blog/${blog.id}`;
+  const teaser = truncateWords(stripBlogLinks(blog.description), 45);
+  const date = new Date(blog.created_at).toLocaleDateString("uz-UZ", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+
   return (
     <section className="py-16 bg-white">
-       <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">
-            Bizning Bloglar
-          </h2>
-          <p className="text-xl text-gray-600">
-            Ijtimoiy tarmoqlarimizda beriladigan yangiliklardan habardor bo'lish uchun ularga obuna bo'lishingiz mumkin!
-          </p>
-        </div>
+      <div className="text-center mb-12">
+        <h2 className="text-4xl font-bold text-gray-900 mb-4">
+          Bizning Bloglar
+        </h2>
+        <p className="text-xl text-gray-600">
+          Eng so&apos;nggi yangilik va e&apos;lonlarimiz bilan tanishing
+        </p>
+      </div>
+
       <div className="container mx-auto px-4">
         <div className="bg-white rounded-3xl shadow-2xl overflow-hidden">
           <div className="grid grid-cols-1 lg:grid-cols-2 items-stretch">
+            {/* Matn qismi */}
             <div className="p-8 lg:p-12 flex flex-col justify-center order-2 lg:order-1">
-              <div className="inline-block mb-4">
-                <span className="bg-linear-to-r from-red-600 to-orange-600 text-white px-4 py-2 rounded-full text-sm font-semibold flex items-center gap-2 w-fit">
-                  <AlertTriangle className="w-4 h-4" />
-                  Muhim ogohlantirish
+              <div className="flex flex-wrap items-center gap-3 mb-5">
+                <span
+                  className={`bg-linear-to-r ${cat.gradient} text-white px-4 py-2 rounded-full text-sm font-semibold flex items-center gap-2 w-fit`}
+                >
+                  <CatIcon className="w-4 h-4" />
+                  {cat.label}
+                </span>
+                <span className="inline-flex items-center gap-1.5 text-sm text-gray-500">
+                  <Calendar className="w-4 h-4" />
+                  {date}
                 </span>
               </div>
 
               <h2 className="text-2xl lg:text-3xl xl:text-4xl font-bold text-gray-900 mb-6 leading-tight">
-                ❗️ OGOH BO'LING! NORASMIY ISH TAKLIFLARIGA ALDANMANG
+                {blog.title}
               </h2>
 
-              <div className="space-y-4 text-gray-700 leading-relaxed text-sm lg:text-base">
-                <p className="flex items-start gap-2">
-                  <span className="text-red-600 font-bold mt-1 shrink-0">
-                    ❌
-                  </span>
-                  <span>
-                    «Evropaga ish», «kafolatli ish», «oson hujjatlar» kabi
-                    jozibali takliflar ortida ko'pincha qonunbuzarlik va
-                    firibgarlik bo'lishi mumkin.
-                  </span>
-                </p>
+              <p className="text-gray-700 leading-relaxed text-sm lg:text-base whitespace-pre-wrap line-clamp-6">
+                {teaser}
+              </p>
 
-                <p className="flex items-start gap-2">
-                  <span className="text-blue-600 font-bold mt-1 shrink-0">
-                    📌
-                  </span>
-                  <span>
-                    Migratsiya agentligi noqonuniy migratsiyani tashkil
-                    etayotgan va bunday reklamalarni tarqatayotgan shaxslarga
-                    qarshi qat'iy choralar ko'rmoqda.
-                  </span>
-                </p>
-
-                <p className="flex items-start gap-2">
-                  <span className="text-blue-600 font-bold mt-1 shrink-0">
-                    🛡
-                  </span>
-                  <span>
-                    O'rganishlar davomida "Euro Brand Consulting" MChJ tomonidan
-                    yuritilgan "Visaconsult UZ" Telegram kanali orqali turli
-                    davlatlarga ishga joylashtiris h bo'yicha litsenziyasiz
-                    reklama tarqatilgani aniqlandi.
-                  </span>
-                </p>
-
-                <div className="bg-orange-50 border-l-4 border-orange-500 p-4 rounded-r-lg my-4">
-                  <p className="font-semibold text-orange-800 mb-2 text-sm lg:text-base">
-                    ⚠️ ESLATMA!
-                  </p>
-                  <p className="text-orange-900 mb-2 text-sm">
-                    Xorijda ishlash bilan bog'liq barcha jarayonlar:
-                  </p>
-                  <p className="flex items-start gap-2 text-orange-900 text-sm">
-                    <span className="text-green-600 font-bold shrink-0">
-                      ✔️
-                    </span>
-                    <span>
-                      Davlat tomonidan — Migratsiya agentligi, xususiy sektorda
-                      — faqat litsenziyaga ega Xususiy bandlik agentliklari
-                      orqali amalga oshirilishi shart.
-                    </span>
-                  </p>
-                </div>
-
-                <p className="flex items-start gap-2">
-                  <span className="text-blue-600 font-bold mt-1 shrink-0">
-                    🔎
-                  </span>
-                  <span className="text-sm lg:text-base">
-                    <strong>Xorijda ish taklifi oldingizmi?</strong> Ishonch
-                    hosil qilish uchun tashkilotning litsenziyasi mavjudligini{" "}
-                    <a
-                      href="https://gov.uz/oz/migration/activity_page/xususiy-bandlik-agentliklari_"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-blue-600 underline hover:text-blue-800"
-                    >
-                      bu havoladan
-                    </a>{" "}
-                    yoki <strong>12-82</strong> qisqa raqami orqali tekshiring.
-                  </span>
-                </p>
+              <div className="flex flex-wrap items-center gap-4 mt-6 lg:mt-8">
+                <Link
+                  href={detailHref}
+                  className="group inline-flex items-center gap-3 bg-linear-to-r from-[#14202e] to-[#2d4356] text-white px-6 lg:px-8 py-3 lg:py-4 rounded-xl hover:shadow-2xl transition-all duration-300 font-semibold w-fit text-sm lg:text-base"
+                >
+                  Batafsil ma&apos;lumot
+                  <ArrowRight className="w-4 h-4 lg:w-5 lg:h-5 group-hover:translate-x-2 transition-transform" />
+                </Link>
+                <Link
+                  href="/about/blog"
+                  className="inline-flex items-center gap-2 text-blue-600 font-semibold hover:gap-3 transition-all text-sm lg:text-base"
+                >
+                  Barcha bloglar
+                  <ArrowRight className="w-4 h-4" />
+                </Link>
               </div>
+            </div>
 
-              <Link
-                href="/about/blog/c9178d8c-5df9-4b7f-8329-fe03ccc0ce26"
-                className="group inline-flex items-center gap-3 bg-linear-to-r from-[#14202e] to-[#2d4356] text-white px-6 lg:px-8 py-3 lg:py-4 rounded-xl hover:shadow-2xl transition-all duration-300 font-semibold w-fit mt-6 lg:mt-8 text-sm lg:text-base"
-              >
-                Batafsil ma'lumot
-                <ArrowRight className="w-4 h-4 lg:w-5 lg:h-5 group-hover:translate-x-2 transition-transform" />
-              </Link>
-            </div>
-            <div className="relative bg-gray-900 order-1 lg:order-2 flex items-center justify-center overflow-hidden">
-              <img
-                src="/screenshot_blog.png"
-                alt="Video thumbnail"
-                className="absolute inset-0 w-full h-full object-cover"
-              />
-              <div className="absolute inset-0 bg-black/50"></div>
-              <a
-                href="https://ojhqnvlgqlxyiipzzneq.supabase.co/storage/v1/object/public/blog/ogoh%20(1).mp4"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="relative z-10 group"
-              >
-                <div className="bg-white/20 backdrop-blur-md rounded-full p-8 group-hover:bg-white/30 transition-all group-hover:scale-110">
-                  <PlayCircle className="w-16 h-16 text-white" />
-                </div>
-              </a>
-            </div>
+            {/* Media qismi — butun panel detail sahifaga olib boradi */}
+            <Link
+              href={detailHref}
+              className="relative bg-gray-950 order-1 lg:order-2 flex items-center justify-center overflow-hidden group aspect-video lg:aspect-auto lg:min-h-[420px]"
+            >
+              {blog.image_url ? (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img
+                  src={blog.image_url}
+                  alt={blog.title}
+                  className="absolute inset-0 w-full h-full object-cover"
+                />
+              ) : blog.video_url ? (
+                <video
+                  src={`${blog.video_url}#t=0.1`}
+                  className="absolute inset-0 w-full h-full object-cover"
+                  preload="metadata"
+                  muted
+                  playsInline
+                />
+              ) : null}
+
+              {blog.video_url ? (
+                <>
+                  <div className="absolute inset-0 bg-black/50 group-hover:bg-black/60 transition-all" />
+                  <div className="relative z-10 bg-white/20 backdrop-blur-md rounded-full p-8 group-hover:bg-white/30 transition-all group-hover:scale-110">
+                    <PlayCircle className="w-16 h-16 text-white" />
+                  </div>
+                </>
+              ) : (
+                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all" />
+              )}
+            </Link>
           </div>
         </div>
       </div>
