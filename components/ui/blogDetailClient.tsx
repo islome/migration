@@ -1,7 +1,10 @@
 // components/BlogDetailClient.tsx
 "use client";
 
+import Link from "next/link";
+import { ArrowLeft, ArrowRight, Calendar } from "lucide-react";
 import Footer from "./footer";
+import { renderBlogDescription } from "@/lib/blogText";
 
 type Blog = {
   id: string;
@@ -24,60 +27,91 @@ const categoryConfig: Record<string, { label: string; color: string }> = {
 
 export default function BlogDetailClient({ blog }: { blog: Blog }) {
   const cat = categoryConfig[blog.category];
+  const hasMedia = Boolean(blog.video_url || blog.image_url);
+
+  const date = new Date(blog.created_at).toLocaleDateString("uz-UZ", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
 
   return (
     <div className="min-h-screen bg-white">
-      <div className="max-w-7xl mx-auto px-6 sm:px-4 lg:px-8 py-12 lg:py-20">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 xl:gap-10 items-start">
-          <div className="space-y-10 lg:sticky lg:top-12 pl-4 lg:pl-0 p-4">
+      <article className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10 lg:py-16">
+        {/* Orqaga */}
+        <Link
+          href="/about/blog"
+          className="inline-flex items-center gap-2 text-sm font-medium text-gray-500 hover:text-gray-900 transition-colors"
+        >
+          <ArrowLeft className="w-4 h-4" />
+          Barcha bloglar
+        </Link>
+
+        {/* Sarlavha bloki */}
+        <header className="mt-8 max-w-3xl">
+          <div className="flex flex-wrap items-center gap-3">
             <span
-              className={`inline-block px-5 py-2.5 rounded-full text-base font-semibold shadow-sm ${cat?.color || "bg-blue-100 text-blue-800"}`}
+              className={`inline-flex items-center px-3.5 py-1.5 rounded-full text-sm font-semibold ${cat?.color || "bg-gray-100 text-gray-700"}`}
             >
-              {cat?.label || "Kategoriya"}
+              {cat?.label || "Blog"}
             </span>
-
-            <h1 className="text-5xl sm:text-6xl lg:text-6xl font-extrabold leading-tight tracking-tight text-gray-900">
-              {blog.title}
-            </h1>
-
-            <p className="text-xl text-gray-600 font-medium">
-              {new Date(blog.created_at).toLocaleDateString("uz-UZ", {
-                year: "numeric",
-                month: "long",
-                day: "numeric",
-              })}{" "}
-              yilda elon qilgan
-            </p>
-
-            <p className="text-2xl leading-relaxed text-gray-700 whitespace-pre-wrap">
-              {blog.description}
-            </p>
+            <span className="inline-flex items-center gap-1.5 text-sm text-gray-500">
+              <Calendar className="w-4 h-4" />
+              {date}
+            </span>
           </div>
 
-          <div className="w-auto order-2 lg:order-0 overflow-hidden lg:self-start">
-            {blog.video_url ? (
-              <video
-                src={blog.video_url}
-                style={{ height: "740px", width: "auto" }}
-                className="object-cover rounded-2xl mx-auto block"
-                controls
-                autoPlay
-                muted
-                loop
-                playsInline
-              />
-            ) : blog.image_url ? (
-              // eslint-disable-next-line @next/next/no-img-element
-              <img
-                src={blog.image_url}
-                alt={blog.title}
-                style={{ maxHeight: "740px", width: "auto" }}
-                className="object-cover rounded-2xl mx-auto block"
-              />
-            ) : null}
+          <h1 className="mt-5 text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight leading-[1.15] text-gray-900">
+            {blog.title}
+          </h1>
+        </header>
+
+        {/* Kontent: mobilda media -> matn; desktopda matn (3/5) + sticky media (2/5) */}
+        <div className="mt-10 lg:mt-14 grid grid-cols-1 lg:grid-cols-5 gap-10 lg:gap-16 items-start">
+          {hasMedia && (
+            <figure className="lg:col-span-2 lg:order-2 lg:sticky lg:top-12">
+              <div className="overflow-hidden rounded-2xl bg-gray-950 shadow-2xl ring-1 ring-gray-900/10">
+                {blog.video_url ? (
+                  <video
+                    src={blog.video_url}
+                    className="w-full max-h-[75vh] object-contain"
+                    controls
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    poster={blog.image_url ?? undefined}
+                  />
+                ) : (
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img
+                    src={blog.image_url!}
+                    alt={blog.title}
+                    className="w-full h-auto max-h-[75vh] object-contain"
+                  />
+                )}
+              </div>
+            </figure>
+          )}
+
+          <div className={hasMedia ? "lg:col-span-3 lg:order-1" : "lg:col-span-5"}>
+            <div className="text-lg leading-8 text-gray-700 whitespace-pre-wrap">
+              {renderBlogDescription(blog.description)}
+            </div>
           </div>
         </div>
-      </div>
+
+        {/* Pastki navigatsiya */}
+        <div className="mt-16 pt-8 border-t border-gray-100">
+          <Link
+            href="/about/blog"
+            className="inline-flex items-center gap-2 text-blue-600 font-semibold hover:gap-3 transition-all"
+          >
+            Boshqa bloglarni ko&apos;rish
+            <ArrowRight className="w-4 h-4" />
+          </Link>
+        </div>
+      </article>
       <Footer />
     </div>
   );

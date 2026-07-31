@@ -4,6 +4,7 @@ import VideoCard from "@/components/ui/videoCard";
 import Header from "@/components/ui/header";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
+import { stripBlogLinks } from "@/lib/blogText";
 
 // ISR: sahifa 60s cache'lanadi (tez yuklanadi, DB kam so'raladi).
 // Blog qo'shil/tahrirlanganda revalidateBlogs() darhol yangilaydi.
@@ -70,7 +71,7 @@ export default async function BlogsPage() {
                       {blog.title}
                     </h3>
                     <p className="text-gray-600 text-sm line-clamp-3">
-                      {truncateWords(blog.description, 25)}{" "}
+                      {truncateWords(stripBlogLinks(blog.description), 25)}{" "}
                     </p>
                     <p className="text-gray-400 text-xs mt-4">
                       {new Date(blog.created_at).toLocaleDateString("uz-UZ")}
