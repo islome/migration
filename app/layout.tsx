@@ -9,7 +9,7 @@ const jakarta = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Global HR Office",
+  title: "Global HR Namangan",
   description: "Namangan Viloyati, xususiy bandlik agentligi",
   icons: {
     icon: "/favicon.ico",
