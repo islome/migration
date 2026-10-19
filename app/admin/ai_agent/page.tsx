@@ -160,16 +160,17 @@ export default function Home() {
     bottomRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages, loading]);
 
-  const sendMessage = async (message: string) => {
-    lastUserMessageRef.current = message;
-    setMessages((prev) => [...prev, { role: "user", text: message }]);
+  const askAI = async (message: string, history: Message[]) => {
     setLoading(true);
-
     try {
       const res = await fetch("/api/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ message }),
+        body: JSON.stringify({
+          message,
+          history: history.slice(-10),
+          mode: "admin",
+        }),
       });
       const data = await res.json();
       setMessages((prev) => [
@@ -187,6 +188,20 @@ export default function Home() {
     } finally {
       setLoading(false);
     }
+  };
+
+  const sendMessage = async (message: string) => {
+    lastUserMessageRef.current = message;
+    const history = messages; 
+    setMessages((prev) => [...prev, { role: "user", text: message }]);
+    await askAI(message, history);
+  };
+
+  const handleRefresh = async () => {
+    if (loading || !lastUserMessageRef.current) return;
+    const history = messages.slice(0, -2); 
+    setMessages((prev) => prev.slice(0, -1)); 
+    await askAI(lastUserMessageRef.current, history);
   };
 
   const handleSubmit = async () => {
@@ -197,35 +212,6 @@ export default function Home() {
       textareaRef.current.style.height = "auto";
     }
     await sendMessage(message);
-  };
-
-  const handleRefresh = async () => {
-    if (loading || !lastUserMessageRef.current) return;
-    setMessages((prev) => prev.slice(0, -1));
-    setLoading(true);
-
-    try {
-      const res = await fetch("/api/chat", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ message: lastUserMessageRef.current }),
-      });
-      const data = await res.json();
-      setMessages((prev) => [
-        ...prev,
-        {
-          role: "ai",
-          text: data.output_text || data.error || "Xato yuz berdi.",
-        },
-      ]);
-    } catch {
-      setMessages((prev) => [
-        ...prev,
-        { role: "ai", text: "Server bilan bog'lanishda xato." },
-      ]);
-    } finally {
-      setLoading(false);
-    }
   };
 
   return (

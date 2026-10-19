@@ -12,10 +12,13 @@ export async function POST(request) {
     if (!message || typeof message !== "string") {
       return NextResponse.json({ error: "message kerak" }, { status: 400 });
     }
-
     const response = await ai.models.generateContent({
       model: MODEL,
       contents: message,
+      systemInstruction:
+    "Sen blog yozishda yordam beradigan yordamchisan. Sarlavha, tavsif va kategoriya bo'yicha maslahat berasan. " +
+    "Faqat o'zbek tilida, qisqa va aniq javob ber. Markdown ishlatma: yulduzcha, #, backtick yozma, oddiy matn va raqamli ro'yxat bo'lsin.",
+  
       config: {
         thinkingConfig: { thinkingLevel: ThinkingLevel.MEDIUM },
       },
