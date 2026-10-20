@@ -5,8 +5,8 @@ export const maxDuration = 60;
 
 const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_KEY });
 
-const MODEL = process.env.GEMINI_MODEL || "gemini-3.0-flash";
-const FALLBACK_MODEL = process.env.GEMINI_FALLBACK_MODEL || "gemini-3-flash";
+const MODEL = process.env.GEMINI_MODEL || "gemini-3.8-flash";
+const FALLBACK_MODEL = process.env.GEMINI_FALLBACK_MODEL || "gemini-3.5-flash";
 
 const NO_MD =
   " Markdown ishlatma: yulduzcha, #, backtick yozma. Oddiy matn va raqamli ro'yxat ishlat.";
