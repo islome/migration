@@ -1,43 +1,9 @@
-import {
-  ArrowRight,
-  PlayCircle,
-  AlertTriangle,
-  Sparkles,
-  CheckCircle2,
-  Calendar,
-} from "lucide-react";
+import { ArrowRight, PlayCircle, Calendar } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import type { Blog } from "@/lib/blogs";
 import { stripBlogLinks, truncateWords } from "@/lib/blogText";
-
-// Kategoriyaga mos badge (rang + ikonka); label tarjima kalitidan olinadi
-const categoryConfig: Record<
-  string,
-  { labelKey: "catNew" | "catWarning" | "catSuccess"; gradient: string; Icon: typeof Sparkles }
-> = {
-  new: {
-    labelKey: "catNew",
-    gradient: "from-blue-600 to-indigo-600",
-    Icon: Sparkles,
-  },
-  warning: {
-    labelKey: "catWarning",
-    gradient: "from-red-600 to-orange-600",
-    Icon: AlertTriangle,
-  },
-  successful_job: {
-    labelKey: "catSuccess",
-    gradient: "from-green-600 to-emerald-600",
-    Icon: CheckCircle2,
-  },
-};
-
-const dateLocales: Record<string, string> = {
-  uz: "uz-UZ",
-  ru: "ru-RU",
-  en: "en-US",
-};
+import { formatBlogDate, getBlogCategory } from "@/lib/blogCategory";
 
 // Bosh sahifadagi "eng oxirgi blog" bo'limi.
 // Presentational: blog server tomonda fetch qilinib prop orqali keladi —
@@ -48,23 +14,12 @@ export default function SpecialBlogSection({ blog }: { blog: Blog | null }) {
 
   if (!blog) return null;
 
-  const cat = categoryConfig[blog.category] || {
-    labelKey: "catNew" as const,
-    gradient: "from-gray-700 to-gray-900",
-    Icon: Sparkles,
-  };
+  const cat = getBlogCategory(blog.category);
   const CatIcon = cat.Icon;
 
   const detailHref = `/about/blog/${blog.id}`;
   const teaser = truncateWords(stripBlogLinks(blog.description), 45);
-  const date = new Date(blog.created_at).toLocaleDateString(
-    dateLocales[locale] || "uz-UZ",
-    {
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-    },
-  );
+  const date = formatBlogDate(blog.created_at, locale);
 
   return (
     <section className="py-16 bg-white">

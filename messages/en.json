@@ -115,11 +115,23 @@
     "noMedia": "No media",
     "catNew": "News",
     "catWarning": "Warning",
-    "catSuccess": "Success"
+    "catSuccess": "Success",
+    "all": "All",
+    "filterLabel": "Filter by category"
   },
   "blogDetail": {
     "back": "All posts",
-    "more": "See more posts"
+    "more": "See more posts",
+    "home": "Home",
+    "blog": "Blog",
+    "minRead": "{count} min read",
+    "share": "Share:",
+    "copyLink": "Copy link",
+    "copied": "Copied!",
+    "ctaTitle": "Planning to work abroad?",
+    "ctaText": "Our licensed specialists will consult you for free and help you prepare your documents correctly.",
+    "ctaButton": "Message us on Telegram",
+    "moreTitle": "More posts"
   },
   "aboutDev": {
     "back": "Go back",

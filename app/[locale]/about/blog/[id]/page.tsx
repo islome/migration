@@ -1,21 +1,33 @@
-// app/faq/blogs/[id]/page.tsx
 import type { Metadata } from "next";
 import { supabase } from "@/lib/supabase";
 import BlogDetailClient from "@/components/ui/blogDetailClient";
 import { notFound } from "next/navigation";
 import Header from "@/components/ui/header";
 import { stripBlogLinks } from "@/lib/blogText";
+import type { Blog } from "@/lib/blogs";
+import { setRequestLocale } from "next-intl/server";
 
 // ISR: detail sahifa 60s cache'lanadi; tahrir/o'chirishда revalidate qilinadi.
 export const revalidate = 60;
 
-async function getBlog(id: string) {
+async function getBlog(id: string): Promise<Blog | null> {
   const { data } = await supabase
     .from("blogs")
     .select("*")
     .eq("id", id)
     .single();
   return data;
+}
+
+// "Boshqa bloglar" bo'limi uchun joriy blogdan tashqari eng so'nggi 3 ta
+async function getRelatedBlogs(id: string): Promise<Blog[]> {
+  const { data } = await supabase
+    .from("blogs")
+    .select("*")
+    .neq("id", id)
+    .order("created_at", { ascending: false })
+    .limit(3);
+  return data || [];
 }
 
 // Telegram/ijtimoiy tarmoqlarda ulashganda sarlavha + rasm preview chiqishi uchun
@@ -43,19 +55,18 @@ export async function generateMetadata({
 export default async function BlogDetailPage({
   params,
 }: {
-  params: Promise<{ id: string }>; 
+  params: Promise<{ locale: string; id: string }>;
 }) {
-  const { id } = await params; 
+  const { locale, id } = await params;
+  setRequestLocale(locale);
 
-  const blog = await getBlog(id);
+  const [blog, related] = await Promise.all([getBlog(id), getRelatedBlogs(id)]);
   if (!blog) return notFound();
 
   return (
-    <div>
-      <div className="px-8 pt-8 mb-8">
-        <Header />
-      </div>
-      <BlogDetailClient blog={blog} />
-    </div>
+    <>
+      <Header />
+      <BlogDetailClient blog={blog} related={related} />
+    </>
   );
 }

@@ -115,11 +115,23 @@
     "noMedia": "Media yo'q",
     "catNew": "Yangilik",
     "catWarning": "Ogohlantirish",
-    "catSuccess": "Muvaffaqiyat"
+    "catSuccess": "Muvaffaqiyat",
+    "all": "Barchasi",
+    "filterLabel": "Toifa bo'yicha saralash"
   },
   "blogDetail": {
     "back": "Barcha bloglar",
-    "more": "Boshqa bloglarni ko'rish"
+    "more": "Boshqa bloglarni ko'rish",
+    "home": "Bosh sahifa",
+    "blog": "Blog",
+    "minRead": "{count} daqiqa o'qish",
+    "share": "Ulashish:",
+    "copyLink": "Havolani nusxalash",
+    "copied": "Nusxalandi!",
+    "ctaTitle": "Chet elda ishlashni rejalashtiryapsizmi?",
+    "ctaText": "Litsenziyali mutaxassislarimiz bepul maslahat beradi va hujjatlaringizni to'g'ri tayyorlashda yordam beradi.",
+    "ctaButton": "Telegram orqali yozish",
+    "moreTitle": "Boshqa bloglar"
   },
   "aboutDev": {
     "back": "Oldingi sahifaga",
